@@ -70,7 +70,8 @@ rem Ruta del SDK para este proyecto (por si ANDROID_HOME no viaja al daemon).
 > local.properties echo # Generado por compilar-apks.bat. No se sube al repositorio.
 >> local.properties echo sdk.dir=%ANDROID_HOME:\=\\%
 
-call gradlew.bat assembleRelease "-PappVersionName=%VERSION%" "-PappVersionCode=%CODIGO%"
+rem Ruta completa: cmd no siempre busca ejecutables en la carpeta actual.
+call "%RAIZ%apps\%APP%\gradlew.bat" assembleRelease "-PappVersionName=%VERSION%" "-PappVersionCode=%CODIGO%"
 if errorlevel 1 (
   echo.
   echo [ERROR] Fallo la compilacion de %ETIQUETA%. Mira el mensaje de arriba.
