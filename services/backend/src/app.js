@@ -16,6 +16,7 @@ import {
   login, refreshSession, logout, requireAuth, requireLevel,
   setupTotp, enableTotp, publicUser, hashPassword, ROLE_LEVEL,
 } from "./auth.js";
+import { safeEqualStr } from "./crypto-utils.js";
 import { enforceRateLimit, LIMITS } from "./rate-limit.js";
 import { sendSellerWelcome } from "./email.js";
 import { isEmailConfigured } from "./config.js";
@@ -120,9 +121,21 @@ async function ensureDemo(store) {
 
 // ---------------------------------------------------------------------------
 function cors(res) {
+  // Origen `*` a proposito: la API es publica (la web, el APK y el WebView del
+  // admin viven en origenes distintos) y la autorizacion va por cabecera Bearer,
+  // NO por cookie. Sin cookies no hay peticiones "con credenciales", asi que un
+  // sitio ajeno no puede actuar en nombre de un admin: necesitaria su token, que
+  // vive en el localStorage de OTRO origen y el navegador no le deja leer.
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  // Cabeceras de seguridad. Esta API devuelve JSON e imagenes; nada de esto
+  // deberia interpretarse como documento ni incrustarse en un iframe.
+  res.setHeader("X-Content-Type-Options", "nosniff");        // sin adivinar tipos
+  res.setHeader("Referrer-Policy", "no-referrer");           // no filtrar URLs con ids
+  res.setHeader("X-Frame-Options", "DENY");                  // sin clickjacking
+  res.setHeader("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'");
 }
 
 const json = (res, status, obj) => {
@@ -230,10 +243,20 @@ export async function handler(req, res) {
     }
 
     // Cron de Vercel: libera reservas vencidas.
+    //
+    // FAIL-CLOSED: antes, si CRON_SECRET no estaba definida el endpoint quedaba
+    // ABIERTO a internet. Ahora, con base de datos (produccion) el secreto es
+    // obligatorio; sin el, se rechaza. Sin base (dev en memoria) se permite para
+    // no estorbar en local.
     if (parts[0] === "api" && parts[1] === "cron" && parts[2] === "expire") {
       if (config.cronSecret) {
         const auth = req.headers?.authorization || "";
-        if (auth !== `Bearer ${config.cronSecret}`) return json(res, 401, { error: "No autorizado" });
+        if (!safeEqualStr(auth, `Bearer ${config.cronSecret}`)) {
+          return json(res, 401, { error: "No autorizado" });
+        }
+      } else if (config.databaseUrl) {
+        console.error("[cron] CRON_SECRET no configurada: se rechaza la ejecucion");
+        return json(res, 503, { error: "Cron no configurado (falta CRON_SECRET)" });
       }
       const store = await getStore();
       const freed = await store.expireReservations();
@@ -271,7 +294,9 @@ export async function handler(req, res) {
       }
       if (M === "POST" && parts[2] === "totp" && parts[3] === "setup") {
         const user = await requireAuth(req, store);
-        return json(res, 200, await setupTotp(store, user));
+        // `code` solo hace falta si el 2FA ya estaba activo (reemplazo).
+        const b = await readBody(req);
+        return json(res, 200, await setupTotp(store, user, b?.code));
       }
       if (M === "POST" && parts[2] === "totp" && parts[3] === "enable") {
         const user = await requireAuth(req, store);
@@ -307,7 +332,10 @@ export async function handler(req, res) {
         const password = String(b.password || "");
         if (!fullName) throw httpError(400, "Falta el nombre del vendedor");
         if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) throw httpError(400, "Correo invalido");
-        if (password.length < 8) throw httpError(400, "La contrasena debe tener al menos 8 caracteres");
+        // Misma exigencia que para un administrador (create-admin.js): un vendedor
+        // aprueba pagos, asi que su clave protege dinero. 8 caracteres se rompen
+        // por fuerza bruta offline si algun dia se filtra la base.
+        if (password.length < 12) throw httpError(400, "La contrasena debe tener al menos 12 caracteres");
         const slugs = await slugsValidos(store, b.raffles);
 
         const passwordHash = await hashPassword(password);
@@ -717,10 +745,17 @@ export async function handler(req, res) {
       // esto solo evita que una inundacion agote las invocaciones.
       await enforceRateLimit(store, req, LIMITS.webhook);
       const event = await readBody(req);
-      if (config.wompi.eventsKey) {
-        if (!verifyEventSignature(event, config.wompi.eventsKey)) {
-          return json(res, 401, { error: "Firma de webhook invalida" });
-        }
+      // La firma es OBLIGATORIA. Antes, si WOMPI_EVENTS_KEY no estaba definida se
+      // SALTABA la verificacion: cualquiera podia POSTear
+      // {"data":{"transaction":{"reference":"<orden>","status":"APPROVED"}}} y
+      // llevarse numeros sin pagar (basta con reservar una orden propia para
+      // conocer su referencia). Ahora se rechaza el evento (fail-closed).
+      if (!config.wompi.eventsKey) {
+        console.error("[webhook] WOMPI_EVENTS_KEY no configurada: evento rechazado");
+        return json(res, 503, { error: "Webhook no configurado (falta WOMPI_EVENTS_KEY)" });
+      }
+      if (!verifyEventSignature(event, config.wompi.eventsKey)) {
+        return json(res, 401, { error: "Firma de webhook invalida" });
       }
       const tx = event?.data?.transaction;
       if (!tx?.reference) return json(res, 400, { error: "Evento sin transaction.reference" });

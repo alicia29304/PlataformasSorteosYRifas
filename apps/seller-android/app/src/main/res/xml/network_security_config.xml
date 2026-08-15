@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Politica de red de la app.
+
+  Por defecto: HTTPS obligatorio. Antes el manifiesto traia
+  usesCleartextTraffic="true", que permitia hablar con CUALQUIER servidor por
+  http:// en claro. Como la URL del backend es configurable dentro de la app, eso
+  dejaba la puerta a que alguien en la misma red (wifi publico) leyera o alterara
+  el trafico: en la app de admin/vendedor eso significa la contrasena y el token
+  de sesion viajando a la vista.
+
+  Se conserva el texto en claro SOLO para las direcciones de desarrollo local
+  (el propio equipo y la puerta del emulador de Android), que nunca salen del
+  dispositivo.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">127.0.0.1</domain>
+        <!-- 10.0.2.2 = el PC anfitrion visto desde el emulador de Android. -->
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>

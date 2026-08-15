@@ -1470,7 +1470,7 @@ VIEWS.vendedores = async (el) => {
       <form id="form-seller" class="form-grid">
         <label>Nombre del vendedor<input name="fullName" required placeholder="Ej: María Pérez" /></label>
         <label>Correo<input name="email" type="email" required placeholder="vendedor@correo.com" /></label>
-        <label>Contraseña<input name="password" type="text" required minlength="8" placeholder="mínimo 8 caracteres" /></label>
+        <label>Contraseña<input name="password" type="text" required minlength="12" placeholder="mínimo 12 caracteres" /></label>
         <div class="seller-raffles-pick">
           <span class="muted small">Rifas que podrá verificar:</span>
           <div class="chips">

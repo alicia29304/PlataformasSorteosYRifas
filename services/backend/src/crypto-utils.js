@@ -139,3 +139,15 @@ export function totpUri(secretB32, { issuer = "Sorteos y Rifas", account = "admi
 // --------------------------- Varios ---------------------------
 export const randomToken = (bytes = 32) => crypto.randomBytes(bytes).toString("base64url");
 export const sha256 = (s) => crypto.createHash("sha256").update(String(s)).digest("hex");
+
+/**
+ * Comparacion de cadenas en tiempo constante (para secretos: cabecera del cron,
+ * tokens, etc.). `===` sale en el primer byte distinto y filtra el secreto byte
+ * a byte a quien mida los tiempos.
+ */
+export function safeEqualStr(a, b) {
+  const ba = Buffer.from(String(a ?? ""));
+  const bb = Buffer.from(String(b ?? ""));
+  if (ba.length !== bb.length) return false;
+  return crypto.timingSafeEqual(ba, bb);
+}

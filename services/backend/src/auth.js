@@ -109,8 +109,23 @@ export async function logout(store, refreshToken) {
   return { ok: true };
 }
 
-/** Genera un secreto TOTP y su URI; no activa 2FA hasta confirmar un codigo. */
-export async function setupTotp(store, user) {
+/**
+ * Genera un secreto TOTP y su URI; no activa 2FA hasta confirmar un codigo.
+ *
+ * Si el 2FA YA estaba activo, exige un codigo actual para reemplazarlo. Sin esa
+ * guarda, generar un secreto nuevo apagaba el 2FA del titular de inmediato: a
+ * quien lograra una sesion viva (un token robado, un equipo desbloqueado) le
+ * bastaba llamar a este endpoint para dejar la cuenta protegida solo por la
+ * contrasena, y sin que el dueño se enterara.
+ */
+export async function setupTotp(store, user, code = null) {
+  const fresh = await store.getAdminById(user.id);
+  if (fresh?.totpEnabled) {
+    if (!verifyTotp(fresh.totpSecret, code)) {
+      throw httpError(400, "El 2FA ya esta activo: escribe un codigo actual para reemplazarlo");
+    }
+    await store.audit({ actor: user.email, action: "RESET_2FA", entityType: "admin_user", entityId: user.id });
+  }
   const secret = generateTotpSecret();
   await store.setAdminTotp(user.id, secret, false);
   return { secret, uri: totpUri(secret, { account: user.email }) };

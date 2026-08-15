@@ -3,12 +3,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- usesCleartextTraffic permite apuntar a un backend local por http://
-         (p. ej. http://192.168.1.10:8787) durante desarrollo. En produccion el
-         backend debe servirse por HTTPS y esto puede desactivarse. -->
+    <!-- Red: HTTPS obligatorio, con texto en claro permitido SOLO en localhost
+         (ver res/xml/network_security_config.xml). allowBackup=false para que la
+         copia de seguridad de Android no se lleve los datos de la app (incluida
+         la sesion guardada). -->
     <application
-        android:allowBackup="true"
-        android:usesCleartextTraffic="true"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
