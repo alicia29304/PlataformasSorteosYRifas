@@ -26,9 +26,12 @@ npm-debug.log*
 # Android / Gradle
 # =========================================================================
 .gradle/
-apps/android/build/
-apps/android/app/build/
-apps/android/local.properties
+# Android: vale para los tres modulos (cliente, admin y vendedor). Antes solo
+# se ignoraba apps/android/, asi que la salida de compilacion de los modulos
+# nuevos se habria commiteado.
+apps/*/build/
+apps/*/app/build/
+apps/*/local.properties
 apps/android/.idea/
 *.apk
 *.aab
