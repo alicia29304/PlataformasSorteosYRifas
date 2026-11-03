@@ -24,6 +24,12 @@ let cfg = loadCfg();
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+/** "jhonsu777@gmail.com" -> "j•••••••7@gmail.com": se reconoce sin exponerlo. */
+const enmascararCorreo = (c) => {
+  const [u, d] = String(c || "").split("@");
+  if (!d) return "";
+  return u.length <= 2 ? `${u[0] || ""}•@${d}` : `${u[0]}${"•".repeat(u.length - 2)}${u.at(-1)}@${d}`;
+};
 const copFormat = (cents) =>
   new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 }).format((cents || 0) / 100);
 
@@ -216,7 +222,8 @@ function pintarUsuario() {
   const box = document.getElementById("user-box");
   if (!box) return;
   if (!session) { box.innerHTML = ""; return; }
-  box.innerHTML = `<div class="user-mail">${esc(session.user.email)}</div>
+  // El correo de la cuenta no se muestra en pantalla (dato privado): nombre o rol.
+  box.innerHTML = `<div class="user-mail">${esc(session.user.fullName || "Administrador")}</div>
     <div class="user-role">${esc(session.user.role)}${session.user.totpEnabled ? " · 2FA ✓" : ""}</div>
     <button id="btn-logout" class="btn-logout">Cerrar sesión</button>`;
   document.getElementById("btn-logout").onclick = () => {
@@ -279,7 +286,7 @@ VIEWS.login = async (el) => {
     try {
       const s = await raw("/api/auth/login", { method: "POST", body: creds });
       applySession(s);
-      toast(`Bienvenido, ${s.user.email}`);
+      toast(`Bienvenido${s.user.fullName ? ", " + s.user.fullName : ""}`);
       setView(s.mustEnable2fa ? "seguridad" : "panel");
     } catch (err) {
       if (err.totpRequired) {
@@ -307,7 +314,7 @@ VIEWS.seguridad = async (el) => {
         <div id="totp-paso1"><button id="btn-setup" class="btn-approve" style="margin-top:12px">Generar secreto</button></div>
         <div id="totp-paso2" style="display:none;margin-top:16px">
           <p class="small">1. Abre Google Authenticator / Authy → <b>Introducir clave manualmente</b>.<br>
-             2. Pega este secreto (cuenta: <b>${esc(session?.user?.email || "")}</b>):</p>
+             2. Pega este secreto (cuenta: <b>${esc(enmascararCorreo(session?.user?.email))}</b>):</p>
           <div class="secret-box" id="secret"></div>
           <p class="small">3. Escribe el código de 6 dígitos que te muestre:</p>
           <form id="form-totp" class="form-grid" style="grid-template-columns:180px auto">
@@ -1228,7 +1235,7 @@ VIEWS.comprobantes = async (el) => {
               </div>
               <div class="meta">${esc(p.method)} · ${p.contact?.phone ? esc(p.contact.phone) : "sin teléfono"}${p.city ? ` · 📍 ${esc(p.city)}` : ""} · ${new Date(p.purchasedAt).toLocaleString("es-CO")}</div>
               ${p.sellerName ? `<div class="meta">🧑‍💼 Vendedor elegido por el comprador: <b>${esc(p.sellerName)}</b></div>` : ""}
-              ${!esPend && p.approvedByName ?`<div class="meta">✔️ Autorizado por: <b>${esc(p.approvedByName)}</b>${p.approvedByRole === "OPERATOR" ? " (vendedor)" : p.approvedByRole && p.approvedByRole !== "wompi" ? " (admin)" : ""}</div>` : ""}
+              ${!esPend && p.approvedByName ?`<div class="meta">✔️ Autorizado por: <b>${esc(p.approvedByName)}</b>${p.approvedByRole === "OPERATOR" ? " (vendedor)" : p.approvedByRole && p.approvedByRole !== "wompi" && p.approvedByName !== "Administrador" ? " (admin)" : ""}</div>` : ""}
               ${p.hasReceipt
                 ? `<button class="btn-receipt" data-receipt="${esc(p.id)}">🧾 Ver comprobante del pago</button>`
                 : p.method === "MANUAL" ? `<div class="meta">⏳ Sin comprobante todavía</div>` : ""}

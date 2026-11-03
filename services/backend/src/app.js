@@ -32,6 +32,18 @@ async function assertRaffleAccess(store, user, slug) {
   }
 }
 
+/**
+ * Nombre visible de quien aprobo un pago. Un administrador NO se muestra por su
+ * correo (es un dato privado de la cuenta): sale como "Administrador". Corrige
+ * tambien los registros viejos, que guardaban el correo como nombre.
+ */
+function nombreAprobador(nombre, rol) {
+  if (!nombre) return nombre;
+  if (rol !== "OPERATOR" && String(nombre).includes("@")) return "Administrador";
+  return nombre;
+}
+const sinCorreo = (fila) => ({ ...fila, approvedByName: nombreAprobador(fila.approvedByName, fila.approvedByRole) });
+
 /** Normaliza y valida una lista de slugs contra las rifas existentes. */
 async function slugsValidos(store, slugs) {
   const todas = new Set((await store.listRaffles()).map((r) => r.slug));
@@ -385,7 +397,7 @@ export async function handler(req, res) {
       const sellerId = url.searchParams.get("sellerId") || null;
       const from = url.searchParams.get("from") || null;
       const to = url.searchParams.get("to") || null;
-      const items = await store.confirmationsBySeller(slug, { sellerId, from, to });
+      const items = (await store.confirmationsBySeller(slug, { sellerId, from, to })).map(sinCorreo);
       const payload = {
         slug, sellerId, from, to,
         count: items.length,
@@ -450,7 +462,7 @@ export async function handler(req, res) {
       const slug = parts[2];
       await store.getRaffle(slug);
       await assertRaffleAccess(store, user, slug); // el vendedor solo ve sus rifas
-      return json(res, 200, { purchases: await store.adminPurchases(slug, url.searchParams.get("status") || null) });
+      return json(res, 200, { purchases: (await store.adminPurchases(slug, url.searchParams.get("status") || null)).map(sinCorreo) });
     }
 
     // Estado de una compra. Abierto: quien la hizo tiene el id (un UUID) y no
@@ -647,7 +659,8 @@ export async function handler(req, res) {
       const p = await store.approve(parts[2], {
         approvedBy: user.email,
         approverId: user.id,
-        approverName: user.fullName || user.email,
+        // Nunca el correo de un admin como nombre visible (dato privado).
+        approverName: user.fullName || (user.role === "OPERATOR" ? user.email : "Administrador"),
         approverRole: user.role,
       });
       await store.audit({ actor: user.email, action: "APPROVE_PURCHASE", entityType: "purchase", entityId: p.id, after: { number: p.number, status: p.status } });
