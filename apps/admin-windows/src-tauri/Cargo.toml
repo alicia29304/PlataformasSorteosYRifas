@@ -1,6 +1,6 @@
 [package]
 name = "sorteos-rifas-admin"
-version = "0.1.0"
+version = "1.14.3"
 description = "App de administracion de Sorteos y Rifas"
 authors = ["jhonsu01"]
 edition = "2021"
