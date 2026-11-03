@@ -7,7 +7,7 @@
 
 import fs from "node:fs";
 import crypto from "node:crypto";
-import { httpError, pseudonym, motivoNoDisponible, normalizeCity, phoneKey, MAX_NUMBERS_PER_ORDER } from "./store.js";
+import { httpError, pseudonym, motivoNoDisponible, normalizeCity, phoneKey, MAX_NUMBERS_PER_ORDER, vencimientoReserva } from "./store.js";
 import {
   normalizeMedia, normalizePrizeItems, normalizeTheme, prizeTotalCents,
 } from "./raffle-media.js";
@@ -292,8 +292,10 @@ export async function createPostgresStore(
     const reference = `RAFFLE-${slug}-NUM-${number}-${id}`;
     const oref = orderRef || reference; // una compra de 1 numero es su propia orden
     // El pago manual necesita mas tiempo: abrir Nequi, pagar, capturar y volver.
-    const minutos = method === "MANUAL" ? manualReserveMinutes : reserveMinutes;
-    const until = new Date(Date.now() + minutos * 60_000);
+    // Manual: hasta el cierre de ventas. Pasarela: ventana corta (ver vencimientoReserva).
+    const until = new Date(vencimientoReserva(raffle, method, {
+      reserveMs: reserveMinutes * 60_000, manualReserveMs: manualReserveMinutes * 60_000,
+    }));
 
     return tx(async (c) => {
       // 1) Reclamo atomico del numero (libre o con reserva vencida).
@@ -363,8 +365,10 @@ export async function createPostgresStore(
     }
 
     const orderRef = `ORD-${slug}-${crypto.randomUUID()}`;
-    const minutos = method === "MANUAL" ? manualReserveMinutes : reserveMinutes;
-    const until = new Date(Date.now() + minutos * 60_000);
+    // Manual: hasta el cierre de ventas. Pasarela: ventana corta (ver vencimientoReserva).
+    const until = new Date(vencimientoReserva(raffle, method, {
+      reserveMs: reserveMinutes * 60_000, manualReserveMs: manualReserveMinutes * 60_000,
+    }));
 
     return tx(async (c) => {
       const creadas = [];

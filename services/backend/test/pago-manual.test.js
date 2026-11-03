@@ -42,9 +42,10 @@ test("CRITICO: una compra CON comprobante no expira aunque venza la reserva", ()
   );
 });
 
-test("una compra SIN comprobante si expira y libera el numero", () => {
+test("una compra SIN comprobante si expira y libera el numero (rifa sin cierre: ventana de respaldo)", () => {
   const store = createStore({ reserveMinutes: -1 });
-  demoRaffle(store);
+  // Sin fecha de cierre, el pago manual usa la ventana configurada (aqui vencida).
+  demoRaffle(store, { endsAt: null });
   const p = store.reserve("t", 5, { firstName: "Ana", lastName: "Gomez" }, "MANUAL");
 
   assert.equal(store.expireReservations(), 1);
@@ -243,7 +244,7 @@ test("heldNumbers muestra los apartados y NO revela quien los tiene", () => {
 
 test("heldNumbers omite una reserva vencida sin comprobante, pero NO una con comprobante", () => {
   const store = createStore({ reserveMinutes: -1 }); // nace vencida
-  demoRaffle(store);
+  demoRaffle(store, { endsAt: null }); // sin cierre: aplica la ventana de respaldo
   store.reserve("t", 3, { firstName: "Ana", lastName: "Gomez" }, "MANUAL");
   const pagada = store.reserve("t", 4, { firstName: "Beto", lastName: "Diaz" }, "MANUAL");
   store.attachReceipt(pagada.id, { bytes: PNG, mime: "image/png" });
@@ -306,4 +307,28 @@ test("el motivo del 409 no revela quien tiene el numero", () => {
       assert.ok(!e.message.includes(secreto), `el mensaje no debe filtrar "${secreto}"`);
     }
   }
+});
+
+// --------------------------- Vencimiento: manual hasta el cierre ---------------------------
+
+test("pago MANUAL: el numero queda apartado hasta el CIERRE de ventas, no una hora", () => {
+  const store = createStore({ reserveMinutes: -1, manualReserveMinutes: -1 }); // ventanas vencidas
+  const cierre = new Date(Date.now() + 3 * 864e5).toISOString();
+  demoRaffle(store, { endsAt: cierre });
+  const p = store.reserve("t", 7, { firstName: "Ana", lastName: "Gomez" }, "MANUAL");
+
+  // Aunque las ventanas configuradas ya vencieron, sigue apartado: puede pagar hasta el cierre.
+  assert.equal(store.expireReservations(), 0);
+  assert.equal(store.getPurchase(p.id).status, "PENDING");
+  assert.ok(store.heldNumbers("t").held.includes(7));
+  assert.equal(store._tickets.get("t:7")?.reservedUntil ?? [...store._tickets.values()].find((t) => t.number === 7).reservedUntil,
+    new Date(cierre).getTime());
+});
+
+test("pasarela (WOMPI): mantiene la ventana corta aunque falten dias para el cierre", () => {
+  const store = createStore({ reserveMinutes: -1 });
+  demoRaffle(store, { endsAt: new Date(Date.now() + 3 * 864e5).toISOString() });
+  const p = store.reserve("t", 8, { firstName: "Ana", lastName: "Gomez" }, "WOMPI");
+  assert.equal(store.expireReservations(), 1, "el pago con tarjeta no deja el numero retenido dias");
+  assert.equal(store.getPurchase(p.id).status, "REJECTED");
 });

@@ -72,6 +72,23 @@ export function motivoNoDisponible(ticket, ocupante) {
   return "Ese número está apartado por otra persona ahora mismo. Si no completa el pago volverá a quedar libre; mientras tanto, elige otro.";
 }
 
+/**
+ * Hasta cuando queda apartado un numero.
+ *
+ * - Pasarela (Wompi): ventana corta. El pago es inmediato; si no se completa en
+ *   minutos, el numero vuelve al mercado.
+ * - Pago MANUAL (Nequi/transferencia): hasta el CIERRE DE VENTAS. El comprador
+ *   puede pagar en cualquier momento antes del cierre; liberarle el numero a la
+ *   hora le quitaba un numero ya prometido (y si ya habia pagado, le quitaba el
+ *   numero que pago). Si la rifa no tiene cierre o ya cerro, se usa la ventana
+ *   manual configurada como respaldo.
+ */
+export function vencimientoReserva(raffle, method, { reserveMs, manualReserveMs }, ahora = Date.now()) {
+  if (method !== "MANUAL") return ahora + reserveMs;
+  const cierre = raffle?.endsAt ? new Date(raffle.endsAt).getTime() : NaN;
+  return Number.isFinite(cierre) && cierre > ahora ? cierre : ahora + manualReserveMs;
+}
+
 export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) {
   const reserveMs = reserveMinutes * 60 * 1000;
   // El pago manual es un tramite humano (abrir Nequi, pagar, capturar, subir):
@@ -168,7 +185,7 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
     // El pago manual necesita mas tiempo: hay que abrir Nequi, pagar, tomar el
     // pantallazo y volver. Con la ventana de la pasarela (inmediata) se le
     // caeria el numero a medio pagar.
-    t.reservedUntil = Date.now() + (method === "MANUAL" ? manualReserveMs : reserveMs);
+    t.reservedUntil = vencimientoReserva(raffle, method, { reserveMs, manualReserveMs });
     t.purchaseId = id;
 
     const purchase = {
