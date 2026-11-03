@@ -9,6 +9,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { copFormat, padNum, fechaLargaHora } from "../../lib/rifas.js";
+import { ticketsAPng, compartirImagen, imprimirImagen } from "./compartirTickets.js";
 
 export default function NumerosCliente({
   slug, min, max, priceCents, activa, sold, winner, backendBase,
@@ -305,6 +306,30 @@ function MisNumerosModal({ slug, max, backendBase, titulo, premio, descripcion, 
   // Primer nombre del comprador (el backend solo lo manda en compras pagadas).
   const nombreComprador = lista.find((m) => m.buyerName)?.buyerName || "";
 
+  // Imagen de los tickets, lista ANTES de tocar "Compartir": navigator.share
+  // exige el gesto del usuario y no se puede esperar a dibujar en ese momento.
+  const [imagen, setImagen] = useState(null);
+  const [avisoComp, setAvisoComp] = useState(null);
+  useEffect(() => {
+    setImagen(null);
+    if (paso !== "lista" || lista.length === 0) return;
+    let vivo = true;
+    ticketsAPng({
+      titulo, descripcion, nombre: nombreComprador,
+      fecha: drawAt ? fechaLargaHora(drawAt) : "",
+      tickets: lista.map((m) => ({ num: padNum(m.number, max), estado: estadoTxt(m), pagado: m.status === "APPROVED" })),
+    }).then((b) => vivo && setImagen(b)).catch((e) => vivo && setError(e.message));
+    return () => { vivo = false; };
+  }, [paso, lista, titulo, descripcion, drawAt, max, nombreComprador]);
+
+  const archivoTickets = `tickets-${slug}-${lista.map((m) => padNum(m.number, max)).join("-")}.png`;
+  const compartir = async () => {
+    setAvisoComp(null);
+    const r = await compartirImagen(imagen, archivoTickets,
+      `${titulo || "Sorteo"} — mis números: ${lista.map((m) => padNum(m.number, max)).join(", ")}`);
+    if (r === "descargado") setAvisoComp("Imagen descargada. Adjúntala en WhatsApp para enviarla.");
+  };
+
   return (
     <div className="modal-back" onClick={onClose}>
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
@@ -371,6 +396,11 @@ function MisNumerosModal({ slug, max, backendBase, titulo, premio, descripcion, 
                     );
                   })}
                 </div>
+                <div className="compartir-bar">
+                  <button className="btn" disabled={!imagen} onClick={compartir}>📤 Compartir</button>
+                  <button className="btn-ghost" disabled={!imagen} onClick={() => imprimirImagen(imagen)}>🖨️ Imprimir / PDF</button>
+                </div>
+                {avisoComp && <p className="mut small" style={{ marginTop: 8 }}>{avisoComp}</p>}
               </>
             )}
             <button className="btn-ghost" onClick={() => setPaso("form")} style={{ marginTop: 12 }}>Buscar con otro teléfono</button>

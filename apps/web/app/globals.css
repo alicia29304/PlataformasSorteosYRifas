@@ -661,3 +661,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
 }
 /* Pendiente: dorado apagado (aun no es tuyo del todo). */
 .ticket.pend { filter: saturate(0.45) brightness(0.92); }
+
+/* Compartir / imprimir los tickets (imagen PNG). */
+.compartir-bar { display: flex; gap: 10px; margin-top: 14px; }
+.compartir-bar > * { flex: 1; }
