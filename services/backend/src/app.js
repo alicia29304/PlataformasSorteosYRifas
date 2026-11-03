@@ -474,6 +474,13 @@ export async function handler(req, res) {
     // proposito: una reserva es estado efimero (dura minutos) y publicarla al
     // repo llenaria el historial de commits de ruido que no verifica nada.
     // Sirve para que el comprador vea que un numero esta tomado ANTES de tocarlo.
+    // GET /api/raffles/:slug/sellers -> vendedores asignados a la rifa, para que
+    // el comprador elija quien lo atendio. PUBLICO a proposito y con lo minimo:
+    // id + nombre. Nunca correo, rol ni nada de la cuenta.
+    if (M === "GET" && parts[0] === "api" && parts[1] === "raffles" && parts[3] === "sellers") {
+      return json(res, 200, { sellers: await store.sellersForRaffle(parts[2]) });
+    }
+
     if (M === "GET" && parts[0] === "api" && parts[1] === "raffles" && parts[3] === "held") {
       return json(res, 200, await store.heldNumbers(parts[2]));
     }
@@ -520,9 +527,18 @@ export async function handler(req, res) {
         return json(res, 400, { error: "El teléfono es obligatorio: es la única forma de contactarte si ganas." });
       }
 
+      // Vendedor que atendio al comprador (opcional). Se valida contra los
+      // asignados a ESTA rifa: no se acepta un id cualquiera ni se confia en el
+      // nombre que mande el cliente (se toma el del servidor).
+      let seller = null;
+      if (b.sellerId) {
+        seller = (await store.sellersForRaffle(parts[2])).find((v) => v.id === String(b.sellerId)) || null;
+        if (!seller) return json(res, 400, { error: "El vendedor elegido no está asignado a esta rifa." });
+      }
+
       // Compra de VARIOS numeros (hasta 10) con UN solo pago: b.numbers = [12, 34, ...].
       if (Array.isArray(b.numbers)) {
-        const order = await store.reserveMany(parts[2], b.numbers, b.buyer, method);
+        const order = await store.reserveMany(parts[2], b.numbers, b.buyer, method, seller);
         const amount = String(order.totalCents);
         return json(res, 201, {
           orderRef: order.orderRef,
@@ -543,7 +559,7 @@ export async function handler(req, res) {
       if (typeof b.number !== "number") {
         return json(res, 400, { error: "number o numbers requeridos" });
       }
-      const p = await store.reserve(parts[2], b.number, b.buyer, method);
+      const p = await store.reserve(parts[2], b.number, b.buyer, method, null, seller);
       return json(res, 201, {
         purchaseId: p.id, number: p.number, reference: p.reference,
         orderRef: p.orderRef,

@@ -78,3 +78,19 @@ apps/seller-android/app/src/main/assets/
 
 # Salida de compilar-apks.bat (binarios locales)
 /dist/
+
+# =========================================================================
+# Plantilla del espacio de trabajo (CLAUDE.md v8) + secretos locales
+# =========================================================================
+.secrets/
+**/.secrets/
+*.pfx
+.tmp/
+graphify-out/
+.codegraph/
+*.v7-bak-*
+*.bak-*
+# Variables locales con secretos (DATABASE_URL, clave del admin): NUNCA al repo.
+.env.local
+*.env.local
+.env.*.local

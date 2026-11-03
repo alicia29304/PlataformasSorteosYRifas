@@ -30,7 +30,8 @@ const iso = (d) => (d ? new Date(d).toISOString() : null);
  */
 const COLS_PURCHASE = `id, slug, number, method, status, reference, order_ref, amount_cents,
   buyer_public, buyer_city, private, wompi_transaction_id, purchased_at, verified_at,
-  approved_by, approved_by_id, approved_by_name, approved_by_role, note, receipt_at`;
+  approved_by, approved_by_id, approved_by_name, approved_by_role, note, receipt_at,
+  seller_id, seller_name`;
 
 // Lista blanca explicita: esta forma ES la que se publica a GitHub. Un `SELECT *`
 // mapeado a ciegas convertiria cualquier columna futura en dato publico.
@@ -74,6 +75,8 @@ function mapPurchase(p) {
     reference: p.reference,
     amountCents: Number(p.amount_cents),
     orderRef: p.order_ref || p.reference,
+    sellerId: p.seller_id || null,
+    sellerName: p.seller_name || null,
     buyerPublic: p.buyer_public,
     buyerCity: p.buyer_city || null,
     private: p.private || {},
@@ -276,7 +279,7 @@ export async function createPostgresStore(
     );
   }
 
-  async function reserve(slug, number, buyer, method = "MANUAL", orderRef = null) {
+  async function reserve(slug, number, buyer, method = "MANUAL", orderRef = null, seller = null) {
     const raffle = await getRaffle(slug);
     // Se valida en el servidor, no solo escondiendo el boton en la app: apagar
     // la pasarela debe cerrarla de verdad, aunque llamen a la API a mano.
@@ -325,12 +328,13 @@ export async function createPostgresStore(
 
       // 2) Crear la compra.
       const { rows } = await c.query(
-        `INSERT INTO purchases (id,slug,number,method,status,reference,order_ref,amount_cents,buyer_public,buyer_city,private)
-         VALUES ($1,$2,$3,$4,'PENDING',$5,$6,$7,$8,$9,$10) RETURNING *`,
+        `INSERT INTO purchases (id,slug,number,method,status,reference,order_ref,amount_cents,buyer_public,buyer_city,private,seller_id,seller_name)
+         VALUES ($1,$2,$3,$4,'PENDING',$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
         [id, slug, number, method, reference, oref, raffle.priceCents,
          pseudonym(buyer.firstName, buyer.lastName),
          normalizeCity(buyer.city),
-         JSON.stringify({ phone: buyer.phone || null, email: buyer.email || null, document: buyer.document || null })]
+         JSON.stringify({ phone: buyer.phone || null, email: buyer.email || null, document: buyer.document || null }),
+         seller?.id || null, seller?.name || null]
       );
 
       // 3) Enlazar ticket -> compra.
@@ -344,7 +348,7 @@ export async function createPostgresStore(
    * pago. Todo-o-nada: se reclaman todos los tickets en la MISMA transaccion; si
    * alguno no esta libre, la transaccion entera hace rollback y no se aparta nada.
    */
-  async function reserveMany(slug, numbers, buyer, method = "MANUAL") {
+  async function reserveMany(slug, numbers, buyer, method = "MANUAL", seller = null) {
     const raffle = await getRaffle(slug);
     const info = await paymentInfo(slug);
     assertMetodoPermitido(info, method);
@@ -387,11 +391,12 @@ export async function createPostgresStore(
           throw httpError(409, `Numero ${number}: ${motivoNoDisponible(rows[0] || { status: "RESERVED" }, rows[0])}`);
         }
         const { rows } = await c.query(
-          `INSERT INTO purchases (id,slug,number,method,status,reference,order_ref,amount_cents,buyer_public,buyer_city,private)
-           VALUES ($1,$2,$3,$4,'PENDING',$5,$6,$7,$8,$9,$10) RETURNING *`,
+          `INSERT INTO purchases (id,slug,number,method,status,reference,order_ref,amount_cents,buyer_public,buyer_city,private,seller_id,seller_name)
+           VALUES ($1,$2,$3,$4,'PENDING',$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
           [id, slug, number, method, reference, orderRef, raffle.priceCents,
            pseudonym(buyer.firstName, buyer.lastName), normalizeCity(buyer.city),
-           JSON.stringify({ phone: buyer.phone || null, email: buyer.email || null, document: buyer.document || null })]
+           JSON.stringify({ phone: buyer.phone || null, email: buyer.email || null, document: buyer.document || null }),
+           seller?.id || null, seller?.name || null]
         );
         await c.query(`UPDATE tickets SET purchase_id=$3 WHERE slug=$1 AND number=$2`, [slug, number, id]);
         creadas.push(mapPurchase(rows[0]));
@@ -737,7 +742,7 @@ export async function createPostgresStore(
     const { rows } = await q(
       `SELECT id, slug, number, method, status, reference, order_ref, amount_cents, buyer_public,
               buyer_city, private, wompi_transaction_id, purchased_at, verified_at, approved_by,
-              approved_by_id, approved_by_name, approved_by_role, note, receipt_at
+              approved_by_id, approved_by_name, approved_by_role, note, receipt_at, seller_id, seller_name
          FROM purchases WHERE slug=$1 AND ($2::text IS NULL OR status=$2)
         ORDER BY purchased_at`,
       [slug, statusFilter || null]
@@ -749,7 +754,7 @@ export async function createPostgresStore(
         status: p.status, purchasedAt: p.purchasedAt, verifiedAt: p.verifiedAt,
         hasReceipt: p.hasReceipt, receiptAt: p.receiptAt, contact: p.private,
         approvedByName: p.approvedByName, approvedByRole: p.approvedByRole, approvedById: p.approvedById,
-        orderRef: p.orderRef,
+        orderRef: p.orderRef, sellerName: p.sellerName,
       };
     });
   }
@@ -860,6 +865,18 @@ export async function createPostgresStore(
     return rows.map((r) => r.slug);
   }
 
+  /** Vendedores asignados a una rifa: SOLO id y nombre (se muestra al publico). */
+  async function sellersForRaffle(slug) {
+    await getRaffle(slug);
+    const { rows } = await q(
+      `SELECT u.id, u.full_name FROM admin_users u
+         JOIN seller_raffles sr ON sr.user_id = u.id
+        WHERE sr.slug=$1 AND u.role='OPERATOR'
+        ORDER BY COALESCE(u.full_name, '')`, [slug]
+    );
+    return rows.map((r) => ({ id: r.id, name: r.full_name || "Vendedor" }));
+  }
+
   async function sellerHasRaffle(userId, slug) {
     const { rows } = await q(
       `SELECT 1 FROM seller_raffles WHERE user_id=$1 AND slug=$2`, [userId, slug]
@@ -967,7 +984,7 @@ export async function createPostgresStore(
     findByReference, alreadyProcessed, markProcessed, declareWinner,
     publicRaffle, paymentInfo, publicNumbers, heldNumbers, expireReservations, soldPurchases,
     listRaffles, adminPurchases, confirmationsBySeller,
-    listSellers, sellerRaffles, sellerHasRaffle, assignSellerRaffles, revokeSellerRaffle,
+    listSellers, sellerRaffles, sellerHasRaffle, sellersForRaffle, assignSellerRaffles, revokeSellerRaffle,
     countAdmins, createAdmin, getAdminByEmail, getAdminById, setAdminTotp, touchAdminLogin,
     saveRefreshToken, getRefreshToken, revokeRefreshToken, audit,
     hitRateLimit, cleanupRateLimits,

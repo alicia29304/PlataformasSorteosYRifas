@@ -140,7 +140,7 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
   // `orderRef`: agrupa varias filas de una misma compra (varios numeros, un solo
   // pago). Si no se pasa, la compra es su propia orden (order_ref = reference),
   // que es el caso de una compra de un solo numero.
-  function reserve(slug, number, buyer, method = "MANUAL", orderRef = null) {
+  function reserve(slug, number, buyer, method = "MANUAL", orderRef = null, seller = null) {
     const raffle = getRaffle(slug);
     // Se valida en el servidor, no solo escondiendo el boton en la app.
     assertMetodoPermitido(raffle, method);
@@ -176,6 +176,9 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
       status: "PENDING",
       reference,
       orderRef: oref,
+      // Vendedor que eligio el comprador (opcional). Nombre congelado del momento.
+      sellerId: seller?.id || null,
+      sellerName: seller?.name || null,
       amountCents: raffle.priceCents,
       buyerPublic: pseudonym(buyer.firstName, buyer.lastName),
       // Ciudad: PUBLICA (el usuario acepto que se muestre). Grueso, no direccion.
@@ -210,7 +213,7 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
    * ninguno (se valida TODO antes de tocar nada; como el store es sincrono, no
    * hay condicion de carrera entre la validacion y la reserva).
    */
-  function reserveMany(slug, numbers, buyer, method = "MANUAL") {
+  function reserveMany(slug, numbers, buyer, method = "MANUAL", seller = null) {
     const raffle = getRaffle(slug);
     assertMetodoPermitido(raffle, method);
 
@@ -243,7 +246,7 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
 
     // Fase 2: reservar todos bajo un mismo order_ref.
     const orderRef = `ORD-${slug}-${crypto.randomUUID()}`;
-    const creadas = unicos.map((n) => reserve(slug, n, buyer, method, orderRef));
+    const creadas = unicos.map((n) => reserve(slug, n, buyer, method, orderRef, seller));
     return {
       orderRef,
       count: creadas.length,
@@ -477,6 +480,7 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
         approvedById: p.approvedById || null,
         // Orden a la que pertenece (varios numeros, un solo pago).
         orderRef: p.orderRef || p.reference,
+        sellerName: p.sellerName || null,
       }));
   }
 
@@ -747,6 +751,15 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
     return [...(sellerRafflesMap.get(userId)?.keys() || [])];
   }
 
+  /** Vendedores asignados a una rifa: SOLO id y nombre (se muestra al publico). */
+  function sellersForRaffle(slug) {
+    getRaffle(slug);
+    return [...admins.values()]
+      .filter((u) => u.role === "OPERATOR" && sellerRafflesMap.get(u.id)?.has(slug))
+      .map((u) => ({ id: u.id, name: u.fullName || "Vendedor" }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }
+
   function sellerHasRaffle(userId, slug) {
     return Boolean(sellerRafflesMap.get(userId)?.has(slug));
   }
@@ -833,7 +846,7 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
     findByReference, alreadyProcessed, markProcessed, declareWinner,
     publicRaffle, paymentInfo, publicNumbers, heldNumbers, expireReservations, soldPurchases,
     listRaffles, adminPurchases, confirmationsBySeller,
-    listSellers, sellerRaffles, sellerHasRaffle, assignSellerRaffles, revokeSellerRaffle,
+    listSellers, sellerRaffles, sellerHasRaffle, sellersForRaffle, assignSellerRaffles, revokeSellerRaffle,
     countAdmins, createAdmin, getAdminByEmail, getAdminById, setAdminTotp, touchAdminLogin,
     saveRefreshToken, getRefreshToken, revokeRefreshToken, audit,
     hitRateLimit, cleanupRateLimits,

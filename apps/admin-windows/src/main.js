@@ -1227,7 +1227,8 @@ VIEWS.comprobantes = async (el) => {
                 ${ordenCount[p.orderRef || p.id] > 1 ? `<span class="badge-orden" title="Compra de varios números con un solo pago. Aprobar o rechazar afecta a toda la orden.">🧩 orden de ${ordenCount[p.orderRef || p.id]}</span>` : ""}
               </div>
               <div class="meta">${esc(p.method)} · ${p.contact?.phone ? esc(p.contact.phone) : "sin teléfono"}${p.city ? ` · 📍 ${esc(p.city)}` : ""} · ${new Date(p.purchasedAt).toLocaleString("es-CO")}</div>
-              ${!esPend && p.approvedByName ? `<div class="meta">✔️ Autorizado por: <b>${esc(p.approvedByName)}</b>${p.approvedByRole === "OPERATOR" ? " (vendedor)" : p.approvedByRole && p.approvedByRole !== "wompi" ? " (admin)" : ""}</div>` : ""}
+              ${p.sellerName ? `<div class="meta">🧑‍💼 Vendedor elegido por el comprador: <b>${esc(p.sellerName)}</b></div>` : ""}
+              ${!esPend && p.approvedByName ?`<div class="meta">✔️ Autorizado por: <b>${esc(p.approvedByName)}</b>${p.approvedByRole === "OPERATOR" ? " (vendedor)" : p.approvedByRole && p.approvedByRole !== "wompi" ? " (admin)" : ""}</div>` : ""}
               ${p.hasReceipt
                 ? `<button class="btn-receipt" data-receipt="${esc(p.id)}">🧾 Ver comprobante del pago</button>`
                 : p.method === "MANUAL" ? `<div class="meta">⏳ Sin comprobante todavía</div>` : ""}
