@@ -350,7 +350,6 @@ function MisNumerosModal({ slug, max, backendBase, titulo, premio, descripcion, 
                       <div className={`ticket${pagado ? "" : " pend"}`} key={m.purchaseId}>
                         <div className="ticket-izq">
                           <div className="ticket-rifa">{titulo || "Sorteo"}</div>
-                          {premio && <div className="ticket-premio">{premio}</div>}
                           {descripcion && <div className="ticket-desc">{descripcion}</div>}
                           {drawAt && <div className="ticket-fecha">🗓️ {fechaLargaHora(drawAt)}</div>}
                           <div className={`ticket-estado${pagado ? " ok" : ""}`}>{estadoTxt(m)}</div>
