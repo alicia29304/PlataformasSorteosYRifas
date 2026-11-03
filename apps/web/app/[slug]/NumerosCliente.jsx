@@ -8,10 +8,11 @@
 // verificar, la API para transaccionar.
 
 import { useEffect, useMemo, useState } from "react";
-import { copFormat, padNum } from "../../lib/rifas.js";
+import { copFormat, padNum, fechaLargaHora } from "../../lib/rifas.js";
 
 export default function NumerosCliente({
   slug, min, max, priceCents, activa, sold, winner, backendBase,
+  titulo = "", premio = "", descripcion = "", drawAt = null,
 }) {
   const MAX_SEL = 10; // tope de números por compra (debe coincidir con el backend)
   const vendidos = useMemo(() => new Map(sold.map((s) => [s.number, s])), [sold]);
@@ -21,6 +22,51 @@ export default function NumerosCliente({
   const [comprar, setComprar] = useState(null);     // array de números al abrir el modal
   const [aviso, setAviso] = useState(null);
   const [verMis, setVerMis] = useState(false);
+
+  // Numeros APARTADOS ahora mismo (reservados o con pago pendiente de verificar).
+  // No estan en numbers.json (ese es el estado publicado; una reserva dura
+  // minutos): se piden al backend y se refrescan cada 30 s, igual que la app.
+  const [apartados, setApartados] = useState(() => new Set());
+  useEffect(() => {
+    let vivo = true;
+    const cargar = () =>
+      fetch(`${backendBase}/api/raffles/${slug}/held`)
+        .then((r) => (r.ok ? r.json() : { held: [] }))
+        .then((d) => {
+          if (!vivo) return;
+          const set = new Set(d.held || []);
+          setApartados(set);
+          // Si alguien aparto un numero que yo tenia elegido, se quita de la
+          // seleccion: si no, la reserva fallaria al pagar.
+          setSel((prev) => {
+            const next = new Set([...prev].filter((n) => !set.has(n)));
+            return next.size === prev.size ? prev : next;
+          });
+        })
+        .catch(() => {});
+    cargar();
+    const t = setInterval(cargar, 30_000);
+    return () => { vivo = false; clearInterval(t); };
+  }, [backendBase, slug]);
+
+  const estaLibre = (n) => !vendidos.has(n) && !apartados.has(n) && winner?.number !== n;
+
+  /** Elige 3 numeros libres al azar ("probar suerte"). Reemplaza la seleccion. */
+  const azar = () => {
+    const libres = [];
+    for (let n = min; n <= max; n++) if (estaLibre(n)) libres.push(n);
+    if (libres.length === 0) { setAviso("No quedan números libres"); return; }
+    // Fisher-Yates parcial con crypto: un azar predecible no seria justo.
+    const k = Math.min(3, libres.length);
+    const r = new Uint32Array(k);
+    crypto.getRandomValues(r);
+    for (let i = 0; i < k; i++) {
+      const j = i + (r[i] % (libres.length - i));
+      [libres[i], libres[j]] = [libres[j], libres[i]];
+    }
+    setAviso(null);
+    setSel(new Set(libres.slice(0, k)));
+  };
 
   const toggle = (n) => {
     setSel((prev) => {
@@ -40,15 +86,17 @@ export default function NumerosCliente({
       if (q && !etiqueta.includes(q)) continue;
       const s = vendidos.has(n);
       const esGanador = winner?.number === n;
+      const ap = !s && apartados.has(n);
       const ok =
         filtro === "VENDIDOS" ? s :
-        filtro === "LIBRES" ? !s && !esGanador :
+        filtro === "LIBRES" ? !s && !ap && !esGanador :
+        filtro === "APARTADOS" ? ap :
         filtro === "GANADOR" ? esGanador :
         true;
       if (ok) out.push(n);
     }
     return out;
-  }, [min, max, busqueda, filtro, vendidos, winner]);
+  }, [min, max, busqueda, filtro, vendidos, winner, apartados]);
 
   return (
     <>
@@ -56,6 +104,11 @@ export default function NumerosCliente({
         <button type="button" className="btn-ghost" onClick={() => setVerMis(true)}>
           🎫 Mis números
         </button>
+        {activa && (
+          <button type="button" className="btn-azar" onClick={azar} title="Elige 3 números libres al azar">
+            🎲 3 al azar
+          </button>
+        )}
         <input
           className="buscador"
           inputMode="numeric"
@@ -67,6 +120,9 @@ export default function NumerosCliente({
           <Chip label="Todos" on={filtro === "TODOS"} onClick={() => setFiltro("TODOS")} />
           <Chip label="Vendidos" dot="var(--accent)" on={filtro === "VENDIDOS"} onClick={() => setFiltro("VENDIDOS")} />
           <Chip label="Libres" dot="var(--panel)" on={filtro === "LIBRES"} onClick={() => setFiltro("LIBRES")} />
+          {apartados.size > 0 && (
+            <Chip label={`Apartados (${apartados.size})`} dot="var(--held)" on={filtro === "APARTADOS"} onClick={() => setFiltro("APARTADOS")} />
+          )}
           {winner && <Chip label="Ganador" dot="var(--gold)" on={filtro === "GANADOR"} onClick={() => setFiltro("GANADOR")} />}
         </div>
       </div>
@@ -78,18 +134,32 @@ export default function NumerosCliente({
           {numeros.map((n) => {
             const s = vendidos.get(n);
             const esGanador = winner?.number === n;
-            const libre = !s && !esGanador;
+            const ap = !s && !esGanador && apartados.has(n);
+            const libre = !s && !esGanador && !ap;
             const elegido = sel.has(n);
             return (
               <button
                 key={n}
                 type="button"
-                className={`num${esGanador ? " win" : s ? " sold" : ""}${elegido ? " sel" : ""}`}
-                title={s ? `${padNum(n, max)} — ${s.buyer}${s.city ? ` · ${s.city}` : ""}` : `${padNum(n, max)} — libre`}
-                onClick={() => { if (libre && activa) { setAviso(null); toggle(n); } }}
-                style={{ cursor: libre && activa ? "pointer" : "default" }}
+                className={`num${esGanador ? " win" : s ? " sold" : ap ? " held" : ""}${elegido ? " sel" : ""}`}
+                title={
+                  s ? `${padNum(n, max)} — ${s.buyer}${s.city ? ` · ${s.city}` : ""}`
+                  : ap ? `${padNum(n, max)} — apartado (reservado o pago pendiente)`
+                  : `${padNum(n, max)} — libre`
+                }
+                onClick={() => {
+                  if (ap) {
+                    // Se avisa en vez de no hacer nada: el comprador sabe que no es
+                    // un fallo y que puede volver a quedar libre si no se paga.
+                    setAviso(`El ${padNum(n, max)} está apartado o con pago pendiente. Si no se completa, volverá a quedar libre.`);
+                    return;
+                  }
+                  if (libre && activa) { setAviso(null); toggle(n); }
+                }}
+                style={{ cursor: (libre && activa) || ap ? "pointer" : "default" }}
               >
                 {padNum(n, max)}
+                {ap && <span className="num-tag">apartado</span>}
               </button>
             );
           })}
@@ -97,10 +167,12 @@ export default function NumerosCliente({
       )}
 
       {activa && (
-        <p className="mut small" style={{ marginTop: 14 }}>
-          Toca los números libres (hasta {MAX_SEL}) para comprarlos juntos en un solo pago.
-          {aviso && <span className="aviso-max"> · {aviso}</span>}
-        </p>
+        <div className="azar-row">
+          <p className="mut small" style={{ margin: 0 }}>
+            Toca los números libres (hasta {MAX_SEL}) para comprarlos juntos en un solo pago.
+            {aviso && <span className="aviso-max"> · {aviso}</span>}
+          </p>
+        </div>
       )}
 
       {activa && sel.size > 0 && (
@@ -124,7 +196,11 @@ export default function NumerosCliente({
       )}
 
       {verMis && (
-        <MisNumerosModal slug={slug} max={max} backendBase={backendBase} onClose={() => setVerMis(false)} />
+        <MisNumerosModal
+          slug={slug} max={max} backendBase={backendBase}
+          titulo={titulo} premio={premio} descripcion={descripcion} drawAt={drawAt}
+          onClose={() => setVerMis(false)}
+        />
       )}
     </>
   );
@@ -176,7 +252,7 @@ const estadoTxt = (m) => {
   }[m.status] || m.status;
 };
 
-function MisNumerosModal({ slug, max, backendBase, onClose }) {
+function MisNumerosModal({ slug, max, backendBase, titulo, premio, descripcion, drawAt, onClose }) {
   const [phone, setPhone] = useState("");
   const [paso, setPaso] = useState("form"); // form | cargando | lista
   const [lista, setLista] = useState([]);
@@ -258,23 +334,43 @@ function MisNumerosModal({ slug, max, backendBase, onClose }) {
             {lista.length === 0 ? (
               <p className="mut">No encontramos números con ese teléfono en este sorteo. Revisa que sea el mismo con el que compraste.</p>
             ) : (
-              <div className="mis-lista">
-                {lista.map((m) => (
-                  <div className="mis-item" key={m.purchaseId}>
-                    <div className={`mis-num ${m.status === "APPROVED" ? "ok" : ""}`}>{padNum(m.number, max)}</div>
-                    <div style={{ flex: 1 }}>
-                      <div className="small">{estadoTxt(m)}</div>
-                      {m.puedeSubir && (
-                        <label className="btn-ghost small" style={{ marginTop: 6, display: "inline-block", cursor: "pointer" }}>
-                          {subiendoId === m.purchaseId ? "Enviando…" : "Subir comprobante"}
-                          <input type="file" accept="image/*" hidden disabled={subiendoId === m.purchaseId}
-                            onChange={(e) => e.target.files[0] && subir(m.purchaseId, e.target.files[0])} />
-                        </label>
-                      )}
+              <>
+                {lista.some((m) => m.status === "APPROVED") && (
+                  <div className="gracias">
+                    <div className="gracias-t">🎉 ¡Gracias por tu compra!</div>
+                    <div className="small">
+                      Tus números pagados ya están participando{titulo ? <> en <b>{titulo}</b></> : null}. ¡Mucha suerte!
                     </div>
                   </div>
-                ))}
-              </div>
+                )}
+                <div className="tickets">
+                  {lista.map((m) => {
+                    const pagado = m.status === "APPROVED";
+                    return (
+                      <div className={`ticket${pagado ? "" : " pend"}`} key={m.purchaseId}>
+                        <div className="ticket-izq">
+                          <div className="ticket-rifa">{titulo || "Sorteo"}</div>
+                          {premio && <div className="ticket-premio">{premio}</div>}
+                          {descripcion && <div className="ticket-desc">{descripcion}</div>}
+                          {drawAt && <div className="ticket-fecha">🗓️ {fechaLargaHora(drawAt)}</div>}
+                          <div className={`ticket-estado${pagado ? " ok" : ""}`}>{estadoTxt(m)}</div>
+                          {m.puedeSubir && (
+                            <label className="btn-ghost small" style={{ marginTop: 8, display: "inline-block", cursor: "pointer" }}>
+                              {subiendoId === m.purchaseId ? "Enviando…" : "Subir comprobante"}
+                              <input type="file" accept="image/*" hidden disabled={subiendoId === m.purchaseId}
+                                onChange={(e) => e.target.files[0] && subir(m.purchaseId, e.target.files[0])} />
+                            </label>
+                          )}
+                        </div>
+                        <div className="ticket-der">
+                          <span className="ticket-n-l">N.º</span>
+                          <span className="ticket-n">{padNum(m.number, max)}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
             )}
             <button className="btn-ghost" onClick={() => setPaso("form")} style={{ marginTop: 12 }}>Buscar con otro teléfono</button>
           </>
@@ -297,6 +393,15 @@ function CompraModal({ slug, numeros, max, priceCents, backendBase, onClose }) {
   const [paso, setPaso] = useState("form");       // form | manual | enviando | ok
   const [reserva, setReserva] = useState(null);   // { orderRef, purchaseIds, ... }
   const [copiado, setCopiado] = useState(null);
+  const [vendedores, setVendedores] = useState([]); // asignados a esta rifa
+  const [sellerId, setSellerId] = useState("");    // "" = ninguno
+
+  useEffect(() => {
+    fetch(`${backendBase}/api/raffles/${slug}/sellers`)
+      .then((r) => (r.ok ? r.json() : { sellers: [] }))
+      .then((d) => setVendedores(d.sellers || []))
+      .catch(() => setVendedores([]));
+  }, [slug, backendBase]);
 
   useEffect(() => {
     fetch(`${backendBase}/api/raffles/${slug}/payment`)
@@ -314,6 +419,7 @@ function CompraModal({ slug, numeros, max, priceCents, backendBase, onClose }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         numbers: numeros, method: m,
+        ...(sellerId ? { sellerId } : {}),
         buyer: { firstName: first.trim(), lastName: last.trim(), phone: phone.trim(), city: city.trim() },
       }),
     });
@@ -396,6 +502,16 @@ function CompraModal({ slug, numeros, max, priceCents, backendBase, onClose }) {
               Si está mal, podrías perder el premio.
             </p>
             <input className="inp" placeholder="Ciudad (opcional)" value={city} onChange={(e) => setCity(e.target.value)} />
+
+            {vendedores.length > 0 && (
+              <label className="sel-vendedor">
+                <span className="mut small">¿Quién te atendió? (opcional)</span>
+                <select className="inp" value={sellerId} onChange={(e) => setSellerId(e.target.value)}>
+                  <option value="">Ninguno</option>
+                  {vendedores.map((v) => <option key={v.id} value={v.id}>{v.name}</option>)}
+                </select>
+              </label>
+            )}
 
             {pago && pago.gatewayEnabled && pago.manualEnabled && (
               <div className="metodos">

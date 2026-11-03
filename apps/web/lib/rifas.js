@@ -137,3 +137,26 @@ export const statusEs = (s) =>
     ARCHIVED: "Archivado",
     DRAFT: "Borrador",
   }[s] || s);
+
+// --------------------------- Fechas ---------------------------
+//
+// SIEMPRE en hora de Colombia. Sin `timeZone`, la pagina se renderiza en el
+// servidor de Vercel (UTC): un cierre programado el 7 nov a las 10:20 p. m. en
+// Colombia (UTC-5) son las 03:20 del 8 nov en UTC, y la web mostraba "8 de nov".
+// Fijar la zona hace que lo que se ve coincida EXACTAMENTE con lo que el admin
+// programo, en el servidor y en el navegador de quien sea.
+export const ZONA_RIFAS = "America/Bogota";
+
+/** "07 nov 2026, 10:20 p. m." */
+export const fechaHora = (d) =>
+  d ? new Date(d).toLocaleString("es-CO", {
+    timeZone: ZONA_RIFAS, day: "2-digit", month: "short", year: "numeric",
+    hour: "numeric", minute: "2-digit", hour12: true,
+  }) : "";
+
+/** "sábado, 7 de noviembre de 2026, 11:05 p. m." */
+export const fechaLargaHora = (d) =>
+  d ? new Date(d).toLocaleString("es-CO", {
+    timeZone: ZONA_RIFAS, weekday: "long", day: "numeric", month: "long", year: "numeric",
+    hour: "numeric", minute: "2-digit", hour12: true,
+  }) : "";

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Countdown from "../Countdown.jsx";
 import {
-  getRifa, listRifas, copFormat, padNum, statusEs, accentOf, accentInk, regimeEs,
+  getRifa, listRifas, copFormat, padNum, statusEs, accentOf, accentInk, regimeEs, fechaHora, fechaLargaHora,
   BACKEND_BASE, APK_RELEASE_URL,
 } from "../../lib/rifas.js";
 import NumerosCliente from "./NumerosCliente.jsx";
@@ -13,10 +13,10 @@ import CompraResultado from "./CompraResultado.jsx";
 
 export const revalidate = 60;
 
-const fecha = (d) =>
-  new Date(d).toLocaleDateString("es-CO", { day: "2-digit", month: "short", year: "numeric" });
-const fechaLarga = (d) =>
-  new Date(d).toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+// Fecha + hora en zona de Colombia (ver lib/rifas.js: sin zona, Vercel usa UTC
+// y el dia salia corrido al siguiente).
+const fecha = fechaHora;
+const fechaLarga = fechaLargaHora;
 
 export async function generateStaticParams() {
   const rifas = await listRifas();
@@ -252,6 +252,10 @@ export default async function RifaPage({ params, searchParams }) {
             sold={sold}
             winner={ganador}
             backendBase={BACKEND_BASE}
+            titulo={raffle.title}
+            premio={raffle.prize}
+            descripcion={raffle.description || ""}
+            drawAt={raffle.drawAt || null}
           />
         </div>
       </section>

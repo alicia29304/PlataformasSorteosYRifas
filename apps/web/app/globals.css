@@ -575,3 +575,89 @@ h1, h2, h3 { line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
 }
 .buy-bar .btn { width: auto; padding: 10px 22px; }
 .aviso-max { color: var(--gold); font-weight: 600; }
+
+/* --------------------------- Numeros apartados --------------------------- */
+
+/* Apartado = reservado ahora mismo o con pago pendiente de verificar. Mismo
+   tono arena que en la app cliente, para que se reconozca en ambos lados. */
+:root { --held: #d9c9a3; }
+.num.held {
+  background: #2a2519;
+  color: var(--held);
+  border-color: #4a3f27;
+  flex-direction: column;
+  gap: 2px;
+}
+.num-tag { font-size: 0.55rem; font-weight: 600; opacity: 0.85; letter-spacing: 0.02em; }
+
+/* --------------------------- Azar + vendedor --------------------------- */
+
+.azar-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap; margin-top: 14px;
+}
+.btn-azar {
+  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, rgba(245,197,24,0.18), rgba(245,197,24,0.04));
+  color: var(--gold);
+  border-radius: 999px; padding: 10px 18px; font-weight: 800; cursor: pointer;
+  font: inherit; font-weight: 800;
+}
+.btn-azar:hover { filter: brightness(1.15); }
+.sel-vendedor { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+
+/* --------------------------- Mis numeros: tickets dorados --------------------------- */
+
+.gracias {
+  background: linear-gradient(135deg, rgba(52,208,88,0.16), rgba(52,208,88,0.04));
+  border: 1px solid rgba(52,208,88,0.45);
+  border-radius: 14px; padding: 12px 14px; margin-bottom: 14px;
+}
+.gracias-t { font-weight: 800; color: var(--ok); margin-bottom: 2px; }
+
+.tickets { display: flex; flex-direction: column; gap: 14px; }
+
+.ticket {
+  position: relative;
+  display: flex;
+  border-radius: 14px;
+  overflow: hidden;
+  color: #2b1d00;
+  background: linear-gradient(135deg, #fff2b8 0%, #f5c518 38%, #d99a06 70%, #fbe38a 100%);
+  box-shadow: 0 10px 26px -10px rgba(245,197,24,0.55), inset 0 0 0 1px rgba(255,255,255,0.35);
+}
+/* Brillo diagonal de "lamina dorada". */
+.ticket::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.45) 45%, transparent 60%);
+}
+/* Muescas arriba y abajo del corte punteado, como un boleto real. */
+.ticket-der::before, .ticket-der::after {
+  content: ""; position: absolute; left: -10px; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--panel);
+}
+.ticket-der::before { top: -9px; }
+.ticket-der::after { bottom: -9px; }
+.ticket-izq { flex: 1; padding: 14px 16px; min-width: 0; position: relative; }
+.ticket-der {
+  width: 108px; flex: 0 0 108px; position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-left: 2px dashed rgba(43,29,0,0.35);
+  background: rgba(255,255,255,0.12);
+}
+.ticket-rifa { font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.95rem; }
+.ticket-premio { font-weight: 700; font-size: 0.85rem; margin-top: 2px; }
+.ticket-desc { font-size: 0.75rem; opacity: 0.8; margin-top: 4px; }
+.ticket-fecha { font-size: 0.78rem; font-weight: 700; margin-top: 6px; }
+.ticket-estado {
+  display: inline-block; margin-top: 8px; font-size: 0.72rem; font-weight: 800;
+  background: rgba(43,29,0,0.12); border-radius: 999px; padding: 3px 10px;
+}
+.ticket-estado.ok { background: #1f7a35; color: #fff; }
+.ticket-n-l { font-size: 0.7rem; font-weight: 800; opacity: 0.7; }
+.ticket-n {
+  font-size: 2rem; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+/* Pendiente: dorado apagado (aun no es tuyo del todo). */
+.ticket.pend { filter: saturate(0.45) brightness(0.92); }
