@@ -512,8 +512,9 @@ export async function handler(req, res) {
     //
     // El telefono va en el CUERPO, nunca en la URL (es dato personal y no debe
     // quedar en logs ni en el historial del navegador). Rate-limited para frenar
-    // la enumeracion de telefonos. La respuesta es minima (numero + estado): no
-    // se devuelve nombre ni ciudad, asi que adivinar un telefono no da mas de lo
+    // la enumeracion de telefonos. La respuesta es minima (numero + estado y, solo
+    // en las pagadas, el primer nombre que ya sale en los vendidos): no
+    // se devuelve apellido ni ciudad, asi que adivinar un telefono no da mas de lo
     // que ya es publico.
     if (M === "POST" && parts[0] === "api" && parts[1] === "raffles" && parts[3] === "mine") {
       await enforceRateLimit(store, req, { ...LIMITS.mine, extra: parts[2] });

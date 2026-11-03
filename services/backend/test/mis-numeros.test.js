@@ -29,18 +29,29 @@ test("devuelve solo los números de ESE teléfono", () => {
   assert.equal(mias.find((m) => m.number === 5).status, "PENDING");
 });
 
-test("NO devuelve nombre ni ciudad (aunque adivinen el teléfono, no cosechan datos)", () => {
+test("NO devuelve apellido ni ciudad (aunque adivinen el teléfono, no cosechan datos)", () => {
   const store = createStore();
   demo(store);
   const p = store.reserve("t", 4, { firstName: "Ana", lastName: "Gomez", phone: "3001112233", city: "Cali" }, "MANUAL");
   store.approve(p.id);
   const mias = store.purchasesByPhone("t", "3001112233");
   const txt = JSON.stringify(mias);
-  for (const secreto of ["Ana", "Gomez", "Cali", "buyer", "city", "private"]) {
+  for (const secreto of ["Gomez", "G.", "Cali", "city", "private", "buyerPublic"]) {
     assert.ok(!txt.includes(secreto), `no debe devolver "${secreto}"`);
   }
-  // Sí devuelve lo justo para seguir la compra.
-  assert.deepEqual(Object.keys(mias[0]).sort(), ["hasReceipt", "method", "number", "purchaseId", "status", "verifiedAt"]);
+  // Sí devuelve lo justo para seguir la compra, y el primer nombre para el
+  // "¡Gracias Ana por tu compra!" (ya es público en la lista de vendidos).
+  assert.deepEqual(Object.keys(mias[0]).sort(), ["buyerName", "hasReceipt", "method", "number", "purchaseId", "status", "verifiedAt"]);
+  assert.equal(mias[0].buyerName, "Ana");
+});
+
+test("una compra PENDIENTE no revela el nombre (aún no es público)", () => {
+  const store = createStore();
+  demo(store);
+  store.reserve("t", 8, { firstName: "Ana", lastName: "Gomez", phone: "3001112233" }, "MANUAL");
+  const [m] = store.purchasesByPhone("t", "3001112233");
+  assert.equal(m.buyerName, null);
+  assert.ok(!JSON.stringify(m).includes("Ana"));
 });
 
 test("ignora las rechazadas (el número ya se liberó)", () => {

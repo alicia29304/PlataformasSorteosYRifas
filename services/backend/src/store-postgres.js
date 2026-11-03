@@ -7,7 +7,7 @@
 
 import fs from "node:fs";
 import crypto from "node:crypto";
-import { httpError, pseudonym, motivoNoDisponible, normalizeCity, phoneKey, MAX_NUMBERS_PER_ORDER, vencimientoReserva } from "./store.js";
+import { httpError, pseudonym, primerNombre, motivoNoDisponible, normalizeCity, phoneKey, MAX_NUMBERS_PER_ORDER, vencimientoReserva } from "./store.js";
 import {
   normalizeMedia, normalizePrizeItems, normalizeTheme, prizeTotalCents,
 } from "./raffle-media.js";
@@ -483,7 +483,7 @@ export async function createPostgresStore(
     if (clave.length < 7) return [];
     // right(..., 10) = ultimos 10 digitos, para que "+57 300..." case con "300...".
     const { rows } = await q(
-      `SELECT id, number, status, method, verified_at, receipt_at
+      `SELECT id, number, status, method, verified_at, receipt_at, buyer_public
          FROM purchases
         WHERE slug=$1 AND status IN ('PENDING','APPROVED')
           AND right(regexp_replace(COALESCE(private->>'phone',''), '\\D', '', 'g'), 10) = $2
@@ -497,6 +497,7 @@ export async function createPostgresStore(
       method: r.method,
       hasReceipt: Boolean(r.receipt_at),
       verifiedAt: iso(r.verified_at),
+      buyerName: r.status === "APPROVED" ? primerNombre(r.buyer_public) : null,
     }));
   }
 

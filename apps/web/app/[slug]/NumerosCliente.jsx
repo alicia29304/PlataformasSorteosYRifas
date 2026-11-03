@@ -302,6 +302,8 @@ function MisNumerosModal({ slug, max, backendBase, titulo, premio, descripcion, 
   };
 
   const telOk = phone.replace(/\D/g, "").length >= 7;
+  // Primer nombre del comprador (el backend solo lo manda en compras pagadas).
+  const nombreComprador = lista.find((m) => m.buyerName)?.buyerName || "";
 
   return (
     <div className="modal-back" onClick={onClose}>
@@ -337,7 +339,7 @@ function MisNumerosModal({ slug, max, backendBase, titulo, premio, descripcion, 
               <>
                 {lista.some((m) => m.status === "APPROVED") && (
                   <div className="gracias">
-                    <div className="gracias-t">🎉 ¡Gracias por tu compra!</div>
+                    <div className="gracias-t">🎉 ¡Gracias{nombreComprador ? ` ${nombreComprador}` : ""} por tu compra!</div>
                     <div className="small">
                       Tus números pagados ya están participando{titulo ? <> en <b>{titulo}</b></> : null}. ¡Mucha suerte!
                     </div>

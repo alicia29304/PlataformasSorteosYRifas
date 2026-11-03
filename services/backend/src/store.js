@@ -24,6 +24,15 @@ function cap(s) {
   return v ? v[0].toUpperCase() + v.slice(1).toLowerCase() : v;
 }
 
+/**
+ * Primer nombre del seudonimo publico ("Juan P." -> "Juan"). Es lo unico del
+ * comprador que devuelve "Mis numeros", y solo en compras pagadas (que ya
+ * salen con su seudonimo en la lista publica de vendidos).
+ */
+export function primerNombre(seudonimo) {
+  return String(seudonimo || "").trim().split(/\s+/)[0] || null;
+}
+
 // Seudonimo publico: "Nombre I." (nombre + inicial del apellido). Nada mas.
 export function pseudonym(firstName, lastName) {
   const f = cap(firstName);
@@ -613,6 +622,7 @@ export function createStore({ reserveMinutes = 15, manualReserveMinutes } = {}) 
         method: p.method,
         hasReceipt: Boolean(p.receiptAt),
         verifiedAt: p.verifiedAt,
+        buyerName: p.status === "APPROVED" ? primerNombre(p.buyerPublic) : null,
       }));
   }
 
