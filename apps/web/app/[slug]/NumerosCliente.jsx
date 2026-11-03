@@ -52,13 +52,13 @@ export default function NumerosCliente({
 
   const estaLibre = (n) => !vendidos.has(n) && !apartados.has(n) && winner?.number !== n;
 
-  /** Elige 3 numeros libres al azar ("probar suerte"). Reemplaza la seleccion. */
-  const azar = () => {
+  /** Elige `cuantos` numeros libres al azar ("probar suerte"). Reemplaza la seleccion. */
+  const azar = (cuantos) => {
     const libres = [];
     for (let n = min; n <= max; n++) if (estaLibre(n)) libres.push(n);
     if (libres.length === 0) { setAviso("No quedan números libres"); return; }
     // Fisher-Yates parcial con crypto: un azar predecible no seria justo.
-    const k = Math.min(3, libres.length);
+    const k = Math.min(cuantos, MAX_SEL, libres.length);
     const r = new Uint32Array(k);
     crypto.getRandomValues(r);
     for (let i = 0; i < k; i++) {
@@ -106,9 +106,11 @@ export default function NumerosCliente({
           🎫 Mis números
         </button>
         {activa && (
-          <button type="button" className="btn-azar" onClick={azar} title="Elige 3 números libres al azar">
-            🎲 3 al azar
-          </button>
+          [3, 5, 10].map((k) => (
+            <button key={k} type="button" className="btn-azar" onClick={() => azar(k)} title={`Elige ${k} números libres al azar`}>
+              🎲 {k} al azar
+            </button>
+          ))
         )}
         <input
           className="buscador"
