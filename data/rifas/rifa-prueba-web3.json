@@ -10,6 +10,14 @@
   "estado": "ACTIVA",
   "creada": 1793982873,
   "numeros": {
+    "11": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
+    "14": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
     "19": {
       "estado": "PENDIENTE",
       "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
@@ -18,6 +26,14 @@
       "estado": "PENDIENTE",
       "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
     },
+    "33": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
+    "36": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
     "41": {
       "estado": "PAGADO",
       "orden": "0d1cbb90-4ca6-4f67-a8c9-71965b9e587b"
@@ -25,6 +41,10 @@
     "42": {
       "estado": "PAGADO",
       "orden": "678b6be1-4be2-47a6-b0cf-78e31d572196"
+    },
+    "45": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "47": {
       "estado": "PAGADO",
@@ -38,9 +58,29 @@
       "estado": "PAGADO",
       "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
     },
+    "79": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
     "82": {
       "estado": "PENDIENTE",
       "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
+    },
+    "89": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
+    "90": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
+    "94": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
+    "95": {
+      "estado": "PENDIENTE",
+      "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     }
   },
   "ordenes": {
@@ -105,6 +145,29 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1793984792,
+      "aprobadoPor": null,
+      "aprobado": null
+    },
+    "ecdd5e47-b257-4509-b2fe-6cb61e64c14e": {
+      "numeros": [
+        11,
+        14,
+        33,
+        36,
+        45,
+        79,
+        89,
+        90,
+        94,
+        95
+      ],
+      "seudonimo": "Andrea C.",
+      "ciudad": "Bogotá",
+      "metodo": "NEQUI",
+      "privado": "enc1:BJ9tzD5xoPY2NcBostXbrk8w1MukO9UpdmgW2crOZTJH329KGK7j9168B8KzhibF1bM5fF79fPzqCla+S30SXrBV4Rba7M9kMAr2MnqCUT+bcgfNzPhg/ivp782KGJbhkPJrPcBg2RQ5BA6r7lJiUhsTex2yq3ULbjtkX6tEQfsmOD1ggAZGcV8ZwuHQlz+kR59DUmcSlbAJhuh2IUV1AxocsNvin8SURP122w==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1793986452,
       "aprobadoPor": null,
       "aprobado": null
     }
