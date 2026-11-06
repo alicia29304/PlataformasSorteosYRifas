@@ -19,7 +19,7 @@ const desconectar = () => desconectarCartera(rutear);
 function encabezado() {
   return h("div", { class: "barra" },
     h("a", { class: "marca", href: "#/" }, "🎟️ Sorteos y Rifas"),
-    h("div", { class: "cuenta" }, cuenta.direccion
+    h("div", { class: "acciones" }, cuenta.direccion
       ? [h("span", { class: "chip on" }, `${corta(cuenta.direccion)} · ${{ ADMIN: "Admin", VENDEDOR: "Vendedor", SIN_ROL: "Sin autorización" }[rolDe()]}`),
         h("button", { class: "btn-ghost small", onclick: () => desconectar() }, "Salir")]
       : h("button", { class: "btn-ghost small", onclick: () => conectar().catch(avisarError) }, "Soy vendedor: conectar cartera")));
@@ -154,7 +154,7 @@ function filaOrden(rifa, id, o, rol) {
   return h("div", { class: "orden" },
     h("div", {}, h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")), ` · ${o.seudonimo} · ${o.metodo} · ${o.estado}`,
       h("div", { class: "mut small" }, `Registró ${corta(o.registradoPor)}`)),
-    h("div", { class: "cuenta" },
+    h("div", { class: "acciones" },
       h("button", { class: "btn-ghost small", onclick: () => modalTicket(rifa, o.numeros[0]) }, "Ver ticket"),
       o.comprobanteHash
         ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Ver comprobante")

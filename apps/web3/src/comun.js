@@ -60,7 +60,7 @@ export async function conectarCartera(alListo) {
   const sitio = `${location.host}${location.pathname}`;
   const cerrar = mostrarModal("Conectar cartera", zona,
     h("p", { class: "mut small", style: "margin-top:14px" }, "También puedes abrir la página dentro de la cartera:"),
-    h("div", { class: "cuenta" },
+    h("div", { class: "acciones" },
       h("a", { class: "btn-ghost small", href: `https://metamask.app.link/dapp/${sitio}` }, "Navegador de MetaMask"),
       h("a", { class: "btn-ghost small", href: `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(location.href)}` }, "Navegador de Trust Wallet")));
   try {
@@ -70,7 +70,7 @@ export async function conectarCartera(alListo) {
       zona.replaceChildren(
         h("img", { src: await imagenQr(uri), alt: "Código QR para conectar la cartera", style: "width:240px;height:240px;border-radius:12px" }),
         h("p", { class: "mut small" }, "Escanéalo con MetaMask o Trust Wallet. Si estás en el celular:"),
-        h("div", { class: "cuenta", style: "justify-content:center" },
+        h("div", { class: "acciones", style: "justify-content:center" },
           h("a", { class: "btn small", href: `https://link.trustwallet.com/wc?uri=${u}` }, "Abrir Trust Wallet"),
           h("a", { class: "btn small", href: `https://metamask.app.link/wc?uri=${u}` }, "Abrir MetaMask")));
     });

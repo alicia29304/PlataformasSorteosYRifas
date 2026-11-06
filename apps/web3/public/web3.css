@@ -2,7 +2,7 @@
 .contenedor { max-width: var(--max); margin: 0 auto; padding: 20px 16px 110px; }
 .barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
 .marca { font-weight: 900; color: var(--txt); text-decoration: none; }
-.cuenta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.acciones { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .aviso { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 14px 0; }
 .aviso.ok { border-color: rgba(52,208,88,.5); }
 .aviso.mal { border-color: #e5484d; }

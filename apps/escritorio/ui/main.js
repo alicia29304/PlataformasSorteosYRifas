@@ -85,7 +85,7 @@ async function panel() {
 }
 
 const encabezadoPagina = (titulo, subtitulo, ...acciones) => h("div", { class: "topbar" },
-  h("div", {}, h("h1", { class: "page-title" }, titulo), subtitulo ? h("p", { class: "mut" }, subtitulo) : null), h("div", { class: "cuenta" }, acciones));
+  h("div", {}, h("h1", { class: "page-title" }, titulo), subtitulo ? h("p", { class: "mut" }, subtitulo) : null), h("div", { class: "acciones" }, acciones));
 
 // ------------------------------- Panel -------------------------------
 
@@ -146,7 +146,7 @@ function tarjetaGanador(r) {
     cuerpo.push(h("p", { class: "mut" }, `Hay ${pendientes} pago(s) pendientes. Apruébalos o anúlalos antes: un comprador con pago en revisión no puede quedar por fuera.`),
       h("button", { class: "btn small", onclick: () => { Object.assign(estado, { pestana: "pagos", rifaPagos: r.slug, filtroEstado: "PENDIENTE" }); pintar(); } }, "Revisar pagos"));
   } else {
-    cuerpo.push(h("p", { class: "mut small" }, `${pagados} número(s) vendidos.`), h("div", { class: "cuenta" },
+    cuerpo.push(h("p", { class: "mut small" }, `${pagados} número(s) vendidos.`), h("div", { class: "acciones" },
       h("button", { class: "btn small", onclick: () => modalExterno(r) }, "🎯 Sorteo externo"),
       h("button", { class: "btn small", disabled: pagados === 0, onclick: async () => {
         await confirmar("Sortear entre los vendidos", `Participan ${pagados} número(s). El azar lo pone drand, una fuente pública que nadie controla, después de tu firma. El resultado queda publicado.`, { boton: "Continuar" });
@@ -194,7 +194,7 @@ function vistaRifas(rifas) {
       h("div", {}, h("b", {}, r.titulo), ` · ${r.estado}`,
         h("div", { class: "mut small" }, `${cop(r.precioCop)} · números ${r.min} a ${r.max}`),
         h("div", { class: "mut small" }, `Cierre: ${fecha(r.finVentas)} · Sorteo: ${fecha(r.fechaSorteo)}`)),
-      h("div", { class: "cuenta" },
+      h("div", { class: "acciones" },
         h("button", { class: "btn-ghost small", onclick: () => abrirWeb(`${WEB}/#/rifa/${r.slug}`) }, "Ver en la web"),
         h("button", { class: "btn-ghost small", onclick: () => { estado.pestana = "pagos"; estado.rifaPagos = r.slug; pintar(); } }, "Pagos"),
         r.estado === "ACTIVA"
@@ -239,7 +239,7 @@ function vistaVendedores(rifas) {
     lista.length === 0 ? h("p", { class: "mut" }, "Aún no hay vendedores.") : lista.map(([dir, v]) => h("div", { class: "orden" },
       h("div", {}, h("b", {}, v.nombre), h("div", { class: "mut small" }, dir),
         h("div", { class: "mut small" }, v.rifas.length ? `Rifas: ${v.rifas.join(", ")}` : "Sin rifas asignadas")),
-      h("div", { class: "cuenta" },
+      h("div", { class: "acciones" },
         h("button", { class: "btn-ghost small", onclick: () => modalVendedor(rifas, dir, v) }, "Editar"),
         h("button", { class: "btn-ghost small", onclick: async () => {
           await confirmar("Quitar vendedor", `${v.nombre} ya no podrá registrar ni aprobar pagos.`, { boton: "Continuar" });
@@ -322,7 +322,7 @@ async function vistaPagos(rifas) {
 
   return h("section", {},
     encabezadoPagina("Comprobantes", "Revisa, aprueba o anula los pagos registrados."),
-    h("div", { class: "cuenta", style: "margin-bottom:12px" },
+    h("div", { class: "acciones", style: "margin-bottom:12px" },
       selector(rifas.map((r) => opcion(r.slug, r.titulo, estado.rifaPagos)), (v) => { estado.rifaPagos = v; }),
       selector(["TODOS", "PENDIENTE", "PAGADO", "ANULADO"].map((e) => opcion(e, e === "TODOS" ? "Todos los estados" : e, estado.filtroEstado)), (v) => { estado.filtroEstado = v; }),
       selector([opcion("TODOS", "Todos los vendedores", estado.filtroVendedor), ...vendedores.map((v) => opcion(v, nombreCartera(v), estado.filtroVendedor))], (v) => { estado.filtroVendedor = v; })),
@@ -332,7 +332,7 @@ async function vistaPagos(rifas) {
         h("div", { class: "mut small" }, `Registró ${nombreCartera(o.registradoPor)} · ${fecha(new Date(o.registrado * 1000).toISOString())}`),
         o.aprobadoPor ? h("div", { class: "mut small" }, `Aprobó ${nombreCartera(o.aprobadoPor)}`) : null,
         o.motivoAnulacion ? h("div", { class: "mut small" }, `Anulado: ${o.motivoAnulacion}`) : null),
-      h("div", { class: "cuenta" },
+      h("div", { class: "acciones" },
         h("button", { class: "btn-ghost small", onclick: () => (estado.clave ? verDatosPrivados(o) : pedirClave(() => verDatosPrivados(o))) }, "Ver datos"),
         o.comprobanteHash ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Comprobante") : null,
         o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => ejecutar("Aprobando pago", "aprobar_pago", { slug: rifa.slug, orden: id }) }, "Aprobar") : null,
