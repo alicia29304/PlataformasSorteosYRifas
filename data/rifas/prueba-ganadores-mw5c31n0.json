@@ -9,6 +9,32 @@
   "fechaSorteo": "2026-11-07T18:54:33.228Z",
   "estado": "ACTIVA",
   "creada": 1793991273,
-  "numeros": {},
-  "ordenes": {}
+  "numeros": {
+    "1": {
+      "estado": "PENDIENTE",
+      "orden": "2431f5b3-404d-454e-9e79-0a86c2ff7ea9"
+    },
+    "2": {
+      "estado": "PENDIENTE",
+      "orden": "2431f5b3-404d-454e-9e79-0a86c2ff7ea9"
+    }
+  },
+  "ordenes": {
+    "2431f5b3-404d-454e-9e79-0a86c2ff7ea9": {
+      "numeros": [
+        1,
+        2
+      ],
+      "seudonimo": "Ana G.",
+      "ciudad": "Tunja",
+      "metodo": "NEQUI",
+      "privado": "enc1:HPB3JW0/eLvT//O2Kp1WPDGs6xVj7TwL",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+      "registrado": 1793991296,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    }
+  }
 }
