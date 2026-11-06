@@ -24,7 +24,7 @@
   {
     "slug": "rifa-prueba-web3",
     "titulo": "Rifa de prueba Web3",
-    "estado": "ACTIVA",
+    "estado": "CERRADA",
     "precioCop": 1000,
     "min": 0,
     "max": 99,
