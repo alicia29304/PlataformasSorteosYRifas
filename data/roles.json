@@ -4,9 +4,9 @@
   ],
   "vendedores": {
     "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5": {
-      "nombre": "Vendedor de prueba",
+      "nombre": "Vendedor1",
       "rifas": [
-        "rifa-prueba-web3"
+        "sorteo-7nov"
       ]
     }
   }
