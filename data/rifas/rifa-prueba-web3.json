@@ -10,6 +10,14 @@
   "estado": "ACTIVA",
   "creada": 1793982873,
   "numeros": {
+    "19": {
+      "estado": "PENDIENTE",
+      "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
+    },
+    "21": {
+      "estado": "PENDIENTE",
+      "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
+    },
     "41": {
       "estado": "PAGADO",
       "orden": "0d1cbb90-4ca6-4f67-a8c9-71965b9e587b"
@@ -29,6 +37,10 @@
     "76": {
       "estado": "PAGADO",
       "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
+    },
+    "82": {
+      "estado": "PENDIENTE",
+      "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
     }
   },
   "ordenes": {
@@ -78,6 +90,23 @@
       "registrado": 1793983910,
       "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "aprobado": 1793983955
+    },
+    "0e91ac99-e51d-4408-b611-54b006e330ed": {
+      "numeros": [
+        19,
+        21,
+        82
+      ],
+      "seudonimo": "Camile A.",
+      "ciudad": "Bogotá",
+      "metodo": "NEQUI",
+      "codigoHash": "0x5623bab1e08428298719eff13e680c8a0f4081327c2f9e834a146654bf45b39b",
+      "privado": "enc1:BKGaqzEPNrCG5AqNwHfqevZGaKaThXSX/70JcdHZSL1z7NZ11x6euUUO54nX3W3x2ncIN31gGIvDm+RPJLAitwWL9HGu2fO1CdfVfXol6nGtPE2wBTB/C+xZEhkZNGUTIC0aMfdXs8cM8/NJvTKmGOrVowr6dBrUSAKflAJJflJozo69gzVd6HNHu8Sp5vl5v7a2/Ko4JJXSOtT5zgZ86pnukBJQe4hnpgJ/",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1793984792,
+      "aprobadoPor": null,
+      "aprobado": null
     }
   }
 }
