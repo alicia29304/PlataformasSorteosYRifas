@@ -1,0 +1,14 @@
+{
+  "slug": "rifa-numero-dos",
+  "titulo": "Rifa Número Dos",
+  "descripcion": "",
+  "precioCop": 2000,
+  "min": 0,
+  "max": 49,
+  "finVentas": "2026-12-20T23:00:00.000Z",
+  "fechaSorteo": "2026-12-21T03:30:00.000Z",
+  "estado": "ACTIVA",
+  "creada": 1793988412,
+  "numeros": {},
+  "ordenes": {}
+}
