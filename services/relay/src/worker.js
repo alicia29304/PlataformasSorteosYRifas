@@ -66,7 +66,9 @@ async function recibirAccion(request, env, ctx) {
     return json({ error: "Esta cartera no esta autorizada" }, 403);
   }
 
-  if (comprobante !== undefined) {
+  // El hash de cada comprobante es publico en el repositorio: declararlo sin subir la imagen
+  // permitiria apuntar una orden propia al comprobante de otra persona.
+  if (comprobante !== undefined || datos.comprobanteHash !== undefined) {
     const fallo = await guardarComprobante(env, accion, datos, comprobante);
     if (fallo) return fallo;
   }
@@ -83,10 +85,14 @@ async function recibirAccion(request, env, ctx) {
   return json({ nonce }, 202);
 }
 
+// Cada rifa tiene su espacio: un hash copiado de otra rifa no encuentra nada aqui.
+const claveComprobante = (slug, hash) => `comprobantes/${slug}/${hash}.jpg`;
+
 /** La imagen solo se acepta si coincide con el hash que la cartera firmo. */
 async function guardarComprobante(env, accion, datos, comprobante) {
   if (!env.COMPROBANTES) return json({ error: "Los comprobantes aun no estan activados" }, 503);
-  if (!CON_COMPROBANTE.includes(accion) || typeof comprobante !== "string" || typeof datos.comprobanteHash !== "string" || !SHA256.test(datos.comprobanteHash)) {
+  if (!CON_COMPROBANTE.includes(accion) || typeof comprobante !== "string" || typeof datos.comprobanteHash !== "string" || !SHA256.test(datos.comprobanteHash)
+    || typeof datos.slug !== "string" || !SLUG.test(datos.slug)) {
     return json({ error: "Comprobante invalido" }, 400);
   }
   let bytes;
@@ -95,7 +101,7 @@ async function guardarComprobante(env, accion, datos, comprobante) {
   if (bytes[0] !== 0xff || bytes[1] !== 0xd8 || bytes[2] !== 0xff) return json({ error: "El comprobante debe ser una imagen" }, 400);
   const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map((b) => b.toString(16).padStart(2, "0")).join("");
   if (hash !== datos.comprobanteHash) return json({ error: "El comprobante no coincide con la firma" }, 400);
-  await env.COMPROBANTES.put(`comprobantes/${hash}.jpg`, bytes, { httpMetadata: { contentType: "image/jpeg" } });
+  await env.COMPROBANTES.put(claveComprobante(datos.slug, hash), bytes, { httpMetadata: { contentType: "image/jpeg" } });
   return null;
 }
 
@@ -127,7 +133,7 @@ async function verComprobante(request, env, ctx) {
   const ordenes = texto ? JSON.parse(texto).ordenes : {};
   const hash = Object.hasOwn(ordenes, orden) ? ordenes[orden].comprobanteHash : null;
   if (!hash || !SHA256.test(hash)) return json({ error: "Esta orden no tiene comprobante" }, 404);
-  const objeto = await env.COMPROBANTES.get(`comprobantes/${hash}.jpg`);
+  const objeto = await env.COMPROBANTES.get(claveComprobante(slug, hash));
   if (!objeto) return json({ error: "Comprobante no encontrado" }, 404);
   return new Response(objeto.body, {
     headers: { "Content-Type": "image/jpeg", "Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff", ...CORS },

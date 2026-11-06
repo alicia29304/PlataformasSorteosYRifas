@@ -43,6 +43,9 @@ console.log("Firma a nombre del admin:", await enviar({ ...ajeno, firmante: env.
 console.log("Cartera sin rol:", await enviar(await sobre(env.TEST_COMPRADOR_PRIVATE_KEY, "cambiar_estado_rifa", datos)));
 console.log("Firma vencida:", await enviar(await sobre(env.TEST_ADMIN_PRIVATE_KEY, "cambiar_estado_rifa", datos, { fecha: Math.floor(Date.now() / 1000) - 3600 })));
 
+const robado = await sobre(env.TEST_VENDEDOR_PRIVATE_KEY, "adjuntar_comprobante", { slug: SLUG, orden: "00000000-0000-4000-8000-000000000000", comprobanteHash: "a".repeat(64) });
+console.log("Hash sin imagen:", await enviar(robado));
+
 const bueno = await sobre(env.TEST_ADMIN_PRIVATE_KEY, "cambiar_estado_rifa", datos);
 console.log("Admin firmado:", await enviar(bueno));
 for (let i = 0; i < 20; i++) {
