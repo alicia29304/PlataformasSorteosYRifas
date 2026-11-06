@@ -13,7 +13,7 @@
   {
     "slug": "rifa-numero-dos",
     "titulo": "Rifa Número Dos",
-    "estado": "ACTIVA",
+    "estado": "CERRADA",
     "precioCop": 2000,
     "min": 0,
     "max": 49,
