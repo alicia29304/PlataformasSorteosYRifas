@@ -17,6 +17,18 @@
     "42": {
       "estado": "PENDIENTE",
       "orden": "678b6be1-4be2-47a6-b0cf-78e31d572196"
+    },
+    "47": {
+      "estado": "PENDIENTE",
+      "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
+    },
+    "67": {
+      "estado": "PENDIENTE",
+      "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
+    },
+    "76": {
+      "estado": "PENDIENTE",
+      "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
     }
   },
   "ordenes": {
@@ -47,6 +59,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1793982963,
+      "aprobadoPor": null,
+      "aprobado": null
+    },
+    "44af29d3-b919-40b1-8510-71d829305cc2": {
+      "numeros": [
+        47,
+        67,
+        76
+      ],
+      "seudonimo": "María G.",
+      "ciudad": "Tunja",
+      "metodo": "NEQUI",
+      "codigoHash": "0x8189bc3ba34e16a270370bb7e1b0a138cc3c2260a1aa383a0b3e4978960ccab8",
+      "privado": "enc1:BNL/GxRACN14rdBZyVaPNHFtcXAYO7nFNlOHo7ZN134UftfEQvQIvdC3rMZfh0gjY4n6x21QjhkGfFddxSxBH/fZ83zlYYwQ6LwPKoUdaW6pmIA00OiLpRdif3HI22iniO7GVXXshQHjs2oXFFaNwNXDrWP7lLmtMon5SHq9PylJMIo75eLvM13DnjNskC8khAmOLFQeYMqD027WTeDtf5QogAqDdwwPrAaZx2hJ4pC1Sio=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1793983910,
       "aprobadoPor": null,
       "aprobado": null
     }
