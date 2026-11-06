@@ -48,7 +48,8 @@ async function vistaRifa(slug, ticketInicial = null) {
   let busca = "";
 
   const rejilla = h("div", { class: "grid-nums" });
-  const barra = h("div");
+  // display:contents: la barra flota respecto a la pagina, no a este contenedor.
+  const barra = h("div", { style: "display:contents" });
   const estadoDe = (n) => rifa.numeros[String(n)]?.estado;
   const libres = () => { const l = []; for (let n = rifa.min; n <= rifa.max; n++) if (!estadoDe(n)) l.push(n); return l; };
 
@@ -68,7 +69,8 @@ async function vistaRifa(slug, ticketInicial = null) {
     }
     rejilla.replaceChildren(...botones);
     barra.replaceChildren(...(sel.size === 0 ? [] : [h("div", { class: "buy-bar" },
-      h("div", { class: "buy-info" }, h("b", {}, String(sel.size)), ` número${sel.size > 1 ? "s" : ""} · ${cop(rifa.precioCop * sel.size)}`),
+      h("div", { class: "buy-info" }, h("b", {}, String(sel.size)), ` número${sel.size > 1 ? "s" : ""} · ${cop(rifa.precioCop * sel.size)}`,
+        h("button", { class: "buy-clear", onclick: () => { sel.clear(); pintar(); } }, "limpiar")),
       h("button", { class: "btn", onclick: () => modalRegistrar(rifa, [...sel].sort((a, b) => a - b)) }, "Registrar pago"))]));
   }
   function tocar(n) {
