@@ -15,7 +15,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "157": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "161": {
@@ -23,7 +23,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "196": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "197": {
@@ -35,7 +35,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "289": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "330": {
@@ -43,7 +43,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "360": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "374": {
@@ -55,7 +55,7 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "402": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "415": {
@@ -67,7 +67,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "471": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "521": {
@@ -79,7 +79,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "557": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "572": {
@@ -99,7 +99,7 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "755": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "804": {
@@ -107,7 +107,7 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "817": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "826": {
@@ -123,7 +123,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "921": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "991": {
@@ -197,11 +197,11 @@
       "ciudad": "Medellín",
       "metodo": "Efectivo",
       "privado": "enc1:BMc4ARkgHJh/Z5XmLSFAIcaTYliu5BCYo/oBJ+jyhJHi0mZI7o8r03OZ/avk/SPnU5mlCnATB8Tuko0T6jL8VJ3V4Bckd3769uwVHZKZ3/u3cNWyO28kp8InP/ZGYb6oZ6lMzDinr5e7XVY4Ch+nu0prkg/xbf3H3EaVqRkzorsb9ZovkhLZ8ruQP42YobFl5ZIDr5LHBjDpGmgfbmjH4WdckrYr+pVxTqzB",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1794006579,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "aprobado": 1794006657,
       "comprobanteHash": "e121e33aede303ba5a40430979b8d26549d2b1d91cb8e316036d1373f2ef2916"
     }
   }
