@@ -94,3 +94,8 @@ graphify-out/
 .env.local
 *.env.local
 .env.*.local
+
+# SorteosWeb3
+apps/web3/dist/
+services/relay/.wrangler/
+.dev.vars

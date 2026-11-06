@@ -1,0 +1,13 @@
+.contenedor { max-width: var(--max); margin: 0 auto; padding: 20px 16px 110px; }
+.barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.marca { font-weight: 900; color: var(--txt); text-decoration: none; }
+.cuenta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.aviso { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 14px 0; }
+.aviso.ok { border-color: rgba(52,208,88,.5); }
+.aviso.mal { border-color: #e5484d; }
+.lista-rifas { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.orden { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+.campo { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+.codigo { font: 800 1.25rem ui-monospace, Consolas, monospace; letter-spacing: .06em; text-align: center; padding: 12px; background: var(--panel2); border-radius: 12px; margin: 10px 0; }
+.compartir-bar { display: flex; gap: 10px; margin-top: 14px; }
+.compartir-bar > * { flex: 1; }
