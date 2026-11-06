@@ -9,7 +9,7 @@
 // Las acciones llevan TIPO: el cliente nunca elige que archivo se escribe.
 
 import { verifyMessage } from "ethers";
-import { mensajeAFirmar } from "./mensaje.js";
+import { hashDatos, mensajeAFirmar } from "./mensaje.js";
 
 export const VENTANA_S = 600;
 export const MAX_NUMEROS_POR_ORDEN = 10;
@@ -31,7 +31,7 @@ const regla = (cond, motivo) => { if (!cond) throw new ErrorRegla(motivo); };
 
 function soloCampos(datos, permitidos) {
   regla(datos && typeof datos === "object" && !Array.isArray(datos), "Datos invalidos");
-  for (const c of Object.keys(datos)) regla(permitidos.includes(c), `Campo no permitido: ${c}`);
+  for (const c of Object.keys(datos)) regla(permitidos.includes(c), "Campo no permitido");
 }
 const texto = (v, max, campo) => regla(typeof v === "string" && v.trim().length > 0 && v.length <= max, `${campo} invalido`);
 const fechaIso = (v, campo) => regla(typeof v === "string" && Number.isFinite(Date.parse(v)), `${campo} invalida`);
@@ -134,7 +134,7 @@ const ACCIONES = {
     regla(Array.isArray(d.numeros) && d.numeros.length >= 1 && d.numeros.length <= MAX_NUMEROS_POR_ORDEN, `Elige de 1 a ${MAX_NUMEROS_POR_ORDEN} numeros`);
     regla(new Set(d.numeros).size === d.numeros.length, "Numeros repetidos");
     for (const n of d.numeros) {
-      regla(entero(n) && n >= rifa.min && n <= rifa.max, `Numero fuera de rango: ${n}`);
+      regla(entero(n) && n >= rifa.min && n <= rifa.max, "Numero fuera de rango");
       regla(!Object.hasOwn(rifa.numeros, String(n)), `El numero ${n} ya no esta disponible`);
     }
     regla(typeof d.seudonimo === "string" && SEUDONIMO.test(d.seudonimo), "Nombre publico invalido");
@@ -199,12 +199,14 @@ export function procesar(sobre, estado, ahora = Math.floor(Date.now() / 1000)) {
   purgarNonces(estado.nonces, ahora);
   estado.nonces[nonce] = fecha;
 
-  const base = { accion, firmante, rol, fecha, nonce, datos, firma, procesado: ahora };
+  const base = { accion, firmante, rol, fecha, nonce, firma, procesado: ahora };
   try {
     ACCIONES[accion](estado, datos, { rol, firmante, nonce, fecha });
-    return { ...base, resultado: "ACEPTADA" };
+    return { ...base, datos, resultado: "ACEPTADA" };
   } catch (e) {
-    if (e instanceof ErrorRegla) return { ...base, resultado: "RECHAZADA", motivo: e.message };
+    // La auditoria es publica y estos datos no pasaron la validacion (pueden traer un
+    // telefono sin cifrar): solo se guarda su hash, y `motivo` nunca repite lo enviado.
+    if (e instanceof ErrorRegla) return { ...base, datosHash: hashDatos(datos), resultado: "RECHAZADA", motivo: e.message };
     throw e;
   }
 }

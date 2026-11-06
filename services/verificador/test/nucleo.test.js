@@ -104,6 +104,24 @@ test("los datos privados sin cifrar y los telefonos no entran al repositorio", a
   assert.match(c.motivo, /Campo no permitido/);
 });
 
+test("una accion rechazada no publica lo que trajo", async () => {
+  const e = await escenario();
+  const TEL = "3001112233";
+  for (const datos of [
+    { ...PAGO, privado: TEL },
+    { ...PAGO, seudonimo: TEL },
+    { ...PAGO, [TEL]: "x" },
+    { ...PAGO, numeros: [Number(TEL)] },
+  ]) {
+    const r = procesar(await firmar(vendedor, "registrar_pago", datos), e, AHORA);
+    assert.equal(r.resultado, "RECHAZADA");
+    assert.equal(r.datos, undefined);
+    assert.match(r.datosHash, /^0x[0-9a-f]{64}$/);
+    assert.ok(!JSON.stringify(r).includes(TEL), "no debe aparecer en la auditoria");
+  }
+  assert.ok(!JSON.stringify(e).includes(TEL), "ni en el estado");
+});
+
 test("limite de numeros, rango y cierre de ventas", async () => {
   const e = await escenario();
   const muchos = Array.from({ length: 11 }, (_, i) => i);
