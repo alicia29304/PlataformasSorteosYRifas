@@ -491,9 +491,11 @@ function pedirClave() {
     entrada, error);
   entrada.addEventListener("change", async () => {
     try {
-      const clave = JSON.parse(await entrada.files[0].text());
-      if (clave.kty !== "EC" || !clave.d) throw new Error("no es una clave");
-      if (!estado.claves.some((c) => c.d === clave.d)) estado.claves.push(clave);
+      // Sirve la clave sola o un archivo de credenciales; de este solo se toma la clave de datos.
+      const leido = JSON.parse(await entrada.files[0].text());
+      const nuevas = leido.tipo === "sorteosweb3-credenciales" ? leido.clavesCifrado ?? [] : [leido];
+      if (!nuevas.length || nuevas.some((c) => c.kty !== "EC" || !c.d)) throw new Error("no es una clave");
+      for (const clave of nuevas) if (!estado.claves.some((c) => c.d === clave.d)) estado.claves.push(clave);
       await secreto.guardar("claves", JSON.stringify(estado.claves));
       cerrar();
       pintar();
