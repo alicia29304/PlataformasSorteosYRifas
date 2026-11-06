@@ -28,7 +28,7 @@ export function guardar(dir, estado, auditoria) {
   escribir(join(dir, "nonces.json"), estado.nonces);
   for (const [slug, rifa] of Object.entries(estado.rifas)) escribir(join(dir, "rifas", `${slug}.json`), rifa);
   escribir(join(dir, "rifas", "index.json"), Object.values(estado.rifas).map(
-    ({ slug, titulo, estado: est, precioCop, min, max, finVentas, fechaSorteo }) => ({ slug, titulo, estado: est, precioCop, min, max, finVentas, fechaSorteo })
+    ({ slug, titulo, estado: est, precioCop, min, max, finVentas, fechaSorteo, ganador }) => ({ slug, titulo, estado: est, precioCop, min, max, finVentas, fechaSorteo, numeroGanador: ganador?.numero ?? null })
   ));
   const mes = new Date(auditoria.procesado * 1000).toISOString().slice(0, 7);
   appendFileSync(join(dir, "auditoria", `${mes}.jsonl`), `${JSON.stringify(auditoria)}\n`);

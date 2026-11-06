@@ -15,6 +15,18 @@ const git = (...args) => execFileSync("git", args, { stdio: ["ignore", "pipe", "
 
 const sobre = JSON.parse(process.env.SOBRE_JSON || "null");
 
+/** Azar publico de drand, tomado despues de firmar: el administrador no podia conocerlo. */
+async function azarPublico() {
+  if (sobre?.accion !== "declarar_ganador" || sobre?.datos?.modo !== "INTERNO") return null;
+  try {
+    const r = await fetch("https://api.drand.sh/public/latest", { signal: AbortSignal.timeout(10000) });
+    const { round, randomness } = await r.json();
+    return Number.isInteger(round) && /^[0-9a-f]{64}$/.test(randomness) ? { fuente: "drand", ronda: round, valor: randomness } : null;
+  } catch {
+    return null;
+  }
+}
+
 for (let intento = 1; intento <= INTENTOS; intento++) {
   git("fetch", "origin", "main");
   git("reset", "--hard", "origin/main");
@@ -22,7 +34,7 @@ for (let intento = 1; intento <= INTENTOS; intento++) {
   const estado = cargar("data");
   let entrada;
   try {
-    entrada = procesar(sobre, estado);
+    entrada = procesar(sobre, estado, undefined, await azarPublico());
   } catch (e) {
     if (e instanceof ErrorFirma) {
       console.error(`Rechazada sin registrar: ${e.message}`);

@@ -2,7 +2,7 @@
 // exige firmar con una cartera autorizada (MetaMask, Trust Wallet...).
 
 import {
-  avisarError, botonRecargar, config, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
+  avisarError, botonRecargar, config, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
   hayVersionNueva, modalComprobante, mostrarModal, pad, panelEspera, pedir, prepararComprobante, rolDe,
 } from "./comun.js";
 import { cifrar } from "./cifrado.js";
@@ -32,7 +32,7 @@ async function vistaInicio() {
     rifas.length === 0 ? h("p", { class: "mut" }, "Aún no hay sorteos.") : h("div", { class: "lista-rifas" },
       rifas.map((r) => h("a", { class: "card", href: `#/rifa/${r.slug}`, style: "color:inherit;text-decoration:none" },
         h("div", { class: "card-body" }, h("h3", { style: "margin:0" }, r.titulo),
-          h("div", { class: "mut small" }, `${cop(r.precioCop)} por número · ${r.estado === "ACTIVA" ? "Activa" : "Cerrada"}`),
+          h("div", { class: "mut small" }, `${cop(r.precioCop)} por número · ${r.estado === "ACTIVA" ? "Activa" : "Cerrada"}${r.numeroGanador != null ? ` · 🏆 ${pad(r.numeroGanador, r.max)}` : ""}`),
           h("div", { class: "mut small" }, `Sorteo: ${fecha(r.fechaSorteo)}`)))))));
 }
 
@@ -60,8 +60,11 @@ async function vistaRifa(slug, ticketInicial = null) {
       if (filtro === "APARTADOS" && est !== "PENDIENTE") continue;
       if (filtro === "LIBRES" && est) continue;
       if (busca && !pad(n, rifa.max).includes(busca)) continue;
-      const clase = `num${est === "PAGADO" ? " sold" : est === "PENDIENTE" ? " held" : ""}${sel.has(n) ? " sel" : ""}`;
-      botones.push(h("button", { class: clase, onclick: () => tocar(n) }, pad(n, rifa.max)));
+      const gana = rifa.ganador?.numero === n;
+      if (filtro === "GANADOR" && !gana) continue;
+      const clase = `num${gana ? " win" : est === "PAGADO" ? " sold" : est === "PENDIENTE" ? " held" : ""}${sel.has(n) ? " sel" : ""}`;
+      botones.push(h("button", { class: clase, onclick: () => tocar(n) }, pad(n, rifa.max),
+        est === "PENDIENTE" ? h("span", { class: "num-tag" }, "apartado") : null));
     }
     rejilla.replaceChildren(...botones);
     barra.replaceChildren(...(sel.size === 0 ? [] : [h("div", { class: "buy-bar" },
@@ -91,10 +94,12 @@ async function vistaRifa(slug, ticketInicial = null) {
     pintar();
   }
   const vendedores = Object.values(roles.vendedores).filter((v) => v.rifas.includes(slug)).map((v) => v.nombre);
-  const chip = (txt, valor) => h("button", { class: `chip${filtro === valor ? " on" : ""}`, onclick: () => { filtro = valor; vistaChips(); pintar(); } }, txt);
+  const chip = (txt, valor, punto = null) => h("button", { class: `fchip${filtro === valor ? " on" : ""}`, onclick: () => { filtro = valor; vistaChips(); pintar(); } },
+    punto ? h("i", { class: "fdot", style: `background:${punto}` }) : null, txt);
   const chips = h("div", { class: "chips" });
   const cuantos = (e) => Object.values(rifa.numeros).filter((x) => x.estado === e).length;
-  const vistaChips = () => chips.replaceChildren(chip("Todos", "TODOS"), chip(`Vendidos (${cuantos("PAGADO")})`, "VENDIDOS"), chip("Libres", "LIBRES"), chip(`Apartados (${cuantos("PENDIENTE")})`, "APARTADOS"));
+  const vistaChips = () => chips.replaceChildren(chip("Todos", "TODOS"), chip(`Vendidos (${cuantos("PAGADO")})`, "VENDIDOS", "var(--accent)"), chip("Libres", "LIBRES", "var(--panel)"),
+    chip(`Apartados (${cuantos("PENDIENTE")})`, "APARTADOS", "var(--held)"), rifa.ganador ? chip("Ganador", "GANADOR", "var(--gold)") : "");
   vistaChips();
 
   const pendientes = Object.entries(rifa.ordenes).filter(([, o]) => o.estado !== "ANULADO" && (o.estado === "PENDIENTE" || rol === "ADMIN"));
@@ -103,6 +108,7 @@ async function vistaRifa(slug, ticketInicial = null) {
     h("h1", { style: "margin-bottom:4px" }, rifa.titulo),
     rifa.descripcion ? h("p", { class: "mut", style: "margin-top:0" }, rifa.descripcion) : null,
     h("p", { class: "small" }, `${cop(rifa.precioCop)} por número · Cierre de ventas: ${fecha(rifa.finVentas)} · Sorteo: ${fecha(rifa.fechaSorteo)}`),
+    bannerGanador(rifa),
     h("div", { class: "controls" },
       h("button", { class: "btn-ghost", onclick: () => modalTicket(rifa) }, "🎫 Mis números"),
       opera ? [3, 5, 10].map((k) => h("button", { class: "btn-azar", onclick: () => azar(k) }, `🎲 ${k} al azar`)) : null,
@@ -114,6 +120,17 @@ async function vistaRifa(slug, ticketInicial = null) {
         : pendientes.map(([id, o]) => filaOrden(rifa, id, o, rol))) : null));
   pintar();
   if (ticketInicial !== null) modalTicket(rifa, ticketInicial);
+}
+
+function bannerGanador(rifa) {
+  const g = rifa.ganador;
+  if (!g) return null;
+  return h("div", { class: "ganador-banner" },
+    h("div", { class: "ganador-n" }, `🏆 ${pad(g.numero, rifa.max)}`),
+    h("div", {},
+      h("b", {}, g.vendido ? `Ganador: ${g.seudonimo}${g.ciudad ? ` · ${g.ciudad}` : ""}` : "Este número no se vendió: el sorteo queda sin ganador"),
+      h("div", { class: "small" }, g.modo === "EXTERNO" ? `Según ${g.fuente}` : `Elegido al azar entre ${g.azar.participantes} números vendidos`),
+      g.azar ? h("a", { class: "small", href: `https://api.drand.sh/public/${g.azar.ronda}`, target: "_blank", rel: "noopener" }, `Verificar el azar público (ronda ${g.azar.ronda})`) : null));
 }
 
 function filaOrden(rifa, id, o, rol) {
@@ -144,9 +161,9 @@ function filaOrden(rifa, id, o, rol) {
         : h("label", { class: "btn-ghost small", style: "cursor:pointer" }, "Adjuntar comprobante",
           h("input", { type: "file", accept: "image/*", hidden: true, onchange: (e) => adjuntar(e.target.files[0]) })),
       o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => accion("aprobar_pago", { slug: rifa.slug, orden: id }, "Aprobando pago") }, "Aprobar") : null,
-      rol === "ADMIN" ? h("button", { class: "btn-ghost small", onclick: () => {
-        const motivo = window.prompt("Motivo de la anulación");
-        if (motivo?.trim()) accion("anular_pago", { slug: rifa.slug, orden: id, motivo: motivo.trim().slice(0, 200) }, "Anulando pago");
+      rol === "ADMIN" ? h("button", { class: "btn-ghost small", onclick: async () => {
+        const motivo = await confirmar("Anular pago", "Los números quedarán libres otra vez.", { conMotivo: true, boton: "Continuar" });
+        accion("anular_pago", { slug: rifa.slug, orden: id, motivo }, "Anulando pago");
       } }, "Anular") : null));
 }
 

@@ -1,0 +1,47 @@
+:root {
+  --bg: #f6f5fb; --bg2: #f1eff9; --panel: #ffffff; --panel2: #f1eff9; --line: #ece9f5;
+  --txt: #1f2937; --mut: #6b7280; --accent: #7c3aed; --accent-ink: #ffffff;
+  --violet: #7c3aed; --pink: #db2777;
+}
+body { background: var(--bg); color: var(--txt); }
+.admin { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 250px; min-width: 250px; height: 100vh; position: sticky; top: 0;
+  background: linear-gradient(160deg, var(--violet), var(--pink));
+  color: #fff; display: flex; flex-direction: column; padding: 20px 14px;
+}
+.brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.brand-badge { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,.2); display: grid; place-items: center; font-size: 20px; }
+.brand-name { font-weight: 700; font-size: 15px; }
+.brand-sub { font-size: 12px; opacity: .85; }
+.nav { display: flex; flex-direction: column; gap: 4px; }
+.nav-item { background: none; border: 0; color: #fff; text-align: left; font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 12px; cursor: pointer; }
+.nav-item:hover { background: rgba(255,255,255,.12); }
+.nav-item.active { background: rgba(255,255,255,.22); font-weight: 600; }
+.sidebar-foot { margin-top: auto; border-top: 1px solid rgba(255,255,255,.2); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
+.user-mail { font-weight: 600; font-size: 13px; }
+.user-role { opacity: .85; margin-bottom: 6px; font-family: ui-monospace, Consolas, monospace; }
+.nav-salir { background: rgba(255,255,255,.2); border: 0; color: #fff; font: inherit; font-weight: 600; padding: 9px; border-radius: 10px; cursor: pointer; }
+.nav-actualizar { background: none; border: 0; color: #fff; font: inherit; padding: 4px; opacity: .85; cursor: pointer; }
+.content { flex: 1; min-width: 0; padding: 28px 34px; }
+.topbar { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.page-title { font-size: 1.7rem; margin: 0; }
+.topbar p { margin: 2px 0 0; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 22px; }
+.stat-card, .tarjeta { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+.tarjeta { margin-bottom: 16px; }
+.stat-value { font-size: 30px; font-weight: 700; color: var(--violet); }
+.stat-label { font-size: 13px; color: var(--mut); margin-top: 4px; }
+.datos-rifa { display: flex; gap: 30px; flex-wrap: wrap; }
+.progress { height: 10px; background: var(--line); border-radius: 999px; margin-top: 16px; overflow: hidden; }
+.progress-bar { height: 100%; background: linear-gradient(90deg, var(--violet), var(--pink)); }
+.ganador-admin { font-size: 2rem; font-weight: 900; margin: 8px 0; }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.orden { background: var(--panel); }
+@media (max-width: 760px) {
+  .admin { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: static; }
+  .nav { flex-direction: row; overflow-x: auto; }
+  .nav-item { white-space: nowrap; }
+  .content { padding: 18px 16px; }
+}

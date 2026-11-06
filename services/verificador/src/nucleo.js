@@ -8,7 +8,7 @@
 //
 // Las acciones llevan TIPO: el cliente nunca elige que archivo se escribe.
 
-import { verifyMessage } from "ethers";
+import { keccak256, toUtf8Bytes, verifyMessage } from "ethers";
 import { hashDatos, mensajeAFirmar } from "./mensaje.js";
 
 export const VENTANA_S = 600;
@@ -26,6 +26,16 @@ const CIFRADO = /^enc1:[A-Za-z0-9+/=]{1,8000}$/;
 const SEUDONIMO = /^\p{L}[\p{L}' -]{0,38}(?: \p{L}\.)?$/u;
 const CIUDAD = /^[\p{L}][\p{L}' .-]{0,59}$/u;
 const NOMBRE = /^[\p{L}\p{N}][\p{L}\p{N}' .-]{0,59}$/u;
+
+/**
+ * Numero ganador de un sorteo interno. Depende de un valor publico que nadie conocia al
+ * firmar, asi que cualquiera puede recalcularlo y el administrador no puede preverlo.
+ */
+export function elegirGanador(numeros, valorAzar, slug) {
+  const lista = [...numeros].sort((a, b) => a - b);
+  const hash = keccak256(toUtf8Bytes(`${valorAzar}|${slug}|${lista.join(",")}`));
+  return lista[Number(BigInt(hash) % BigInt(lista.length))];
+}
 
 const regla = (cond, motivo) => { if (!cond) throw new ErrorRegla(motivo); };
 
@@ -102,6 +112,7 @@ const ACCIONES = {
     soloCampos(d, ["slug", "estado"]);
     const rifa = rifaDe(estado, d.slug);
     regla(["ACTIVA", "CERRADA"].includes(d.estado), "Estado invalido");
+    regla(!(d.estado === "ACTIVA" && rifa.ganador), "Esta rifa ya tiene ganador");
     rifa.estado = d.estado;
     return { rifa: d.slug };
   },
@@ -183,6 +194,57 @@ const ACCIONES = {
     return { rifa: d.slug };
   },
 
+  declarar_ganador(estado, d, { rol, firmante, fecha, azar }) {
+    soloAdmin(rol);
+    soloCampos(d, ["slug", "modo", "numero", "fuente"]);
+    const rifa = rifaDe(estado, d.slug);
+    regla(!rifa.ganador, "Esta rifa ya tiene ganador");
+    regla(rifa.estado === "CERRADA" || fecha * 1000 > Date.parse(rifa.finVentas), "Cierra las ventas antes de declarar el ganador");
+    const pendientes = Object.values(rifa.ordenes).filter((o) => o.estado === "PENDIENTE").length;
+    regla(pendientes === 0, `Hay ${pendientes} pago(s) pendientes: apruebalos o anulalos antes`);
+
+    let numero;
+    let fuente = null;
+    let detalleAzar = null;
+    if (d.modo === "EXTERNO") {
+      numero = d.numero;
+      regla(entero(numero) && numero >= rifa.min && numero <= rifa.max, "Numero fuera de rango");
+      texto(d.fuente, 120, "Sorteo de referencia");
+      fuente = d.fuente;
+    } else if (d.modo === "INTERNO") {
+      regla(d.numero === undefined && d.fuente === undefined, "El sorteo interno no recibe numero");
+      const pagados = Object.entries(rifa.numeros).filter(([, x]) => x.estado === "PAGADO").map(([n]) => Number(n));
+      regla(pagados.length > 0, "No hay numeros vendidos para sortear");
+      regla(azar, "No se pudo obtener el azar publico; intenta de nuevo");
+      numero = elegirGanador(pagados, azar.valor, d.slug);
+      detalleAzar = { ...azar, participantes: pagados.length };
+    } else {
+      regla(false, "Modo invalido");
+    }
+
+    const ref = rifa.numeros[String(numero)];
+    const orden = ref?.estado === "PAGADO" ? rifa.ordenes[ref.orden] : null;
+    rifa.ganador = {
+      modo: d.modo, numero, fuente, vendido: Boolean(orden), orden: orden ? ref.orden : null,
+      seudonimo: orden?.seudonimo ?? null, ciudad: orden?.ciudad ?? null,
+      declaradoPor: firmante, fecha, azar: detalleAzar,
+    };
+    rifa.estado = "CERRADA";
+    return { rifa: d.slug };
+  },
+
+  anular_ganador(estado, d, { rol, firmante, fecha }) {
+    soloAdmin(rol);
+    soloCampos(d, ["slug", "motivo"]);
+    const rifa = rifaDe(estado, d.slug);
+    regla(rifa.ganador, "Esta rifa no tiene ganador");
+    texto(d.motivo, 200, "Motivo");
+    // Queda a la vista: repetir un sorteo debe poder notarlo cualquiera.
+    rifa.ganadoresAnulados = [...(rifa.ganadoresAnulados ?? []), { ...rifa.ganador, anuladoPor: firmante, anulado: fecha, motivoAnulacion: d.motivo }];
+    delete rifa.ganador;
+    return { rifa: d.slug };
+  },
+
   anular_pago(estado, d, { rol, firmante, fecha }) {
     soloAdmin(rol);
     soloCampos(d, ["slug", "orden", "motivo"]);
@@ -190,6 +252,7 @@ const ACCIONES = {
     const orden = typeof d.orden === "string" && Object.hasOwn(rifa.ordenes, d.orden) ? rifa.ordenes[d.orden] : null;
     regla(orden, "Orden no encontrada");
     regla(orden.estado !== "ANULADO", "La orden ya esta anulada");
+    regla(rifa.ganador?.orden !== d.orden, "Esta orden tiene el numero ganador");
     texto(d.motivo, 200, "Motivo");
     orden.estado = "ANULADO";
     orden.anuladoPor = firmante;
@@ -209,7 +272,7 @@ function purgarNonces(nonces, ahora) {
  * Verifica y aplica un sobre sobre `estado` (lo modifica).
  * Lanza ErrorFirma si no debe dejar rastro. Devuelve la entrada de auditoria.
  */
-export function procesar(sobre, estado, ahora = Math.floor(Date.now() / 1000)) {
+export function procesar(sobre, estado, ahora = Math.floor(Date.now() / 1000), azar = null) {
   const rol = verificarSobre(sobre, estado, ahora);
   const { accion, firmante, fecha, nonce, datos, firma } = sobre;
   purgarNonces(estado.nonces, ahora);
@@ -217,7 +280,7 @@ export function procesar(sobre, estado, ahora = Math.floor(Date.now() / 1000)) {
 
   const base = { accion, firmante, rol, fecha, nonce, firma, procesado: ahora };
   try {
-    ACCIONES[accion](estado, datos, { rol, firmante, nonce, fecha });
+    ACCIONES[accion](estado, datos, { rol, firmante, nonce, fecha, azar });
     return { ...base, datos, resultado: "ACEPTADA" };
   } catch (e) {
     // La auditoria es publica y estos datos no pasaron la validacion (pueden traer un

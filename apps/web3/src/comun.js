@@ -154,6 +154,20 @@ export function panelEspera() {
 
 export const botonRecargar = () => h("button", { class: "btn small", style: "margin-top:10px", onclick: () => location.reload() }, "Recargar la página");
 
+/** Confirmacion propia: los dialogos nativos no son fiables en navegadores de carteras. */
+export function confirmar(titulo, texto, { conMotivo = false, boton = "Confirmar" } = {}) {
+  return new Promise((listo) => {
+    const motivo = conMotivo ? h("input", { class: "inp", placeholder: "Motivo", maxlength: 200, autocomplete: "off" }) : null;
+    const aviso = h("div");
+    const cerrar = mostrarModal(titulo, h("p", {}, texto), motivo ?? "", aviso,
+      h("button", { class: "btn", style: "width:100%;margin-top:14px", onclick: () => {
+        if (conMotivo && !motivo.value.trim()) { aviso.replaceChildren(h("p", { class: "err" }, "Escribe el motivo.")); return; }
+        cerrar();
+        listo(conMotivo ? motivo.value.trim() : true);
+      } }, boton));
+  });
+}
+
 export const avisarError = (e) => mostrarModal("No se pudo", h("p", { class: "err" }, e.message));
 
 // ------------------------------- Comprobantes -------------------------------

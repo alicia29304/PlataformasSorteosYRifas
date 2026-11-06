@@ -2,7 +2,7 @@
 // firma cada cambio y el verificador comprueba que sea de un administrador.
 
 import {
-  avisarError, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
+  avisarError, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
   modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe,
 } from "../../web3/src/comun.js";
 import { descifrar } from "../../web3/src/cifrado.js";
@@ -10,7 +10,7 @@ import { descifrar } from "../../web3/src/cifrado.js";
 const WEB = "https://sorteos-web3.aliciagadiaz29304.workers.dev";
 const raiz = document.getElementById("app");
 const enTauri = Boolean(window.__TAURI__);
-const estado = { pestana: "rifas", rifaPagos: null, filtroEstado: "TODOS", filtroVendedor: "TODOS", clave: null };
+const estado = { pestana: "panel", rifaPanel: null, rifaPagos: null, filtroEstado: "TODOS", filtroVendedor: "TODOS", clave: null };
 
 const pintar = () => (cuenta.direccion ? panel() : inicio()).catch((e) => {
   raiz.replaceChildren(h("main", { class: "contenedor" }, h("p", { class: "err" }, e.message), h("button", { class: "btn-ghost", onclick: pintar }, "Reintentar")));
@@ -70,15 +70,115 @@ async function panel() {
   }
   cuenta.roles = await pedir("/roles");
   const rifas = await pedir("/rifas");
-  const pestana = (id, txt) => h("button", { class: `chip${estado.pestana === id ? " on" : ""}`, onclick: () => { estado.pestana = id; pintar(); } }, txt);
-  const vista = { rifas: vistaRifas, vendedores: vistaVendedores, pagos: vistaPagos }[estado.pestana];
-  const contenido = await vista(rifas);
-  raiz.replaceChildren(h("main", { class: "contenedor" },
-    h("div", { class: "barra" }, h("span", { class: "marca" }, "🎟️ Sorteos Web3 · Admin"),
-      h("div", { class: "cuenta" }, h("span", { class: "chip on" }, corta(cuenta.direccion)), h("button", { class: "btn-ghost small", onclick: salir }, "Salir"))),
-    h("div", { class: "chips", style: "margin-bottom:18px" }, pestana("rifas", "Rifas"), pestana("pagos", "Pagos"), pestana("vendedores", "Vendedores"),
-      h("button", { class: "chip", onclick: pintar }, "↻ Actualizar")),
-    contenido));
+  const menu = [["panel", "📊 Panel", vistaPanel], ["rifas", "🎟️ Rifas", vistaRifas], ["pagos", "🧾 Comprobantes", vistaPagos], ["ganadores", "🏆 Ganadores", vistaGanadores], ["vendedores", "🧑‍💼 Usuarios vendedores", vistaVendedores]];
+  const contenido = await menu.find(([id]) => id === estado.pestana)[2](rifas);
+  raiz.replaceChildren(h("div", { class: "admin" },
+    h("aside", { class: "sidebar" },
+      h("div", { class: "brand" }, h("div", { class: "brand-badge" }, "🎟️"),
+        h("div", {}, h("div", { class: "brand-name" }, "Sorteos Web3"), h("div", { class: "brand-sub" }, "Administración"))),
+      h("nav", { class: "nav" }, menu.map(([id, txt]) => h("button", { class: `nav-item${estado.pestana === id ? " active" : ""}`, onclick: () => { estado.pestana = id; pintar(); } }, txt))),
+      h("div", { class: "sidebar-foot" },
+        h("div", { class: "user-mail" }, "Administrador"), h("div", { class: "user-role" }, corta(cuenta.direccion)),
+        h("button", { class: "nav-salir", onclick: salir }, "Cerrar sesión"),
+        h("button", { class: "nav-actualizar", onclick: pintar }, "↻ Actualizar datos"))),
+    h("main", { class: "content" }, contenido)));
+}
+
+const encabezadoPagina = (titulo, subtitulo, ...acciones) => h("div", { class: "topbar" },
+  h("div", {}, h("h1", { class: "page-title" }, titulo), subtitulo ? h("p", { class: "mut" }, subtitulo) : null), h("div", { class: "cuenta" }, acciones));
+
+// ------------------------------- Panel -------------------------------
+
+async function vistaPanel(rifas) {
+  if (rifas.length === 0) return h("section", {}, encabezadoPagina("Panel de control", "Aún no hay rifas."));
+  if (!rifas.some((r) => r.slug === estado.rifaPanel)) estado.rifaPanel = (rifas.find((r) => r.estado === "ACTIVA") ?? rifas[0]).slug;
+  const r = await pedir(`/rifas/${estado.rifaPanel}`);
+  const total = r.max - r.min + 1;
+  const numeros = Object.values(r.numeros);
+  const vendidos = numeros.filter((x) => x.estado === "PAGADO").length;
+  const apartados = numeros.length - vendidos;
+  const pendientes = Object.values(r.ordenes).filter((o) => o.estado === "PENDIENTE").length;
+  const avance = Math.round((vendidos / total) * 100);
+  const dato = (v, t) => h("div", { class: "stat-card" }, h("div", { class: "stat-value" }, String(v)), h("div", { class: "stat-label" }, t));
+  const celda = (t, v) => h("div", {}, h("div", { class: "mut small" }, t), h("b", {}, v));
+  return h("section", {},
+    encabezadoPagina("Panel de control", "Estado general del sorteo",
+      rifas.length > 1 ? h("select", { class: "inp", style: "width:auto", onchange: (e) => { estado.rifaPanel = e.target.value; pintar(); } },
+        rifas.map((x) => h("option", { value: x.slug, selected: x.slug === estado.rifaPanel }, x.titulo))) : null),
+    h("div", { class: "stats" }, dato(pendientes, "Pagos pendientes"), dato(vendidos, "Números vendidos"), dato(total, "Total de números"), dato(`${avance}%`, "Avance de venta")),
+    h("div", { class: "tarjeta" },
+      h("h3", { style: "margin:0 0 12px" }, r.estado === "ACTIVA" ? "Rifa activa" : "Rifa cerrada"),
+      h("h2", { style: "margin:0 0 10px" }, r.titulo),
+      h("div", { class: "datos-rifa" }, celda("Precio / número", cop(r.precioCop)), celda("Rango", `${pad(r.min, r.max)}–${pad(r.max, r.max)}`),
+        celda("Vendidos", `${vendidos} de ${total}`), celda("Apartados", String(apartados)), celda("Estado", r.estado),
+        celda("Recaudado", cop(vendidos * r.precioCop))),
+      h("div", { class: "progress" }, h("div", { class: "progress-bar", style: `width:${avance}%` })),
+      r.ganador ? h("p", { style: "margin-top:14px" }, `🏆 Ganador: ${pad(r.ganador.numero, r.max)}${r.ganador.vendido ? ` · ${r.ganador.seudonimo}` : " · número sin vender"}`) : null));
+}
+
+// ------------------------------- Ganadores -------------------------------
+
+function vistaGanadores(rifas) {
+  return Promise.all(rifas.map((r) => pedir(`/rifas/${r.slug}`))).then((lista) => h("section", {},
+    encabezadoPagina("Ganadores", "Asigna el número de un sorteo externo o sortea entre los números vendidos."),
+    lista.length === 0 ? h("p", { class: "mut" }, "Aún no hay rifas.") : lista.map(tarjetaGanador)));
+}
+
+function tarjetaGanador(r) {
+  const g = r.ganador;
+  const pagados = Object.values(r.numeros).filter((x) => x.estado === "PAGADO").length;
+  const pendientes = Object.values(r.ordenes).filter((o) => o.estado === "PENDIENTE").length;
+  const abierta = r.estado === "ACTIVA" && Date.now() <= Date.parse(r.finVentas);
+  const cuerpo = [];
+  if (g) {
+    cuerpo.push(h("p", { class: "ganador-admin" }, `🏆 ${pad(g.numero, r.max)}`),
+      h("p", {}, h("b", {}, g.vendido ? `${g.seudonimo}${g.ciudad ? ` · ${g.ciudad}` : ""}` : "Número sin vender: el sorteo queda sin ganador")),
+      h("p", { class: "mut small" }, g.modo === "EXTERNO" ? `Sorteo externo: ${g.fuente}` : `Sorteo interno entre ${g.azar.participantes} números · azar público drand, ronda ${g.azar.ronda}`),
+      g.vendido ? h("p", { class: "mut small" }, "Abre sus datos en Comprobantes para contactarlo.") : null,
+      h("button", { class: "btn-ghost small", onclick: async () => {
+        const motivo = await confirmar("Anular ganador", "Quedará registrado públicamente que este resultado se anuló.", { conMotivo: true, boton: "Continuar" });
+        ejecutar("Anulando ganador", "anular_ganador", { slug: r.slug, motivo });
+      } }, "Anular ganador"));
+  } else if (abierta) {
+    cuerpo.push(h("p", { class: "mut" }, "Las ventas siguen abiertas. Ciérralas para poder declarar el ganador."),
+      h("button", { class: "btn small", onclick: () => ejecutar("Cerrando ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "CERRADA" }) }, "Cerrar ventas"));
+  } else if (pendientes > 0) {
+    cuerpo.push(h("p", { class: "mut" }, `Hay ${pendientes} pago(s) pendientes. Apruébalos o anúlalos antes: un comprador con pago en revisión no puede quedar por fuera.`),
+      h("button", { class: "btn small", onclick: () => { Object.assign(estado, { pestana: "pagos", rifaPagos: r.slug, filtroEstado: "PENDIENTE" }); pintar(); } }, "Revisar pagos"));
+  } else {
+    cuerpo.push(h("p", { class: "mut small" }, `${pagados} número(s) vendidos.`), h("div", { class: "cuenta" },
+      h("button", { class: "btn small", onclick: () => modalExterno(r) }, "🎯 Sorteo externo"),
+      h("button", { class: "btn small", disabled: pagados === 0, onclick: async () => {
+        await confirmar("Sortear entre los vendidos", `Participan ${pagados} número(s). El azar lo pone drand, una fuente pública que nadie controla, después de tu firma. El resultado queda publicado.`, { boton: "Continuar" });
+        ejecutar("Sorteando", "declarar_ganador", { slug: r.slug, modo: "INTERNO" });
+      } }, "🎲 Sortear entre vendidos")));
+  }
+  return h("div", { class: "tarjeta" }, h("h3", { style: "margin:0 0 4px" }, r.titulo), h("p", { class: "mut small" }, `Sorteo: ${fecha(r.fechaSorteo)} · ${r.estado}`), cuerpo,
+    r.ganadoresAnulados?.length ? h("p", { class: "mut small", style: "margin-top:10px" }, `Resultados anulados: ${r.ganadoresAnulados.map((x) => `${pad(x.numero, r.max)} (${x.motivoAnulacion})`).join(", ")}`) : null);
+}
+
+function modalExterno(r) {
+  const numero = campo(`Número ganador (${pad(r.min, r.max)} a ${pad(r.max, r.max)}) *`, { inputmode: "numeric", maxlength: 6 });
+  const fuente = campo("Sorteo de referencia *", { placeholder: "Ej: Lotería de Boyacá, 7 de noviembre", maxlength: 120 });
+  const vista = h("div", { style: "margin-top:10px" });
+  const valor = () => (/^\d+$/.test(numero.input.value.trim()) ? Number(numero.input.value.trim()) : null);
+  numero.input.addEventListener("input", () => {
+    const n = valor();
+    if (n === null) { vista.replaceChildren(); return; }
+    const ref = r.numeros[String(n)];
+    const orden = ref?.estado === "PAGADO" ? r.ordenes[ref.orden] : null;
+    vista.replaceChildren(h("div", { class: `aviso${orden ? " ok" : ""}` }, n < r.min || n > r.max ? "Ese número está fuera del rango de la rifa."
+      : orden ? `Ganaría ${orden.seudonimo}${orden.ciudad ? ` · ${orden.ciudad}` : ""}.` : "Ese número no se vendió: el sorteo quedará sin ganador."));
+  });
+  const error = h("div");
+  const cerrar = mostrarModal(`Sorteo externo · ${r.titulo}`, numero.nodo, fuente.nodo, vista, error,
+    h("button", { class: "btn", style: "width:100%;margin-top:14px", onclick: () => {
+      const n = valor();
+      if (n === null || n < r.min || n > r.max) { error.replaceChildren(h("p", { class: "err" }, "Escribe un número dentro del rango.")); return; }
+      if (!fuente.input.value.trim()) { error.replaceChildren(h("p", { class: "err" }, "Indica de qué sorteo sale el número.")); return; }
+      cerrar();
+      ejecutar("Declarando ganador", "declarar_ganador", { slug: r.slug, modo: "EXTERNO", numero: n, fuente: fuente.input.value.trim() });
+    } }, "Firmar y declarar"));
 }
 
 // ------------------------------- Rifas -------------------------------
@@ -89,7 +189,7 @@ const aIso = (local) => new Date(`${local}:00-05:00`).toISOString();
 
 function vistaRifas(rifas) {
   return h("section", {},
-    h("div", { class: "barra" }, h("h2", { style: "margin:0" }, "Rifas"), h("button", { class: "btn", onclick: modalNuevaRifa }, "+ Nueva rifa")),
+    encabezadoPagina("Rifas", "Crea rifas y controla sus ventas.", h("button", { class: "btn", onclick: modalNuevaRifa }, "+ Nueva rifa")),
     rifas.length === 0 ? h("p", { class: "mut" }, "Aún no hay rifas.") : rifas.map((r) => h("div", { class: "orden" },
       h("div", {}, h("b", {}, r.titulo), ` · ${r.estado}`,
         h("div", { class: "mut small" }, `${cop(r.precioCop)} · números ${r.min} a ${r.max}`),
@@ -99,7 +199,7 @@ function vistaRifas(rifas) {
         h("button", { class: "btn-ghost small", onclick: () => { estado.pestana = "pagos"; estado.rifaPagos = r.slug; pintar(); } }, "Pagos"),
         r.estado === "ACTIVA"
           ? h("button", { class: "btn-ghost small", onclick: () => ejecutar("Cerrando ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "CERRADA" }) }, "Cerrar ventas")
-          : h("button", { class: "btn-ghost small", onclick: () => ejecutar("Reabriendo ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "ACTIVA" }) }, "Reabrir")))));
+          : r.numeroGanador == null ? h("button", { class: "btn-ghost small", onclick: () => ejecutar("Reabriendo ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "ACTIVA" }) }, "Reabrir") : null))));
 }
 
 function modalNuevaRifa() {
@@ -134,15 +234,16 @@ function modalNuevaRifa() {
 function vistaVendedores(rifas) {
   const lista = Object.entries(cuenta.roles.vendedores);
   return h("section", {},
-    h("div", { class: "barra" }, h("h2", { style: "margin:0" }, "Vendedores"), h("button", { class: "btn", onclick: () => modalVendedor(rifas) }, "+ Agregar vendedor")),
-    h("p", { class: "mut small" }, "Solo se necesita su nombre y la dirección pública de su cartera. Sin correos ni contraseñas."),
+    encabezadoPagina("Usuarios vendedores", "Solo se necesita su nombre y la dirección pública de su cartera. Sin correos ni contraseñas.",
+      h("button", { class: "btn", onclick: () => modalVendedor(rifas) }, "+ Agregar vendedor")),
     lista.length === 0 ? h("p", { class: "mut" }, "Aún no hay vendedores.") : lista.map(([dir, v]) => h("div", { class: "orden" },
       h("div", {}, h("b", {}, v.nombre), h("div", { class: "mut small" }, dir),
         h("div", { class: "mut small" }, v.rifas.length ? `Rifas: ${v.rifas.join(", ")}` : "Sin rifas asignadas")),
       h("div", { class: "cuenta" },
         h("button", { class: "btn-ghost small", onclick: () => modalVendedor(rifas, dir, v) }, "Editar"),
-        h("button", { class: "btn-ghost small", onclick: () => {
-          if (window.confirm(`¿Quitar el acceso de ${v.nombre}?`)) ejecutar("Quitando vendedor", "revocar_vendedor", { direccion: dir });
+        h("button", { class: "btn-ghost small", onclick: async () => {
+          await confirmar("Quitar vendedor", `${v.nombre} ya no podrá registrar ni aprobar pagos.`, { boton: "Continuar" });
+          ejecutar("Quitando vendedor", "revocar_vendedor", { direccion: dir });
         } }, "Quitar")))));
 }
 
@@ -220,7 +321,7 @@ async function vistaPagos(rifas) {
   const recaudo = visibles.filter(([, o]) => o.estado === "PAGADO").reduce((t, [, o]) => t + o.numeros.length * rifa.precioCop, 0);
 
   return h("section", {},
-    h("h2", { style: "margin:0 0 10px" }, "Pagos"),
+    encabezadoPagina("Comprobantes", "Revisa, aprueba o anula los pagos registrados."),
     h("div", { class: "cuenta", style: "margin-bottom:12px" },
       selector(rifas.map((r) => opcion(r.slug, r.titulo, estado.rifaPagos)), (v) => { estado.rifaPagos = v; }),
       selector(["TODOS", "PENDIENTE", "PAGADO", "ANULADO"].map((e) => opcion(e, e === "TODOS" ? "Todos los estados" : e, estado.filtroEstado)), (v) => { estado.filtroEstado = v; }),
@@ -235,9 +336,9 @@ async function vistaPagos(rifas) {
         h("button", { class: "btn-ghost small", onclick: () => (estado.clave ? verDatosPrivados(o) : pedirClave(() => verDatosPrivados(o))) }, "Ver datos"),
         o.comprobanteHash ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Comprobante") : null,
         o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => ejecutar("Aprobando pago", "aprobar_pago", { slug: rifa.slug, orden: id }) }, "Aprobar") : null,
-        o.estado !== "ANULADO" ? h("button", { class: "btn-ghost small", onclick: () => {
-          const motivo = window.prompt("Motivo de la anulación");
-          if (motivo?.trim()) ejecutar("Anulando pago", "anular_pago", { slug: rifa.slug, orden: id, motivo: motivo.trim().slice(0, 200) });
+        o.estado !== "ANULADO" ? h("button", { class: "btn-ghost small", onclick: async () => {
+          const motivo = await confirmar("Anular pago", "Los números quedarán libres otra vez.", { conMotivo: true, boton: "Continuar" });
+          ejecutar("Anulando pago", "anular_pago", { slug: rifa.slug, orden: id, motivo });
         } }, "Anular") : null))));
 }
 

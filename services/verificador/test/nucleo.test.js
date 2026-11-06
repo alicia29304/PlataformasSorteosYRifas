@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Wallet } from "ethers";
 import { mensajeAFirmar } from "../src/mensaje.js";
-import { procesar, ErrorFirma, VENTANA_S } from "../src/nucleo.js";
+import { elegirGanador, procesar, ErrorFirma, VENTANA_S } from "../src/nucleo.js";
 
 const AHORA = Math.floor(Date.parse("2026-11-06T12:00:00Z") / 1000);
 const admin = Wallet.createRandom();
@@ -143,6 +143,87 @@ test("el sorteo no puede ser antes del cierre", async () => {
   const e = await escenario();
   const r = procesar(await firmar(admin, "crear_rifa", { ...RIFA, slug: "mal", fechaSorteo: "2026-11-30T00:00:00Z" }), e, AHORA);
   assert.match(r.motivo, /antes del cierre/);
+});
+
+const AZAR = { fuente: "drand", ronda: 1, valor: "c".repeat(64) };
+async function conVentas() {
+  const e = await escenario();
+  const reg = await firmar(vendedor, "registrar_pago", PAGO);
+  procesar(reg, e, AHORA);
+  procesar(await firmar(vendedor, "aprobar_pago", { slug: "prueba", orden: reg.nonce }), e, AHORA);
+  return { e, orden: reg.nonce };
+}
+const cerrar = async (e) => procesar(await firmar(admin, "cambiar_estado_rifa", { slug: "prueba", estado: "CERRADA" }), e, AHORA);
+const externo = (numero) => ({ slug: "prueba", modo: "EXTERNO", numero, fuente: "Loteria de Boyaca" });
+
+test("ganador externo: numero vendido, y numero sin vender queda sin dueno", async () => {
+  const { e, orden } = await conVentas();
+  await cerrar(e);
+  assert.equal(procesar(await firmar(admin, "declarar_ganador", externo(7)), e, AHORA).resultado, "ACEPTADA");
+  const g = e.rifas.prueba.ganador;
+  assert.deepEqual([g.vendido, g.seudonimo, g.orden, g.fuente], [true, "Ana G.", orden, "Loteria de Boyaca"]);
+
+  const otro = await conVentas();
+  await cerrar(otro.e);
+  procesar(await firmar(admin, "declarar_ganador", externo(50)), otro.e, AHORA);
+  assert.deepEqual([otro.e.rifas.prueba.ganador.vendido, otro.e.rifas.prueba.ganador.seudonimo], [false, null]);
+});
+
+test("ganador interno: sale de los pagados y se puede recalcular", async () => {
+  const { e } = await conVentas();
+  await cerrar(e);
+  const s = await firmar(admin, "declarar_ganador", { slug: "prueba", modo: "INTERNO" });
+  assert.equal(procesar(s, e, AHORA, AZAR).resultado, "ACEPTADA");
+  const g = e.rifas.prueba.ganador;
+  assert.ok([7, 8].includes(g.numero));
+  assert.equal(g.numero, elegirGanador([8, 7], AZAR.valor, "prueba"), "no importa el orden");
+  assert.deepEqual(g.azar, { ...AZAR, participantes: 2 });
+});
+
+test("el sorteo interno reparte entre todos los numeros", () => {
+  const vistos = new Set();
+  for (let i = 0; i < 200; i++) vistos.add(elegirGanador([1, 2, 3, 4], i.toString(16).padStart(64, "0"), "x"));
+  assert.equal(vistos.size, 4);
+});
+
+test("sin azar publico o sin pagados no hay sorteo interno", async () => {
+  const { e } = await conVentas();
+  await cerrar(e);
+  assert.match(procesar(await firmar(admin, "declarar_ganador", { slug: "prueba", modo: "INTERNO" }), e, AHORA).motivo, /azar publico/);
+  assert.match(procesar(await firmar(admin, "declarar_ganador", { slug: "otra", modo: "INTERNO" }), e, AHORA, AZAR).motivo, /Cierra las ventas/);
+  procesar(await firmar(admin, "cambiar_estado_rifa", { slug: "otra", estado: "CERRADA" }), e, AHORA);
+  assert.match(procesar(await firmar(admin, "declarar_ganador", { slug: "otra", modo: "INTERNO" }), e, AHORA, AZAR).motivo, /No hay numeros/);
+  assert.match(procesar(await firmar(admin, "declarar_ganador", { slug: "prueba", modo: "INTERNO", numero: 8 }), e, AHORA, AZAR).motivo, /no recibe numero/);
+});
+
+test("reglas del ganador: rol, ventas abiertas, pendientes y rango", async () => {
+  const { e } = await conVentas();
+  assert.match(procesar(await firmar(admin, "declarar_ganador", externo(7)), e, AHORA).motivo, /Cierra las ventas/);
+  await cerrar(e);
+  assert.match(procesar(await firmar(vendedor, "declarar_ganador", externo(7)), e, AHORA).motivo, /administrador/);
+  assert.match(procesar(await firmar(admin, "declarar_ganador", externo(500)), e, AHORA).motivo, /fuera de rango/);
+  assert.match(procesar(await firmar(admin, "declarar_ganador", { ...externo(7), fuente: "" }), e, AHORA).motivo, /Sorteo de referencia/);
+
+  const conPendiente = await escenario();
+  procesar(await firmar(vendedor, "registrar_pago", PAGO), conPendiente, AHORA);
+  await cerrar(conPendiente);
+  assert.match(procesar(await firmar(admin, "declarar_ganador", externo(7)), conPendiente, AHORA).motivo, /pendientes/);
+});
+
+test("con ganador no se reabre ni se anula su orden; anularlo deja rastro", async () => {
+  const { e, orden } = await conVentas();
+  await cerrar(e);
+  procesar(await firmar(admin, "declarar_ganador", externo(7)), e, AHORA);
+  assert.match(procesar(await firmar(admin, "declarar_ganador", externo(8)), e, AHORA).motivo, /ya tiene ganador/);
+  assert.match(procesar(await firmar(admin, "cambiar_estado_rifa", { slug: "prueba", estado: "ACTIVA" }), e, AHORA).motivo, /ya tiene ganador/);
+  assert.match(procesar(await firmar(admin, "anular_pago", { slug: "prueba", orden, motivo: "x" }), e, AHORA).motivo, /ganador/);
+  assert.equal(procesar(await firmar(vendedor, "anular_ganador", { slug: "prueba", motivo: "x" }), e, AHORA).resultado, "RECHAZADA");
+
+  assert.equal(procesar(await firmar(admin, "anular_ganador", { slug: "prueba", motivo: "numero mal escrito" }), e, AHORA).resultado, "ACEPTADA");
+  assert.equal(e.rifas.prueba.ganador, undefined);
+  assert.equal(e.rifas.prueba.ganadoresAnulados[0].numero, 7);
+  assert.equal(e.rifas.prueba.ganadoresAnulados[0].motivoAnulacion, "numero mal escrito");
+  assert.equal(procesar(await firmar(admin, "declarar_ganador", externo(8)), e, AHORA).resultado, "ACEPTADA");
 });
 
 test("limite de numeros, rango y cierre de ventas", async () => {

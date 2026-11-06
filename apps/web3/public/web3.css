@@ -1,3 +1,4 @@
+:root { --accent: #34d058; --accent-ink: #06240f; }
 .contenedor { max-width: var(--max); margin: 0 auto; padding: 20px 16px 110px; }
 .barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
 .marca { font-weight: 900; color: var(--txt); text-decoration: none; }
@@ -17,3 +18,6 @@ button.btn-ghost, a.btn-ghost { padding: 10px 14px; border-radius: 12px; }
 .espera-giro { width: 44px; height: 44px; margin: 0 auto 14px; border-radius: 50%; border: 4px solid var(--line); border-top-color: var(--accent); animation: girar 1s linear infinite; }
 .espera-paso { font-weight: 800; margin: 0 0 6px; }
 @keyframes girar { to { transform: rotate(360deg); } }
+.ganador-banner { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin: 16px 0; padding: 14px 18px; border-radius: 16px; color: #2b1d00; background: linear-gradient(135deg, #fff2b8, #f5c518 55%, #fbe38a); }
+.ganador-banner a { color: inherit; }
+.ganador-n { font-size: 2rem; font-weight: 900; font-variant-numeric: tabular-nums; }
