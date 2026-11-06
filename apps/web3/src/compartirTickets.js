@@ -165,27 +165,19 @@ export async function ticketsAPng(datos) {
 }
 
 /**
- * Comparte la imagen con el menu del sistema (WhatsApp aparece ahi en el
- * celular). Si el navegador no puede compartir archivos, la descarga.
- * Devuelve "compartido" | "descargado" | "cancelado".
+ * Comparte la imagen con el menu del sistema.
+ * Devuelve "compartido" | "cancelado" | "sin_soporte". Los navegadores internos de las
+ * carteras no comparten archivos ni descargan: quien llama ofrece otra salida.
  */
 export async function compartirImagen(blob, nombreArchivo, texto) {
   const archivo = new File([blob], nombreArchivo, { type: "image/png" });
-  if (navigator.canShare?.({ files: [archivo] })) {
-    try {
-      await navigator.share({ files: [archivo], title: "Mis números", text: texto });
-      return "compartido";
-    } catch (e) {
-      if (e?.name === "AbortError") return "cancelado";
-      // Otro fallo (permiso, gesto expirado): se cae a la descarga.
-    }
+  if (!navigator.canShare?.({ files: [archivo] })) return "sin_soporte";
+  try {
+    await navigator.share({ files: [archivo], title: "Mis números", text: texto });
+    return "compartido";
+  } catch (e) {
+    return e?.name === "AbortError" ? "cancelado" : "sin_soporte";
   }
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url; a.download = nombreArchivo;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 10000);
-  return "descargado";
 }
 
 /**

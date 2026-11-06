@@ -2,7 +2,7 @@
 // exige firmar con una cartera autorizada (MetaMask, Trust Wallet...).
 // Los textos se insertan siempre como texto (h), nunca como HTML.
 
-import { hashCodigo, mensajeHex } from "../../../services/verificador/src/mensaje.js";
+import { mensajeHex } from "../../../services/verificador/src/mensaje.js";
 import { cifrar } from "./cifrado.js";
 import { ticketsAPng, compartirImagen, imprimirImagen } from "./compartirTickets.js";
 
@@ -13,7 +13,7 @@ const ZONA = "America/Bogota";
 const MAX_SEL = 10;
 
 const raiz = document.getElementById("app");
-const cuenta = { direccion: null, roles: null };
+const cuenta = { direccion: null, firmaCon: null, roles: null, proveedor: null, porWc: false };
 
 function h(etiqueta, attrs = {}, ...hijos) {
   const el = document.createElement(etiqueta);
@@ -50,31 +50,58 @@ const rolDe = (slug) => {
   return !slug || v.rifas.includes(slug) ? "VENDEDOR" : "SIN_ROL";
 };
 
-function enlacesCartera() {
-  const sitio = `${location.host}${location.pathname}`;
-  return h("div", { class: "aviso" },
-    h("p", { style: "margin:0 0 8px" }, "Abre esta página dentro de tu cartera para poder firmar:"),
-    h("div", { class: "cuenta" },
-      h("a", { class: "btn-ghost small", href: `https://metamask.app.link/dapp/${sitio}` }, "Abrir en MetaMask"),
-      h("a", { class: "btn-ghost small", href: `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(location.href)}` }, "Abrir en Trust Wallet")));
+async function iniciarSesion(proveedor, direccion, porWc) {
+  Object.assign(cuenta, { proveedor, porWc, firmaCon: direccion, direccion: direccion.toLowerCase(), roles: await pedir("/roles") });
+  rutear();
 }
 
 async function conectar() {
-  if (!window.ethereum) { mostrarModal("Conectar cartera", enlacesCartera()); return; }
-  const [direccion] = await window.ethereum.request({ method: "eth_requestAccounts" });
-  cuenta.direccion = direccion.toLowerCase();
-  cuenta.roles = await pedir("/roles");
+  if (window.ethereum) {
+    const [direccion] = await window.ethereum.request({ method: "eth_requestAccounts" });
+    await iniciarSesion(window.ethereum, direccion, false);
+    return;
+  }
+  // Navegador normal (Chrome, Edge...): WalletConnect enlaza con la cartera por QR.
+  const estado = h("p", { class: "mut small" }, "Preparando la conexión…");
+  const zona = h("div", { style: "text-align:center" }, estado);
+  const sitio = `${location.host}${location.pathname}`;
+  const cerrar = mostrarModal("Conectar cartera", zona,
+    h("p", { class: "mut small", style: "margin-top:14px" }, "También puedes abrir la página dentro de la cartera:"),
+    h("div", { class: "cuenta" },
+      h("a", { class: "btn-ghost small", href: `https://metamask.app.link/dapp/${sitio}` }, "Navegador de MetaMask"),
+      h("a", { class: "btn-ghost small", href: `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(location.href)}` }, "Navegador de Trust Wallet")));
+  try {
+    const { conectarWalletConnect, imagenQr } = await import("./walletconnect.js");
+    const proveedor = await conectarWalletConnect(async (uri) => {
+      const u = encodeURIComponent(uri);
+      zona.replaceChildren(
+        h("img", { src: await imagenQr(uri), alt: "Código QR para conectar la cartera", style: "width:240px;height:240px;border-radius:12px" }),
+        h("p", { class: "mut small" }, "Escanéalo con MetaMask o Trust Wallet. Si estás en el celular:"),
+        h("div", { class: "cuenta", style: "justify-content:center" },
+          h("a", { class: "btn small", href: `https://link.trustwallet.com/wc?uri=${u}` }, "Abrir Trust Wallet"),
+          h("a", { class: "btn small", href: `https://metamask.app.link/wc?uri=${u}` }, "Abrir MetaMask")));
+    });
+    cerrar();
+    await iniciarSesion(proveedor, proveedor.accounts[0], true);
+  } catch (e) {
+    zona.replaceChildren(h("p", { class: "err" }, e.message || "No se pudo conectar"));
+  }
+}
+
+async function desconectar() {
+  if (cuenta.porWc) await cuenta.proveedor.disconnect().catch(() => {});
+  Object.assign(cuenta, { direccion: null, firmaCon: null, proveedor: null, porWc: false });
   rutear();
 }
 
 /** Firma una accion, la envia y espera a que GitHub Actions la aplique. */
 async function firmarYEnviar(accion, datos, alAvanzar) {
   const base = { accion, firmante: cuenta.direccion, fecha: Math.floor(Date.now() / 1000), nonce: crypto.randomUUID(), datos };
-  alAvanzar("Confirma la firma en tu cartera. No cuesta nada ni usa gas.");
-  const firma = await window.ethereum.request({ method: "personal_sign", params: [mensajeHex(base), cuenta.direccion] });
+  alAvanzar(`${cuenta.porWc ? "Abre tu cartera y confirma" : "Confirma"} la firma. No cuesta nada ni usa gas.`);
+  const firma = await cuenta.proveedor.request({ method: "personal_sign", params: [mensajeHex(base), cuenta.firmaCon] });
   alAvanzar("Enviando…");
   await pedir("/accion", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...base, firma }) });
-  alAvanzar("Verificando la firma en GitHub. Tarda unos 20 segundos…");
+  alAvanzar("Firma enviada. Se está registrando; puede tardar hasta 30 segundos…");
   for (let i = 0; i < 30; i++) {
     await pausa(4000);
     const r = await pedir(`/resultado/${base.nonce}`);
@@ -102,7 +129,8 @@ function encabezado() {
   return h("div", { class: "barra" },
     h("a", { class: "marca", href: "#/" }, "🎟️ Sorteos y Rifas"),
     h("div", { class: "cuenta" }, cuenta.direccion
-      ? h("span", { class: "chip on" }, `${corta(cuenta.direccion)} · ${{ ADMIN: "Admin", VENDEDOR: "Vendedor", SIN_ROL: "Sin autorización" }[rolDe()]}`)
+      ? [h("span", { class: "chip on" }, `${corta(cuenta.direccion)} · ${{ ADMIN: "Admin", VENDEDOR: "Vendedor", SIN_ROL: "Sin autorización" }[rolDe()]}`),
+        h("button", { class: "btn-ghost small", onclick: () => desconectar() }, "Salir")]
       : h("button", { class: "btn-ghost small", onclick: () => conectar().catch(avisarError) }, "Soy vendedor: conectar cartera")));
 }
 const avisarError = (e) => mostrarModal("No se pudo", h("p", { class: "err" }, e.message));
@@ -120,7 +148,7 @@ async function vistaInicio() {
 
 // ------------------------------- Rifa -------------------------------
 
-async function vistaRifa(slug) {
+async function vistaRifa(slug, ticketInicial = null) {
   const rifa = await pedir(`/rifas/${slug}`);
   const roles = cuenta.roles ?? await pedir("/roles");
   const rol = rolDe(slug);
@@ -151,7 +179,7 @@ async function vistaRifa(slug) {
       h("button", { class: "btn", onclick: () => modalRegistrar(rifa, [...sel].sort((a, b) => a - b)) }, "Registrar pago"))]));
   }
   function tocar(n) {
-    if (estadoDe(n)) return;
+    if (estadoDe(n)) { modalTicket(rifa, n); return; }
     if (!opera) {
       mostrarModal(`Número ${pad(n, rifa.max)}`, h("p", {}, "Este número está libre. Para comprarlo, habla con un vendedor autorizado; él registra tu pago y te entrega tu código de ticket."),
         vendedores.length ? h("p", { class: "mut small" }, `Vendedores: ${vendedores.join(", ")}`) : null);
@@ -195,6 +223,7 @@ async function vistaRifa(slug) {
       pendientes.length === 0 ? h("p", { class: "mut" }, "No hay pagos por revisar.")
         : pendientes.map(([id, o]) => filaOrden(rifa, id, o, rol))) : null));
   pintar();
+  if (ticketInicial !== null) modalTicket(rifa, ticketInicial);
 }
 
 function filaOrden(rifa, id, o, rol) {
@@ -206,6 +235,7 @@ function filaOrden(rifa, id, o, rol) {
     h("div", {}, h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")), ` · ${o.seudonimo} · ${o.metodo} · ${o.estado}`,
       h("div", { class: "mut small" }, `Registró ${corta(o.registradoPor)}`), estado),
     h("div", { class: "cuenta" },
+      h("button", { class: "btn-ghost small", onclick: () => modalTicket(rifa, o.numeros[0]) }, "Ver ticket"),
       o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => accion("aprobar_pago", { slug: rifa.slug, orden: id }) }, "Aprobar") : null,
       rol === "ADMIN" ? h("button", { class: "btn-ghost small", onclick: () => {
         const motivo = window.prompt("Motivo de la anulación");
@@ -214,13 +244,6 @@ function filaOrden(rifa, id, o, rol) {
 }
 
 // ------------------------------- Registrar pago -------------------------------
-
-/** Codigo que se le entrega al comprador: 80 bits al azar, facil de dictar. */
-function nuevoCodigo() {
-  const letras = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
-  const c = [...crypto.getRandomValues(new Uint8Array(16))].map((b) => letras[b % 32]).join("");
-  return c.match(/.{4}/g).join("-");
-}
 
 function modalRegistrar(rifa, numeros) {
   const campo = (etiqueta, attrs) => {
@@ -240,7 +263,7 @@ function modalRegistrar(rifa, numeros) {
     nombre.nodo, apellido.nodo, ciudad.nodo, telefono.nodo, metodo.nodo, referencia.nodo,
     h("p", { class: "mut small" }, "Público: nombre, inicial del apellido y ciudad. El teléfono y la referencia van cifrados: solo el administrador puede leerlos."),
     boton, estado);
-  mostrarModal("Registrar pago", contenido);
+  const cerrarModal = mostrarModal("Registrar pago", contenido);
 
   async function enviar() {
     const nom = nombre.input.value.trim().split(/\s+/)[0];
@@ -249,22 +272,17 @@ function modalRegistrar(rifa, numeros) {
     if (!nom || tel.length < 7 || !metodo.input.value.trim()) { estado.textContent = "Completa nombre, teléfono y método de pago."; return; }
     boton.disabled = true;
     try {
-      const codigo = nuevoCodigo();
       const { cifradoPublica } = await pedir("/config");
       const ciudadTxt = ciudad.input.value.trim();
       const datos = {
         slug: rifa.slug, numeros, seudonimo: ape ? `${nom} ${ape[0].toUpperCase()}.` : nom,
-        metodo: metodo.input.value.trim(), codigoHash: hashCodigo(codigo),
+        metodo: metodo.input.value.trim(),
         privado: await cifrar({ nombre: nom, apellido: ape, telefono: tel, referencia: referencia.input.value.trim() }, cifradoPublica),
         ...(ciudadTxt ? { ciudad: ciudadTxt } : {}),
       };
       await firmarYEnviar("registrar_pago", datos, (t) => { estado.textContent = t; });
-      contenido.replaceChildren(
-        h("div", { class: "aviso ok" }, "✅ Pago registrado. Queda pendiente hasta que se apruebe."),
-        h("p", {}, "Entrega este código al comprador. Es la única forma de consultar sus números y no se puede recuperar:"),
-        h("div", { class: "codigo" }, codigo),
-        h("button", { class: "btn-ghost", style: "width:100%", onclick: (e) => navigator.clipboard.writeText(codigo).then(() => { e.target.textContent = "Copiado ✓"; }) }, "Copiar código"));
-      vistaRifa(rifa.slug);
+      cerrarModal();
+      await vistaRifa(rifa.slug, numeros[0]);
     } catch (e) {
       estado.textContent = e.message;
       boton.disabled = false;
@@ -274,48 +292,95 @@ function modalRegistrar(rifa, numeros) {
 
 // ------------------------------- Mis numeros -------------------------------
 
-function modalTicket(rifa) {
-  const input = h("input", { class: "inp", placeholder: "XXXX-XXXX-XXXX-XXXX", autocomplete: "off", maxlength: 24 });
+const enlaceTicket = (slug, n) => `${location.origin}${location.pathname}#/rifa/${slug}/ticket/${n}`;
+
+async function copiar(texto, boton) {
+  try {
+    await navigator.clipboard.writeText(texto);
+  } catch {
+    // Algunos navegadores internos de carteras bloquean el portapapeles.
+    const t = h("textarea", { style: "position:fixed;opacity:0" }, texto);
+    document.body.append(t);
+    t.select();
+    document.execCommand("copy");
+    t.remove();
+  }
+  boton.textContent = "Copiado ✓";
+}
+
+const aDataUrl = (blob) => new Promise((ok) => {
+  const r = new FileReader();
+  r.onload = () => ok(r.result);
+  r.readAsDataURL(blob);
+});
+
+/** Salida cuando el navegador no comparte archivos ni imprime (el de la cartera). */
+async function modalImagen(blob, nombre, enlace) {
+  const url = await aDataUrl(blob);
+  mostrarModal("Tu ticket",
+    h("img", { src: url, alt: "Imagen de los tickets", style: "width:100%;border-radius:12px" }),
+    h("p", { class: "mut small" }, "Mantén presionada la imagen para guardarla. Si no te deja, copia el enlace y ábrelo en Chrome: allí podrás compartirla e imprimirla."),
+    h("div", { class: "compartir-bar" },
+      h("button", { class: "btn-ghost", onclick: (e) => copiar(enlace, e.target) }, "Copiar enlace"),
+      h("a", { class: "btn-ghost", href: url, download: nombre, style: "text-align:center" }, "Descargar")));
+}
+
+function modalTicket(rifa, numeroInicial = null) {
+  const input = h("input", { class: "inp", inputmode: "numeric", placeholder: "Ej: 47", autocomplete: "off", maxlength: 6, value: numeroInicial ?? "",
+    onkeydown: (e) => { if (e.key === "Enter") buscar(); } });
   const resultado = h("div");
   const contenido = h("div", {},
-    h("p", { class: "mut small" }, "Escribe el código de ticket que te entregó el vendedor."), input,
-    h("button", { class: "btn", style: "width:100%;margin-top:12px", onclick: buscar }, "Ver mis números"), resultado);
+    h("p", { class: "mut small" }, "Escribe uno de los números del comprador."), input,
+    h("button", { class: "btn", style: "width:100%;margin-top:12px", onclick: buscar }, "Ver ticket"), resultado);
   mostrarModal("🎫 Mis números", contenido);
+  if (numeroInicial !== null) buscar();
 
   function buscar() {
-    const hash = hashCodigo(input.value);
-    const orden = Object.values(rifa.ordenes).find((o) => o.codigoHash === hash && o.estado !== "ANULADO");
-    if (!orden) { resultado.replaceChildren(h("p", { class: "err" }, "No encontramos ese código en este sorteo.")); return; }
+    const texto = input.value.replace(/\D/g, "");
+    const n = Number(texto);
+    const ref = texto && Object.hasOwn(rifa.numeros, String(n)) ? rifa.numeros[String(n)] : null;
+    if (!ref) { resultado.replaceChildren(h("p", { class: "err", style: "margin-top:12px" }, "Ese número aún no tiene comprador en este sorteo.")); return; }
+    const orden = rifa.ordenes[ref.orden];
     const pagado = orden.estado === "PAGADO";
     const estado = pagado ? "Pagado ✓ — el número es tuyo" : "Pago en revisión…";
     const nombre = orden.seudonimo.split(" ")[0];
-    const datosImagen = {
+    const lista = orden.numeros.map((x) => pad(x, rifa.max)).join(", ");
+    const enlace = enlaceTicket(rifa.slug, n);
+    const archivo = `tickets-${rifa.slug}-${n}.png`;
+    const textoCompartir = `${rifa.titulo} — números: ${lista}`;
+    const imagen = () => ticketsAPng({
       titulo: rifa.titulo, descripcion: rifa.descripcion, nombre: pagado ? nombre : "", fecha: fecha(rifa.fechaSorteo),
-      tickets: orden.numeros.map((n) => ({ num: pad(n, rifa.max), estado, pagado })),
-    };
-    const usarImagen = (fn) => ticketsAPng(datosImagen).then(fn).catch(avisarError);
+      tickets: orden.numeros.map((x) => ({ num: pad(x, rifa.max), estado, pagado })),
+    });
+    // Sin soporte para archivos en un celular suele ser el navegador de una cartera: tampoco imprime.
+    const sinSoporte = !navigator.canShare?.({ files: [new File(["x"], "x.png", { type: "image/png" })] }) && navigator.maxTouchPoints > 0;
     resultado.replaceChildren(
-      pagado ? h("div", { class: "gracias", style: "margin-top:14px" }, h("div", { class: "gracias-t" }, `🎉 ¡Gracias ${nombre} por tu compra!`)) : null,
-      h("div", { class: "tickets", style: "margin-top:14px" }, orden.numeros.map((n) => h("div", { class: `ticket${pagado ? "" : " pend"}` },
+      pagado ? h("div", { class: "gracias", style: "margin-top:14px" }, h("div", { class: "gracias-t" }, `🎉 ¡Gracias ${nombre} por tu compra!`)) : "",
+      h("div", { class: "tickets", style: "margin-top:14px" }, orden.numeros.map((x) => h("div", { class: `ticket${pagado ? "" : " pend"}` },
         h("div", { class: "ticket-izq" }, h("div", { class: "ticket-rifa" }, rifa.titulo),
           rifa.descripcion ? h("div", { class: "ticket-desc" }, rifa.descripcion) : null,
           h("div", { class: "ticket-fecha" }, `🗓️ ${fecha(rifa.fechaSorteo)}`),
           h("div", { class: `ticket-estado${pagado ? " ok" : ""}` }, estado)),
-        h("div", { class: "ticket-der" }, h("span", { class: "ticket-n-l" }, "N.º"), h("span", { class: "ticket-n" }, pad(n, rifa.max)))))),
+        h("div", { class: "ticket-der" }, h("span", { class: "ticket-n-l" }, "N.º"), h("span", { class: "ticket-n" }, pad(x, rifa.max)))))),
+      h("a", { class: "btn", style: "display:block;text-align:center;margin-top:14px", href: `https://wa.me/?text=${encodeURIComponent(`${textoCompartir}\n${enlace}`)}`, target: "_blank", rel: "noopener" }, "💬 Enviar por WhatsApp"),
       h("div", { class: "compartir-bar" },
-        h("button", { class: "btn", onclick: () => usarImagen((b) => compartirImagen(b, `tickets-${rifa.slug}.png`, `${rifa.titulo} — mis números: ${orden.numeros.join(", ")}`)) }, "📤 Compartir"),
-        h("button", { class: "btn-ghost", onclick: () => usarImagen(imprimirImagen) }, "🖨️ Imprimir / PDF")));
+        h("button", { class: "btn-ghost", onclick: () => imagen().then(async (b) => {
+          const r = await compartirImagen(b, archivo, textoCompartir);
+          if (r === "sin_soporte") await modalImagen(b, archivo, enlace);
+        }).catch(avisarError) }, "📤 Imagen"),
+        h("button", { class: "btn-ghost", onclick: () => imagen().then((b) => (sinSoporte ? modalImagen(b, archivo, enlace) : imprimirImagen(b))).catch(avisarError) }, "🖨️ PDF"),
+        h("button", { class: "btn-ghost", onclick: (e) => copiar(enlace, e.target) }, "🔗 Enlace")));
   }
 }
 
 // ------------------------------- Rutas -------------------------------
 
 function rutear() {
-  const m = location.hash.match(/^#\/rifa\/([a-z0-9-]+)$/);
-  (m ? vistaRifa(m[1]) : vistaInicio()).catch((e) => {
+  const m = location.hash.match(/^#\/rifa\/([a-z0-9-]+)(?:\/ticket\/(\d{1,6}))?$/);
+  (m ? vistaRifa(m[1], m[2] ?? null) : vistaInicio()).catch((e) => {
     raiz.replaceChildren(h("main", { class: "contenedor" }, encabezado(), h("p", { class: "err" }, e.message), h("a", { href: "#/" }, "Volver")));
   });
 }
 window.addEventListener("hashchange", rutear);
-window.ethereum?.on?.("accountsChanged", () => { cuenta.direccion = null; rutear(); });
+window.ethereum?.on?.("accountsChanged", () => { if (!cuenta.porWc) { cuenta.direccion = null; rutear(); } });
 rutear();

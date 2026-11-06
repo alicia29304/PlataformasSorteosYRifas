@@ -30,7 +30,7 @@ async function esperar(nonce, maxMs = 180000) {
 }
 const pago = (numeros, seudonimo) => ({
   slug: SLUG, numeros, seudonimo, ciudad: "Cali", metodo: "NEQUI",
-  codigoHash: `0x${randomBytes(32).toString("hex")}`, privado: `enc1:${randomBytes(24).toString("base64")}`,
+  privado: `enc1:${randomBytes(24).toString("base64")}`,
 });
 const ver = (nombre, e) => console.log(`${nombre}: ${e.resultado}${e.motivo ? ` (${e.motivo})` : ""} en ${e.segundos}s`);
 

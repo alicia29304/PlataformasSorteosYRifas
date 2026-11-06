@@ -20,7 +20,6 @@ export class ErrorRegla extends Error {}
 const DIRECCION = /^0x[0-9a-f]{40}$/;
 const NONCE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/;
-const HASH = /^0x[0-9a-f]{64}$/;
 const CIFRADO = /^enc1:[A-Za-z0-9+/=]{1,8000}$/;
 // Sin digitos: un telefono o documento no puede colarse como nombre publico.
 const SEUDONIMO = /^\p{L}[\p{L}' -]{0,38}(?: \p{L}\.)?$/u;
@@ -126,7 +125,7 @@ const ACCIONES = {
   },
 
   registrar_pago(estado, d, { rol, firmante, nonce, fecha }) {
-    soloCampos(d, ["slug", "numeros", "seudonimo", "ciudad", "metodo", "codigoHash", "privado"]);
+    soloCampos(d, ["slug", "numeros", "seudonimo", "ciudad", "metodo", "privado"]);
     const rifa = rifaDe(estado, d.slug);
     regla(puedeOperar(estado, rol, firmante, d.slug), "Esta rifa no esta asignada a tu cartera");
     regla(rifa.estado === "ACTIVA", "La rifa no esta activa");
@@ -140,13 +139,12 @@ const ACCIONES = {
     regla(typeof d.seudonimo === "string" && SEUDONIMO.test(d.seudonimo), "Nombre publico invalido");
     regla(d.ciudad === undefined || (typeof d.ciudad === "string" && CIUDAD.test(d.ciudad)), "Ciudad invalida");
     regla(typeof d.metodo === "string" && d.metodo.length <= 30, "Metodo invalido");
-    regla(typeof d.codigoHash === "string" && HASH.test(d.codigoHash), "Codigo de ticket invalido");
     // El repositorio es publico: lo privado solo entra cifrado.
     regla(typeof d.privado === "string" && CIFRADO.test(d.privado), "Los datos privados deben ir cifrados");
 
     rifa.ordenes[nonce] = {
       numeros: d.numeros, seudonimo: d.seudonimo, ciudad: d.ciudad ?? null, metodo: d.metodo,
-      codigoHash: d.codigoHash, privado: d.privado, estado: "PENDIENTE",
+      privado: d.privado, estado: "PENDIENTE",
       registradoPor: firmante, registrado: fecha, aprobadoPor: null, aprobado: null,
     };
     for (const n of d.numeros) rifa.numeros[String(n)] = { estado: "PENDIENTE", orden: nonce };

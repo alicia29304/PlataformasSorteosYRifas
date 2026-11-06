@@ -35,6 +35,3 @@ export const recuperarFirmante = (sobre) => verifyMessage(mensajeAFirmar(sobre),
 
 /** Mensaje en hexadecimal, como lo pide `personal_sign` en la cartera. */
 export const mensajeHex = (sobre) => hexlify(toUtf8Bytes(mensajeAFirmar(sobre)));
-
-/** Hash publico del codigo de ticket: guiones y mayusculas no importan. */
-export const hashCodigo = (codigo) => keccak256(toUtf8Bytes(String(codigo).toUpperCase().replace(/[^0-9A-Z]/g, "")));

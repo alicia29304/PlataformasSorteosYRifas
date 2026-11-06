@@ -19,8 +19,8 @@ Cartera autorizada -> firma (sin gas) -> Cloudflare Worker -> GitHub Actions
   aprueba pagos en sus rifas; el publico solo consulta.
 - **Privacidad:** el repositorio es publico. Solo se publica nombre, inicial del apellido
   y ciudad. Telefono y referencia van cifrados y solo el admin puede leerlos.
-- **Ticket:** el vendedor entrega un codigo aleatorio con el que el comprador consulta
-  sus numeros y comparte la imagen del ticket.
+- **Ticket:** se consulta con cualquiera de los numeros comprados y se comparte por enlace,
+  WhatsApp o imagen. Solo muestra lo que ya es publico.
 
 ## Estructura
 

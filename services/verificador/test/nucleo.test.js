@@ -18,7 +18,7 @@ async function firmar(w, accion, datos, extra = {}) {
 }
 
 const RIFA = { slug: "prueba", titulo: "Prueba", precioCop: 4000, min: 0, max: 99, finVentas: "2026-12-01T00:00:00Z", fechaSorteo: "2026-12-02T00:00:00Z" };
-const PAGO = { slug: "prueba", numeros: [7, 8], seudonimo: "Ana G.", ciudad: "Cali", metodo: "NEQUI", codigoHash: `0x${"a".repeat(64)}`, privado: "enc1:QUJD" };
+const PAGO = { slug: "prueba", numeros: [7, 8], seudonimo: "Ana G.", ciudad: "Cali", metodo: "NEQUI", privado: "enc1:QUJD" };
 
 async function escenario() {
   const estado = { roles: { admins: [dir(admin)], vendedores: {} }, nonces: {}, rifas: {} };

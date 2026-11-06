@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: npm
+          cache-dependency-path: services/verificador/package-lock.json
       - name: Instalar verificador
         run: npm ci --ignore-scripts
         working-directory: services/verificador
