@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { Wallet } from "ethers";
-import { mensajeAFirmar } from "../src/mensaje.js";
+import { MAX_SESION_S, mensajeAFirmar, mensajeDelegacion } from "../src/mensaje.js";
 import { elegirGanador, procesar, ErrorFirma, VENTANA_S } from "../src/nucleo.js";
 
 const AHORA = Math.floor(Date.parse("2026-11-06T12:00:00Z") / 1000);
@@ -21,7 +21,7 @@ const RIFA = { slug: "prueba", titulo: "Prueba", precioCop: 4000, min: 0, max: 9
 const PAGO = { slug: "prueba", numeros: [7, 8], seudonimo: "Ana G.", ciudad: "Cali", metodo: "NEQUI", privado: "enc1:QUJD" };
 
 async function escenario() {
-  const estado = { roles: { admins: [dir(admin)], vendedores: {} }, nonces: {}, rifas: {} };
+  const estado = { roles: { admins: [dir(admin)], vendedores: {} }, nonces: {}, rifas: {}, sesionesRevocadas: {} };
   procesar(await firmar(admin, "crear_rifa", RIFA), estado, AHORA);
   procesar(await firmar(admin, "crear_rifa", { ...RIFA, slug: "otra" }), estado, AHORA);
   procesar(await firmar(admin, "asignar_vendedor", { direccion: dir(vendedor), nombre: "Alvaro", rifas: ["prueba"] }), estado, AHORA);
@@ -224,6 +224,74 @@ test("con ganador no se reabre ni se anula su orden; anularlo deja rastro", asyn
   assert.equal(e.rifas.prueba.ganadoresAnulados[0].numero, 7);
   assert.equal(e.rifas.prueba.ganadoresAnulados[0].motivoAnulacion, "numero mal escrito");
   assert.equal(procesar(await firmar(admin, "declarar_ganador", externo(8)), e, AHORA).resultado, "ACEPTADA");
+});
+
+async function delegar(cartera, expira = AHORA + 86400) {
+  const clave = Wallet.createRandom();
+  const sesion = dir(clave);
+  const firma = await cartera.signMessage(mensajeDelegacion({ firmante: dir(cartera), sesion, expira }));
+  return { clave, delegacion: { sesion, expira, firma } };
+}
+async function conSesion(s, accion, datos, firmante = admin, extra = {}) {
+  const base = { accion, firmante: dir(firmante), fecha: AHORA, nonce: randomUUID(), datos, ...extra };
+  return { ...base, delegacion: s.delegacion, firma: await s.clave.signMessage(mensajeAFirmar(base)) };
+}
+const CERRAR = { slug: "prueba", estado: "CERRADA" };
+
+test("sesion: la clave autorizada firma en nombre de la cartera", async () => {
+  const e = await escenario();
+  const s = await delegar(admin);
+  const r = procesar(await conSesion(s, "cambiar_estado_rifa", CERRAR), e, AHORA);
+  assert.equal(r.resultado, "ACEPTADA");
+  assert.equal(r.firmante, dir(admin));
+  assert.equal(r.delegacion.sesion, s.delegacion.sesion, "queda en la auditoria");
+});
+
+test("sesion: otra clave, otra cartera o datos alterados no pasan", async () => {
+  const e = await escenario();
+  const s = await delegar(admin);
+  const intruso = { ...s, clave: Wallet.createRandom() };
+  await assert.rejects(async () => procesar(await conSesion(intruso, "cambiar_estado_rifa", CERRAR), e, AHORA), /no firmo/);
+  // La delegacion de un extrano no sirve para hacerse pasar por el admin.
+  const ajena = await delegar(extrano);
+  await assert.rejects(async () => procesar(await conSesion(ajena, "cambiar_estado_rifa", CERRAR), e, AHORA), /no autorizo/);
+  const buena = await conSesion(s, "cambiar_estado_rifa", CERRAR);
+  assert.throws(() => procesar({ ...buena, datos: { slug: "otra", estado: "CERRADA" } }, e, AHORA), /no firmo/);
+  await assert.rejects(async () => procesar(await conSesion(s, "cambiar_estado_rifa", CERRAR, vendedor), e, AHORA), /no autorizo/);
+});
+
+test("sesion: el rol lo pone la cartera, no la clave", async () => {
+  const e = await escenario();
+  const s = await delegar(vendedor);
+  const r = procesar(await conSesion(s, "crear_rifa", { ...RIFA, slug: "x" }, vendedor), e, AHORA);
+  assert.match(r.motivo, /administrador/);
+  const propia = await delegar(extrano);
+  await assert.rejects(async () => procesar(await conSesion(propia, "cambiar_estado_rifa", CERRAR, extrano), e, AHORA), /no autorizada/);
+  // Quitarle el rol a la cartera anula sus sesiones.
+  const deAdmin = await delegar(admin);
+  e.roles.admins = [];
+  await assert.rejects(async () => procesar(await conSesion(deAdmin, "cambiar_estado_rifa", CERRAR), e, AHORA), /no autorizada/);
+});
+
+test("sesion: vencida o con vigencia excesiva se rechaza", async () => {
+  const e = await escenario();
+  await assert.rejects(async () => procesar(await conSesion(await delegar(admin, AHORA - 1), "cambiar_estado_rifa", CERRAR), e, AHORA), /vencida/);
+  await assert.rejects(async () => procesar(await conSesion(await delegar(admin, AHORA + MAX_SESION_S + 1), "cambiar_estado_rifa", CERRAR), e, AHORA), /vencida/);
+  const mal = await conSesion(await delegar(admin), "cambiar_estado_rifa", CERRAR);
+  assert.throws(() => procesar({ ...mal, delegacion: { sesion: "x" } }, e, AHORA), /mal formada/);
+});
+
+test("sesion: al cerrarla deja de valer, y solo su dueno o un admin puede cerrarla", async () => {
+  const e = await escenario();
+  const s = await delegar(admin);
+  const v = await delegar(vendedor);
+  const ajena = procesar(await conSesion(v, "revocar_sesion", { sesion: s.delegacion.sesion }, vendedor), e, AHORA);
+  assert.match(ajena.motivo, /propia sesion/);
+  assert.equal(procesar(await conSesion(s, "revocar_sesion", { sesion: s.delegacion.sesion }), e, AHORA).resultado, "ACEPTADA");
+  await assert.rejects(async () => procesar(await conSesion(s, "cambiar_estado_rifa", CERRAR), e, AHORA), /Sesion cerrada/);
+  assert.equal(procesar(await firmar(admin, "cambiar_estado_rifa", CERRAR), e, AHORA).resultado, "ACEPTADA", "la cartera sigue valiendo");
+  // Otra sesion nueva funciona.
+  assert.equal(procesar(await conSesion(await delegar(admin), "cambiar_estado_rifa", CERRAR), e, AHORA).resultado, "ACEPTADA");
 });
 
 test("limite de numeros, rango y cierre de ventas", async () => {

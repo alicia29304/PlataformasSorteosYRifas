@@ -8,7 +8,7 @@ export const API = /workers\.dev$|^localhost$/.test(location.hostname)
   ? "/api" : "https://sorteos-web3.aliciagadiaz29304.workers.dev/api";
 export const ZONA = "America/Bogota";
 
-export const cuenta = { direccion: null, firmaCon: null, roles: null, proveedor: null, porWc: false };
+export const cuenta = { direccion: null, firmaCon: null, roles: null, proveedor: null, porWc: false, delegacion: null };
 
 export function h(etiqueta, attrs = {}, ...hijos) {
   const el = document.createElement(etiqueta);
@@ -83,7 +83,7 @@ export async function conectarCartera(alListo) {
 
 export async function desconectarCartera(alListo) {
   if (cuenta.porWc) await cuenta.proveedor.disconnect().catch(() => {});
-  Object.assign(cuenta, { direccion: null, firmaCon: null, proveedor: null, porWc: false });
+  Object.assign(cuenta, { direccion: null, firmaCon: null, proveedor: null, porWc: false, delegacion: null });
   alListo();
 }
 
@@ -101,8 +101,21 @@ export async function firmarYEnviar(accion, datos, alAvanzar, comprobante = null
   if (await hayVersionNueva()) {
     throw Object.assign(new Error("Hay una versión nueva de la página. Recárgala antes de firmar."), { recargar: true });
   }
+  const nonce = await enviarFirmado(accion, datos, alAvanzar, comprobante);
+  alAvanzar("Registrando…", "Suele tardar entre 15 y 30 segundos. Deja esta ventana abierta.", true);
+  for (let i = 0; i < 30; i++) {
+    await pausa(4000);
+    const r = await pedir(`/resultado/${nonce}`);
+    if (r.estado === "ACEPTADA") return nonce;
+    if (r.estado === "RECHAZADA") throw new Error(r.motivo || "La acción fue rechazada");
+  }
+  throw new Error("Sigue en proceso. Revisa en unos minutos antes de repetirlo.");
+}
+
+/** Firma y envia, sin esperar a que se aplique. Devuelve el nonce. */
+export async function enviarFirmado(accion, datos, alAvanzar = () => {}, comprobante = null) {
   const base = { accion, firmante: cuenta.direccion, fecha: Math.floor(Date.now() / 1000), nonce: crypto.randomUUID(), datos };
-  alAvanzar(`${cuenta.porWc ? "Abre tu cartera y confirma" : "Confirma"} la firma`, "No cuesta nada ni usa gas.");
+  if (!cuenta.delegacion) alAvanzar(`${cuenta.porWc ? "Abre tu cartera y confirma" : "Confirma"} la firma`, "No cuesta nada ni usa gas.");
   let firma;
   try {
     firma = await cuenta.proveedor.request({ method: "personal_sign", params: [mensajeHex(base), cuenta.firmaCon] });
@@ -111,15 +124,8 @@ export async function firmarYEnviar(accion, datos, alAvanzar, comprobante = null
     throw e;
   }
   alAvanzar("Enviando…", "");
-  await pedir("/accion", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...base, firma, ...(comprobante ? { comprobante } : {}) }) });
-  alAvanzar("Registrando…", "Suele tardar entre 15 y 30 segundos. Deja esta ventana abierta.", true);
-  for (let i = 0; i < 30; i++) {
-    await pausa(4000);
-    const r = await pedir(`/resultado/${base.nonce}`);
-    if (r.estado === "ACEPTADA") return base.nonce;
-    if (r.estado === "RECHAZADA") throw new Error(r.motivo || "La acción fue rechazada");
-  }
-  throw new Error("Sigue en proceso. Revisa en unos minutos antes de repetirlo.");
+  await pedir("/accion", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...base, firma, ...(cuenta.delegacion ? { delegacion: cuenta.delegacion } : {}), ...(comprobante ? { comprobante } : {}) }) });
+  return base.nonce;
 }
 
 // ------------------------------- Modal -------------------------------
@@ -254,14 +260,14 @@ async function permisoLectura(slug) {
   if (vigente && Date.now() / 1000 - vigente.fecha < 540) return vigente;
   const base = { accion: "ver_comprobantes", firmante: cuenta.direccion, fecha: Math.floor(Date.now() / 1000), nonce: crypto.randomUUID(), datos: { slug } };
   const firma = await cuenta.proveedor.request({ method: "personal_sign", params: [mensajeHex(base), cuenta.firmaCon] });
-  const permiso = { ...base, firma };
+  const permiso = { ...base, firma, ...(cuenta.delegacion ? { delegacion: cuenta.delegacion } : {}) };
   permisosLectura.set(slug, permiso);
   return permiso;
 }
 
 /** El comprobante es privado: se pide con la firma de una cartera autorizada para esa rifa. */
 export async function modalComprobante(slug, orden) {
-  const zona = h("div", { style: "text-align:center" }, h("p", { class: "mut small" }, cuenta.porWc ? "Abre tu cartera y confirma para ver el comprobante." : "Confirma en tu cartera para ver el comprobante."));
+  const zona = h("div", { style: "text-align:center" }, h("p", { class: "mut small" }, cuenta.delegacion ? "Abriendo el comprobante…" : cuenta.porWc ? "Abre tu cartera y confirma para ver el comprobante." : "Confirma en tu cartera para ver el comprobante."));
   mostrarModal("Comprobante de pago", zona);
   try {
     const r = await fetch(`${API}/comprobante`, {

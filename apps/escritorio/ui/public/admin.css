@@ -45,3 +45,4 @@ body { background: var(--bg); color: var(--txt); }
   .nav-item { white-space: nowrap; }
   .content { padding: 18px 16px; }
 }
+.datos-cliente { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 6px; font-weight: 600; }

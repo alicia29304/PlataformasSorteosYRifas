@@ -42,13 +42,20 @@ async function leerDato(env, ruta, ctx, ttl = 8) {
   return texto;
 }
 
+/** Leer un comprobante no pasa por el verificador: la revocacion se mira tambien aqui. */
+async function sesionCerrada(env, ctx, delegacion) {
+  if (delegacion === undefined) return false;
+  const texto = await leerDato(env, "sesiones-revocadas.json", ctx, 5);
+  return Boolean(texto && Object.hasOwn(JSON.parse(texto), String(delegacion?.sesion)));
+}
+
 async function recibirAccion(request, env, ctx) {
   const cuerpo = await request.text();
   if (cuerpo.length > MAX_CUERPO + MAX_COMPROBANTE * 1.4) return json({ error: "Peticion demasiado grande" }, 413);
   let s;
   try { s = JSON.parse(cuerpo); } catch { return json({ error: "JSON invalido" }, 400); }
 
-  const { accion, firmante, fecha, nonce, datos, firma, comprobante } = s ?? {};
+  const { accion, firmante, fecha, nonce, datos, firma, comprobante, delegacion } = s ?? {};
   if (cuerpo.length - (typeof comprobante === "string" ? comprobante.length : 0) > MAX_CUERPO) return json({ error: "Peticion demasiado grande" }, 413);
   if (typeof accion !== "string" || accion.length > 40 || typeof firmante !== "string" || !DIRECCION.test(firmante)
     || !Number.isInteger(fecha) || typeof nonce !== "string" || !NONCE.test(nonce) || typeof firma !== "string"
@@ -57,6 +64,7 @@ async function recibirAccion(request, env, ctx) {
   }
   if (Math.abs(Date.now() / 1000 - fecha) > VENTANA_S) return json({ error: "Firma vencida; revisa la hora del equipo" }, 400);
 
+  if (await sesionCerrada(env, ctx, delegacion)) return json({ error: "Esta sesion se cerro. Entra de nuevo." }, 403);
   let recuperada;
   try { recuperada = recuperarFirmante(s); } catch { return json({ error: "Firma invalida" }, 400); }
   if (recuperada !== firmante) return json({ error: "Firma invalida" }, 403);
@@ -79,7 +87,7 @@ async function recibirAccion(request, env, ctx) {
       Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json",
       "User-Agent": "sorteos-web3-relay", "X-GitHub-Api-Version": "2022-11-28",
     },
-    body: JSON.stringify({ event_type: "accion-firmada", client_payload: { accion, firmante, fecha, nonce, datos, firma } }),
+    body: JSON.stringify({ event_type: "accion-firmada", client_payload: { accion, firmante, fecha, nonce, datos, firma, ...(delegacion !== undefined ? { delegacion } : {}) } }),
   });
   if (r.status !== 204) return json({ error: "GitHub no acepto la accion" }, 502);
   return json({ nonce }, 202);
@@ -112,7 +120,7 @@ async function verComprobante(request, env, ctx) {
   if (cuerpo.length > 4096) return json({ error: "Peticion demasiado grande" }, 413);
   let s;
   try { s = JSON.parse(cuerpo); } catch { return json({ error: "JSON invalido" }, 400); }
-  const { accion, firmante, fecha, nonce, datos, firma, orden } = s ?? {};
+  const { accion, firmante, fecha, nonce, datos, firma, orden, delegacion } = s ?? {};
   const slug = datos?.slug;
   if (accion !== "ver_comprobantes" || typeof firmante !== "string" || !DIRECCION.test(firmante) || !Number.isInteger(fecha)
     || typeof nonce !== "string" || !NONCE.test(nonce) || typeof firma !== "string"
@@ -120,8 +128,9 @@ async function verComprobante(request, env, ctx) {
     return json({ error: "Peticion mal formada" }, 400);
   }
   if (Math.abs(Date.now() / 1000 - fecha) > VENTANA_S) return json({ error: "Firma vencida" }, 403);
+  if (await sesionCerrada(env, ctx, delegacion)) return json({ error: "Esta sesion se cerro. Entra de nuevo." }, 403);
   let recuperada;
-  try { recuperada = recuperarFirmante({ accion, firmante, fecha, nonce, datos, firma }); } catch { return json({ error: "Firma invalida" }, 400); }
+  try { recuperada = recuperarFirmante({ accion, firmante, fecha, nonce, datos, firma, delegacion }); } catch { return json({ error: "Firma invalida" }, 400); }
   if (recuperada !== firmante) return json({ error: "Firma invalida" }, 403);
 
   const roles = JSON.parse(await leerDato(env, "roles.json", ctx, 15));

@@ -8,8 +8,8 @@
 //
 // Las acciones llevan TIPO: el cliente nunca elige que archivo se escribe.
 
-import { keccak256, toUtf8Bytes, verifyMessage } from "ethers";
-import { hashDatos, mensajeAFirmar } from "./mensaje.js";
+import { keccak256, toUtf8Bytes } from "ethers";
+import { MAX_SESION_S, hashDatos, recuperarFirmante } from "./mensaje.js";
 
 export const VENTANA_S = 600;
 export const MAX_NUMEROS_POR_ORDEN = 10;
@@ -55,7 +55,7 @@ function rolDe(roles, direccion) {
 
 /** Comprueba firma, vigencia, nonce y que el firmante tenga algun rol. */
 export function verificarSobre(sobre, estado, ahora = Math.floor(Date.now() / 1000)) {
-  const { accion, firmante, fecha, nonce, datos, firma } = sobre ?? {};
+  const { accion, firmante, fecha, nonce, firma, delegacion } = sobre ?? {};
   if (typeof accion !== "string" || !Object.hasOwn(ACCIONES, accion)) throw new ErrorFirma("Accion desconocida");
   if (typeof firmante !== "string" || !DIRECCION.test(firmante)) throw new ErrorFirma("Firmante invalido");
   if (!entero(fecha) || Math.abs(ahora - fecha) > VENTANA_S) throw new ErrorFirma("Firma vencida o con fecha fuera de rango");
@@ -63,11 +63,12 @@ export function verificarSobre(sobre, estado, ahora = Math.floor(Date.now() / 10
   if (Object.hasOwn(estado.nonces, nonce)) throw new ErrorFirma("Firma ya utilizada");
   if (typeof firma !== "string") throw new ErrorFirma("Falta la firma");
 
+  if (delegacion !== undefined && Object.hasOwn(estado.sesionesRevocadas, delegacion?.sesion)) throw new ErrorFirma("Sesion cerrada");
   let recuperada;
   try {
-    recuperada = verifyMessage(mensajeAFirmar({ accion, firmante, fecha, nonce, datos }), firma).toLowerCase();
-  } catch {
-    throw new ErrorFirma("Firma mal formada");
+    recuperada = recuperarFirmante(sobre, ahora);
+  } catch (e) {
+    throw new ErrorFirma(delegacion !== undefined ? e.message : "Firma mal formada");
   }
   if (recuperada !== firmante) throw new ErrorFirma("La firma no corresponde al firmante");
 
@@ -181,6 +182,15 @@ const ACCIONES = {
     return { rifa: d.slug };
   },
 
+  // Cerrar sesion: desde aqui esa clave deja de valer aunque alguien la copie.
+  revocar_sesion(estado, d, { rol, delegacion, ahora }) {
+    soloCampos(d, ["sesion"]);
+    regla(typeof d.sesion === "string" && DIRECCION.test(d.sesion), "Sesion invalida");
+    regla(rol === "ADMIN" || delegacion?.sesion === d.sesion, "Solo puedes cerrar tu propia sesion");
+    estado.sesionesRevocadas[d.sesion] = ahora + MAX_SESION_S;
+    return { roles: true };
+  },
+
   adjuntar_comprobante(estado, d, { rol, firmante }) {
     soloCampos(d, ["slug", "orden", "comprobanteHash"]);
     const rifa = rifaDe(estado, d.slug);
@@ -274,13 +284,14 @@ function purgarNonces(nonces, ahora) {
  */
 export function procesar(sobre, estado, ahora = Math.floor(Date.now() / 1000), azar = null) {
   const rol = verificarSobre(sobre, estado, ahora);
-  const { accion, firmante, fecha, nonce, datos, firma } = sobre;
+  const { accion, firmante, fecha, nonce, datos, firma, delegacion } = sobre;
   purgarNonces(estado.nonces, ahora);
   estado.nonces[nonce] = fecha;
+  for (const [s, hasta] of Object.entries(estado.sesionesRevocadas)) if (hasta < ahora) delete estado.sesionesRevocadas[s];
 
-  const base = { accion, firmante, rol, fecha, nonce, firma, procesado: ahora };
+  const base = { accion, firmante, rol, fecha, nonce, firma, ...(delegacion ? { delegacion } : {}), procesado: ahora };
   try {
-    ACCIONES[accion](estado, datos, { rol, firmante, nonce, fecha, azar });
+    ACCIONES[accion](estado, datos, { rol, firmante, nonce, fecha, azar, delegacion, ahora });
     return { ...base, datos, resultado: "ACEPTADA" };
   } catch (e) {
     // La auditoria es publica y estos datos no pasaron la validacion (pueden traer un

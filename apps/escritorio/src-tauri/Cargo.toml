@@ -1,6 +1,6 @@
 [package]
 name = "sorteos-web3-admin"
-version = "0.2.1"
+version = "0.3.0"
 description = "Administrador de Sorteos Web3"
 authors = ["alicia29304"]
 edition = "2021"
@@ -17,6 +17,7 @@ tauri-build = { version = "2", features = [] }
 tauri = { version = "2", features = [] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+keyring = { version = "3", features = ["windows-native"] }
 
 [profile.release]
 panic = "abort"

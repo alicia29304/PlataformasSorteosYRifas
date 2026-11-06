@@ -2,20 +2,79 @@
 // firma cada cambio y el verificador comprueba que sea de un administrador.
 
 import {
-  avisarError, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
+  avisarError, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, enviarFirmado, fecha, firmarYEnviar, h,
   modalAdjuntar, modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe,
 } from "../../web3/src/comun.js";
 import { descifrar } from "../../web3/src/cifrado.js";
+import { crearClaveSesion, delegacionHex, firmarConClave } from "../../../services/verificador/src/mensaje.js";
 
 const WEB = "https://sorteos-web3.aliciagadiaz29304.workers.dev";
 const raiz = document.getElementById("app");
 const enTauri = Boolean(window.__TAURI__);
-const estado = { pestana: "panel", rifaPanel: null, rifaPagos: null, filtroEstado: "TODOS", filtroVendedor: "TODOS", clave: null };
+const estado = { pestana: "panel", rifaPanel: null, rifaPagos: null, filtroEstado: "TODOS", filtroVendedor: "TODOS", claves: [] };
+
+// ------------------------------- Sesion en este equipo -------------------------------
+// Solo en la app instalada: se guarda en el Administrador de credenciales de Windows.
+// En el navegador nada se recuerda y la cartera firma cada cambio.
+
+const DIAS_SESION = 90;
+const secreto = {
+  leer: async (nombre) => (enTauri ? window.__TAURI__.core.invoke("leer_secreto", { nombre }) : null),
+  guardar: async (nombre, valor) => { if (enTauri) await window.__TAURI__.core.invoke("guardar_secreto", { nombre, valor }); },
+  borrar: async (nombre) => { if (enTauri) await window.__TAURI__.core.invoke("borrar_secreto", { nombre }); },
+};
+
+function activarSesion({ cartera, privada, delegacion }) {
+  Object.assign(cuenta, {
+    direccion: cartera, firmaCon: delegacion.sesion, porWc: false, delegacion,
+    proveedor: { request: async ({ params }) => firmarConClave(privada, params[0]) },
+  });
+}
+
+/** Al abrir la app: si este equipo ya esta autorizado, entra sin pedir nada. */
+async function restaurar() {
+  try {
+    estado.claves = JSON.parse((await secreto.leer("claves")) ?? "[]");
+    const guardada = JSON.parse((await secreto.leer("sesion")) ?? "null");
+    if (!guardada) return;
+    if (guardada.delegacion.expira <= Date.now() / 1000 + 60) { await secreto.borrar("sesion"); return; }
+    activarSesion(guardada);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+/** Unica firma en el telefono: autoriza a este equipo y suelta la conexion con la cartera. */
+async function autorizarEquipo() {
+  if (!enTauri || !cuenta.direccion || rolDe() !== "ADMIN") return;
+  const clave = crearClaveSesion();
+  const expira = Math.floor(Date.now() / 1000) + DIAS_SESION * 86400;
+  const cerrar = mostrarModal("Autorizar este equipo", h("p", {}, "Abre tu cartera y confirma una sola vez. Después no volverá a pedirte firmas hasta que cierres sesión."));
+  const conexion = cuenta.proveedor;
+  const porWc = cuenta.porWc;
+  try {
+    const firma = await conexion.request({ method: "personal_sign", params: [delegacionHex({ firmante: cuenta.direccion, sesion: clave.direccion, expira }), cuenta.firmaCon] });
+    const datos = { cartera: cuenta.direccion, privada: clave.privada, delegacion: { sesion: clave.direccion, expira, firma } };
+    await secreto.guardar("sesion", JSON.stringify(datos));
+    activarSesion(datos);
+    if (porWc) conexion.disconnect().catch(() => {});
+  } finally {
+    cerrar();
+  }
+}
+
+async function salir() {
+  // Se invalida la clave para siempre; si no hay internet, de todos modos vence sola.
+  if (cuenta.delegacion) await enviarFirmado("revocar_sesion", { sesion: cuenta.delegacion.sesion }).catch(console.error);
+  await secreto.borrar("sesion").catch(console.error);
+  await desconectarCartera(pintar);
+}
+
+const entrar = () => conectarCartera(() => autorizarEquipo().catch(avisarError).then(pintar)).catch(avisarError);
 
 const pintar = () => (cuenta.direccion ? panel() : inicio()).catch((e) => {
   raiz.replaceChildren(h("main", { class: "contenedor" }, h("p", { class: "err" }, e.message), h("button", { class: "btn-ghost", onclick: pintar }, "Reintentar")));
 });
-const salir = () => desconectarCartera(pintar);
 
 function abrirWeb(url) {
   if (enTauri) window.__TAURI__.core.invoke("open_external", { url }).catch(avisarError);
@@ -50,10 +109,12 @@ function campo(etiqueta, attrs = {}) {
 async function inicio() {
   raiz.replaceChildren(h("main", { class: "contenedor", style: "max-width:520px;text-align:center" },
     h("h1", {}, "🎟️ Sorteos Web3"), h("p", { class: "mut" }, "Administración"),
-    h("button", { class: "btn", style: "width:100%", onclick: () => conectarCartera(pintar).catch(avisarError) }, window.ethereum ? "Conectar cartera" : "Conectar con QR"),
+    h("button", { class: "btn", style: "width:100%", onclick: entrar }, window.ethereum ? "Conectar cartera" : "Conectar con QR"),
     h("p", { class: "mut small", style: "margin-top:14px" }, window.ethereum
       ? "Tu cartera firmará cada cambio. No hay contraseñas."
-      : "Escanea el código con MetaMask o Trust Wallet en tu celular. No hay contraseñas: tu cartera firma cada cambio."),
+      : enTauri
+        ? "Escanea el código con MetaMask o Trust Wallet y autoriza este equipo. Solo se pide una vez, hasta que cierres sesión."
+        : "Escanea el código con MetaMask o Trust Wallet en tu celular. No hay contraseñas: tu cartera firma cada cambio."),
     enTauri ? h("button", { class: "btn-ghost", style: "width:100%;margin-top:6px", onclick: () => abrirWeb(`${WEB}/admin/`) }, "Usar la extensión de MetaMask (abre el navegador)") : null));
 }
 
@@ -278,33 +339,45 @@ const nombreCartera = (dir) => {
   return cuenta.roles.vendedores[dir]?.nombre ?? corta(dir);
 };
 
-function pedirClave(alListo) {
+function pedirClave() {
   const entrada = h("input", { class: "inp", type: "file", accept: ".json,application/json" });
   const error = h("div");
   const cerrar = mostrarModal("Clave de descifrado",
-    h("p", { class: "mut small" }, "Selecciona tu archivo de clave privada. Solo se usa en esta sesión: no se guarda ni se envía."),
+    h("p", { class: "mut small" }, enTauri
+      ? "Selecciona tu archivo de clave privada. Se guarda protegido en este equipo y no se vuelve a pedir."
+      : "Selecciona tu archivo de clave privada. Solo se usa mientras esta página esté abierta."),
     entrada, error);
   entrada.addEventListener("change", async () => {
     try {
-      estado.clave = JSON.parse(await entrada.files[0].text());
+      const clave = JSON.parse(await entrada.files[0].text());
+      if (clave.kty !== "EC" || !clave.d) throw new Error("no es una clave");
+      if (!estado.claves.some((c) => c.d === clave.d)) estado.claves.push(clave);
+      await secreto.guardar("claves", JSON.stringify(estado.claves));
       cerrar();
-      alListo();
+      pintar();
     } catch {
       error.replaceChildren(h("p", { class: "err" }, "Ese archivo no es una clave válida."));
     }
   });
 }
 
-async function verDatosPrivados(orden) {
-  try {
-    const d = await descifrar(orden.privado, estado.clave);
-    mostrarModal("Datos del comprador",
-      h("p", {}, h("b", {}, "Nombre: "), `${d.nombre} ${d.apellido}`), h("p", {}, h("b", {}, "Teléfono: "), d.telefono),
-      h("p", {}, h("b", {}, "Referencia: "), d.referencia || "—"));
-  } catch {
-    estado.clave = null;
-    avisarError(new Error("Esta clave no abre estos datos. Puede que se hayan cifrado con otra."));
+/** Prueba las claves guardadas: al cambiar de clave, los pagos viejos siguen abriendo con la anterior. */
+async function datosDe(orden) {
+  for (const clave of estado.claves) {
+    try {
+      return await descifrar(orden.privado, clave);
+    } catch { /* con esta clave no abre: se prueba la siguiente */ }
   }
+  return null;
+}
+
+function lineaCliente(d) {
+  if (!estado.claves.length) return h("button", { class: "btn-ghost small", style: "margin-top:6px", onclick: pedirClave }, "🔑 Cargar clave para ver los datos");
+  if (!d) return h("div", { class: "small", style: "margin-top:6px" }, "Cifrado con otra clave. ", h("button", { class: "btn-ghost small", onclick: pedirClave }, "Agregar clave"));
+  return h("div", { class: "datos-cliente" },
+    h("span", {}, `👤 ${[d.nombre, d.apellido].filter(Boolean).join(" ")}`),
+    h("span", {}, `📞 ${d.telefono}`),
+    d.referencia ? h("span", {}, `🧾 ${d.referencia}`) : null);
 }
 
 async function vistaPagos(rifas) {
@@ -318,6 +391,7 @@ async function vistaPagos(rifas) {
 
   const opcion = (valor, txt, actual) => h("option", { value: valor, selected: valor === actual }, txt);
   const selector = (opciones, alCambiar) => h("select", { class: "inp", style: "width:auto", onchange: (e) => { alCambiar(e.target.value); pintar(); } }, opciones);
+  const datos = await Promise.all(visibles.map(([, o]) => datosDe(o)));
   const recaudo = visibles.filter(([, o]) => o.estado === "PAGADO").reduce((t, [, o]) => t + o.numeros.length * rifa.precioCop, 0);
 
   return h("section", {},
@@ -327,13 +401,13 @@ async function vistaPagos(rifas) {
       selector(["TODOS", "PENDIENTE", "PAGADO", "ANULADO"].map((e) => opcion(e, e === "TODOS" ? "Todos los estados" : e, estado.filtroEstado)), (v) => { estado.filtroEstado = v; }),
       selector([opcion("TODOS", "Todos los vendedores", estado.filtroVendedor), ...vendedores.map((v) => opcion(v, nombreCartera(v), estado.filtroVendedor))], (v) => { estado.filtroVendedor = v; })),
     h("p", { class: "mut small" }, `${visibles.length} pago(s) · Pagado en esta vista: ${cop(recaudo)}`),
-    visibles.length === 0 ? h("p", { class: "mut" }, "No hay pagos con este filtro.") : visibles.map(([id, o]) => h("div", { class: "orden" },
+    visibles.length === 0 ? h("p", { class: "mut" }, "No hay pagos con este filtro.") : visibles.map(([id, o], i) => h("div", { class: "orden" },
       h("div", {}, h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")), ` · ${o.seudonimo}${o.ciudad ? ` · ${o.ciudad}` : ""} · ${o.metodo} · ${o.estado}`,
+        lineaCliente(datos[i]),
         h("div", { class: "mut small" }, `Registró ${nombreCartera(o.registradoPor)} · ${fecha(new Date(o.registrado * 1000).toISOString())}`),
         o.aprobadoPor ? h("div", { class: "mut small" }, `Aprobó ${nombreCartera(o.aprobadoPor)}`) : null,
         o.motivoAnulacion ? h("div", { class: "mut small" }, `Anulado: ${o.motivoAnulacion}`) : null),
       h("div", { class: "acciones" },
-        h("button", { class: "btn-ghost small", onclick: () => (estado.clave ? verDatosPrivados(o) : pedirClave(() => verDatosPrivados(o))) }, "Ver datos"),
         o.comprobanteHash ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Comprobante")
           : o.estado !== "ANULADO" ? h("button", { class: "btn-ghost small", onclick: () => modalAdjuntar((c) => ejecutar("Adjuntando comprobante", "adjuntar_comprobante", { slug: rifa.slug, orden: id, comprobanteHash: c.hash }, c.base64)) }, "Adjuntar comprobante") : null,
         o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => ejecutar("Aprobando pago", "aprobar_pago", { slug: rifa.slug, orden: id }) }, "Aprobar") : null,
@@ -343,4 +417,4 @@ async function vistaPagos(rifas) {
         } }, "Anular") : null))));
 }
 
-pintar();
+restaurar().then(pintar);

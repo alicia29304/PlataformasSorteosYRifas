@@ -53,3 +53,34 @@ for (let i = 0; i < 20; i++) {
   const e = await (await fetch(`${BASE}/api/resultado/${bueno.nonce}`)).json();
   if (e.estado !== "EN_PROCESO") { console.log(`Resultado tras ${(i + 1) * 4}s:`, e.estado); break; }
 }
+
+// Sesion delegada: firma de la clave local, con la cartera autorizando una sola vez.
+const { mensajeDelegacion } = await import("../services/verificador/src/mensaje.js");
+const admin = new Wallet(env.TEST_ADMIN_PRIVATE_KEY);
+const clave = Wallet.createRandom();
+const sesionDir = clave.address.toLowerCase();
+const expira = Math.floor(Date.now() / 1000) + 3600;
+const delegacion = { sesion: sesionDir, expira, firma: await admin.signMessage(mensajeDelegacion({ firmante: admin.address.toLowerCase(), sesion: sesionDir, expira })) };
+async function conSesion(accion, d) {
+  const base = { accion, firmante: admin.address.toLowerCase(), fecha: Math.floor(Date.now() / 1000), nonce: randomUUID(), datos: d };
+  return { ...base, delegacion, firma: await clave.signMessage(mensajeAFirmar(base)) };
+}
+async function resultado(nonce) {
+  for (let i = 0; i < 25; i++) {
+    await new Promise((r) => setTimeout(r, 4000));
+    const e = await (await fetch(`${BASE}/api/resultado/${nonce}`)).json();
+    if (e.estado !== "EN_PROCESO") return e.estado;
+  }
+  return "SIN_REGISTRO";
+}
+const cerradaOk = { slug: "rifa-numero-dos", estado: "CERRADA" };
+const s1 = await conSesion("cambiar_estado_rifa", cerradaOk);
+console.log("Sesion, cambio sin tocar la cartera:", await enviar(s1), await resultado(s1.nonce));
+const lectura = await conSesion("ver_comprobantes", { slug: SLUG });
+console.log("Sesion, leer comprobante inexistente:", (await fetch(`${BASE}/api/comprobante`, { method: "POST", body: JSON.stringify({ ...lectura, orden: "00000000-0000-4000-8000-000000000000" }) })).status, "(404 = paso la firma)");
+const fin = await conSesion("revocar_sesion", { sesion: sesionDir });
+console.log("Cerrar sesion:", await enviar(fin), await resultado(fin.nonce));
+await new Promise((r) => setTimeout(r, 8000));
+console.log("Sesion cerrada, otro cambio:", await enviar(await conSesion("cambiar_estado_rifa", cerradaOk)));
+const l2 = await conSesion("ver_comprobantes", { slug: SLUG });
+console.log("Sesion cerrada, leer:", (await fetch(`${BASE}/api/comprobante`, { method: "POST", body: JSON.stringify({ ...l2, orden: "00000000-0000-4000-8000-000000000000" }) })).status, "(debe ser 403)");

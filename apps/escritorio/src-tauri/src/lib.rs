@@ -17,10 +17,43 @@ fn open_external(url: String) -> Result<(), String> {
     r.map(|_| ()).map_err(|e| e.to_string())
 }
 
+const SERVICIO: &str = "SorteosWeb3Admin";
+
+/// Solo estos dos secretos: la interfaz no puede leer otras credenciales del usuario.
+fn entrada(nombre: &str) -> Result<keyring::Entry, String> {
+    if nombre != "sesion" && nombre != "claves" {
+        return Err("secreto desconocido".into());
+    }
+    keyring::Entry::new(SERVICIO, nombre).map_err(|e| e.to_string())
+}
+
+/// Administrador de credenciales de Windows: protegido con la cuenta del usuario.
+#[tauri::command]
+fn guardar_secreto(nombre: String, valor: String) -> Result<(), String> {
+    entrada(&nombre)?.set_password(&valor).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn leer_secreto(nombre: String) -> Result<Option<String>, String> {
+    match entrada(&nombre)?.get_password() {
+        Ok(v) => Ok(Some(v)),
+        Err(keyring::Error::NoEntry) => Ok(None),
+        Err(e) => Err(e.to_string()),
+    }
+}
+
+#[tauri::command]
+fn borrar_secreto(nombre: String) -> Result<(), String> {
+    match entrada(&nombre)?.delete_credential() {
+        Ok(()) | Err(keyring::Error::NoEntry) => Ok(()),
+        Err(e) => Err(e.to_string()),
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![open_external])
+        .invoke_handler(tauri::generate_handler![open_external, guardar_secreto, leer_secreto, borrar_secreto])
         .run(tauri::generate_context!())
         .expect("error al iniciar la aplicacion");
 }

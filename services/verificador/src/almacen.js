@@ -17,6 +17,7 @@ export function cargar(dir) {
   return {
     roles: leer(join(dir, "roles.json"), { admins: [], vendedores: {} }),
     nonces: leer(join(dir, "nonces.json"), {}),
+    sesionesRevocadas: leer(join(dir, "sesiones-revocadas.json"), {}),
     rifas,
   };
 }
@@ -26,6 +27,7 @@ export function guardar(dir, estado, auditoria) {
   mkdirSync(join(dir, "auditoria"), { recursive: true });
   escribir(join(dir, "roles.json"), estado.roles);
   escribir(join(dir, "nonces.json"), estado.nonces);
+  escribir(join(dir, "sesiones-revocadas.json"), estado.sesionesRevocadas);
   for (const [slug, rifa] of Object.entries(estado.rifas)) escribir(join(dir, "rifas", `${slug}.json`), rifa);
   escribir(join(dir, "rifas", "index.json"), Object.values(estado.rifas).map(
     ({ slug, titulo, estado: est, precioCop, min, max, finVentas, fechaSorteo, ganador }) => ({ slug, titulo, estado: est, precioCop, min, max, finVentas, fechaSorteo, numeroGanador: ganador?.numero ?? null })
