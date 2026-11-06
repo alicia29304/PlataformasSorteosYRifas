@@ -121,6 +121,8 @@ async function inicio() {
 // ------------------------------- Panel -------------------------------
 
 async function panel() {
+  // Antes de comprobar el rol: una sesion restaurada aun no tiene la lista.
+  cuenta.roles = await pedir("/roles");
   if (rolDe() !== "ADMIN") {
     raiz.replaceChildren(h("main", { class: "contenedor", style: "max-width:520px;text-align:center" },
       h("h2", {}, "Esta cartera no es administradora"),
@@ -129,7 +131,6 @@ async function panel() {
       h("button", { class: "btn-ghost", onclick: salir }, "Salir")));
     return;
   }
-  cuenta.roles = await pedir("/roles");
   const rifas = await pedir("/rifas");
   const menu = [["panel", "📊 Panel", vistaPanel], ["rifas", "🎟️ Rifas", vistaRifas], ["pagos", "🧾 Comprobantes", vistaPagos], ["ganadores", "🏆 Ganadores", vistaGanadores], ["vendedores", "🧑‍💼 Usuarios vendedores", vistaVendedores]];
   const contenido = await menu.find(([id]) => id === estado.pestana)[2](rifas);

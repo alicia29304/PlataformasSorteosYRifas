@@ -35,7 +35,7 @@ console.log("Vista publica sin datos cifrados:", !JSON.stringify(rifa).includes(
 const web = await fetch(BASE + "/");
 console.log("Web HTTP", web.status, "| CSP:", Boolean(web.headers.get("content-security-policy")), "| no-sniff:", web.headers.get("x-content-type-options"));
 
-const datos = { slug: SLUG, estado: "ACTIVA" };
+const datos = { slug: "rifa-numero-dos", estado: "CERRADA" };
 console.log("JSON roto:", (await fetch(`${BASE}/api/accion`, { method: "POST", body: "{" })).status);
 console.log("Sin firma:", await enviar({ accion: "crear_rifa", firmante: env.TEST_ADMIN_ADDRESS, fecha: Math.floor(Date.now() / 1000), nonce: randomUUID(), datos: {} }));
 const ajeno = await sobre(Wallet.createRandom().privateKey, "cambiar_estado_rifa", datos);
