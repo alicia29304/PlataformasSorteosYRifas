@@ -9,6 +9,72 @@
   "fechaSorteo": "2026-11-07T21:41:00.000Z",
   "estado": "ACTIVA",
   "creada": 1794001383,
-  "numeros": {},
-  "ordenes": {}
+  "numeros": {
+    "197": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "374": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "401": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "521": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "599": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "646": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "658": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "804": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "872": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "991": {
+      "estado": "PENDIENTE",
+      "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    }
+  },
+  "ordenes": {
+    "1c151211-72f5-4a12-ab69-ad3ef6905b48": {
+      "numeros": [
+        197,
+        374,
+        401,
+        521,
+        599,
+        646,
+        658,
+        804,
+        872,
+        991
+      ],
+      "seudonimo": "Joseph L.",
+      "ciudad": "Bogotá",
+      "metodo": "NEQUI",
+      "privado": "enc1:BGZN1KTMpXmySAAplONCcAB+S1iI0JrnTUiqzmVTCZSNgdPhqae1kBTs8CrSXXMJiUNaRan+u19ilgyhQL28MRNRgCaATWqS+K+4Ol2x8okUb2o9+PJJapgQKAiI9nD84OIW+xYmHxhIoL/8S9DEi15/rW33/tvf5bs1/xWG+OcuNZgD5gGldsy0jLutmWP9sJTwEdhN+yVWdrIx7snjRlg/l5PR3t8ZRhT7idE=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1794002288,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": "4d5716318214851092973f6b9c51cdf1fabb11a01d3814b56982423c55cbfac8"
+    }
+  }
 }
