@@ -2,5 +2,12 @@
   "admins": [
     "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280"
   ],
-  "vendedores": {}
+  "vendedores": {
+    "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5": {
+      "nombre": "Vendedor de prueba",
+      "rifas": [
+        "rifa-prueba-web3"
+      ]
+    }
+  }
 }
