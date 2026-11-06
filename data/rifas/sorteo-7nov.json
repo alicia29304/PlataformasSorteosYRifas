@@ -11,7 +11,7 @@
   "creada": 1794001383,
   "numeros": {
     "25": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "142": {
@@ -39,7 +39,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "282": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "289": {
@@ -71,11 +71,11 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "428": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "429": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "462": {
@@ -103,7 +103,7 @@
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "580": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "599": {
@@ -111,7 +111,7 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "608": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "646": {
@@ -127,11 +127,11 @@
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "762": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "802": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "804": {
@@ -159,11 +159,11 @@
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
     "953": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "979": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "991": {
@@ -261,11 +261,11 @@
       "ciudad": "Madrid",
       "metodo": "Efectivo",
       "privado": "enc1:BEEKjDJVI4PktvP9idyUXzqMqMuMqc3ZGVCD+1jJmB0J8iBHcpSy9j5TXRmSh/ha9rXD3xcSgMMJifdpJQPELCqFmKTQ6dQtCK8ClLKkMK6QvcJFqlgdc8vg9Wx0MHneZbF8UpitMIF8XFo+hQ918CEXOpJdPF94VEmMdS/aWJlHwzDPDesfEhzf60lBXNykMePSZa4Z5kBV1I4NMFG/3ELbBIUowsIQ4Yw=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1794007194,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+      "aprobado": 1794007290,
       "comprobanteHash": "5d3d741a17ac3adddca3ad73af8466b95d8b9c84eac427df8c4a8924332ce4fb"
     }
   }
