@@ -15,11 +15,11 @@
       "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
     },
     "11": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "14": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "17": {
@@ -35,11 +35,11 @@
       "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
     },
     "33": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "36": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "37": {
@@ -55,7 +55,7 @@
       "orden": "678b6be1-4be2-47a6-b0cf-78e31d572196"
     },
     "45": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "47": {
@@ -91,7 +91,7 @@
       "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
     },
     "79": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "81": {
@@ -103,19 +103,19 @@
       "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
     },
     "89": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "90": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "94": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "95": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
     "98": {
@@ -205,11 +205,11 @@
       "ciudad": "Bogotá",
       "metodo": "NEQUI",
       "privado": "enc1:BJ9tzD5xoPY2NcBostXbrk8w1MukO9UpdmgW2crOZTJH329KGK7j9168B8KzhibF1bM5fF79fPzqCla+S30SXrBV4Rba7M9kMAr2MnqCUT+bcgfNzPhg/ivp782KGJbhkPJrPcBg2RQ5BA6r7lJiUhsTex2yq3ULbjtkX6tEQfsmOD1ggAZGcV8ZwuHQlz+kR59DUmcSlbAJhuh2IUV1AxocsNvin8SURP122w==",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1793986452,
-      "aprobadoPor": null,
-      "aprobado": null
+      "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "aprobado": 1793986951
     },
     "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2": {
       "numeros": [
