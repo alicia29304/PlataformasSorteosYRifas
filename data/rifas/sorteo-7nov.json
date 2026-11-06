@@ -10,6 +10,10 @@
   "estado": "ACTIVA",
   "creada": 1794001383,
   "numeros": {
+    "25": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
+    },
     "142": {
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
@@ -33,6 +37,10 @@
     "257": {
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
+    "282": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "289": {
       "estado": "PAGADO",
@@ -62,6 +70,14 @@
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
+    "428": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
+    },
+    "429": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
+    },
     "462": {
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
@@ -86,9 +102,17 @@
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
+    "580": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
+    },
     "599": {
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "608": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "646": {
       "estado": "PAGADO",
@@ -101,6 +125,14 @@
     "755": {
       "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
+    },
+    "762": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
+    },
+    "802": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "804": {
       "estado": "PAGADO",
@@ -125,6 +157,14 @@
     "921": {
       "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
+    },
+    "953": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
+    },
+    "979": {
+      "estado": "PENDIENTE",
+      "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
     "991": {
       "estado": "PAGADO",
@@ -203,6 +243,30 @@
       "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "aprobado": 1794006657,
       "comprobanteHash": "e121e33aede303ba5a40430979b8d26549d2b1d91cb8e316036d1373f2ef2916"
+    },
+    "dd058d75-7b6f-4509-8833-aa26cd5b84b4": {
+      "numeros": [
+        25,
+        282,
+        428,
+        429,
+        580,
+        608,
+        762,
+        802,
+        953,
+        979
+      ],
+      "seudonimo": "Armida S.",
+      "ciudad": "Madrid",
+      "metodo": "Efectivo",
+      "privado": "enc1:BEEKjDJVI4PktvP9idyUXzqMqMuMqc3ZGVCD+1jJmB0J8iBHcpSy9j5TXRmSh/ha9rXD3xcSgMMJifdpJQPELCqFmKTQ6dQtCK8ClLKkMK6QvcJFqlgdc8vg9Wx0MHneZbF8UpitMIF8XFo+hQ918CEXOpJdPF94VEmMdS/aWJlHwzDPDesfEhzf60lBXNykMePSZa4Z5kBV1I4NMFG/3ELbBIUowsIQ4Yw=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1794007194,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": "5d3d741a17ac3adddca3ad73af8466b95d8b9c84eac427df8c4a8924332ce4fb"
     }
   }
 }
