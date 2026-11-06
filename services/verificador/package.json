@@ -1,0 +1,13 @@
+{
+  "name": "verificador-firmas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Verifica acciones firmadas con cartera y las aplica a data/.",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ethers": "6.13.5"
+  }
+}

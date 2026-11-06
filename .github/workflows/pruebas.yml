@@ -1,0 +1,26 @@
+name: Pruebas del verificador
+
+on:
+  push:
+    branches: [main]
+    paths: ["services/verificador/**", ".github/workflows/pruebas.yml"]
+  pull_request:
+    paths: ["services/verificador/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: services/verificador
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+      - run: npm test
