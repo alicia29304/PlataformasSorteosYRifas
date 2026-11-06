@@ -47,3 +47,7 @@ body { background: var(--bg); color: var(--txt); }
 }
 .datos-cliente { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 6px; font-weight: 600; }
 .clave-privada { display: block; word-break: break-all; font: 600 .82rem ui-monospace, Consolas, monospace; margin-top: 6px; }
+.filtros { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 12px 0; }
+.inp.filtro { width: auto; }
+.filtro-fecha { display: flex; align-items: center; gap: 6px; }
+.topbar .acciones { flex-wrap: wrap; }

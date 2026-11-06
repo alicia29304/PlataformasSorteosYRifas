@@ -1,6 +1,6 @@
 [package]
 name = "sorteos-web3-admin"
-version = "0.4.2"
+version = "0.5.0"
 description = "Administrador de Sorteos Web3"
 authors = ["alicia29304"]
 edition = "2021"

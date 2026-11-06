@@ -114,7 +114,19 @@ const ACCIONES = {
     const rifa = rifaDe(estado, d.slug);
     regla(["ACTIVA", "CERRADA"].includes(d.estado), "Estado invalido");
     regla(!(d.estado === "ACTIVA" && rifa.ganador), "Esta rifa ya tiene ganador");
+    regla(!(d.estado === "ACTIVA" && rifa.archivada), "Restaura la rifa antes de reabrirla");
     rifa.estado = d.estado;
+    return { rifa: d.slug };
+  },
+
+  // Solo la oculta en la administracion: no borra nada y se puede deshacer.
+  archivar_rifa(estado, d, { rol }) {
+    soloAdmin(rol);
+    soloCampos(d, ["slug", "archivada"]);
+    const rifa = rifaDe(estado, d.slug);
+    regla(typeof d.archivada === "boolean", "Valor invalido");
+    regla(!d.archivada || rifa.estado !== "ACTIVA", "Cierra las ventas antes de archivar");
+    rifa.archivada = d.archivada;
     return { rifa: d.slug };
   },
 

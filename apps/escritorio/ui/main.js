@@ -2,7 +2,7 @@
 // firma cada cambio y el verificador comprueba que sea de un administrador.
 
 import {
-  avisarError, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, enviarFirmado, fecha, firmarYEnviar, h,
+  ZONA, avisarError, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, enviarFirmado, fecha, firmarYEnviar, h,
   modalAdjuntar, modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe,
 } from "../../web3/src/comun.js";
 import { descifrar } from "../../web3/src/cifrado.js";
@@ -11,7 +11,7 @@ import { crearClaveSesion, delegacionHex, direccionDe, firmarConClave } from "..
 const WEB = "https://sorteos-web3.aliciagadiaz29304.workers.dev";
 const raiz = document.getElementById("app");
 const enTauri = Boolean(window.__TAURI__);
-const estado = { pestana: "panel", rifaActual: null, filtroEstado: "TODOS", filtroVendedor: "TODOS", claves: [] };
+const estado = { pestana: "panel", rifaActual: null, filtroEstado: "TODOS", filtroVendedor: "TODOS", claves: [], verArchivadas: false, buscaPagos: "", desde: "", hasta: "" };
 
 // ------------------------------- Sesion en este equipo -------------------------------
 // Solo en la app instalada: se guarda en el Administrador de credenciales de Windows.
@@ -196,8 +196,31 @@ function elegirRifa(rifas) {
   if (rifas.some((r) => r.slug === estado.rifaActual)) return;
   const reciente = (a, b) => (b.creada ?? 0) - (a.creada ?? 0) || Date.parse(b.finVentas) - Date.parse(a.finVentas);
   const activas = rifas.filter((r) => r.estado === "ACTIVA").sort(reciente);
-  estado.rifaActual = (activas[0] ?? [...rifas].sort(reciente)[0]).slug;
+  const visibles = rifas.filter((r) => !r.archivada).sort(reciente);
+  estado.rifaActual = (activas[0] ?? visibles[0] ?? [...rifas].sort(reciente)[0]).slug;
 }
+
+/** Las archivadas siguen disponibles, pero aparte y al final de la lista. */
+function opcionesRifa(rifas) {
+  const opcion = (r) => h("option", { value: r.slug, selected: r.slug === estado.rifaActual }, r.titulo);
+  const archivadas = rifas.filter((r) => r.archivada);
+  return [...rifas.filter((r) => !r.archivada).map(opcion), archivadas.length ? h("optgroup", { label: "Archivadas" }, archivadas.map(opcion)) : null];
+}
+
+/** Boton para alternar entre lo activo y lo archivado; `visibles` es lo que toca mostrar. */
+function filtroArchivo(rifas) {
+  const cuantas = rifas.filter((r) => r.archivada).length;
+  return {
+    visibles: rifas.filter((r) => Boolean(r.archivada) === estado.verArchivadas),
+    boton: estado.verArchivadas || cuantas
+      ? h("button", { class: "btn-ghost", onclick: () => { estado.verArchivadas = !estado.verArchivadas; pintar(); } }, estado.verArchivadas ? "← Volver" : `🗄️ Ver archivadas (${cuantas})`)
+      : null,
+  };
+}
+
+const botonArchivar = (r) => (r.estado === "ACTIVA" ? null : r.archivada
+  ? h("button", { class: "btn-ghost small", onclick: () => ejecutar("Restaurando", "archivar_rifa", { slug: r.slug, archivada: false }) }, "Restaurar")
+  : h("button", { class: "btn-ghost small", onclick: () => ejecutar("Archivando", "archivar_rifa", { slug: r.slug, archivada: true }) }, "🗄️ Archivar"));
 
 const encabezadoPagina = (titulo, subtitulo, ...acciones) => h("div", { class: "topbar" },
   h("div", {}, h("h1", { class: "page-title" }, titulo), subtitulo ? h("p", { class: "mut" }, subtitulo) : null), h("div", { class: "acciones" }, acciones));
@@ -218,8 +241,7 @@ async function vistaPanel(rifas) {
   const celda = (t, v) => h("div", {}, h("div", { class: "mut small" }, t), h("b", {}, v));
   return h("section", {},
     encabezadoPagina("Panel de control", "Estado general del sorteo",
-      rifas.length > 1 ? h("select", { class: "inp", style: "width:auto", onchange: (e) => { estado.rifaActual = e.target.value; pintar(); } },
-        rifas.map((x) => h("option", { value: x.slug, selected: x.slug === estado.rifaActual }, x.titulo))) : null),
+      rifas.length > 1 ? h("select", { class: "inp", style: "width:auto", onchange: (e) => { estado.rifaActual = e.target.value; pintar(); } }, opcionesRifa(rifas)) : null),
     h("div", { class: "stats" }, dato(pendientes, "Pagos pendientes"), dato(vendidos, "Números vendidos"), dato(total, "Total de números"), dato(`${avance}%`, "Avance de venta")),
     h("div", { class: "tarjeta" },
       h("h3", { style: "margin:0 0 12px" }, r.estado === "ACTIVA" ? "Rifa activa" : "Rifa cerrada"),
@@ -234,9 +256,10 @@ async function vistaPanel(rifas) {
 // ------------------------------- Ganadores -------------------------------
 
 function vistaGanadores(rifas) {
-  return Promise.all(rifas.map((r) => pedir(`/rifas/${r.slug}`))).then((lista) => h("section", {},
-    encabezadoPagina("Ganadores", "Asigna el número de un sorteo externo o sortea entre los números vendidos."),
-    lista.length === 0 ? h("p", { class: "mut" }, "Aún no hay rifas.") : lista.map(tarjetaGanador)));
+  const { visibles, boton } = filtroArchivo(rifas);
+  return Promise.all(visibles.map((r) => pedir(`/rifas/${r.slug}`))).then((lista) => h("section", {},
+    encabezadoPagina("Ganadores", estado.verArchivadas ? "Rifas archivadas." : "Asigna el número de un sorteo externo o sortea entre los números vendidos.", boton),
+    lista.length === 0 ? h("p", { class: "mut" }, estado.verArchivadas ? "No hay rifas archivadas." : "No hay rifas pendientes.") : lista.map(tarjetaGanador)));
 }
 
 function tarjetaGanador(r) {
@@ -250,10 +273,11 @@ function tarjetaGanador(r) {
       h("p", {}, h("b", {}, g.vendido ? `${g.seudonimo}${g.ciudad ? ` · ${g.ciudad}` : ""}` : "Número sin vender: el sorteo queda sin ganador")),
       h("p", { class: "mut small" }, g.modo === "EXTERNO" ? `Sorteo externo: ${g.fuente}` : `Sorteo interno entre ${g.azar.participantes} números · azar público drand, ronda ${g.azar.ronda}`),
       g.vendido ? h("p", { class: "mut small" }, "Abre sus datos en Comprobantes para contactarlo.") : null,
-      h("button", { class: "btn-ghost small", onclick: async () => {
-        const motivo = await confirmar("Anular ganador", "Quedará registrado públicamente que este resultado se anuló.", { conMotivo: true, boton: "Continuar" });
-        ejecutar("Anulando ganador", "anular_ganador", { slug: r.slug, motivo });
-      } }, "Anular ganador"));
+      h("div", { class: "acciones" }, botonArchivar(r),
+        h("button", { class: "btn-ghost small", onclick: async () => {
+          const motivo = await confirmar("Anular ganador", "Quedará registrado públicamente que este resultado se anuló.", { conMotivo: true, boton: "Continuar" });
+          ejecutar("Anulando ganador", "anular_ganador", { slug: r.slug, motivo });
+        } }, "Anular ganador")));
   } else if (abierta) {
     cuerpo.push(h("p", { class: "mut" }, "Las ventas siguen abiertas. Ciérralas para poder declarar el ganador."),
       h("button", { class: "btn small", onclick: () => ejecutar("Cerrando ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "CERRADA" }) }, "Cerrar ventas"));
@@ -261,7 +285,7 @@ function tarjetaGanador(r) {
     cuerpo.push(h("p", { class: "mut" }, `Hay ${pendientes} pago(s) pendientes. Apruébalos o anúlalos antes: un comprador con pago en revisión no puede quedar por fuera.`),
       h("button", { class: "btn small", onclick: () => { Object.assign(estado, { pestana: "pagos", rifaActual: r.slug, filtroEstado: "PENDIENTE" }); pintar(); } }, "Revisar pagos"));
   } else {
-    cuerpo.push(h("p", { class: "mut small" }, `${pagados} número(s) vendidos.`), h("div", { class: "acciones" },
+    cuerpo.push(h("p", { class: "mut small" }, `${pagados} número(s) vendidos.`), h("div", { class: "acciones" }, botonArchivar(r),
       h("button", { class: "btn small", onclick: () => modalExterno(r) }, "🎯 Sorteo externo"),
       h("button", { class: "btn small", disabled: pagados === 0, onclick: async () => {
         await confirmar("Sortear entre los vendidos", `Participan ${pagados} número(s). El azar lo pone drand, una fuente pública que nadie controla, después de tu firma. El resultado queda publicado.`, { boton: "Continuar" });
@@ -303,9 +327,10 @@ const aSlug = (t) => t.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().rep
 const aIso = (local) => new Date(`${local}:00-05:00`).toISOString();
 
 function vistaRifas(rifas) {
+  const { visibles, boton } = filtroArchivo(rifas);
   return h("section", {},
-    encabezadoPagina("Rifas", "Crea rifas y controla sus ventas.", h("button", { class: "btn", onclick: modalNuevaRifa }, "+ Nueva rifa")),
-    rifas.length === 0 ? h("p", { class: "mut" }, "Aún no hay rifas.") : rifas.map((r) => h("div", { class: "orden" },
+    encabezadoPagina("Rifas", estado.verArchivadas ? "Rifas archivadas." : "Crea rifas y controla sus ventas.", boton, h("button", { class: "btn", onclick: modalNuevaRifa }, "+ Nueva rifa")),
+    visibles.length === 0 ? h("p", { class: "mut" }, estado.verArchivadas ? "No hay rifas archivadas." : "No hay rifas para mostrar.") : visibles.map((r) => h("div", { class: "orden" },
       h("div", {}, h("b", {}, r.titulo), ` · ${r.estado}`,
         h("div", { class: "mut small" }, `${cop(r.precioCop)} · números ${r.min} a ${r.max}`),
         h("div", { class: "mut small" }, `Cierre: ${fecha(r.finVentas)} · Sorteo: ${fecha(r.fechaSorteo)}`)),
@@ -314,7 +339,8 @@ function vistaRifas(rifas) {
         h("button", { class: "btn-ghost small", onclick: () => { estado.pestana = "pagos"; estado.rifaActual = r.slug; pintar(); } }, "Pagos"),
         r.estado === "ACTIVA"
           ? h("button", { class: "btn-ghost small", onclick: () => ejecutar("Cerrando ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "CERRADA" }) }, "Cerrar ventas")
-          : r.numeroGanador == null ? h("button", { class: "btn-ghost small", onclick: () => ejecutar("Reabriendo ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "ACTIVA" }) }, "Reabrir") : null))));
+          : r.numeroGanador == null && !r.archivada ? h("button", { class: "btn-ghost small", onclick: () => ejecutar("Reabriendo ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "ACTIVA" }) }, "Reabrir") : null,
+        botonArchivar(r)))));
 }
 
 function modalNuevaRifa() {
@@ -524,30 +550,23 @@ function lineaCliente(d) {
     d.referencia ? h("span", {}, `🧾 ${d.referencia}`) : null);
 }
 
+const diaDe = (segundos) => new Date(segundos * 1000).toLocaleDateString("en-CA", { timeZone: ZONA });
+
 async function vistaPagos(rifas) {
   if (rifas.length === 0) return h("p", { class: "mut" }, "Aún no hay rifas.");
   elegirRifa(rifas);
   const rifa = await pedir(`/rifas/${estado.rifaActual}?cifrados=1`);
   const ordenes = Object.entries(rifa.ordenes).sort(([, a], [, b]) => b.registrado - a.registrado);
+  const datos = await Promise.all(ordenes.map(([, o]) => datosDe(o)));
   const vendedores = [...new Set(ordenes.map(([, o]) => o.registradoPor))];
-  const visibles = ordenes.filter(([, o]) => (estado.filtroEstado === "TODOS" || o.estado === estado.filtroEstado)
-    && (estado.filtroVendedor === "TODOS" || o.registradoPor === estado.filtroVendedor));
+  const resumen = h("p", { class: "mut small" });
+  const vacio = h("p", { class: "mut" }, "No hay pagos con este filtro.");
 
-  const opcion = (valor, txt, actual) => h("option", { value: valor, selected: valor === actual }, txt);
-  const selector = (opciones, alCambiar) => h("select", { class: "inp", style: "width:auto", onchange: (e) => { alCambiar(e.target.value); pintar(); } }, opciones);
-  const datos = await Promise.all(visibles.map(([, o]) => datosDe(o)));
-  const recaudo = visibles.filter(([, o]) => o.estado === "PAGADO").reduce((t, [, o]) => t + o.numeros.length * rifa.precioCop, 0);
-
-  return h("section", {},
-    encabezadoPagina("Comprobantes", "Revisa, aprueba o anula los pagos registrados."),
-    h("div", { class: "acciones", style: "margin-bottom:12px" },
-      selector(rifas.map((r) => opcion(r.slug, r.titulo, estado.rifaActual)), (v) => { estado.rifaActual = v; }),
-      selector(["TODOS", "PENDIENTE", "PAGADO", "ANULADO"].map((e) => opcion(e, e === "TODOS" ? "Todos los estados" : e, estado.filtroEstado)), (v) => { estado.filtroEstado = v; }),
-      selector([opcion("TODOS", "Todos los vendedores", estado.filtroVendedor), ...vendedores.map((v) => opcion(v, nombreCartera(v), estado.filtroVendedor))], (v) => { estado.filtroVendedor = v; })),
-    h("p", { class: "mut small" }, `${visibles.length} pago(s) · Pagado en esta vista: ${cop(recaudo)}`),
-    visibles.length === 0 ? h("p", { class: "mut" }, "No hay pagos con este filtro.") : visibles.map(([id, o], i) => h("div", { class: "orden" },
+  const filas = ordenes.map(([id, o], i) => {
+    const d = datos[i];
+    const nodo = h("div", { class: "orden" },
       h("div", {}, h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")), ` · ${o.seudonimo}${o.ciudad ? ` · ${o.ciudad}` : ""} · ${o.metodo} · ${o.estado}`,
-        lineaCliente(datos[i]),
+        lineaCliente(d),
         h("div", { class: "mut small" }, `Registró ${nombreCartera(o.registradoPor)} · ${fecha(new Date(o.registrado * 1000).toISOString())}`),
         o.aprobadoPor ? h("div", { class: "mut small" }, `Aprobó ${nombreCartera(o.aprobadoPor)}`) : null,
         o.motivoAnulacion ? h("div", { class: "mut small" }, `Anulado: ${o.motivoAnulacion}`) : null),
@@ -558,7 +577,69 @@ async function vistaPagos(rifas) {
         o.estado !== "ANULADO" ? h("button", { class: "btn-ghost small", onclick: async () => {
           const motivo = await confirmar("Anular pago", "Los números quedarán libres otra vez.", { conMotivo: true, boton: "Continuar" });
           ejecutar("Anulando pago", "anular_pago", { slug: rifa.slug, orden: id, motivo });
-        } }, "Anular") : null))));
+        } }, "Anular") : null));
+    return {
+      nodo, orden: o, dia: diaDe(o.registrado),
+      texto: [d?.nombre, d?.apellido, d?.referencia, o.seudonimo, o.ciudad].filter(Boolean).join(" ").toLowerCase(),
+      telefono: d?.telefono ?? "",
+    };
+  });
+
+  // Se filtra sin volver a pedir datos: la busqueda responde al escribir.
+  function coincide(f) {
+    const { filtroEstado, filtroVendedor, desde, hasta } = estado;
+    const busca = estado.buscaPagos.trim().toLowerCase();
+    if (filtroEstado !== "TODOS" && f.orden.estado !== filtroEstado) return false;
+    if (filtroVendedor !== "TODOS" && f.orden.registradoPor !== filtroVendedor) return false;
+    if (desde && f.dia < desde) return false;
+    if (hasta && f.dia > hasta) return false;
+    if (!busca) return true;
+    const digitos = busca.replace(/\D/g, "");
+    if (digitos && /^[\d\s+()-]+$/.test(busca)) {
+      return f.telefono.includes(digitos) || f.orden.numeros.includes(Number(digitos));
+    }
+    return f.texto.includes(busca);
+  }
+  function aplicar() {
+    let cuantos = 0;
+    let recaudo = 0;
+    for (const f of filas) {
+      const ver = coincide(f);
+      f.nodo.style.display = ver ? "" : "none";
+      if (ver) {
+        cuantos += 1;
+        if (f.orden.estado === "PAGADO") recaudo += f.orden.numeros.length * rifa.precioCop;
+      }
+    }
+    resumen.textContent = `${cuantos} pago(s) · Pagado en esta vista: ${cop(recaudo)}`;
+    vacio.style.display = cuantos ? "none" : "";
+  }
+
+  const opcion = (valor, txt, actual) => h("option", { value: valor, selected: valor === actual }, txt);
+  const lista = (opciones, alCambiar) => h("select", { class: "inp filtro", onchange: (e) => { alCambiar(e.target.value); aplicar(); } }, opciones);
+  const buscador = h("input", { class: "inp", type: "search", value: estado.buscaPagos, autocomplete: "off",
+    placeholder: estado.claves.length ? "Buscar por teléfono, nombre o número de boleta…" : "Buscar por nombre o número de boleta…",
+    oninput: (e) => { estado.buscaPagos = e.target.value; aplicar(); } });
+  const fechaDesde = h("input", { class: "inp filtro", type: "date", value: estado.desde, oninput: (e) => { estado.desde = e.target.value; aplicar(); } });
+  const fechaHasta = h("input", { class: "inp filtro", type: "date", value: estado.hasta, oninput: (e) => { estado.hasta = e.target.value; aplicar(); } });
+  const limpiar = () => {
+    Object.assign(estado, { buscaPagos: "", desde: "", hasta: "", filtroEstado: "TODOS", filtroVendedor: "TODOS" });
+    pintar();
+  };
+
+  const vista = h("section", {},
+    encabezadoPagina("Comprobantes", "Revisa, aprueba o anula los pagos registrados."),
+    buscador,
+    h("div", { class: "filtros" },
+      h("select", { class: "inp filtro", onchange: (e) => { estado.rifaActual = e.target.value; Object.assign(estado, { buscaPagos: "", desde: "", hasta: "" }); pintar(); } }, opcionesRifa(rifas)),
+      lista(["TODOS", "PENDIENTE", "PAGADO", "ANULADO"].map((e) => opcion(e, e === "TODOS" ? "Todos los estados" : e, estado.filtroEstado)), (v) => { estado.filtroEstado = v; }),
+      lista([opcion("TODOS", "Todos los vendedores", estado.filtroVendedor), ...vendedores.map((v) => opcion(v, nombreCartera(v), estado.filtroVendedor))], (v) => { estado.filtroVendedor = v; }),
+      h("label", { class: "small filtro-fecha" }, "Desde", fechaDesde),
+      h("label", { class: "small filtro-fecha" }, "Hasta", fechaHasta),
+      h("button", { class: "btn-ghost small", onclick: limpiar }, "Limpiar")),
+    resumen, vacio, filas.map((f) => f.nodo));
+  aplicar();
+  return vista;
 }
 
 restaurar().then(pintar);

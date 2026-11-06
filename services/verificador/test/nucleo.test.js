@@ -310,6 +310,20 @@ test("administradores: se agregan y quitan firmando, y siempre queda uno", async
   assert.equal(Object.hasOwn(e.roles.vendedores, dir(vendedor)), false);
 });
 
+test("archivar: solo admin, con ventas cerradas, y se puede deshacer", async () => {
+  const e = await escenario();
+  const archivar = (v) => ({ slug: "prueba", archivada: v });
+  assert.match(procesar(await firmar(admin, "archivar_rifa", archivar(true)), e, AHORA).motivo, /Cierra las ventas/);
+  await cerrar(e);
+  assert.match(procesar(await firmar(vendedor, "archivar_rifa", archivar(true)), e, AHORA).motivo, /administrador/);
+  assert.match(procesar(await firmar(admin, "archivar_rifa", { slug: "prueba", archivada: "si" }), e, AHORA).motivo, /invalido/);
+  assert.equal(procesar(await firmar(admin, "archivar_rifa", archivar(true)), e, AHORA).resultado, "ACEPTADA");
+  assert.equal(e.rifas.prueba.archivada, true);
+  assert.match(procesar(await firmar(admin, "cambiar_estado_rifa", { slug: "prueba", estado: "ACTIVA" }), e, AHORA).motivo, /Restaura/);
+  assert.equal(procesar(await firmar(admin, "archivar_rifa", archivar(false)), e, AHORA).resultado, "ACEPTADA");
+  assert.equal(procesar(await firmar(admin, "cambiar_estado_rifa", { slug: "prueba", estado: "ACTIVA" }), e, AHORA).resultado, "ACEPTADA");
+});
+
 test("limite de numeros, rango y cierre de ventas", async () => {
   const e = await escenario();
   const muchos = Array.from({ length: 11 }, (_, i) => i);
