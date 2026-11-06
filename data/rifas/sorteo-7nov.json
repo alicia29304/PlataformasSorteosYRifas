@@ -11,11 +11,11 @@
   "creada": 1794001383,
   "numeros": {
     "142": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "161": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "197": {
@@ -23,11 +23,11 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "257": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "330": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "374": {
@@ -39,11 +39,11 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "415": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "462": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "521": {
@@ -51,11 +51,11 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "522": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "572": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "599": {
@@ -75,7 +75,7 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "826": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "872": {
@@ -83,7 +83,7 @@
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
     "912": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "991": {
@@ -133,11 +133,11 @@
       "ciudad": "Bogotá",
       "metodo": "NEQUI",
       "privado": "enc1:BKB32SQiZXtNJULdL77oIx8IJB7cXSTOUDGfG+WWy1yWrF9UKD3Au63xuizBtJq1hh/8JlE0y5Xm2pX+V5UqQv3uT3zOoJ+gAKkuMf0vUC0w2o9+jLXgPikmiQghJhToLWhP5Wt9mvVyBb9TOyTK6tU8sbhgXQGOlO84GlC7ns/Nq+XHmIUm6u7G6elbwiRpc+zNRSiEZDfLyC37gEHomYew0gJ9YrXCBTsofQ==",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1794002434,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "aprobado": 1794002580,
       "comprobanteHash": null
     }
   }
