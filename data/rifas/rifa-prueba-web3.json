@@ -10,6 +10,10 @@
   "estado": "ACTIVA",
   "creada": 1793982873,
   "numeros": {
+    "7": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
+    },
     "11": {
       "estado": "PENDIENTE",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
@@ -17,6 +21,10 @@
     "14": {
       "estado": "PENDIENTE",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
+    "17": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
     },
     "19": {
       "estado": "PENDIENTE",
@@ -34,6 +42,10 @@
       "estado": "PENDIENTE",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
     },
+    "37": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
+    },
     "41": {
       "estado": "PAGADO",
       "orden": "0d1cbb90-4ca6-4f67-a8c9-71965b9e587b"
@@ -50,9 +62,29 @@
       "estado": "PAGADO",
       "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
     },
+    "51": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
+    },
+    "54": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
+    },
+    "62": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
+    },
+    "65": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
+    },
     "67": {
       "estado": "PAGADO",
       "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
+    },
+    "71": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
     },
     "76": {
       "estado": "PAGADO",
@@ -61,6 +93,10 @@
     "79": {
       "estado": "PENDIENTE",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
+    "81": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
     },
     "82": {
       "estado": "PENDIENTE",
@@ -81,6 +117,10 @@
     "95": {
       "estado": "PENDIENTE",
       "orden": "ecdd5e47-b257-4509-b2fe-6cb61e64c14e"
+    },
+    "98": {
+      "estado": "PENDIENTE",
+      "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
     }
   },
   "ordenes": {
@@ -168,6 +208,29 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1793986452,
+      "aprobadoPor": null,
+      "aprobado": null
+    },
+    "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2": {
+      "numeros": [
+        7,
+        17,
+        37,
+        51,
+        54,
+        62,
+        65,
+        71,
+        81,
+        98
+      ],
+      "seudonimo": "Luisa A.",
+      "ciudad": "Bogotá",
+      "metodo": "NEQUI",
+      "privado": "enc1:BK0YMiuJ0zEYmJguirTeEHo/HFQiISFQa2XGWVi+aIlb6i3N0SMHO1gewDtoUM2o2Hjikl6sObtBAn6yScGdzVQ4me/7MucovuBYAGchcY+dZSmRU6E97FUiFicXyxDjy+LYKbPzw0RmtKLcYpxS9EhKX6B0tDj/MxauElP6C8MZzfQGvF4JeYEYlRohwrHTNGUJYmij+WlFQn1Px3gIislfxtnWJBTPHV7QEA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1793986746,
       "aprobadoPor": null,
       "aprobado": null
     }
