@@ -94,14 +94,32 @@ async function desconectar() {
   rutear();
 }
 
+const hayVersionNueva = async () => {
+  try {
+    const r = await fetch("./version.json", { cache: "no-store" });
+    return (await r.json()).version !== __VERSION__;
+  } catch {
+    return false; // Sin red o en la copia de IPFS: no se bloquea por esto.
+  }
+};
+
 /** Firma una accion, la envia y espera a que GitHub Actions la aplique. */
 async function firmarYEnviar(accion, datos, alAvanzar) {
+  if (await hayVersionNueva()) {
+    throw Object.assign(new Error("Hay una versión nueva de la página. Recárgala antes de firmar."), { recargar: true });
+  }
   const base = { accion, firmante: cuenta.direccion, fecha: Math.floor(Date.now() / 1000), nonce: crypto.randomUUID(), datos };
-  alAvanzar(`${cuenta.porWc ? "Abre tu cartera y confirma" : "Confirma"} la firma. No cuesta nada ni usa gas.`);
-  const firma = await cuenta.proveedor.request({ method: "personal_sign", params: [mensajeHex(base), cuenta.firmaCon] });
-  alAvanzar("Enviando…");
+  alAvanzar(`${cuenta.porWc ? "Abre tu cartera y confirma" : "Confirma"} la firma`, "No cuesta nada ni usa gas.");
+  let firma;
+  try {
+    firma = await cuenta.proveedor.request({ method: "personal_sign", params: [mensajeHex(base), cuenta.firmaCon] });
+  } catch (e) {
+    if (e?.code === 4001 || /reject|denied|cancel/i.test(e?.message ?? "")) throw new Error("Cancelaste la firma. No se registró nada.");
+    throw e;
+  }
+  alAvanzar("Enviando…", "");
   await pedir("/accion", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...base, firma }) });
-  alAvanzar("Firma enviada. Se está registrando; puede tardar hasta 30 segundos…");
+  alAvanzar("Registrando…", "Suele tardar entre 15 y 30 segundos. Deja esta ventana abierta.", true);
   for (let i = 0; i < 30; i++) {
     await pausa(4000);
     const r = await pedir(`/resultado/${base.nonce}`);
@@ -122,6 +140,26 @@ function mostrarModal(titulo, ...contenido) {
   document.body.append(fondo);
   return cerrar;
 }
+
+/** Pantalla de espera: reemplaza al formulario mientras se firma y se registra. */
+function panelEspera() {
+  const paso = h("p", { class: "espera-paso" }, "Preparando…");
+  const detalle = h("p", { class: "mut small", style: "margin:0" });
+  const reloj = h("p", { class: "mut small", style: "margin:8px 0 0" });
+  let temporizador = null;
+  const detener = () => clearInterval(temporizador);
+  const avanzar = (titulo, texto = "", contar = false) => {
+    paso.textContent = titulo;
+    detalle.textContent = texto;
+    if (contar && !temporizador) {
+      const inicio = Date.now();
+      temporizador = setInterval(() => { reloj.textContent = `Llevas ${Math.round((Date.now() - inicio) / 1000)} s`; }, 1000);
+    }
+  };
+  return { nodo: h("div", { class: "espera" }, h("div", { class: "espera-giro" }), paso, detalle, reloj), avanzar, detener };
+}
+
+const botonRecargar = () => h("button", { class: "btn small", style: "margin-top:10px", onclick: () => location.reload() }, "Recargar la página");
 
 // ------------------------------- Inicio -------------------------------
 
@@ -227,19 +265,29 @@ async function vistaRifa(slug, ticketInicial = null) {
 }
 
 function filaOrden(rifa, id, o, rol) {
-  const avance = (txt, nodo) => { nodo.textContent = txt; };
-  const estado = h("span", { class: "mut small" });
-  const accion = (nombre, datos) => firmarYEnviar(nombre, datos, (t) => avance(t, estado)).then(() => rutear())
-    .catch((e) => avance(e.message, estado));
+  const accion = async (nombre, datos, titulo) => {
+    const panel = panelEspera();
+    const zona = h("div", {}, panel.nodo);
+    const cerrar = mostrarModal(titulo, zona);
+    try {
+      await firmarYEnviar(nombre, datos, panel.avanzar);
+      panel.detener();
+      cerrar();
+      rutear();
+    } catch (e) {
+      panel.detener();
+      zona.replaceChildren(h("p", { class: "err" }, e.message), e.recargar ? botonRecargar() : "");
+    }
+  };
   return h("div", { class: "orden" },
     h("div", {}, h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")), ` · ${o.seudonimo} · ${o.metodo} · ${o.estado}`,
-      h("div", { class: "mut small" }, `Registró ${corta(o.registradoPor)}`), estado),
+      h("div", { class: "mut small" }, `Registró ${corta(o.registradoPor)}`)),
     h("div", { class: "cuenta" },
       h("button", { class: "btn-ghost small", onclick: () => modalTicket(rifa, o.numeros[0]) }, "Ver ticket"),
-      o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => accion("aprobar_pago", { slug: rifa.slug, orden: id }) }, "Aprobar") : null,
+      o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => accion("aprobar_pago", { slug: rifa.slug, orden: id }, "Aprobando pago") }, "Aprobar") : null,
       rol === "ADMIN" ? h("button", { class: "btn-ghost small", onclick: () => {
         const motivo = window.prompt("Motivo de la anulación");
-        if (motivo?.trim()) accion("anular_pago", { slug: rifa.slug, orden: id, motivo: motivo.trim().slice(0, 200) });
+        if (motivo?.trim()) accion("anular_pago", { slug: rifa.slug, orden: id, motivo: motivo.trim().slice(0, 200) }, "Anulando pago");
       } }, "Anular") : null));
 }
 
@@ -256,21 +304,28 @@ function modalRegistrar(rifa, numeros) {
   const telefono = campo("Teléfono *", { inputmode: "tel", autocomplete: "off", maxlength: 20 });
   const metodo = campo("Método de pago *", { value: "NEQUI", maxlength: 30 });
   const referencia = campo("Referencia del pago", { autocomplete: "off", maxlength: 60 });
-  const estado = h("p", { class: "mut small" });
+  const estado = h("div", { style: "margin-top:10px" });
   const boton = h("button", { class: "btn", style: "width:100%;margin-top:14px", onclick: enviar }, "Firmar y registrar");
-  const contenido = h("div", {},
-    h("p", { class: "mut small" }, `${numeros.map((n) => pad(n, rifa.max)).join(", ")} · ${cop(rifa.precioCop * numeros.length)}`),
+  const resumen = `${numeros.map((n) => pad(n, rifa.max)).join(", ")} · ${cop(rifa.precioCop * numeros.length)}`;
+  const formulario = h("div", {},
+    h("p", { class: "mut small" }, resumen),
     nombre.nodo, apellido.nodo, ciudad.nodo, telefono.nodo, metodo.nodo, referencia.nodo,
     h("p", { class: "mut small" }, "Público: nombre, inicial del apellido y ciudad. El teléfono y la referencia van cifrados: solo el administrador puede leerlos."),
     boton, estado);
+  const contenido = h("div", {}, formulario);
   const cerrarModal = mostrarModal("Registrar pago", contenido);
 
   async function enviar() {
     const nom = nombre.input.value.trim().split(/\s+/)[0];
     const ape = apellido.input.value.trim();
     const tel = telefono.input.value.replace(/\D/g, "");
-    if (!nom || tel.length < 7 || !metodo.input.value.trim()) { estado.textContent = "Completa nombre, teléfono y método de pago."; return; }
-    boton.disabled = true;
+    if (!nom || tel.length < 7 || !metodo.input.value.trim()) { estado.replaceChildren(h("p", { class: "err" }, "Completa nombre, teléfono y método de pago.")); return; }
+    // El formulario se oculta mientras se espera; si algo falla vuelve con sus datos.
+    const panel = panelEspera();
+    formulario.style.display = "none";
+    contenido.append(h("p", { class: "mut small", style: "text-align:center;margin:0" }, resumen), panel.nodo);
+    const tarjeta = contenido.closest(".modal-card");
+    if (tarjeta) tarjeta.scrollTop = 0;
     try {
       const { cifradoPublica } = await pedir("/config");
       const ciudadTxt = ciudad.input.value.trim();
@@ -280,12 +335,16 @@ function modalRegistrar(rifa, numeros) {
         privado: await cifrar({ nombre: nom, apellido: ape, telefono: tel, referencia: referencia.input.value.trim() }, cifradoPublica),
         ...(ciudadTxt ? { ciudad: ciudadTxt } : {}),
       };
-      await firmarYEnviar("registrar_pago", datos, (t) => { estado.textContent = t; });
+      await firmarYEnviar("registrar_pago", datos, panel.avanzar);
+      panel.detener();
       cerrarModal();
       await vistaRifa(rifa.slug, numeros[0]);
     } catch (e) {
-      estado.textContent = e.message;
-      boton.disabled = false;
+      panel.detener();
+      contenido.replaceChildren(formulario);
+      formulario.style.display = "";
+      estado.replaceChildren(h("p", { class: "err" }, e.message), e.recargar ? botonRecargar() : "");
+      estado.scrollIntoView({ block: "center" });
     }
   }
 }
@@ -382,5 +441,9 @@ function rutear() {
   });
 }
 window.addEventListener("hashchange", rutear);
+// Una pestana que vuelve a primer plano se actualiza sola, salvo con un formulario abierto.
+document.addEventListener("visibilitychange", async () => {
+  if (document.visibilityState === "visible" && !document.querySelector(".modal-back") && await hayVersionNueva()) location.reload();
+});
 window.ethereum?.on?.("accountsChanged", () => { if (!cuenta.porWc) { cuenta.direccion = null; rutear(); } });
 rutear();
