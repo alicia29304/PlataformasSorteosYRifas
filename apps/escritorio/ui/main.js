@@ -11,7 +11,7 @@ import { crearClaveSesion, delegacionHex, direccionDe, firmarConClave } from "..
 const WEB = "https://sorteos-web3.aliciagadiaz29304.workers.dev";
 const raiz = document.getElementById("app");
 const enTauri = Boolean(window.__TAURI__);
-const estado = { pestana: "panel", rifaPanel: null, rifaPagos: null, filtroEstado: "TODOS", filtroVendedor: "TODOS", claves: [] };
+const estado = { pestana: "panel", rifaActual: null, filtroEstado: "TODOS", filtroVendedor: "TODOS", claves: [] };
 
 // ------------------------------- Sesion en este equipo -------------------------------
 // Solo en la app instalada: se guarda en el Administrador de credenciales de Windows.
@@ -191,6 +191,14 @@ async function panel() {
     h("main", { class: "content" }, contenido)));
 }
 
+/** La rifa de trabajo, comun a Panel y Comprobantes: por defecto la activa mas reciente. */
+function elegirRifa(rifas) {
+  if (rifas.some((r) => r.slug === estado.rifaActual)) return;
+  const reciente = (a, b) => (b.creada ?? 0) - (a.creada ?? 0) || Date.parse(b.finVentas) - Date.parse(a.finVentas);
+  const activas = rifas.filter((r) => r.estado === "ACTIVA").sort(reciente);
+  estado.rifaActual = (activas[0] ?? [...rifas].sort(reciente)[0]).slug;
+}
+
 const encabezadoPagina = (titulo, subtitulo, ...acciones) => h("div", { class: "topbar" },
   h("div", {}, h("h1", { class: "page-title" }, titulo), subtitulo ? h("p", { class: "mut" }, subtitulo) : null), h("div", { class: "acciones" }, acciones));
 
@@ -198,8 +206,8 @@ const encabezadoPagina = (titulo, subtitulo, ...acciones) => h("div", { class: "
 
 async function vistaPanel(rifas) {
   if (rifas.length === 0) return h("section", {}, encabezadoPagina("Panel de control", "Aún no hay rifas."));
-  if (!rifas.some((r) => r.slug === estado.rifaPanel)) estado.rifaPanel = (rifas.find((r) => r.estado === "ACTIVA") ?? rifas[0]).slug;
-  const r = await pedir(`/rifas/${estado.rifaPanel}`);
+  elegirRifa(rifas);
+  const r = await pedir(`/rifas/${estado.rifaActual}`);
   const total = r.max - r.min + 1;
   const numeros = Object.values(r.numeros);
   const vendidos = numeros.filter((x) => x.estado === "PAGADO").length;
@@ -210,8 +218,8 @@ async function vistaPanel(rifas) {
   const celda = (t, v) => h("div", {}, h("div", { class: "mut small" }, t), h("b", {}, v));
   return h("section", {},
     encabezadoPagina("Panel de control", "Estado general del sorteo",
-      rifas.length > 1 ? h("select", { class: "inp", style: "width:auto", onchange: (e) => { estado.rifaPanel = e.target.value; pintar(); } },
-        rifas.map((x) => h("option", { value: x.slug, selected: x.slug === estado.rifaPanel }, x.titulo))) : null),
+      rifas.length > 1 ? h("select", { class: "inp", style: "width:auto", onchange: (e) => { estado.rifaActual = e.target.value; pintar(); } },
+        rifas.map((x) => h("option", { value: x.slug, selected: x.slug === estado.rifaActual }, x.titulo))) : null),
     h("div", { class: "stats" }, dato(pendientes, "Pagos pendientes"), dato(vendidos, "Números vendidos"), dato(total, "Total de números"), dato(`${avance}%`, "Avance de venta")),
     h("div", { class: "tarjeta" },
       h("h3", { style: "margin:0 0 12px" }, r.estado === "ACTIVA" ? "Rifa activa" : "Rifa cerrada"),
@@ -251,7 +259,7 @@ function tarjetaGanador(r) {
       h("button", { class: "btn small", onclick: () => ejecutar("Cerrando ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "CERRADA" }) }, "Cerrar ventas"));
   } else if (pendientes > 0) {
     cuerpo.push(h("p", { class: "mut" }, `Hay ${pendientes} pago(s) pendientes. Apruébalos o anúlalos antes: un comprador con pago en revisión no puede quedar por fuera.`),
-      h("button", { class: "btn small", onclick: () => { Object.assign(estado, { pestana: "pagos", rifaPagos: r.slug, filtroEstado: "PENDIENTE" }); pintar(); } }, "Revisar pagos"));
+      h("button", { class: "btn small", onclick: () => { Object.assign(estado, { pestana: "pagos", rifaActual: r.slug, filtroEstado: "PENDIENTE" }); pintar(); } }, "Revisar pagos"));
   } else {
     cuerpo.push(h("p", { class: "mut small" }, `${pagados} número(s) vendidos.`), h("div", { class: "acciones" },
       h("button", { class: "btn small", onclick: () => modalExterno(r) }, "🎯 Sorteo externo"),
@@ -303,7 +311,7 @@ function vistaRifas(rifas) {
         h("div", { class: "mut small" }, `Cierre: ${fecha(r.finVentas)} · Sorteo: ${fecha(r.fechaSorteo)}`)),
       h("div", { class: "acciones" },
         h("button", { class: "btn-ghost small", onclick: () => abrirWeb(`${WEB}/#/rifa/${r.slug}`) }, "Ver en la web"),
-        h("button", { class: "btn-ghost small", onclick: () => { estado.pestana = "pagos"; estado.rifaPagos = r.slug; pintar(); } }, "Pagos"),
+        h("button", { class: "btn-ghost small", onclick: () => { estado.pestana = "pagos"; estado.rifaActual = r.slug; pintar(); } }, "Pagos"),
         r.estado === "ACTIVA"
           ? h("button", { class: "btn-ghost small", onclick: () => ejecutar("Cerrando ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "CERRADA" }) }, "Cerrar ventas")
           : r.numeroGanador == null ? h("button", { class: "btn-ghost small", onclick: () => ejecutar("Reabriendo ventas", "cambiar_estado_rifa", { slug: r.slug, estado: "ACTIVA" }) }, "Reabrir") : null))));
@@ -516,8 +524,8 @@ function lineaCliente(d) {
 
 async function vistaPagos(rifas) {
   if (rifas.length === 0) return h("p", { class: "mut" }, "Aún no hay rifas.");
-  if (!rifas.some((r) => r.slug === estado.rifaPagos)) estado.rifaPagos = rifas[0].slug;
-  const rifa = await pedir(`/rifas/${estado.rifaPagos}?cifrados=1`);
+  elegirRifa(rifas);
+  const rifa = await pedir(`/rifas/${estado.rifaActual}?cifrados=1`);
   const ordenes = Object.entries(rifa.ordenes).sort(([, a], [, b]) => b.registrado - a.registrado);
   const vendedores = [...new Set(ordenes.map(([, o]) => o.registradoPor))];
   const visibles = ordenes.filter(([, o]) => (estado.filtroEstado === "TODOS" || o.estado === estado.filtroEstado)
@@ -531,7 +539,7 @@ async function vistaPagos(rifas) {
   return h("section", {},
     encabezadoPagina("Comprobantes", "Revisa, aprueba o anula los pagos registrados."),
     h("div", { class: "acciones", style: "margin-bottom:12px" },
-      selector(rifas.map((r) => opcion(r.slug, r.titulo, estado.rifaPagos)), (v) => { estado.rifaPagos = v; }),
+      selector(rifas.map((r) => opcion(r.slug, r.titulo, estado.rifaActual)), (v) => { estado.rifaActual = v; }),
       selector(["TODOS", "PENDIENTE", "PAGADO", "ANULADO"].map((e) => opcion(e, e === "TODOS" ? "Todos los estados" : e, estado.filtroEstado)), (v) => { estado.filtroEstado = v; }),
       selector([opcion("TODOS", "Todos los vendedores", estado.filtroVendedor), ...vendedores.map((v) => opcion(v, nombreCartera(v), estado.filtroVendedor))], (v) => { estado.filtroVendedor = v; })),
     h("p", { class: "mut small" }, `${visibles.length} pago(s) · Pagado en esta vista: ${cop(recaudo)}`),
