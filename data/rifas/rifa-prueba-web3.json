@@ -23,7 +23,7 @@
       "orden": "0d1cbb90-4ca6-4f67-a8c9-71965b9e587b"
     },
     "42": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "678b6be1-4be2-47a6-b0cf-78e31d572196"
     },
     "47": {
@@ -68,11 +68,11 @@
       "metodo": "NEQUI",
       "codigoHash": "0xa4987d6188f074c345eb59cf7e20aad224bbaf5d4f8fb06f9829a71ad5f64da2",
       "privado": "enc1:F9dTZDZxCAjBLNIRbX/mk0vSqVfZrIRj",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1793982963,
-      "aprobadoPor": null,
-      "aprobado": null
+      "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "aprobado": 1793985283
     },
     "44af29d3-b919-40b1-8510-71d829305cc2": {
       "numeros": [
