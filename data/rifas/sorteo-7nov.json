@@ -1,0 +1,14 @@
+{
+  "slug": "sorteo-7nov",
+  "titulo": "Sorteo 7Nov",
+  "descripcion": "2 Palos",
+  "precioCop": 4000,
+  "min": 1,
+  "max": 999,
+  "finVentas": "2026-11-07T03:30:00.000Z",
+  "fechaSorteo": "2026-11-07T21:41:00.000Z",
+  "estado": "ACTIVA",
+  "creada": 1794001383,
+  "numeros": {},
+  "ordenes": {}
+}

@@ -31,5 +31,16 @@
     "finVentas": "2026-12-06T16:34:33.745Z",
     "fechaSorteo": "2026-12-07T16:34:33.745Z",
     "numeroGanador": 6
+  },
+  {
+    "slug": "sorteo-7nov",
+    "titulo": "Sorteo 7Nov",
+    "estado": "ACTIVA",
+    "precioCop": 4000,
+    "min": 1,
+    "max": 999,
+    "finVentas": "2026-11-07T03:30:00.000Z",
+    "fechaSorteo": "2026-11-07T21:41:00.000Z",
+    "numeroGanador": null
   }
 ]
