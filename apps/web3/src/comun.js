@@ -197,7 +197,53 @@ export async function prepararComprobante(archivo) {
   if (!blob || blob.size > 450 * 1024) throw new Error("La imagen del comprobante es demasiado pesada.");
   const bytes = new Uint8Array(await blob.arrayBuffer());
   const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map((b) => b.toString(16).padStart(2, "0")).join("");
-  return { base64: aBase64(bytes), hash, tamano: bytes.length };
+  return { base64: aBase64(bytes), hash, tamano: bytes.length, blob };
+}
+
+/** Elegir el comprobante viendo la imagen tal como se enviara, antes de firmar. */
+export function selectorComprobante() {
+  let elegido = null;
+  let urlVista = null;
+  const zona = h("div", { style: "margin-top:6px" });
+  const elegir = () => { entrada.value = ""; entrada.click(); }; // limpiar permite repetir el mismo archivo
+  const entrada = h("input", { type: "file", accept: "image/*", style: "display:none", onchange: () => {
+    const archivo = entrada.files[0];
+    if (!archivo) return;
+    zona.replaceChildren(h("p", { class: "mut small" }, "Preparando la imagen…"));
+    prepararComprobante(archivo).then((c) => { elegido = c; pintar(); }).catch((e) => {
+      elegido = null;
+      pintar(e.message || "No se pudo leer esa imagen. Prueba con otra.");
+    });
+  } });
+  function pintar(error = null) {
+    if (urlVista) URL.revokeObjectURL(urlVista);
+    urlVista = elegido ? URL.createObjectURL(elegido.blob) : null;
+    zona.replaceChildren(
+      error ? h("p", { class: "err" }, error) : "",
+      elegido
+        ? h("div", {},
+          h("img", { src: urlVista, alt: "Vista previa del comprobante", style: "display:block;width:100%;max-height:340px;object-fit:contain;border-radius:12px;background:var(--panel2)" }),
+          h("p", { class: "mut small", style: "margin:6px 0" }, `Revisa que se lea bien · ${Math.round(elegido.tamano / 1024)} KB`),
+          h("div", { class: "acciones" },
+            h("button", { type: "button", class: "btn-ghost small", onclick: elegir }, "Cambiar"),
+            h("button", { type: "button", class: "btn-ghost small", onclick: () => { elegido = null; pintar(); } }, "Quitar")))
+        : h("button", { type: "button", class: "btn-ghost", style: "width:100%", onclick: elegir }, "📎 Elegir foto o captura"));
+  }
+  pintar();
+  return { nodo: h("div", {}, entrada, zona), valor: () => elegido };
+}
+
+/** Adjuntar a un pago ya registrado: primero se ve la imagen y luego se firma. */
+export function modalAdjuntar(alConfirmar) {
+  const selector = selectorComprobante();
+  const aviso = h("div");
+  const cerrar = mostrarModal("Adjuntar comprobante", selector.nodo, aviso,
+    h("button", { class: "btn", style: "width:100%;margin-top:14px", onclick: () => {
+      const c = selector.valor();
+      if (!c) { aviso.replaceChildren(h("p", { class: "err" }, "Primero elige la imagen.")); return; }
+      cerrar();
+      alConfirmar(c);
+    } }, "Firmar y adjuntar"));
 }
 
 // Una firma sirve 9 minutos para no pedirla por cada comprobante que se revisa.

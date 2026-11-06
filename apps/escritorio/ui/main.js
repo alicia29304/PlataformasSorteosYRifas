@@ -3,7 +3,7 @@
 
 import {
   avisarError, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
-  modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe,
+  modalAdjuntar, modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe,
 } from "../../web3/src/comun.js";
 import { descifrar } from "../../web3/src/cifrado.js";
 
@@ -23,12 +23,12 @@ function abrirWeb(url) {
 }
 
 /** Lanza una accion firmada con su pantalla de espera y vuelve a pintar al terminar. */
-async function ejecutar(titulo, accion, datos) {
+async function ejecutar(titulo, accion, datos, comprobante = null) {
   const espera = panelEspera();
   const zona = h("div", {}, espera.nodo);
   const cerrar = mostrarModal(titulo, zona);
   try {
-    await firmarYEnviar(accion, datos, espera.avanzar);
+    await firmarYEnviar(accion, datos, espera.avanzar, comprobante);
     espera.detener();
     cerrar();
     await pintar();
@@ -334,7 +334,8 @@ async function vistaPagos(rifas) {
         o.motivoAnulacion ? h("div", { class: "mut small" }, `Anulado: ${o.motivoAnulacion}`) : null),
       h("div", { class: "acciones" },
         h("button", { class: "btn-ghost small", onclick: () => (estado.clave ? verDatosPrivados(o) : pedirClave(() => verDatosPrivados(o))) }, "Ver datos"),
-        o.comprobanteHash ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Comprobante") : null,
+        o.comprobanteHash ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Comprobante")
+          : o.estado !== "ANULADO" ? h("button", { class: "btn-ghost small", onclick: () => modalAdjuntar((c) => ejecutar("Adjuntando comprobante", "adjuntar_comprobante", { slug: rifa.slug, orden: id, comprobanteHash: c.hash }, c.base64)) }, "Adjuntar comprobante") : null,
         o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => ejecutar("Aprobando pago", "aprobar_pago", { slug: rifa.slug, orden: id }) }, "Aprobar") : null,
         o.estado !== "ANULADO" ? h("button", { class: "btn-ghost small", onclick: async () => {
           const motivo = await confirmar("Anular pago", "Los números quedarán libres otra vez.", { conMotivo: true, boton: "Continuar" });

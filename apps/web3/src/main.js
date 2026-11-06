@@ -3,7 +3,7 @@
 
 import {
   avisarError, botonRecargar, config, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
-  hayVersionNueva, modalComprobante, mostrarModal, pad, panelEspera, pedir, prepararComprobante, rolDe,
+  hayVersionNueva, modalAdjuntar, modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe, selectorComprobante,
 } from "./comun.js";
 import { cifrar } from "./cifrado.js";
 import { ticketsAPng, compartirImagen, imprimirImagen } from "./compartirTickets.js";
@@ -148,9 +148,7 @@ function filaOrden(rifa, id, o, rol) {
       zona.replaceChildren(h("p", { class: "err" }, e.message), e.recargar ? botonRecargar() : "");
     }
   };
-  const adjuntar = (archivo) => archivo && prepararComprobante(archivo)
-    .then((c) => accion("adjuntar_comprobante", { slug: rifa.slug, orden: id, comprobanteHash: c.hash }, "Adjuntando comprobante", c.base64))
-    .catch(avisarError);
+  const adjuntar = (c) => accion("adjuntar_comprobante", { slug: rifa.slug, orden: id, comprobanteHash: c.hash }, "Adjuntando comprobante", c.base64);
   return h("div", { class: "orden" },
     h("div", {}, h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")), ` · ${o.seudonimo} · ${o.metodo} · ${o.estado}`,
       h("div", { class: "mut small" }, `Registró ${corta(o.registradoPor)}`)),
@@ -158,8 +156,7 @@ function filaOrden(rifa, id, o, rol) {
       h("button", { class: "btn-ghost small", onclick: () => modalTicket(rifa, o.numeros[0]) }, "Ver ticket"),
       o.comprobanteHash
         ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Ver comprobante")
-        : h("label", { class: "btn-ghost small", style: "cursor:pointer" }, "Adjuntar comprobante",
-          h("input", { type: "file", accept: "image/*", hidden: true, onchange: (e) => adjuntar(e.target.files[0]) })),
+        : o.estado !== "ANULADO" ? h("button", { class: "btn-ghost small", onclick: () => modalAdjuntar(adjuntar) }, "Adjuntar comprobante") : null,
       o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => accion("aprobar_pago", { slug: rifa.slug, orden: id }, "Aprobando pago") }, "Aprobar") : null,
       rol === "ADMIN" ? h("button", { class: "btn-ghost small", onclick: async () => {
         const motivo = await confirmar("Anular pago", "Los números quedarán libres otra vez.", { conMotivo: true, boton: "Continuar" });
@@ -178,10 +175,12 @@ function modalRegistrar(rifa, numeros) {
   const apellido = campo("Apellido", { autocomplete: "off", maxlength: 30 });
   const ciudad = campo("Ciudad", { autocomplete: "off", maxlength: 40 });
   const telefono = campo("Teléfono *", { inputmode: "tel", autocomplete: "off", maxlength: 20 });
-  const metodo = campo("Método de pago *", { value: "NEQUI", maxlength: 30 });
+  const metodoLista = h("select", { class: "inp" }, h("option", { value: "" }, "Elige una opción"),
+    ["Efectivo", "Transferencia"].map((m) => h("option", { value: m }, m)));
+  const metodo = { input: metodoLista, nodo: h("label", { class: "campo small" }, "Método de pago *", metodoLista) };
   const referencia = campo("Referencia del pago", { autocomplete: "off", maxlength: 60 });
-  const archivo = h("input", { class: "inp", type: "file", accept: "image/*" });
-  const zonaArchivo = h("label", { class: "campo small", style: "display:none" }, "Comprobante de pago (foto o captura)", archivo);
+  const selector = selectorComprobante();
+  const zonaArchivo = h("div", { class: "campo small", style: "display:none" }, "Comprobante de pago", selector.nodo);
   config().then((c) => { if (c.comprobantes) zonaArchivo.style.display = ""; }).catch(() => {});
   const estado = h("div", { style: "margin-top:10px" });
   const boton = h("button", { class: "btn", style: "width:100%;margin-top:14px", onclick: enviar }, "Firmar y registrar");
@@ -208,8 +207,7 @@ function modalRegistrar(rifa, numeros) {
     if (tarjeta) tarjeta.scrollTop = 0;
     try {
       const { cifradoPublica } = await config();
-      panel.avanzar("Preparando…");
-      const comprobante = archivo.files[0] ? await prepararComprobante(archivo.files[0]) : null;
+      const comprobante = selector.valor();
       const ciudadTxt = ciudad.input.value.trim();
       const datos = {
         slug: rifa.slug, numeros, seudonimo: ape ? `${nom} ${ape[0].toUpperCase()}.` : nom,
