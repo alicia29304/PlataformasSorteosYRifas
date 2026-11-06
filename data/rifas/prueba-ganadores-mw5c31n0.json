@@ -92,5 +92,17 @@
       "anulado": 1793991568,
       "motivoAnulacion": "prueba"
     }
-  ]
+  ],
+  "ganador": {
+    "modo": "EXTERNO",
+    "numero": 5,
+    "fuente": "Loteria de Boyaca, prueba",
+    "vendido": true,
+    "orden": "17f1f203-3467-4628-a981-5fc1ea4ee154",
+    "seudonimo": "Luis P.",
+    "ciudad": "Tunja",
+    "declaradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+    "fecha": 1793991595,
+    "azar": null
+  }
 }
