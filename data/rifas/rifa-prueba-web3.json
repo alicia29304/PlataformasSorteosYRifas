@@ -11,7 +11,7 @@
   "creada": 1793982873,
   "numeros": {
     "41": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "0d1cbb90-4ca6-4f67-a8c9-71965b9e587b"
     }
   },
@@ -25,11 +25,11 @@
       "metodo": "NEQUI",
       "codigoHash": "0x9094eb030215d901ebe94b949ceeb89089f1cce3b0fd1a77af6e26b0bd6cc9f1",
       "privado": "enc1:Kx0LnviTyBaAlJDubsaaHsWBpo35Aek0",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1793982907,
-      "aprobadoPor": null,
-      "aprobado": null
+      "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "aprobado": 1793982924
     }
   }
 }
