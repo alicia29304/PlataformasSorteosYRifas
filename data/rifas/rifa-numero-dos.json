@@ -29,5 +29,17 @@
       "anulado": 1793989330,
       "motivoAnulacion": "prueba de seguridad"
     }
+  },
+  "ganador": {
+    "modo": "EXTERNO",
+    "numero": 30,
+    "fuente": "Antioqueñita Día",
+    "vendido": false,
+    "orden": null,
+    "seudonimo": null,
+    "ciudad": null,
+    "declaradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+    "fecha": 1794001003,
+    "azar": null
   }
 }
