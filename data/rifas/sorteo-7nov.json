@@ -10,9 +10,25 @@
   "estado": "ACTIVA",
   "creada": 1794001383,
   "numeros": {
+    "142": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
+    "161": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
     "197": {
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "257": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
+    "330": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "374": {
       "estado": "PAGADO",
@@ -22,9 +38,25 @@
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
+    "415": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
+    "462": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
     "521": {
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "522": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
+    "572": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "599": {
       "estado": "PAGADO",
@@ -42,9 +74,17 @@
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
+    "826": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
     "872": {
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "912": {
+      "estado": "PENDIENTE",
+      "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
     "991": {
       "estado": "PAGADO",
@@ -75,6 +115,30 @@
       "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "aprobado": 1794002325,
       "comprobanteHash": "4d5716318214851092973f6b9c51cdf1fabb11a01d3814b56982423c55cbfac8"
+    },
+    "08876648-df75-420c-acc1-5606e1c52f3d": {
+      "numeros": [
+        142,
+        161,
+        257,
+        330,
+        415,
+        462,
+        522,
+        572,
+        826,
+        912
+      ],
+      "seudonimo": "Juanase M.",
+      "ciudad": "Bogotá",
+      "metodo": "NEQUI",
+      "privado": "enc1:BKB32SQiZXtNJULdL77oIx8IJB7cXSTOUDGfG+WWy1yWrF9UKD3Au63xuizBtJq1hh/8JlE0y5Xm2pX+V5UqQv3uT3zOoJ+gAKkuMf0vUC0w2o9+jLXgPikmiQghJhToLWhP5Wt9mvVyBb9TOyTK6tU8sbhgXQGOlO84GlC7ns/Nq+XHmIUm6u7G6elbwiRpc+zNRSiEZDfLyC37gEHomYew0gJ9YrXCBTsofQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1794002434,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
     }
   }
 }
