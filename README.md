@@ -29,7 +29,8 @@ Cartera autorizada -> firma (sin gas) -> Cloudflare Worker -> GitHub Actions
 | `services/verificador` | Reglas y verificacion de firmas (se ejecuta en GitHub Actions) |
 | `services/relay` | Cloudflare Worker: guarda el token y sirve la lectura publica |
 | `apps/web3` | Web publica estatica |
-| `apps/admin-windows` | App de escritorio del admin (pendiente de adaptar) |
+| `apps/escritorio` | App de administracion (Tauri, instalador MSI) |
+| `docs/GUIA-ADMINISTRADORES.md` | Paso a paso para asignar administradores y pasar a produccion |
 | `execution` | Despliegue y pruebas de punta a punta |
 
 ## Comandos

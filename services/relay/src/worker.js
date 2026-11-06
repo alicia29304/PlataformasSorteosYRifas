@@ -7,6 +7,9 @@
 import { recuperarFirmante } from "../../verificador/src/mensaje.js";
 
 const MAX_CUERPO = 32 * 1024;
+const MAX_COMPROBANTE = 500 * 1024; // bytes de la imagen; el cliente la reduce antes de enviar
+const SHA256 = /^[0-9a-f]{64}$/;
+const CON_COMPROBANTE = ["registrar_pago", "adjuntar_comprobante"];
 const VENTANA_S = 600;
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/;
 const NONCE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
@@ -41,11 +44,12 @@ async function leerDato(env, ruta, ctx, ttl = 8) {
 
 async function recibirAccion(request, env, ctx) {
   const cuerpo = await request.text();
-  if (cuerpo.length > MAX_CUERPO) return json({ error: "Peticion demasiado grande" }, 413);
+  if (cuerpo.length > MAX_CUERPO + MAX_COMPROBANTE * 1.4) return json({ error: "Peticion demasiado grande" }, 413);
   let s;
   try { s = JSON.parse(cuerpo); } catch { return json({ error: "JSON invalido" }, 400); }
 
-  const { accion, firmante, fecha, nonce, datos, firma } = s ?? {};
+  const { accion, firmante, fecha, nonce, datos, firma, comprobante } = s ?? {};
+  if (cuerpo.length - (typeof comprobante === "string" ? comprobante.length : 0) > MAX_CUERPO) return json({ error: "Peticion demasiado grande" }, 413);
   if (typeof accion !== "string" || accion.length > 40 || typeof firmante !== "string" || !DIRECCION.test(firmante)
     || !Number.isInteger(fecha) || typeof nonce !== "string" || !NONCE.test(nonce) || typeof firma !== "string"
     || !datos || typeof datos !== "object") {
@@ -62,6 +66,11 @@ async function recibirAccion(request, env, ctx) {
     return json({ error: "Esta cartera no esta autorizada" }, 403);
   }
 
+  if (comprobante !== undefined) {
+    const fallo = await guardarComprobante(env, accion, datos, comprobante);
+    if (fallo) return fallo;
+  }
+
   const r = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/dispatches`, {
     method: "POST",
     headers: {
@@ -72,6 +81,57 @@ async function recibirAccion(request, env, ctx) {
   });
   if (r.status !== 204) return json({ error: "GitHub no acepto la accion" }, 502);
   return json({ nonce }, 202);
+}
+
+/** La imagen solo se acepta si coincide con el hash que la cartera firmo. */
+async function guardarComprobante(env, accion, datos, comprobante) {
+  if (!env.COMPROBANTES) return json({ error: "Los comprobantes aun no estan activados" }, 503);
+  if (!CON_COMPROBANTE.includes(accion) || typeof comprobante !== "string" || typeof datos.comprobanteHash !== "string" || !SHA256.test(datos.comprobanteHash)) {
+    return json({ error: "Comprobante invalido" }, 400);
+  }
+  let bytes;
+  try { bytes = Uint8Array.from(atob(comprobante), (c) => c.charCodeAt(0)); } catch { return json({ error: "Comprobante invalido" }, 400); }
+  if (bytes.length > MAX_COMPROBANTE) return json({ error: "El comprobante es demasiado pesado" }, 413);
+  if (bytes[0] !== 0xff || bytes[1] !== 0xd8 || bytes[2] !== 0xff) return json({ error: "El comprobante debe ser una imagen" }, 400);
+  const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map((b) => b.toString(16).padStart(2, "0")).join("");
+  if (hash !== datos.comprobanteHash) return json({ error: "El comprobante no coincide con la firma" }, 400);
+  await env.COMPROBANTES.put(`comprobantes/${hash}.jpg`, bytes, { httpMetadata: { contentType: "image/jpeg" } });
+  return null;
+}
+
+/** Entrega un comprobante privado a una cartera con permiso sobre esa rifa. */
+async function verComprobante(request, env, ctx) {
+  if (!env.COMPROBANTES) return json({ error: "Los comprobantes aun no estan activados" }, 503);
+  const cuerpo = await request.text();
+  if (cuerpo.length > 4096) return json({ error: "Peticion demasiado grande" }, 413);
+  let s;
+  try { s = JSON.parse(cuerpo); } catch { return json({ error: "JSON invalido" }, 400); }
+  const { accion, firmante, fecha, nonce, datos, firma, orden } = s ?? {};
+  const slug = datos?.slug;
+  if (accion !== "ver_comprobantes" || typeof firmante !== "string" || !DIRECCION.test(firmante) || !Number.isInteger(fecha)
+    || typeof nonce !== "string" || !NONCE.test(nonce) || typeof firma !== "string"
+    || typeof slug !== "string" || !SLUG.test(slug) || typeof orden !== "string" || !NONCE.test(orden)) {
+    return json({ error: "Peticion mal formada" }, 400);
+  }
+  if (Math.abs(Date.now() / 1000 - fecha) > VENTANA_S) return json({ error: "Firma vencida" }, 403);
+  let recuperada;
+  try { recuperada = recuperarFirmante({ accion, firmante, fecha, nonce, datos, firma }); } catch { return json({ error: "Firma invalida" }, 400); }
+  if (recuperada !== firmante) return json({ error: "Firma invalida" }, 403);
+
+  const roles = JSON.parse(await leerDato(env, "roles.json", ctx, 15));
+  const permitido = roles.admins.includes(firmante)
+    || (Object.hasOwn(roles.vendedores, firmante) && roles.vendedores[firmante].rifas.includes(slug));
+  if (!permitido) return json({ error: "Esta cartera no tiene acceso a esta rifa" }, 403);
+
+  const texto = await leerDato(env, `rifas/${slug}.json`, ctx);
+  const ordenes = texto ? JSON.parse(texto).ordenes : {};
+  const hash = Object.hasOwn(ordenes, orden) ? ordenes[orden].comprobanteHash : null;
+  if (!hash || !SHA256.test(hash)) return json({ error: "Esta orden no tiene comprobante" }, 404);
+  const objeto = await env.COMPROBANTES.get(`comprobantes/${hash}.jpg`);
+  if (!objeto) return json({ error: "Comprobante no encontrado" }, 404);
+  return new Response(objeto.body, {
+    headers: { "Content-Type": "image/jpeg", "Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff", ...CORS },
+  });
 }
 
 /** Resultado de una accion: se busca su nonce en la auditoria de este mes y del anterior. */
@@ -92,15 +152,17 @@ async function resultado(env, nonce, ctx) {
 }
 
 /** Vista publica de una rifa: los datos cifrados no hacen falta en la web. */
-function vistaRifa(texto) {
+function vistaRifa(texto, conCifrados) {
   const rifa = JSON.parse(texto);
+  if (conCifrados) return rifa;
   for (const o of Object.values(rifa.ordenes)) delete o.privado;
   return rifa;
 }
 
-async function api(request, env, ctx, partes) {
+async function api(request, env, ctx, partes, url) {
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
   if (request.method === "POST" && partes[0] === "accion" && partes.length === 1) return recibirAccion(request, env, ctx);
+  if (request.method === "POST" && partes[0] === "comprobante" && partes.length === 1) return verComprobante(request, env, ctx);
   if (request.method !== "GET") return json({ error: "Metodo no permitido" }, 405);
 
   if (partes[0] === "rifas" && partes.length === 1) {
@@ -108,10 +170,13 @@ async function api(request, env, ctx, partes) {
   }
   if (partes[0] === "rifas" && partes.length === 2 && SLUG.test(partes[1])) {
     const texto = await leerDato(env, `rifas/${partes[1]}.json`, ctx);
-    return texto ? json(vistaRifa(texto)) : json({ error: "Rifa no encontrada" }, 404);
+    // Los cifrados ya son publicos en el repositorio: pedirlos no da acceso a su contenido.
+    return texto ? json(vistaRifa(texto, url.searchParams.get("cifrados") === "1")) : json({ error: "Rifa no encontrada" }, 404);
   }
   if (partes[0] === "roles" && partes.length === 1) return json(JSON.parse(await leerDato(env, "roles.json", ctx, 15)));
-  if (partes[0] === "config" && partes.length === 1) return json(JSON.parse(await leerDato(env, "config.json", ctx, 60)));
+  if (partes[0] === "config" && partes.length === 1) {
+    return json({ ...JSON.parse(await leerDato(env, "config.json", ctx, 60)), comprobantes: Boolean(env.COMPROBANTES) });
+  }
   if (partes[0] === "resultado" && partes.length === 2 && NONCE.test(partes[1])) return resultado(env, partes[1], ctx);
   return json({ error: "No encontrado" }, 404);
 }
@@ -121,7 +186,7 @@ export default {
     const url = new URL(request.url);
     if (!url.pathname.startsWith("/api/")) return env.ASSETS.fetch(request);
     try {
-      return await api(request, env, ctx, url.pathname.split("/").filter(Boolean).slice(1));
+      return await api(request, env, ctx, url.pathname.split("/").filter(Boolean).slice(1), url);
     } catch (e) {
       console.error(e.message);
       return json({ error: "Error interno" }, 500);

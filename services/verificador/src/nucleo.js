@@ -20,6 +20,7 @@ export class ErrorRegla extends Error {}
 const DIRECCION = /^0x[0-9a-f]{40}$/;
 const NONCE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/;
+const SHA256 = /^[0-9a-f]{64}$/;
 const CIFRADO = /^enc1:[A-Za-z0-9+/=]{1,8000}$/;
 // Sin digitos: un telefono o documento no puede colarse como nombre publico.
 const SEUDONIMO = /^\p{L}[\p{L}' -]{0,38}(?: \p{L}\.)?$/u;
@@ -87,6 +88,7 @@ const ACCIONES = {
     regla(entero(d.min) && entero(d.max) && d.min >= 0 && d.max >= d.min && d.max - d.min < 100000, "Rango de numeros invalido");
     fechaIso(d.finVentas, "Fecha de cierre");
     fechaIso(d.fechaSorteo, "Fecha de sorteo");
+    regla(Date.parse(d.fechaSorteo) >= Date.parse(d.finVentas), "El sorteo no puede ser antes del cierre de ventas");
     estado.rifas[d.slug] = {
       slug: d.slug, titulo: d.titulo, descripcion: d.descripcion ?? "", precioCop: d.precioCop,
       min: d.min, max: d.max, finVentas: d.finVentas, fechaSorteo: d.fechaSorteo,
@@ -125,7 +127,7 @@ const ACCIONES = {
   },
 
   registrar_pago(estado, d, { rol, firmante, nonce, fecha }) {
-    soloCampos(d, ["slug", "numeros", "seudonimo", "ciudad", "metodo", "privado"]);
+    soloCampos(d, ["slug", "numeros", "seudonimo", "ciudad", "metodo", "privado", "comprobanteHash"]);
     const rifa = rifaDe(estado, d.slug);
     regla(puedeOperar(estado, rol, firmante, d.slug), "Esta rifa no esta asignada a tu cartera");
     regla(rifa.estado === "ACTIVA", "La rifa no esta activa");
@@ -142,10 +144,13 @@ const ACCIONES = {
     // El repositorio es publico: lo privado solo entra cifrado.
     regla(typeof d.privado === "string" && CIFRADO.test(d.privado), "Los datos privados deben ir cifrados");
 
+    regla(d.comprobanteHash === undefined || (typeof d.comprobanteHash === "string" && SHA256.test(d.comprobanteHash)), "Comprobante invalido");
+
     rifa.ordenes[nonce] = {
       numeros: d.numeros, seudonimo: d.seudonimo, ciudad: d.ciudad ?? null, metodo: d.metodo,
       privado: d.privado, estado: "PENDIENTE",
       registradoPor: firmante, registrado: fecha, aprobadoPor: null, aprobado: null,
+      comprobanteHash: d.comprobanteHash ?? null,
     };
     for (const n of d.numeros) rifa.numeros[String(n)] = { estado: "PENDIENTE", orden: nonce };
     return { rifa: d.slug };
@@ -162,6 +167,19 @@ const ACCIONES = {
     orden.aprobadoPor = firmante;
     orden.aprobado = fecha;
     for (const n of orden.numeros) rifa.numeros[String(n)].estado = "PAGADO";
+    return { rifa: d.slug };
+  },
+
+  adjuntar_comprobante(estado, d, { rol, firmante }) {
+    soloCampos(d, ["slug", "orden", "comprobanteHash"]);
+    const rifa = rifaDe(estado, d.slug);
+    regla(puedeOperar(estado, rol, firmante, d.slug), "Esta rifa no esta asignada a tu cartera");
+    const orden = typeof d.orden === "string" && Object.hasOwn(rifa.ordenes, d.orden) ? rifa.ordenes[d.orden] : null;
+    regla(orden, "Orden no encontrada");
+    regla(orden.estado !== "ANULADO", "La orden esta anulada");
+    regla(!orden.comprobanteHash || rol === "ADMIN", "Esta orden ya tiene comprobante");
+    regla(typeof d.comprobanteHash === "string" && SHA256.test(d.comprobanteHash), "Comprobante invalido");
+    orden.comprobanteHash = d.comprobanteHash;
     return { rifa: d.slug };
   },
 

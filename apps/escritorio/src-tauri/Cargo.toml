@@ -1,13 +1,13 @@
 [package]
-name = "sorteos-rifas-admin"
-version = "1.14.3"
-description = "App de administracion de Sorteos y Rifas"
-authors = ["jhonsu01"]
+name = "sorteos-web3-admin"
+version = "0.1.0"
+description = "Administrador de Sorteos Web3"
+authors = ["alicia29304"]
 edition = "2021"
 rust-version = "1.77"
 
 [lib]
-name = "sorteos_rifas_admin_lib"
+name = "sorteos_web3_admin_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

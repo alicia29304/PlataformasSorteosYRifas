@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    sorteos_rifas_admin_lib::run()
+    sorteos_web3_admin_lib::run()
 }

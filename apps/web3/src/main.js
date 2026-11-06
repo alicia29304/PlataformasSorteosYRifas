@@ -1,165 +1,18 @@
 // Web publica. Cualquiera ve las rifas y consulta su ticket; registrar y aprobar pagos
 // exige firmar con una cartera autorizada (MetaMask, Trust Wallet...).
-// Los textos se insertan siempre como texto (h), nunca como HTML.
 
-import { mensajeHex } from "../../../services/verificador/src/mensaje.js";
+import {
+  avisarError, botonRecargar, config, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
+  hayVersionNueva, modalComprobante, mostrarModal, pad, panelEspera, pedir, prepararComprobante, rolDe,
+} from "./comun.js";
 import { cifrar } from "./cifrado.js";
 import { ticketsAPng, compartirImagen, imprimirImagen } from "./compartirTickets.js";
 
-// En la copia de IPFS la API no esta en el mismo origen.
-const API = /workers\.dev$|^localhost$/.test(location.hostname)
-  ? "/api" : "https://sorteos-web3.aliciagadiaz29304.workers.dev/api";
-const ZONA = "America/Bogota";
 const MAX_SEL = 10;
-
 const raiz = document.getElementById("app");
-const cuenta = { direccion: null, firmaCon: null, roles: null, proveedor: null, porWc: false };
+const conectar = () => conectarCartera(rutear);
+const desconectar = () => desconectarCartera(rutear);
 
-function h(etiqueta, attrs = {}, ...hijos) {
-  const el = document.createElement(etiqueta);
-  for (const [k, v] of Object.entries(attrs)) {
-    if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
-    else if (k === "class") el.className = v;
-    else if (v === true) el.setAttribute(k, "");
-    else if (v !== false && v != null) el.setAttribute(k, v);
-  }
-  el.append(...hijos.flat().filter((x) => x != null && x !== false));
-  return el;
-}
-const cop = (n) => `$ ${Number(n).toLocaleString("es-CO")}`;
-const fecha = (iso) => new Date(iso).toLocaleString("es-CO", { timeZone: ZONA, dateStyle: "long", timeStyle: "short" });
-const pad = (n, max) => String(n).padStart(String(max).length, "0");
-const corta = (d) => `${d.slice(0, 6)}…${d.slice(-4)}`;
-const pausa = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function pedir(ruta, opciones) {
-  const r = await fetch(`${API}${ruta}`, opciones);
-  const d = await r.json();
-  if (!r.ok) throw new Error(d.error || "No se pudo completar");
-  return d;
-}
-
-// ------------------------------- Cartera -------------------------------
-
-const rolDe = (slug) => {
-  const { direccion, roles } = cuenta;
-  if (!direccion || !roles) return null;
-  if (roles.admins.includes(direccion)) return "ADMIN";
-  const v = roles.vendedores[direccion];
-  if (!v) return "SIN_ROL";
-  return !slug || v.rifas.includes(slug) ? "VENDEDOR" : "SIN_ROL";
-};
-
-async function iniciarSesion(proveedor, direccion, porWc) {
-  Object.assign(cuenta, { proveedor, porWc, firmaCon: direccion, direccion: direccion.toLowerCase(), roles: await pedir("/roles") });
-  rutear();
-}
-
-async function conectar() {
-  if (window.ethereum) {
-    const [direccion] = await window.ethereum.request({ method: "eth_requestAccounts" });
-    await iniciarSesion(window.ethereum, direccion, false);
-    return;
-  }
-  // Navegador normal (Chrome, Edge...): WalletConnect enlaza con la cartera por QR.
-  const estado = h("p", { class: "mut small" }, "Preparando la conexión…");
-  const zona = h("div", { style: "text-align:center" }, estado);
-  const sitio = `${location.host}${location.pathname}`;
-  const cerrar = mostrarModal("Conectar cartera", zona,
-    h("p", { class: "mut small", style: "margin-top:14px" }, "También puedes abrir la página dentro de la cartera:"),
-    h("div", { class: "cuenta" },
-      h("a", { class: "btn-ghost small", href: `https://metamask.app.link/dapp/${sitio}` }, "Navegador de MetaMask"),
-      h("a", { class: "btn-ghost small", href: `https://link.trustwallet.com/open_url?coin_id=60&url=${encodeURIComponent(location.href)}` }, "Navegador de Trust Wallet")));
-  try {
-    const { conectarWalletConnect, imagenQr } = await import("./walletconnect.js");
-    const proveedor = await conectarWalletConnect(async (uri) => {
-      const u = encodeURIComponent(uri);
-      zona.replaceChildren(
-        h("img", { src: await imagenQr(uri), alt: "Código QR para conectar la cartera", style: "width:240px;height:240px;border-radius:12px" }),
-        h("p", { class: "mut small" }, "Escanéalo con MetaMask o Trust Wallet. Si estás en el celular:"),
-        h("div", { class: "cuenta", style: "justify-content:center" },
-          h("a", { class: "btn small", href: `https://link.trustwallet.com/wc?uri=${u}` }, "Abrir Trust Wallet"),
-          h("a", { class: "btn small", href: `https://metamask.app.link/wc?uri=${u}` }, "Abrir MetaMask")));
-    });
-    cerrar();
-    await iniciarSesion(proveedor, proveedor.accounts[0], true);
-  } catch (e) {
-    zona.replaceChildren(h("p", { class: "err" }, e.message || "No se pudo conectar"));
-  }
-}
-
-async function desconectar() {
-  if (cuenta.porWc) await cuenta.proveedor.disconnect().catch(() => {});
-  Object.assign(cuenta, { direccion: null, firmaCon: null, proveedor: null, porWc: false });
-  rutear();
-}
-
-const hayVersionNueva = async () => {
-  try {
-    const r = await fetch("./version.json", { cache: "no-store" });
-    return (await r.json()).version !== __VERSION__;
-  } catch {
-    return false; // Sin red o en la copia de IPFS: no se bloquea por esto.
-  }
-};
-
-/** Firma una accion, la envia y espera a que GitHub Actions la aplique. */
-async function firmarYEnviar(accion, datos, alAvanzar) {
-  if (await hayVersionNueva()) {
-    throw Object.assign(new Error("Hay una versión nueva de la página. Recárgala antes de firmar."), { recargar: true });
-  }
-  const base = { accion, firmante: cuenta.direccion, fecha: Math.floor(Date.now() / 1000), nonce: crypto.randomUUID(), datos };
-  alAvanzar(`${cuenta.porWc ? "Abre tu cartera y confirma" : "Confirma"} la firma`, "No cuesta nada ni usa gas.");
-  let firma;
-  try {
-    firma = await cuenta.proveedor.request({ method: "personal_sign", params: [mensajeHex(base), cuenta.firmaCon] });
-  } catch (e) {
-    if (e?.code === 4001 || /reject|denied|cancel/i.test(e?.message ?? "")) throw new Error("Cancelaste la firma. No se registró nada.");
-    throw e;
-  }
-  alAvanzar("Enviando…", "");
-  await pedir("/accion", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...base, firma }) });
-  alAvanzar("Registrando…", "Suele tardar entre 15 y 30 segundos. Deja esta ventana abierta.", true);
-  for (let i = 0; i < 30; i++) {
-    await pausa(4000);
-    const r = await pedir(`/resultado/${base.nonce}`);
-    if (r.estado === "ACEPTADA") return base.nonce;
-    if (r.estado === "RECHAZADA") throw new Error(r.motivo || "La acción fue rechazada");
-  }
-  throw new Error("Sigue en proceso. Revisa en unos minutos antes de repetirlo.");
-}
-
-// ------------------------------- Modal -------------------------------
-
-function mostrarModal(titulo, ...contenido) {
-  const cerrar = () => fondo.remove();
-  const fondo = h("div", { class: "modal-back", onclick: cerrar },
-    h("div", { class: "modal-card", onclick: (e) => e.stopPropagation() },
-      h("div", { class: "modal-top" }, h("h3", { style: "margin:0" }, titulo), h("button", { class: "modal-x", onclick: cerrar }, "✕")),
-      ...contenido));
-  document.body.append(fondo);
-  return cerrar;
-}
-
-/** Pantalla de espera: reemplaza al formulario mientras se firma y se registra. */
-function panelEspera() {
-  const paso = h("p", { class: "espera-paso" }, "Preparando…");
-  const detalle = h("p", { class: "mut small", style: "margin:0" });
-  const reloj = h("p", { class: "mut small", style: "margin:8px 0 0" });
-  let temporizador = null;
-  const detener = () => clearInterval(temporizador);
-  const avanzar = (titulo, texto = "", contar = false) => {
-    paso.textContent = titulo;
-    detalle.textContent = texto;
-    if (contar && !temporizador) {
-      const inicio = Date.now();
-      temporizador = setInterval(() => { reloj.textContent = `Llevas ${Math.round((Date.now() - inicio) / 1000)} s`; }, 1000);
-    }
-  };
-  return { nodo: h("div", { class: "espera" }, h("div", { class: "espera-giro" }), paso, detalle, reloj), avanzar, detener };
-}
-
-const botonRecargar = () => h("button", { class: "btn small", style: "margin-top:10px", onclick: () => location.reload() }, "Recargar la página");
 
 // ------------------------------- Inicio -------------------------------
 
@@ -171,7 +24,6 @@ function encabezado() {
         h("button", { class: "btn-ghost small", onclick: () => desconectar() }, "Salir")]
       : h("button", { class: "btn-ghost small", onclick: () => conectar().catch(avisarError) }, "Soy vendedor: conectar cartera")));
 }
-const avisarError = (e) => mostrarModal("No se pudo", h("p", { class: "err" }, e.message));
 
 async function vistaInicio() {
   const rifas = await pedir("/rifas");
@@ -265,12 +117,12 @@ async function vistaRifa(slug, ticketInicial = null) {
 }
 
 function filaOrden(rifa, id, o, rol) {
-  const accion = async (nombre, datos, titulo) => {
+  const accion = async (nombre, datos, titulo, comprobante = null) => {
     const panel = panelEspera();
     const zona = h("div", {}, panel.nodo);
     const cerrar = mostrarModal(titulo, zona);
     try {
-      await firmarYEnviar(nombre, datos, panel.avanzar);
+      await firmarYEnviar(nombre, datos, panel.avanzar, comprobante);
       panel.detener();
       cerrar();
       rutear();
@@ -279,11 +131,18 @@ function filaOrden(rifa, id, o, rol) {
       zona.replaceChildren(h("p", { class: "err" }, e.message), e.recargar ? botonRecargar() : "");
     }
   };
+  const adjuntar = (archivo) => archivo && prepararComprobante(archivo)
+    .then((c) => accion("adjuntar_comprobante", { slug: rifa.slug, orden: id, comprobanteHash: c.hash }, "Adjuntando comprobante", c.base64))
+    .catch(avisarError);
   return h("div", { class: "orden" },
     h("div", {}, h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")), ` · ${o.seudonimo} · ${o.metodo} · ${o.estado}`,
       h("div", { class: "mut small" }, `Registró ${corta(o.registradoPor)}`)),
     h("div", { class: "cuenta" },
       h("button", { class: "btn-ghost small", onclick: () => modalTicket(rifa, o.numeros[0]) }, "Ver ticket"),
+      o.comprobanteHash
+        ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Ver comprobante")
+        : h("label", { class: "btn-ghost small", style: "cursor:pointer" }, "Adjuntar comprobante",
+          h("input", { type: "file", accept: "image/*", hidden: true, onchange: (e) => adjuntar(e.target.files[0]) })),
       o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => accion("aprobar_pago", { slug: rifa.slug, orden: id }, "Aprobando pago") }, "Aprobar") : null,
       rol === "ADMIN" ? h("button", { class: "btn-ghost small", onclick: () => {
         const motivo = window.prompt("Motivo de la anulación");
@@ -304,13 +163,16 @@ function modalRegistrar(rifa, numeros) {
   const telefono = campo("Teléfono *", { inputmode: "tel", autocomplete: "off", maxlength: 20 });
   const metodo = campo("Método de pago *", { value: "NEQUI", maxlength: 30 });
   const referencia = campo("Referencia del pago", { autocomplete: "off", maxlength: 60 });
+  const archivo = h("input", { class: "inp", type: "file", accept: "image/*" });
+  const zonaArchivo = h("label", { class: "campo small", style: "display:none" }, "Comprobante de pago (foto o captura)", archivo);
+  config().then((c) => { if (c.comprobantes) zonaArchivo.style.display = ""; }).catch(() => {});
   const estado = h("div", { style: "margin-top:10px" });
   const boton = h("button", { class: "btn", style: "width:100%;margin-top:14px", onclick: enviar }, "Firmar y registrar");
   const resumen = `${numeros.map((n) => pad(n, rifa.max)).join(", ")} · ${cop(rifa.precioCop * numeros.length)}`;
   const formulario = h("div", {},
     h("p", { class: "mut small" }, resumen),
-    nombre.nodo, apellido.nodo, ciudad.nodo, telefono.nodo, metodo.nodo, referencia.nodo,
-    h("p", { class: "mut small" }, "Público: nombre, inicial del apellido y ciudad. El teléfono y la referencia van cifrados: solo el administrador puede leerlos."),
+    nombre.nodo, apellido.nodo, ciudad.nodo, telefono.nodo, metodo.nodo, referencia.nodo, zonaArchivo,
+    h("p", { class: "mut small" }, "Público: nombre, inicial del apellido y ciudad. El teléfono y la referencia van cifrados: solo el administrador puede leerlos. El comprobante solo lo ven los vendedores de esta rifa y el administrador."),
     boton, estado);
   const contenido = h("div", {}, formulario);
   const cerrarModal = mostrarModal("Registrar pago", contenido);
@@ -328,15 +190,18 @@ function modalRegistrar(rifa, numeros) {
     const tarjeta = contenido.closest(".modal-card");
     if (tarjeta) tarjeta.scrollTop = 0;
     try {
-      const { cifradoPublica } = await pedir("/config");
+      const { cifradoPublica } = await config();
+      panel.avanzar("Preparando…");
+      const comprobante = archivo.files[0] ? await prepararComprobante(archivo.files[0]) : null;
       const ciudadTxt = ciudad.input.value.trim();
       const datos = {
         slug: rifa.slug, numeros, seudonimo: ape ? `${nom} ${ape[0].toUpperCase()}.` : nom,
         metodo: metodo.input.value.trim(),
         privado: await cifrar({ nombre: nom, apellido: ape, telefono: tel, referencia: referencia.input.value.trim() }, cifradoPublica),
         ...(ciudadTxt ? { ciudad: ciudadTxt } : {}),
+        ...(comprobante ? { comprobanteHash: comprobante.hash } : {}),
       };
-      await firmarYEnviar("registrar_pago", datos, panel.avanzar);
+      await firmarYEnviar("registrar_pago", datos, panel.avanzar, comprobante?.base64);
       panel.detener();
       cerrarModal();
       await vistaRifa(rifa.slug, numeros[0]);

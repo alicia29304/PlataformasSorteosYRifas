@@ -99,3 +99,6 @@ graphify-out/
 apps/web3/dist/
 services/relay/.wrangler/
 .dev.vars
+apps/escritorio/dist/
+apps/escritorio/src-tauri/target/
+apps/escritorio/src-tauri/gen/

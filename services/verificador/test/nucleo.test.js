@@ -122,6 +122,29 @@ test("una accion rechazada no publica lo que trajo", async () => {
   assert.ok(!JSON.stringify(e).includes(TEL), "ni en el estado");
 });
 
+test("comprobantes: al registrar o despues, y solo con hash valido", async () => {
+  const e = await escenario();
+  const H1 = "a".repeat(64);
+  const H2 = "b".repeat(64);
+  const reg = await firmar(vendedor, "registrar_pago", { ...PAGO, comprobanteHash: H1 });
+  assert.equal(procesar(reg, e, AHORA).resultado, "ACEPTADA");
+  assert.equal(e.rifas.prueba.ordenes[reg.nonce].comprobanteHash, H1);
+  assert.match(procesar(await firmar(vendedor, "adjuntar_comprobante", { slug: "prueba", orden: reg.nonce, comprobanteHash: H2 }), e, AHORA).motivo, /ya tiene/);
+  assert.equal(procesar(await firmar(admin, "adjuntar_comprobante", { slug: "prueba", orden: reg.nonce, comprobanteHash: H2 }), e, AHORA).resultado, "ACEPTADA");
+
+  const sin = await firmar(vendedor, "registrar_pago", { ...PAGO, numeros: [20] });
+  procesar(sin, e, AHORA);
+  assert.match(procesar(await firmar(vendedor, "adjuntar_comprobante", { slug: "prueba", orden: sin.nonce, comprobanteHash: "../x" }), e, AHORA).motivo, /invalido/);
+  assert.match(procesar(await firmar(otroVendedor, "adjuntar_comprobante", { slug: "prueba", orden: sin.nonce, comprobanteHash: H2 }), e, AHORA).motivo, /no esta asignada/);
+  assert.equal(procesar(await firmar(vendedor, "adjuntar_comprobante", { slug: "prueba", orden: sin.nonce, comprobanteHash: H2 }), e, AHORA).resultado, "ACEPTADA");
+});
+
+test("el sorteo no puede ser antes del cierre", async () => {
+  const e = await escenario();
+  const r = procesar(await firmar(admin, "crear_rifa", { ...RIFA, slug: "mal", fechaSorteo: "2026-11-30T00:00:00Z" }), e, AHORA);
+  assert.match(r.motivo, /antes del cierre/);
+});
+
 test("limite de numeros, rango y cierre de ventas", async () => {
   const e = await escenario();
   const muchos = Array.from({ length: 11 }, (_, i) => i);

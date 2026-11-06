@@ -1,8 +1,8 @@
 {
-  "name": "sorteos-rifas-admin",
-  "version": "1.0.0",
+  "name": "sorteos-web3-admin",
+  "version": "0.1.0",
   "private": true,
-  "description": "App de administracion de Sorteos y Rifas (Tauri -> MSI)",
+  "description": "Administrador de Sorteos Web3 (Tauri -> MSI)",
   "scripts": {
     "tauri": "tauri",
     "dev": "tauri dev",

@@ -21,3 +21,20 @@ await build({
     __VERSION__: JSON.stringify(VERSION),
   },
 });
+
+// App de administracion: el mismo codigo sirve al instalador de escritorio y a /admin/
+// en la web, para quien firme con la extension de MetaMask del navegador.
+const destino = "../escritorio/dist";
+rmSync(destino, { recursive: true, force: true });
+cpSync("../escritorio/ui/public", destino, { recursive: true });
+for (const hoja of ["estilos.css", "web3.css"]) cpSync(`public/${hoja}`, `${destino}/${hoja}`);
+await build({
+  entryPoints: { app: "../escritorio/ui/main.js" }, outdir: destino, splitting: true, chunkNames: "c-[hash]",
+  bundle: true, minify: true, format: "esm", target: "es2021",
+  define: {
+    "process.env.NODE_ENV": '"production"', global: "globalThis",
+    __WC_PROJECT_ID__: JSON.stringify(idWc),
+    __VERSION__: JSON.stringify(VERSION),
+  },
+});
+cpSync(destino, "dist/admin", { recursive: true });
