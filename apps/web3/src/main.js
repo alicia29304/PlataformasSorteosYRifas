@@ -322,6 +322,7 @@ function modalRegistrar(rifa, numeros) {
     if (!nom || tel.length < 7 || !metodo.input.value.trim()) { estado.replaceChildren(h("p", { class: "err" }, "Completa nombre, teléfono y método de pago.")); return; }
     // El formulario se oculta mientras se espera; si algo falla vuelve con sus datos.
     const panel = panelEspera();
+    estado.replaceChildren();
     formulario.style.display = "none";
     contenido.append(h("p", { class: "mut small", style: "text-align:center;margin:0" }, resumen), panel.nodo);
     const tarjeta = contenido.closest(".modal-card");
