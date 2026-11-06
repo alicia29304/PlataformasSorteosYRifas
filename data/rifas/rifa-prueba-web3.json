@@ -11,15 +11,15 @@
   "creada": 1793982873,
   "numeros": {
     "2": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "4": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "6": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "7": {
@@ -27,7 +27,7 @@
       "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
     },
     "9": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "11": {
@@ -47,7 +47,7 @@
       "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
     },
     "20": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "21": {
@@ -55,7 +55,7 @@
       "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
     },
     "26": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "30": {
@@ -91,7 +91,7 @@
       "orden": "44af29d3-b919-40b1-8510-71d829305cc2"
     },
     "50": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "51": {
@@ -107,7 +107,7 @@
       "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
     },
     "60": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "62": {
@@ -119,7 +119,7 @@
       "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
     },
     "66": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "67": {
@@ -151,7 +151,7 @@
       "orden": "0e91ac99-e51d-4408-b611-54b006e330ed"
     },
     "84": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "91d89314-737e-4194-9df8-47c788b5906f"
     },
     "89": {
@@ -338,11 +338,11 @@
       "ciudad": "Bogota",
       "metodo": "NEQUI",
       "privado": "enc1:BMMDEEh8FlSnr9LBkCTTQQg0/nbA0EVVLCQXysQLIvtTX4U2zBU0v99H6zN7k1xREV/nirbkoE5kphczr6s35Q9lZGdvWzWK+s/A1agwIgPwcO1aiILQyT+BTzDZM5jOnEjtZkhvDHyU10AIx+ukf7btNmjL/L+L/pXLCCmMCcr2BFy9qS0Z5R1QotqctSjhbw3pahuZsYcM5id6cWggDYKwuyacCeWk",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "registrado": 1793993672,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+      "aprobado": 1793993859,
       "comprobanteHash": "5d3d741a17ac3adddca3ad73af8466b95d8b9c84eac427df8c4a8924332ce4fb"
     }
   }
