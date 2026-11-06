@@ -1,0 +1,14 @@
+{
+  "slug": "prueba-ganadores-mw5c31n0",
+  "titulo": "Prueba de ganadores",
+  "descripcion": "Solo para pruebas.",
+  "precioCop": 1000,
+  "min": 0,
+  "max": 9,
+  "finVentas": "2026-11-07T18:54:33.228Z",
+  "fechaSorteo": "2026-11-07T18:54:33.228Z",
+  "estado": "ACTIVA",
+  "creada": 1793991273,
+  "numeros": {},
+  "ordenes": {}
+}

@@ -7,7 +7,8 @@
     "min": 0,
     "max": 49,
     "finVentas": "2026-12-20T23:00:00.000Z",
-    "fechaSorteo": "2026-12-21T03:30:00.000Z"
+    "fechaSorteo": "2026-12-21T03:30:00.000Z",
+    "numeroGanador": null
   },
   {
     "slug": "rifa-prueba-web3",
@@ -17,6 +18,18 @@
     "min": 0,
     "max": 99,
     "finVentas": "2026-12-06T16:34:33.745Z",
-    "fechaSorteo": "2026-12-07T16:34:33.745Z"
+    "fechaSorteo": "2026-12-07T16:34:33.745Z",
+    "numeroGanador": null
+  },
+  {
+    "slug": "prueba-ganadores-mw5c31n0",
+    "titulo": "Prueba de ganadores",
+    "estado": "ACTIVA",
+    "precioCop": 1000,
+    "min": 0,
+    "max": 9,
+    "finVentas": "2026-11-07T18:54:33.228Z",
+    "fechaSorteo": "2026-11-07T18:54:33.228Z",
+    "numeroGanador": null
   }
 ]
