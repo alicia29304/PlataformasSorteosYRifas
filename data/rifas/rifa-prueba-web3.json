@@ -121,6 +121,10 @@
     "98": {
       "estado": "PENDIENTE",
       "orden": "95e7b9ce-2c8a-454d-ab5b-c80b3994f7c2"
+    },
+    "99": {
+      "estado": "PENDIENTE",
+      "orden": "be40d744-baae-427b-b07e-ebd9f044b9bf"
     }
   },
   "ordenes": {
@@ -233,6 +237,21 @@
       "registrado": 1793986746,
       "aprobadoPor": null,
       "aprobado": null
+    },
+    "be40d744-baae-427b-b07e-ebd9f044b9bf": {
+      "numeros": [
+        99
+      ],
+      "seudonimo": "Prueba C.",
+      "ciudad": null,
+      "metodo": "NEQUI",
+      "privado": "enc1:MfckKLQe038DII7M/yZoFrq7fPeiP+nK",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1793989245,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": "100ecb9238f92f79baf28bfa589e4b9562dfd98bbaa8f3ff8938523c248996ee"
     }
   }
 }
