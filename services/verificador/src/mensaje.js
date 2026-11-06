@@ -71,6 +71,7 @@ export function crearClaveSesion() {
   const w = Wallet.createRandom();
   return { direccion: w.address.toLowerCase(), privada: w.privateKey };
 }
+export const direccionDe = (privada) => new Wallet(privada).address.toLowerCase();
 export const firmarConClave = (privada, hex) => new Wallet(privada).signMessage(getBytes(hex));
 export const delegacionHex = (datos) => hexlify(toUtf8Bytes(mensajeDelegacion(datos)));
 

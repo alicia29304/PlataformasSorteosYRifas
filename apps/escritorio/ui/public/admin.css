@@ -46,3 +46,4 @@ body { background: var(--bg); color: var(--txt); }
   .content { padding: 18px 16px; }
 }
 .datos-cliente { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 6px; font-weight: 600; }
+.clave-privada { display: block; word-break: break-all; font: 600 .82rem ui-monospace, Consolas, monospace; margin-top: 6px; }

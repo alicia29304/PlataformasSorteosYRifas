@@ -17,6 +17,31 @@ fn open_external(url: String) -> Result<(), String> {
     r.map(|_| ()).map_err(|e| e.to_string())
 }
 
+/// Guarda un archivo en Descargas sin sobrescribir nada. Devuelve la ruta.
+#[tauri::command]
+fn guardar_archivo(nombre: String, contenido: String) -> Result<String, String> {
+    use std::io::Write;
+    let limpio: String = nombre
+        .chars()
+        .filter(|c| c.is_ascii_alphanumeric() || matches!(c, '-' | '_' | '.'))
+        .collect();
+    let (base, ext) = limpio.rsplit_once('.').ok_or("nombre invalido")?;
+    let carpeta = std::path::Path::new(&std::env::var("USERPROFILE").map_err(|e| e.to_string())?).join("Downloads");
+    std::fs::create_dir_all(&carpeta).map_err(|e| e.to_string())?;
+    for i in 0..1000 {
+        let ruta = if i == 0 { carpeta.join(&limpio) } else { carpeta.join(format!("{base}-{i}.{ext}")) };
+        match std::fs::OpenOptions::new().write(true).create_new(true).open(&ruta) {
+            Ok(mut f) => {
+                f.write_all(contenido.as_bytes()).map_err(|e| e.to_string())?;
+                return Ok(ruta.display().to_string());
+            }
+            Err(e) if e.kind() == std::io::ErrorKind::AlreadyExists => continue,
+            Err(e) => return Err(e.to_string()),
+        }
+    }
+    Err("no se pudo crear el archivo".into())
+}
+
 const SERVICIO: &str = "SorteosWeb3Admin";
 
 /// Solo estos dos secretos: la interfaz no puede leer otras credenciales del usuario.
@@ -53,7 +78,7 @@ fn borrar_secreto(nombre: String) -> Result<(), String> {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![open_external, guardar_secreto, leer_secreto, borrar_secreto])
+        .invoke_handler(tauri::generate_handler![open_external, guardar_archivo, guardar_secreto, leer_secreto, borrar_secreto])
         .run(tauri::generate_context!())
         .expect("error al iniciar la aplicacion");
 }

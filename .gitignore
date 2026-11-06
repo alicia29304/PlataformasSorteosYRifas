@@ -102,3 +102,4 @@ services/relay/.wrangler/
 apps/escritorio/dist/
 apps/escritorio/src-tauri/target/
 apps/escritorio/src-tauri/gen/
+credenciales/

@@ -6,7 +6,7 @@ import {
   modalAdjuntar, modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe,
 } from "../../web3/src/comun.js";
 import { descifrar } from "../../web3/src/cifrado.js";
-import { crearClaveSesion, delegacionHex, firmarConClave } from "../../../services/verificador/src/mensaje.js";
+import { crearClaveSesion, delegacionHex, direccionDe, firmarConClave } from "../../../services/verificador/src/mensaje.js";
 
 const WEB = "https://sorteos-web3.aliciagadiaz29304.workers.dev";
 const raiz = document.getElementById("app");
@@ -63,6 +63,48 @@ async function autorizarEquipo() {
   }
 }
 
+/** Guarda en Descargas. Devuelve la ruta para mostrarla. */
+async function guardarArchivo(nombre, contenido) {
+  if (enTauri) return window.__TAURI__.core.invoke("guardar_archivo", { nombre, contenido });
+  const url = URL.createObjectURL(new Blob([contenido]));
+  const a = h("a", { href: url, download: nombre });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  return `Descargas\\${nombre}`;
+}
+
+const contenidoCredenciales = (direccion, clavePrivada) => JSON.stringify({
+  tipo: "sorteosweb3-credenciales", direccion, clavePrivada, clavesCifrado: estado.claves,
+}, null, 2);
+
+/** Entrar subiendo el archivo: sin QR ni telefono. La clave de la cartera no se guarda. */
+async function entrarConArchivo(archivo, aviso) {
+  let datos;
+  try {
+    datos = JSON.parse(await archivo.text());
+    if (datos.tipo !== "sorteosweb3-credenciales") throw new Error();
+    if (direccionDe(datos.clavePrivada) !== datos.direccion) throw new Error();
+  } catch {
+    aviso.replaceChildren(h("p", { class: "err" }, "Ese no es un archivo de credenciales válido."));
+    return;
+  }
+  const roles = await pedir("/roles");
+  if (!roles.admins.includes(datos.direccion)) {
+    aviso.replaceChildren(h("p", { class: "err" }, "Esta cartera ya no es administradora."));
+    return;
+  }
+  for (const clave of datos.clavesCifrado ?? []) if (!estado.claves.some((c) => c.d === clave.d)) estado.claves.push(clave);
+  await secreto.guardar("claves", JSON.stringify(estado.claves));
+  const clave = crearClaveSesion();
+  const expira = Math.floor(Date.now() / 1000) + DIAS_SESION * 86400;
+  const firma = await firmarConClave(datos.clavePrivada, delegacionHex({ firmante: datos.direccion, sesion: clave.direccion, expira }));
+  const sesion = { cartera: datos.direccion, privada: clave.privada, delegacion: { sesion: clave.direccion, expira, firma } };
+  await secreto.guardar("sesion", JSON.stringify(sesion));
+  activarSesion(sesion);
+  await pintar();
+}
+
 async function salir() {
   // Se invalida la clave para siempre; si no hay internet, de todos modos vence sola.
   if (cuenta.delegacion) await enviarFirmado("revocar_sesion", { sesion: cuenta.delegacion.sesion }).catch(console.error);
@@ -107,15 +149,18 @@ function campo(etiqueta, attrs = {}) {
 // ------------------------------- Inicio de sesion -------------------------------
 
 async function inicio() {
+  const aviso = h("div", { style: "margin-top:12px" });
+  const archivo = h("input", { type: "file", accept: ".json,application/json", style: "display:none", onchange: () => {
+    if (archivo.files[0]) entrarConArchivo(archivo.files[0], aviso).catch((e) => aviso.replaceChildren(h("p", { class: "err" }, e.message)));
+  } });
   raiz.replaceChildren(h("main", { class: "contenedor", style: "max-width:520px;text-align:center" },
     h("h1", {}, "🎟️ Sorteos Web3"), h("p", { class: "mut" }, "Administración"),
-    h("button", { class: "btn", style: "width:100%", onclick: entrar }, window.ethereum ? "Conectar cartera" : "Conectar con QR"),
-    h("p", { class: "mut small", style: "margin-top:14px" }, window.ethereum
-      ? "Tu cartera firmará cada cambio. No hay contraseñas."
-      : enTauri
-        ? "Escanea el código con MetaMask o Trust Wallet y autoriza este equipo. Solo se pide una vez, hasta que cierres sesión."
-        : "Escanea el código con MetaMask o Trust Wallet en tu celular. No hay contraseñas: tu cartera firma cada cambio."),
-    enTauri ? h("button", { class: "btn-ghost", style: "width:100%;margin-top:6px", onclick: () => abrirWeb(`${WEB}/admin/`) }, "Usar la extensión de MetaMask (abre el navegador)") : null));
+    enTauri ? [archivo,
+      h("button", { class: "btn", style: "width:100%", onclick: () => { archivo.value = ""; archivo.click(); } }, "📄 Entrar con mi archivo de credenciales"),
+      h("p", { class: "mut small", style: "margin-top:10px" }, "Súbelo una vez y no vuelve a pedirte nada hasta que cierres sesión."), aviso,
+      h("button", { class: "btn-ghost", style: "width:100%;margin-top:14px", onclick: entrar }, "Entrar con mi cartera (QR)")] : [
+      h("button", { class: "btn", style: "width:100%", onclick: entrar }, window.ethereum ? "Conectar cartera" : "Conectar con QR"),
+      h("p", { class: "mut small", style: "margin-top:14px" }, "Tu cartera firmará cada cambio.")]));
 }
 
 // ------------------------------- Panel -------------------------------
@@ -127,12 +172,12 @@ async function panel() {
     raiz.replaceChildren(h("main", { class: "contenedor", style: "max-width:520px;text-align:center" },
       h("h2", {}, "Esta cartera no es administradora"),
       h("p", { class: "mut" }, corta(cuenta.direccion)),
-      h("p", { class: "mut small" }, "Los administradores se asignan siguiendo la guía docs/GUIA-ADMINISTRADORES.md."),
+      h("p", { class: "mut small" }, "Pídele a un administrador que agregue esta cartera en la sección Administradores."),
       h("button", { class: "btn-ghost", onclick: salir }, "Salir")));
     return;
   }
   const rifas = await pedir("/rifas");
-  const menu = [["panel", "📊 Panel", vistaPanel], ["rifas", "🎟️ Rifas", vistaRifas], ["pagos", "🧾 Comprobantes", vistaPagos], ["ganadores", "🏆 Ganadores", vistaGanadores], ["vendedores", "🧑‍💼 Usuarios vendedores", vistaVendedores]];
+  const menu = [["panel", "📊 Panel", vistaPanel], ["rifas", "🎟️ Rifas", vistaRifas], ["pagos", "🧾 Comprobantes", vistaPagos], ["ganadores", "🏆 Ganadores", vistaGanadores], ["vendedores", "🧑‍💼 Usuarios vendedores", vistaVendedores], ["credenciales", "🔑 Administradores", vistaCredenciales]];
   const contenido = await menu.find(([id]) => id === estado.pestana)[2](rifas);
   raiz.replaceChildren(h("div", { class: "admin" },
     h("aside", { class: "sidebar" },
@@ -293,6 +338,27 @@ function modalNuevaRifa() {
 
 // ------------------------------- Vendedores -------------------------------
 
+function bloqueClave(privada, nota) {
+  return h("div", { class: "aviso" },
+    h("div", { class: "small" }, h("b", {}, "Clave privada de la cartera")),
+    h("code", { class: "clave-privada" }, privada),
+    h("button", { type: "button", class: "btn-ghost small", style: "margin-top:8px", onclick: (e) => navigator.clipboard.writeText(privada).then(() => { e.target.textContent = "Copiada ✓"; }) }, "Copiar"),
+    h("p", { class: "mut small", style: "margin:8px 0 0" }, nota));
+}
+
+const instruccionesVendedor = (nombre, c) => `Cartera de vendedor: ${nombre}
+
+Direccion publica: ${c.direccion}
+Clave privada: ${c.privada}
+
+Como usarla:
+1. En Trust Wallet o MetaMask, elige "Importar cartera" y pega la clave privada (red Ethereum).
+2. Abre ${WEB} dentro de la cartera.
+3. Toca "Soy vendedor: conectar cartera".
+
+No necesita fondos. Quien tenga esta clave puede vender en tu nombre: no la publiques.
+`;
+
 function vistaVendedores(rifas) {
   const lista = Object.entries(cuenta.roles.vendedores);
   return h("section", {},
@@ -317,18 +383,85 @@ function modalVendedor(rifas, direccion = "", actual = null) {
     return { slug: r.slug, input, nodo: h("label", { class: "small", style: "display:flex;gap:8px;margin-top:6px" }, input, r.titulo) };
   });
   const error = h("div", { style: "margin-top:10px" });
-  const cerrar = mostrarModal(direccion ? "Editar vendedor" : "Agregar vendedor", dir.nodo, nombre.nodo,
+  let generada = null;
+  const zonaGenerada = h("div");
+  const generar = direccion ? null : h("button", { type: "button", class: "btn-ghost small", style: "margin-top:8px", onclick: () => {
+    generada = crearClaveSesion();
+    dir.input.value = generada.direccion;
+    dir.input.readOnly = true;
+    generar.remove();
+    zonaGenerada.replaceChildren(bloqueClave(generada.privada, "Se guardará también un archivo con estos datos para que se lo entregues al vendedor."));
+  } }, "✨ Generar una cartera nueva");
+  const cerrar = mostrarModal(direccion ? "Editar vendedor" : "Agregar vendedor", dir.nodo, generar ?? "", zonaGenerada, nombre.nodo,
     h("p", { class: "small", style: "margin:12px 0 0" }, "Rifas asignadas"), marcas.map((m) => m.nodo),
     h("button", { class: "btn", style: "width:100%;margin-top:14px", onclick: guardar }, "Firmar y guardar"), error);
 
-  function guardar() {
+  async function guardar() {
     const direccionTxt = dir.input.value.trim().toLowerCase();
     if (!/^0x[0-9a-f]{40}$/.test(direccionTxt)) { error.replaceChildren(h("p", { class: "err" }, "La dirección debe empezar por 0x y tener 42 caracteres.")); return; }
     if (!nombre.input.value.trim()) { error.replaceChildren(h("p", { class: "err" }, "Escribe el nombre.")); return; }
+    // Primero el archivo: si algo falla despues, la clave no se pierde.
+    const ruta = generada ? await guardarArchivo(`cartera-vendedor-${aSlug(nombre.input.value)}.txt`, instruccionesVendedor(nombre.input.value.trim(), generada)).catch((e) => { error.replaceChildren(h("p", { class: "err" }, String(e))); return null; }) : "";
+    if (ruta === null) return;
     cerrar();
-    ejecutar("Guardando vendedor", "asignar_vendedor", {
+    const hecho = await ejecutar("Guardando vendedor", "asignar_vendedor", {
       direccion: direccionTxt, nombre: nombre.input.value.trim(), rifas: marcas.filter((m) => m.input.checked).map((m) => m.slug),
     });
+    if (hecho && generada) mostrarModal("Vendedor listo", bloqueClave(generada.privada, "Pásale esta clave privada: la importa en Trust Wallet o MetaMask y entra a la web."), h("p", { class: "small" }, `Archivo guardado en: ${ruta}`));
+  }
+}
+
+// ------------------------------- Administradores -------------------------------
+
+function vistaCredenciales() {
+  const admins = cuenta.roles.admins;
+  return h("section", {},
+    encabezadoPagina("Administradores", "Agrega o quita administradores desde aquí. No hace falta entrar a GitHub.",
+      h("button", { class: "btn", onclick: modalAdmin }, "+ Agregar administrador")),
+    admins.map((a) => h("div", { class: "orden" },
+      h("div", {}, h("b", {}, a === cuenta.direccion ? "Tú" : "Administrador"), h("div", { class: "mut small" }, a)),
+      h("div", { class: "acciones" },
+        admins.length > 1 ? h("button", { class: "btn-ghost small", onclick: async () => {
+          await confirmar("Quitar administrador", a === cuenta.direccion ? "Es tu propia cartera: perderás el acceso al terminar." : "Esa cartera dejará de tener acceso.", { boton: "Continuar" });
+          ejecutar("Quitando administrador", "quitar_admin", { direccion: a });
+        } }, "Quitar") : null))),
+    h("div", { class: "tarjeta", style: "margin-top:18px" },
+      h("h3", { style: "margin:0 0 6px" }, "Datos privados de los compradores"),
+      estado.claves.length
+        ? h("p", { class: "mut small" }, "Este equipo ya tiene la clave y los muestra solo en Comprobantes.")
+        : h("button", { class: "btn-ghost small", onclick: pedirClave }, "🔑 Cargar clave"),
+      h("p", { class: "mut small", style: "margin:8px 0 0" }, "Cada archivo de credenciales que generes la incluye: quien lo suba podrá ver esos datos.")));
+}
+
+function modalAdmin() {
+  const dir = campo("Dirección pública (si ya tiene cartera)", { placeholder: "0x… · déjala vacía para generar una nueva", maxlength: 42 });
+  const error = h("div", { style: "margin-top:10px" });
+  const cerrar = mostrarModal("Agregar administrador", dir.nodo,
+    h("p", { class: "mut small" }, "Si la dejas vacía, se crea una cartera nueva y se guarda un archivo de credenciales para entrar a esta app e importarla en tu teléfono."),
+    h("button", { class: "btn", style: "width:100%;margin-top:14px", onclick: agregar }, "Agregar"), error);
+
+  async function agregar() {
+    const texto = dir.input.value.trim().toLowerCase();
+    if (texto && !/^0x[0-9a-f]{40}$/.test(texto)) { error.replaceChildren(h("p", { class: "err" }, "La dirección debe empezar por 0x y tener 42 caracteres.")); return; }
+    let nueva = null;
+    let ruta = "";
+    if (!texto) {
+      nueva = crearClaveSesion();
+      try {
+        // Primero el archivo: si algo falla despues, la clave no se pierde.
+        ruta = await guardarArchivo(`credenciales-admin-${nueva.direccion.slice(2, 8)}.json`, contenidoCredenciales(nueva.direccion, nueva.privada));
+      } catch (e) {
+        error.replaceChildren(h("p", { class: "err" }, String(e)));
+        return;
+      }
+    }
+    cerrar();
+    const hecho = await ejecutar("Agregando administrador", "asignar_admin", { direccion: texto || nueva.direccion });
+    if (hecho && nueva) {
+      mostrarModal("Administrador listo", bloqueClave(nueva.privada, "Impórtala en Trust Wallet o MetaMask si quieres usarla también en el teléfono."),
+        h("p", { class: "small" }, `Archivo de credenciales: ${ruta}`),
+        h("p", { class: "mut small" }, "Para entrar con ella: Cerrar sesión y subir ese archivo. Guárdalo en un lugar seguro."));
+    }
   }
 }
 

@@ -182,6 +182,25 @@ const ACCIONES = {
     return { rifa: d.slug };
   },
 
+  asignar_admin(estado, d, { rol }) {
+    soloAdmin(rol);
+    soloCampos(d, ["direccion"]);
+    regla(typeof d.direccion === "string" && DIRECCION.test(d.direccion), "Direccion invalida");
+    regla(!estado.roles.admins.includes(d.direccion), "Esa cartera ya es administradora");
+    delete estado.roles.vendedores[d.direccion];
+    estado.roles.admins.push(d.direccion);
+    return { roles: true };
+  },
+
+  quitar_admin(estado, d, { rol }) {
+    soloAdmin(rol);
+    soloCampos(d, ["direccion"]);
+    regla(estado.roles.admins.includes(d.direccion), "Esa cartera no es administradora");
+    regla(estado.roles.admins.length > 1, "Debe quedar al menos un administrador");
+    estado.roles.admins = estado.roles.admins.filter((a) => a !== d.direccion);
+    return { roles: true };
+  },
+
   // Cerrar sesion: desde aqui esa clave deja de valer aunque alguien la copie.
   revocar_sesion(estado, d, { rol, delegacion, ahora }) {
     soloCampos(d, ["sesion"]);

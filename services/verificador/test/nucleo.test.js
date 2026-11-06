@@ -294,6 +294,22 @@ test("sesion: al cerrarla deja de valer, y solo su dueno o un admin puede cerrar
   assert.equal(procesar(await conSesion(await delegar(admin), "cambiar_estado_rifa", CERRAR), e, AHORA).resultado, "ACEPTADA");
 });
 
+test("administradores: se agregan y quitan firmando, y siempre queda uno", async () => {
+  const e = await escenario();
+  const nuevo = Wallet.createRandom();
+  assert.equal(procesar(await firmar(vendedor, "asignar_admin", { direccion: dir(nuevo) }), e, AHORA).resultado, "RECHAZADA");
+  assert.equal(procesar(await firmar(admin, "asignar_admin", { direccion: "x" }), e, AHORA).resultado, "RECHAZADA");
+  assert.match(procesar(await firmar(admin, "quitar_admin", { direccion: dir(admin) }), e, AHORA).motivo, /al menos un/);
+  assert.equal(procesar(await firmar(admin, "asignar_admin", { direccion: dir(nuevo) }), e, AHORA).resultado, "ACEPTADA");
+  assert.match(procesar(await firmar(admin, "asignar_admin", { direccion: dir(nuevo) }), e, AHORA).motivo, /ya es/);
+  // El nuevo reemplaza al anterior, y el anterior pierde el acceso.
+  assert.equal(procesar(await firmar(nuevo, "quitar_admin", { direccion: dir(admin) }), e, AHORA).resultado, "ACEPTADA");
+  await assert.rejects(async () => procesar(await firmar(admin, "cambiar_estado_rifa", { slug: "prueba", estado: "CERRADA" }), e, AHORA), /no autorizada/);
+  // Un vendedor ascendido deja de figurar como vendedor.
+  procesar(await firmar(nuevo, "asignar_admin", { direccion: dir(vendedor) }), e, AHORA);
+  assert.equal(Object.hasOwn(e.roles.vendedores, dir(vendedor)), false);
+});
+
 test("limite de numeros, rango y cierre de ventas", async () => {
   const e = await escenario();
   const muchos = Array.from({ length: 11 }, (_, i) => i);
