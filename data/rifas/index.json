@@ -1,15 +1,5 @@
 [
   {
-    "slug": "rifa-prueba-web3",
-    "titulo": "Rifa de prueba Web3",
-    "estado": "ACTIVA",
-    "precioCop": 1000,
-    "min": 0,
-    "max": 99,
-    "finVentas": "2026-12-06T16:34:33.745Z",
-    "fechaSorteo": "2026-12-07T16:34:33.745Z"
-  },
-  {
     "slug": "rifa-numero-dos",
     "titulo": "Rifa Número Dos",
     "estado": "ACTIVA",
@@ -18,5 +8,15 @@
     "max": 49,
     "finVentas": "2026-12-20T23:00:00.000Z",
     "fechaSorteo": "2026-12-21T03:30:00.000Z"
+  },
+  {
+    "slug": "rifa-prueba-web3",
+    "titulo": "Rifa de prueba Web3",
+    "estado": "ACTIVA",
+    "precioCop": 1000,
+    "min": 0,
+    "max": 99,
+    "finVentas": "2026-12-06T16:34:33.745Z",
+    "fechaSorteo": "2026-12-07T16:34:33.745Z"
   }
 ]

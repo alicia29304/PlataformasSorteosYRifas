@@ -8,6 +8,13 @@
       "rifas": [
         "rifa-prueba-web3"
       ]
+    },
+    "0xf5e7bed3b751e4d51759074fd7ddce099bd1fcb0": {
+      "nombre": "Carlos",
+      "rifas": [
+        "rifa-prueba-web3",
+        "rifa-numero-dos"
+      ]
     }
   }
 }
