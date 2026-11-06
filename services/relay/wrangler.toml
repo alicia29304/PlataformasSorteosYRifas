@@ -10,3 +10,8 @@ run_worker_first = ["/api/*"]
 [vars]
 GITHUB_OWNER = "alicia29304"
 GITHUB_REPO = "PlataformasSorteosYRifas"
+
+# Comprobantes de pago: privados, solo se entregan a carteras con permiso sobre la rifa.
+[[r2_buckets]]
+binding = "COMPROBANTES"
+bucket_name = "sorteos-web3-comprobantes"
