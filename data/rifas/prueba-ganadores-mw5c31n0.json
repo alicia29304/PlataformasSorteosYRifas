@@ -56,21 +56,26 @@
       "comprobanteHash": null
     }
   },
-  "ganador": {
-    "modo": "INTERNO",
-    "numero": 5,
-    "fuente": null,
-    "vendido": true,
-    "orden": "17f1f203-3467-4628-a981-5fc1ea4ee154",
-    "seudonimo": "Luis P.",
-    "ciudad": "Tunja",
-    "declaradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
-    "fecha": 1793991470,
-    "azar": {
-      "fuente": "drand",
-      "ronda": 6618682,
-      "valor": "0bdecef399718d78cfa98f0e2a435a6892acee5674611d8187c54ec92f5221b7",
-      "participantes": 3
+  "ganadoresAnulados": [
+    {
+      "modo": "INTERNO",
+      "numero": 5,
+      "fuente": null,
+      "vendido": true,
+      "orden": "17f1f203-3467-4628-a981-5fc1ea4ee154",
+      "seudonimo": "Luis P.",
+      "ciudad": "Tunja",
+      "declaradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+      "fecha": 1793991470,
+      "azar": {
+        "fuente": "drand",
+        "ronda": 6618682,
+        "valor": "0bdecef399718d78cfa98f0e2a435a6892acee5674611d8187c54ec92f5221b7",
+        "participantes": 3
+      },
+      "anuladoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+      "anulado": 1793991521,
+      "motivoAnulacion": "prueba"
     }
-  }
+  ]
 }
