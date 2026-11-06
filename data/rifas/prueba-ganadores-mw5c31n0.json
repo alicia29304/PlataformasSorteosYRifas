@@ -11,11 +11,11 @@
   "creada": 1793991273,
   "numeros": {
     "1": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "2431f5b3-404d-454e-9e79-0a86c2ff7ea9"
     },
     "2": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "2431f5b3-404d-454e-9e79-0a86c2ff7ea9"
     },
     "5": {
@@ -33,11 +33,11 @@
       "ciudad": "Tunja",
       "metodo": "NEQUI",
       "privado": "enc1:HPB3JW0/eLvT//O2Kp1WPDGs6xVj7TwL",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
       "registrado": 1793991296,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+      "aprobado": 1793991423,
       "comprobanteHash": null
     },
     "17f1f203-3467-4628-a981-5fc1ea4ee154": {
