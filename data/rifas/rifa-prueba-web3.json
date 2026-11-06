@@ -336,5 +336,22 @@
       "aprobado": 1793993859,
       "comprobanteHash": "5d3d741a17ac3adddca3ad73af8466b95d8b9c84eac427df8c4a8924332ce4fb"
     }
+  },
+  "ganador": {
+    "modo": "INTERNO",
+    "numero": 6,
+    "fuente": null,
+    "vendido": true,
+    "orden": "91d89314-737e-4194-9df8-47c788b5906f",
+    "seudonimo": "Josh S.",
+    "ciudad": "Bogota",
+    "declaradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+    "fecha": 1794000670,
+    "azar": {
+      "fuente": "drand",
+      "ronda": 6618988,
+      "valor": "fdec073ce33946c1c1a36b9320e9b7936f5b772bcf3ee86f3cbef9879e773b7b",
+      "participantes": 38
+    }
   }
 }
