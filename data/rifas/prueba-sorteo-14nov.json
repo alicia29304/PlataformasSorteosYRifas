@@ -11,43 +11,43 @@
   "creada": 1794064765,
   "numeros": {
     "53": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "85": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "111": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "206": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "247": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "305": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "465": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "478": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "518": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     },
     "987": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
     }
   },
@@ -69,11 +69,11 @@
       "ciudad": "Bogotá",
       "metodo": "Transferencia",
       "privado": "enc1:BFr4TG0l6Oe/d83T4hbihbF72ptIxwsyfqJH1/d5oPILg5glAmDw1B1NGOpFR0uYbuK8ikQkisRUDNqWnJdiZdjL8dxfaH1k/gCm0xn7zz095evvR1W0QMP4gJhaKU69YYi/98a/J0zqonOWSpZRr/KkQjpMpOZuWsqU4HpouUzc5N+UXVM3ARbKlVX6ESKfjeUc6cHpVJQ8Wm+ZDTySgguQAtxQWwAESyQ=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0x0ea2ff72072f8b733e753693dd162585a6ba34f3",
       "registrado": 1794065374,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0x0ea2ff72072f8b733e753693dd162585a6ba34f3",
+      "aprobado": 1794065415,
       "comprobanteHash": "4637b61411549130d2f4d66311ae2dc49bac44e9bbf3a8fdb135ec469d8e5d69"
     }
   }
