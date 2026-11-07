@@ -460,5 +460,22 @@
       "aprobado": 1794063298,
       "comprobanteHash": "1cf000ae20b7078ae5259624c5a2a268df22754f4f7854d3ecfb06846ca80e10"
     }
+  },
+  "ganador": {
+    "modo": "INTERNO",
+    "numero": 250,
+    "fuente": null,
+    "vendido": true,
+    "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53",
+    "seudonimo": "Cancl F.",
+    "ciudad": "Bogota",
+    "declaradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+    "fecha": 1794063354,
+    "azar": {
+      "fuente": "drand",
+      "ronda": 6621078,
+      "valor": "5db7cbfcf8d24632288733ebe454030bf54d9a615d3bff839227ea6cd2db189d",
+      "participantes": 70
+    }
   }
 }
