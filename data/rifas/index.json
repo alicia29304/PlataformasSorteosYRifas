@@ -41,7 +41,7 @@
   {
     "slug": "sorteo-7nov",
     "titulo": "Sorteo 7Nov",
-    "estado": "ACTIVA",
+    "estado": "CERRADA",
     "precioCop": 4000,
     "min": 1,
     "max": 999,
