@@ -14,6 +14,10 @@
       "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
+    "46": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
+    },
     "115": {
       "estado": "PAGADO",
       "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
@@ -30,6 +34,10 @@
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
+    "163": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
+    },
     "196": {
       "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
@@ -37,6 +45,10 @@
     "197": {
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "214": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
     },
     "250": {
       "estado": "PAGADO",
@@ -53,6 +65,10 @@
     "289": {
       "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
+    },
+    "294": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
     },
     "330": {
       "estado": "PAGADO",
@@ -89,6 +105,10 @@
     "415": {
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
+    },
+    "418": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
     },
     "428": {
       "estado": "PAGADO",
@@ -130,6 +150,10 @@
       "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
+    "597": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
+    },
     "599": {
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
@@ -145,6 +169,14 @@
     "658": {
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "699": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
+    },
+    "717": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
     },
     "748": {
       "estado": "PAGADO",
@@ -178,9 +210,17 @@
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
+    "856": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
+    },
     "872": {
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
+    },
+    "888": {
+      "estado": "PENDIENTE",
+      "orden": "384332bd-5a99-4af1-943e-227989beb76e"
     },
     "912": {
       "estado": "PAGADO",
@@ -331,6 +371,30 @@
       "aprobadoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
       "aprobado": 1794013416,
       "comprobanteHash": "8872d3305a4f3b65d82a4e58fe5f7a4d9f827b3a540c0910397f419f5bd67a9a"
+    },
+    "384332bd-5a99-4af1-943e-227989beb76e": {
+      "numeros": [
+        46,
+        163,
+        214,
+        294,
+        418,
+        597,
+        699,
+        717,
+        856,
+        888
+      ],
+      "seudonimo": "Juan S.",
+      "ciudad": "Bogotá",
+      "metodo": "Transferencia",
+      "privado": "enc1:BKKmOIeSchxX/I2bQUsBesnwpH38WkOOJ5S9IwyKNqYY8OJoy7tGGBkGH/JeSvp+m773Scd/QV18VKgMIwVKz4phstwImD1JCqll0aQAaNel4xEXbV9ugy3Y4Y6hi0fAd4WSNCiVoWrKKtEtOs3t0Q/3OyuZuoij7EGZ9XdDzP/2IPGTLGJ6p1eftpLXyJZ9xdQx1jbsc+g8Nkz89TzDtw9OAdWECYYFzA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1794013668,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
     }
   }
 }
