@@ -9,6 +9,72 @@
   "fechaSorteo": "2026-11-08T03:42:00.000Z",
   "estado": "ACTIVA",
   "creada": 1794064765,
-  "numeros": {},
-  "ordenes": {}
+  "numeros": {
+    "53": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "85": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "111": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "206": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "247": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "305": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "465": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "478": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "518": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    },
+    "987": {
+      "estado": "PENDIENTE",
+      "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
+    }
+  },
+  "ordenes": {
+    "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5": {
+      "numeros": [
+        53,
+        85,
+        111,
+        206,
+        247,
+        305,
+        465,
+        478,
+        518,
+        987
+      ],
+      "seudonimo": "Camila A.",
+      "ciudad": "Bogotá",
+      "metodo": "Transferencia",
+      "privado": "enc1:BFr4TG0l6Oe/d83T4hbihbF72ptIxwsyfqJH1/d5oPILg5glAmDw1B1NGOpFR0uYbuK8ikQkisRUDNqWnJdiZdjL8dxfaH1k/gCm0xn7zz095evvR1W0QMP4gJhaKU69YYi/98a/J0zqonOWSpZRr/KkQjpMpOZuWsqU4HpouUzc5N+UXVM3ARbKlVX6ESKfjeUc6cHpVJQ8Wm+ZDTySgguQAtxQWwAESyQ=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x0ea2ff72072f8b733e753693dd162585a6ba34f3",
+      "registrado": 1794065374,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": "4637b61411549130d2f4d66311ae2dc49bac44e9bbf3a8fdb135ec469d8e5d69"
+    }
+  }
 }
