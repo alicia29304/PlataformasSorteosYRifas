@@ -10,6 +10,10 @@
   "estado": "ACTIVA",
   "creada": 1794064765,
   "numeros": {
+    "10": {
+      "estado": "PENDIENTE",
+      "orden": "0ede18fd-7b67-405e-b323-dcf2ffb835b3"
+    },
     "53": {
       "estado": "PAGADO",
       "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5"
@@ -75,6 +79,21 @@
       "aprobadoPor": "0x0ea2ff72072f8b733e753693dd162585a6ba34f3",
       "aprobado": 1794065415,
       "comprobanteHash": "4637b61411549130d2f4d66311ae2dc49bac44e9bbf3a8fdb135ec469d8e5d69"
+    },
+    "0ede18fd-7b67-405e-b323-dcf2ffb835b3": {
+      "numeros": [
+        10
+      ],
+      "seudonimo": "Napoleon B.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BMNFEl7GDTfQkChcJ6vypfE57uyQLdkUTKzPWLJVHRvQ46xfUR7WHDd5fgpVrXzpouR+pugXW5fXVSrWh2L2YHQmk/rId0YCbnGrdQZHvmuTjGxLnan3x6HSZ651tjeyypPSYEnGWHN/Lq6cKJGvEiStBjMxaebyYwL+RoNbdyrcrDQQDe0QDY7V+8IGmqaY5hT6DPcL2bqUKvfCsCTPe7zlFdEj0emK5ntHBzQyAH8O",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf5f8f352a2a65d6761244c9426e5405bec2757c1",
+      "registrado": 1794066712,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": "971a303f53c2ff48f7225342c09d099f876b8bb17fef109ba6b71d776378d08b"
     }
   }
 }
