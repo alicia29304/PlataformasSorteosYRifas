@@ -48,7 +48,7 @@
     "finVentas": "2026-11-07T03:30:00.000Z",
     "fechaSorteo": "2026-11-07T21:41:00.000Z",
     "creada": 1794001383,
-    "archivada": false,
+    "archivada": true,
     "numeroGanador": 250
   }
 ]
