@@ -14,6 +14,10 @@
       "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
     },
+    "115": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
+    },
     "142": {
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
@@ -34,6 +38,10 @@
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
+    "250": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
+    },
     "257": {
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
@@ -50,9 +58,21 @@
       "estado": "PAGADO",
       "orden": "08876648-df75-420c-acc1-5606e1c52f3d"
     },
+    "345": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
+    },
+    "354": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
+    },
     "360": {
       "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
+    },
+    "370": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
     },
     "374": {
       "estado": "PAGADO",
@@ -85,6 +105,10 @@
     "471": {
       "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
+    },
+    "505": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
     },
     "521": {
       "estado": "PAGADO",
@@ -122,6 +146,10 @@
       "estado": "PAGADO",
       "orden": "1c151211-72f5-4a12-ab69-ad3ef6905b48"
     },
+    "748": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
+    },
     "755": {
       "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
@@ -129,6 +157,10 @@
     "762": {
       "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
+    },
+    "779": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
     },
     "802": {
       "estado": "PAGADO",
@@ -158,9 +190,17 @@
       "estado": "PAGADO",
       "orden": "ce66d556-cd57-4c25-bacf-86f388fe1939"
     },
+    "938": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
+    },
     "953": {
       "estado": "PAGADO",
       "orden": "dd058d75-7b6f-4509-8833-aa26cd5b84b4"
+    },
+    "960": {
+      "estado": "PENDIENTE",
+      "orden": "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53"
     },
     "979": {
       "estado": "PAGADO",
@@ -267,6 +307,30 @@
       "aprobadoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
       "aprobado": 1794007290,
       "comprobanteHash": "5d3d741a17ac3adddca3ad73af8466b95d8b9c84eac427df8c4a8924332ce4fb"
+    },
+    "0ec3c6b5-8103-4c31-872e-d3c8c33c9e53": {
+      "numeros": [
+        115,
+        250,
+        345,
+        354,
+        370,
+        505,
+        748,
+        779,
+        938,
+        960
+      ],
+      "seudonimo": "Cancl F.",
+      "ciudad": "Bogota",
+      "metodo": "Efectivo",
+      "privado": "enc1:BJ6GZD2Ue0xDzZOO1P7Je5M70z961CUE01Yt5/y90/xULw1YqVUO+DL0HPcL8btreY15PElKAH5K3q+/nLr8RNwfyPWVFouBJH10x7hyTEvgxLayoclnfhPH2lxWvVUGFV4BoL4OWLPSM9gXb8+pr+XhLwk2ITTL/NnyUBE3LheQQbnv9A4MZbMuo4Roa3sX95ATy85qqLRlIawjV76Isi84cH1zPaYMmp0=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5",
+      "registrado": 1794013273,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": "8872d3305a4f3b65d82a4e58fe5f7a4d9f827b3a540c0910397f419f5bd67a9a"
     }
   }
 }
