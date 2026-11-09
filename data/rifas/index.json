@@ -52,19 +52,6 @@
     "numeroGanador": 6
   },
   {
-    "slug": "sorteo-7nov",
-    "titulo": "Sorteo 7Nov",
-    "estado": "CERRADA",
-    "precioCop": 4000,
-    "min": 1,
-    "max": 999,
-    "finVentas": "2026-11-07T03:30:00.000Z",
-    "fechaSorteo": "2026-11-07T21:41:00.000Z",
-    "creada": 1794001383,
-    "archivada": true,
-    "numeroGanador": 250
-  },
-  {
     "slug": "sorteo-14-nov-2026",
     "titulo": "Sorteo 14 Nov 2026",
     "estado": "ACTIVA",
@@ -76,5 +63,18 @@
     "creada": 1794253745,
     "archivada": false,
     "numeroGanador": null
+  },
+  {
+    "slug": "sorteo-7nov",
+    "titulo": "Sorteo 7Nov",
+    "estado": "CERRADA",
+    "precioCop": 4000,
+    "min": 1,
+    "max": 999,
+    "finVentas": "2026-11-07T03:30:00.000Z",
+    "fechaSorteo": "2026-11-07T21:41:00.000Z",
+    "creada": 1794001383,
+    "archivada": true,
+    "numeroGanador": 250
   }
 ]
