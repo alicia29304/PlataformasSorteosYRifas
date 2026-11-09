@@ -4,12 +4,6 @@
     "0x4c4300950dca43bc6dc8c2b54e776487a62f22a7"
   ],
   "vendedores": {
-    "0xabfb63ae1acb4e64747e0fcc0c6faba7660d0ee5": {
-      "nombre": "Vendedor1",
-      "rifas": [
-        "prueba-sorteo-14nov"
-      ]
-    },
     "0x4c919726f3dce5378a237412ddbf694ebb794564": {
       "nombre": "Scooby",
       "rifas": [
