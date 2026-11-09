@@ -34,6 +34,10 @@
       "estado": "PENDIENTE",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
     },
+    "41": {
+      "estado": "PENDIENTE",
+      "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
+    },
     "47": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
@@ -41,6 +45,14 @@
     "73": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
+    },
+    "76": {
+      "estado": "PENDIENTE",
+      "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
+    },
+    "112": {
+      "estado": "PENDIENTE",
+      "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
     "126": {
       "estado": "PENDIENTE",
@@ -53,6 +65,10 @@
     "176": {
       "estado": "PENDIENTE",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
+    },
+    "211": {
+      "estado": "PENDIENTE",
+      "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
     "233": {
       "estado": "PENDIENTE",
@@ -98,6 +114,10 @@
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
     },
+    "394": {
+      "estado": "PENDIENTE",
+      "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
+    },
     "446": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
@@ -142,6 +162,10 @@
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
     },
+    "654": {
+      "estado": "PENDIENTE",
+      "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
+    },
     "765": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
@@ -157,6 +181,10 @@
     "904": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "911": {
+      "estado": "PENDIENTE",
+      "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     }
   },
   "ordenes": {
@@ -293,6 +321,27 @@
       "registrado": 1794264665,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794264714,
+      "comprobanteHash": null
+    },
+    "e758f6c9-a695-47ef-8c67-2017250ea60f": {
+      "numeros": [
+        41,
+        76,
+        112,
+        211,
+        394,
+        654,
+        911
+      ],
+      "seudonimo": "Sandy F.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BF8WSUp6knwBjs71fJu35CNcgb1+8dKOD17Psyn/bRUqbz0O8r42S6g/95CkQpMXFfVHCto/WwpSZh6YDMxFIDq9edcZ4whiavAQfuqEaFs9CaiYceODoY2shbTXKr1WHJiDak3NVOtUk72/XEAl5b7uSpH0alsIWL7H+8S2MrGV73uHeQCzS0ugznqECMKu1ekrG8e20O/b/gq5BC+e22IA8cz3qCrfsacz3vo=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794265224,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
