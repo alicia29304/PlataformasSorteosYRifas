@@ -10,9 +10,17 @@
   "estado": "ACTIVA",
   "creada": 1794253745,
   "numeros": {
+    "3": {
+      "estado": "PENDIENTE",
+      "orden": "91e150ed-2bc6-46dd-abd3-3d2d6b6b0a42"
+    },
     "17": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "18": {
+      "estado": "PENDIENTE",
+      "orden": "91e150ed-2bc6-46dd-abd3-3d2d6b6b0a42"
     },
     "47": {
       "estado": "PENDIENTE",
@@ -37,6 +45,10 @@
     "311": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "317": {
+      "estado": "PENDIENTE",
+      "orden": "91e150ed-2bc6-46dd-abd3-3d2d6b6b0a42"
     },
     "322": {
       "estado": "PENDIENTE",
@@ -116,6 +128,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794255455,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "91e150ed-2bc6-46dd-abd3-3d2d6b6b0a42": {
+      "numeros": [
+        3,
+        18,
+        317
+      ],
+      "seudonimo": "Pedro Z.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BNuYj5vmlt3L1Whi1x8hVotiAsNTRkBjfBS4M+0vcNaJZNVCK6nHA+Iv8ITy+Ee/9dF3hJRgJedQn63RFPrZUSX1cb77Hnb+j56teU0nfrC1uM0QZVJxElSFJwauRQfnO00cH+HF9RDqV4HQKhWi3rojsKX26GDcr0yewdCdqDi7JMUL71v8cCQ2ii5zMffFmKe4hclqIw7GDKpJYhHBCiqJZwVIhlk1IX+oHw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794256073,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
