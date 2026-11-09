@@ -15,7 +15,7 @@
   {
     "slug": "prueba-sorteo-14nov",
     "titulo": "Prueba Sorteo 14Nov",
-    "estado": "ACTIVA",
+    "estado": "CERRADA",
     "precioCop": 4000,
     "min": 1,
     "max": 999,
