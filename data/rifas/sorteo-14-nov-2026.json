@@ -9,6 +9,52 @@
   "fechaSorteo": "2026-11-15T04:30:00.000Z",
   "estado": "ACTIVA",
   "creada": 1794253745,
-  "numeros": {},
-  "ordenes": {}
+  "numeros": {
+    "47": {
+      "estado": "PENDIENTE",
+      "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "126": {
+      "estado": "PENDIENTE",
+      "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "265": {
+      "estado": "PENDIENTE",
+      "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "389": {
+      "estado": "PENDIENTE",
+      "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "584": {
+      "estado": "PENDIENTE",
+      "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "832": {
+      "estado": "PENDIENTE",
+      "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    }
+  },
+  "ordenes": {
+    "fbe668e4-34a4-4c4c-ac29-8bea5561af92": {
+      "numeros": [
+        47,
+        126,
+        265,
+        389,
+        584,
+        832
+      ],
+      "seudonimo": "Guanaro I.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BF/VZo+p1XcIIsT0dePal0p10/80Adlx1lltbnrj6o/wDFa4qVaRZ0jlOzb3JnYRB1eJfoSh8uexg8Ah7Ei/H2nmH7a9RdZfIgaqnrtcq4r7nLnPfwfBBoBbUsk77FUXiAiXeNCYbIpA87wE5dG4fQi+NZvju3fD2dC7WbwQFoQunS3As8IgOYP/Wly3FAOTzVcPDp3jNwufASBJCXDa9PG5NfOD2wvADoo=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794255099,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    }
+  }
 }
