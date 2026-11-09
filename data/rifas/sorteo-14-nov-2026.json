@@ -70,6 +70,10 @@
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
+    "220": {
+      "estado": "PENDIENTE",
+      "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
+    },
     "233": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
@@ -106,6 +110,10 @@
       "estado": "PAGADO",
       "orden": "e36b65cb-1f2c-41e4-874a-ac5f84269e59"
     },
+    "359": {
+      "estado": "PENDIENTE",
+      "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
+    },
     "384": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
@@ -117,6 +125,10 @@
     "394": {
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
+    },
+    "425": {
+      "estado": "PENDIENTE",
+      "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
     "446": {
       "estado": "PENDIENTE",
@@ -133,6 +145,10 @@
     "474": {
       "estado": "PAGADO",
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
+    },
+    "479": {
+      "estado": "PENDIENTE",
+      "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
     "484": {
       "estado": "PENDIENTE",
@@ -166,9 +182,21 @@
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
+    "699": {
+      "estado": "PENDIENTE",
+      "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
+    },
+    "749": {
+      "estado": "PENDIENTE",
+      "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
+    },
     "765": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
+    },
+    "810": {
+      "estado": "PENDIENTE",
+      "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
     "832": {
       "estado": "PENDIENTE",
@@ -340,6 +368,27 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794265224,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "94bfac51-186d-40cf-8e7e-1a162720eef8": {
+      "numeros": [
+        220,
+        359,
+        425,
+        479,
+        699,
+        749,
+        810
+      ],
+      "seudonimo": "Yan P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BODTvoLoz0fnKprlr8CLISUWsD1440KlnVR3dAgeGVYaEMPyUsEUSFAsp6vTSRL4mKZHDYdUx/FJDtH7NF3RTWldVLygtBjCsUPqa/4iRCm2oa8VOOOrrmVFn+S8tuHIdQQZcMXIbBN6QHdqef+qCbUy3BYAJne0eVt5JFNw3tfQ38sS7PaPDG5GPBeY8lxFqHrpWi1L5nMARNcpIvVmzt5Les1B3wJDlg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794265368,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
