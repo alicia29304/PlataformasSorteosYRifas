@@ -10,6 +10,10 @@
   "estado": "ACTIVA",
   "creada": 1794253745,
   "numeros": {
+    "17": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
     "47": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
@@ -18,13 +22,45 @@
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
     },
+    "172": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "252": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
     "265": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
     },
+    "311": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "322": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "384": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
     "389": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "446": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "464": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "484": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
     "584": {
       "estado": "PENDIENTE",
@@ -33,6 +69,10 @@
     "832": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "904": {
+      "estado": "PENDIENTE",
+      "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     }
   },
   "ordenes": {
@@ -52,6 +92,30 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794255099,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "9ccd3359-a378-4132-a303-e32f57f6421b": {
+      "numeros": [
+        17,
+        172,
+        252,
+        311,
+        322,
+        384,
+        446,
+        464,
+        484,
+        904
+      ],
+      "seudonimo": "Killian H.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BHL5/XUfXkNzTJ+aQGwJUUqPm5fMDfNSQA6ToMnUUjUFLnvhZFhHNK4f4MqJlnWW6MtCw5xvQj0pIBkXFYFdx+dz71LiDRTLP0BUEWYCnv8c9nZqFltWh2FhLApIK0AhhKNG7iMyD9sPjDrBdrrBAwkVxz+DSRmig5ThIrUV0qu6ZTsPciFKwgR0ytxCp/lAEOiHtXIrWblQdc5fyaDJ/2fZ4zNtrAR2aqgOvstPQ2m1",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794255455,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
