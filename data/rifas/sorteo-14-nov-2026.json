@@ -26,6 +26,10 @@
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
     },
+    "73": {
+      "estado": "PENDIENTE",
+      "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
+    },
     "126": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
@@ -33,6 +37,10 @@
     "172": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "233": {
+      "estado": "PENDIENTE",
+      "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
     },
     "252": {
       "estado": "PENDIENTE",
@@ -74,6 +82,10 @@
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
+    "462": {
+      "estado": "PENDIENTE",
+      "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
+    },
     "464": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
@@ -90,9 +102,25 @@
       "estado": "PAGADO",
       "orden": "e36b65cb-1f2c-41e4-874a-ac5f84269e59"
     },
+    "615": {
+      "estado": "PENDIENTE",
+      "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
+    },
+    "649": {
+      "estado": "PENDIENTE",
+      "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
+    },
+    "765": {
+      "estado": "PENDIENTE",
+      "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
+    },
     "832": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "880": {
+      "estado": "PENDIENTE",
+      "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
     },
     "904": {
       "estado": "PENDIENTE",
@@ -176,6 +204,27 @@
       "registrado": 1794261876,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794261955,
+      "comprobanteHash": null
+    },
+    "96c56b5b-8727-46bc-a8a5-4991ad03df1f": {
+      "numeros": [
+        73,
+        233,
+        462,
+        615,
+        649,
+        765,
+        880
+      ],
+      "seudonimo": "Milar P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BGofrP3u5ZHlfPDZB79bHfsiPqoTOz+xYYUXGXHAm4fyDrDqf0b+66L336fw7ERFf5Lddjn5jbMm6LzHktCdhvM8xhiN9HH3chmDmz38vRxFg178E2plNonQL2ef4tVHTblfvrg8IZkynb8FcvaBam/ZXmK1oYlB1eOf+bTajkMjFsasIKNzuS4iSfUIV02OQ7v8mf+KfZFLWEY0Upr4/s+Kk7s3v7m4u51P",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794263918,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
