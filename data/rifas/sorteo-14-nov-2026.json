@@ -1,0 +1,14 @@
+{
+  "slug": "sorteo-14-nov-2026",
+  "titulo": "Sorteo 14 Nov 2026",
+  "descripcion": "2 Melones",
+  "precioCop": 3000,
+  "min": 1,
+  "max": 999,
+  "finVentas": "2026-11-15T04:05:00.000Z",
+  "fechaSorteo": "2026-11-15T04:30:00.000Z",
+  "estado": "ACTIVA",
+  "creada": 1794253745,
+  "numeros": {},
+  "ordenes": {}
+}

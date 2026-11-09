@@ -63,5 +63,18 @@
     "creada": 1794001383,
     "archivada": true,
     "numeroGanador": 250
+  },
+  {
+    "slug": "sorteo-14-nov-2026",
+    "titulo": "Sorteo 14 Nov 2026",
+    "estado": "ACTIVA",
+    "precioCop": 3000,
+    "min": 1,
+    "max": 999,
+    "finVentas": "2026-11-15T04:05:00.000Z",
+    "fechaSorteo": "2026-11-15T04:30:00.000Z",
+    "creada": 1794253745,
+    "archivada": false,
+    "numeroGanador": null
   }
 ]
