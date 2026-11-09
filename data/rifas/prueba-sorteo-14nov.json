@@ -95,5 +95,22 @@
       "aprobado": 1794067371,
       "comprobanteHash": "971a303f53c2ff48f7225342c09d099f876b8bb17fef109ba6b71d776378d08b"
     }
+  },
+  "ganador": {
+    "modo": "INTERNO",
+    "numero": 478,
+    "fuente": null,
+    "vendido": true,
+    "orden": "3d5201e1-abe2-44b4-87cb-776ebc4fb5a5",
+    "seudonimo": "Camila A.",
+    "ciudad": "Bogotá",
+    "declaradoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+    "fecha": 1794251646,
+    "azar": {
+      "fuente": "drand",
+      "ronda": 6627354,
+      "valor": "9f911dd2ea856a0e9ecaf6cdc66204de55dd86ef55e5cdc460615f9c78eb3758",
+      "participantes": 11
+    }
   }
 }
