@@ -22,6 +22,10 @@
       "estado": "PENDIENTE",
       "orden": "91e150ed-2bc6-46dd-abd3-3d2d6b6b0a42"
     },
+    "28": {
+      "estado": "PENDIENTE",
+      "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
+    },
     "47": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
@@ -38,6 +42,10 @@
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
+    "176": {
+      "estado": "PENDIENTE",
+      "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
+    },
     "233": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
@@ -49,6 +57,10 @@
     "265": {
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
+    },
+    "269": {
+      "estado": "PENDIENTE",
+      "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
     },
     "290": {
       "estado": "PAGADO",
@@ -93,6 +105,10 @@
     "484": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "528": {
+      "estado": "PENDIENTE",
+      "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
     },
     "584": {
       "estado": "PENDIENTE",
@@ -223,6 +239,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794263918,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "4d68098b-604d-4d28-ae7d-f4ed42765925": {
+      "numeros": [
+        28,
+        176,
+        269,
+        528
+      ],
+      "seudonimo": "Eliberto A.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BC20UBhfblEsUPVODszIhp0nx5FYbluOdfN+3Nbh9aZrROdrJcyTpa7cZ27fFtlUCypz+mOHBjWFoCcltIoiGAd4gJ7swug4LELaku8XR8jha0Nc92Kj3wpkuKaKqaaSdi/G9XYnrDtxpjkQUyEvhSqKo3tjjEUHNF+ZlNMmOJHscTVGQleOaRvkoBEmCnpX+zJoqz5b7hdCx3E9ioW5Dm94b9xuyDi6m8OmtOjQeA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794264274,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
