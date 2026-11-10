@@ -290,6 +290,10 @@
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
     },
+    "340": {
+      "estado": "PENDIENTE",
+      "orden": "5e61ca66-482e-44b8-89d0-b4b424a40c25"
+    },
     "350": {
       "estado": "PAGADO",
       "orden": "e36b65cb-1f2c-41e4-874a-ac5f84269e59"
@@ -394,6 +398,10 @@
       "estado": "PENDIENTE",
       "orden": "594fe2ca-467f-4bd1-810d-a17c3ef05196"
     },
+    "537": {
+      "estado": "PENDIENTE",
+      "orden": "5e61ca66-482e-44b8-89d0-b4b424a40c25"
+    },
     "544": {
       "estado": "PAGADO",
       "orden": "57f54464-553d-4885-9f31-c9023e8bb036"
@@ -401,6 +409,10 @@
     "562": {
       "estado": "PAGADO",
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
+    },
+    "564": {
+      "estado": "PENDIENTE",
+      "orden": "5e61ca66-482e-44b8-89d0-b4b424a40c25"
     },
     "582": {
       "estado": "PENDIENTE",
@@ -633,6 +645,10 @@
     "942": {
       "estado": "PENDIENTE",
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
+    },
+    "964": {
+      "estado": "PENDIENTE",
+      "orden": "5e61ca66-482e-44b8-89d0-b4b424a40c25"
     },
     "965": {
       "estado": "PAGADO",
@@ -1234,6 +1250,24 @@
       "registrado": 1794332960,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794333003,
+      "comprobanteHash": null
+    },
+    "5e61ca66-482e-44b8-89d0-b4b424a40c25": {
+      "numeros": [
+        340,
+        537,
+        564,
+        964
+      ],
+      "seudonimo": "Ricardo G.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BJRlIiJL2Kg0YpFkguTPVKYPkzJrovZ9XgqeD/vJIMyyZjXYwAU/KTj10aB2TcIZLyznuC3mI+glrysHdlL9FIkBeriWg5yuvObLYpde58ftFe9fupSRITSArySXDuU3B1nKahCNdXWNHuaS8Qx2pQBKXA4T0EY6DANh1JkV9N8dEkJ8TXfJF9sLJ8P+GiOJKi8VoK428jyMY26WFQlVGUWmylC83ow5EJugxQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794333230,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
