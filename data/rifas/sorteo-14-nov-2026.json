@@ -82,6 +82,10 @@
       "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
+    "109": {
+      "estado": "PENDIENTE",
+      "orden": "0ab9314d-81b0-4e8e-9e82-f78a72bdc422"
+    },
     "110": {
       "estado": "PAGADO",
       "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
@@ -157,6 +161,10 @@
     "211": {
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
+    },
+    "217": {
+      "estado": "PENDIENTE",
+      "orden": "0ab9314d-81b0-4e8e-9e82-f78a72bdc422"
     },
     "218": {
       "estado": "PAGADO",
@@ -374,6 +382,14 @@
       "estado": "PAGADO",
       "orden": "e36b65cb-1f2c-41e4-874a-ac5f84269e59"
     },
+    "590": {
+      "estado": "PENDIENTE",
+      "orden": "0ab9314d-81b0-4e8e-9e82-f78a72bdc422"
+    },
+    "613": {
+      "estado": "PENDIENTE",
+      "orden": "0ab9314d-81b0-4e8e-9e82-f78a72bdc422"
+    },
     "615": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
@@ -502,9 +518,17 @@
       "estado": "PENDIENTE",
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
+    "825": {
+      "estado": "PENDIENTE",
+      "orden": "0ab9314d-81b0-4e8e-9e82-f78a72bdc422"
+    },
     "826": {
       "estado": "PENDIENTE",
       "orden": "00097e9e-59b7-4a55-8c16-9bf331449ac0"
+    },
+    "830": {
+      "estado": "PENDIENTE",
+      "orden": "0ab9314d-81b0-4e8e-9e82-f78a72bdc422"
     },
     "832": {
       "estado": "PENDIENTE",
@@ -1067,6 +1091,26 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794331230,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "0ab9314d-81b0-4e8e-9e82-f78a72bdc422": {
+      "numeros": [
+        109,
+        217,
+        590,
+        613,
+        825,
+        830
+      ],
+      "seudonimo": "Jessika R.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BEhdUzGuHHd7WfnXXmW1mw7zPxxM1ityP119gatF2SGWA0TJnbhHaSRWSEAOLxnrgFHpG5UdakNOBNL72YzuPqhYgZMQHEJzs+fnWaSPaIiLKFQRX6n2AT1nH6StOHZ6hFLmTyb+lCXNqveZYAsKSD1H0QmciJAEjHeanZrE3wUCbWXn88mO0oQ+1rNOqvASqoWp8FsJAGqSCcmmyyH64zsqOv4hNapoljQ5IN0=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794331722,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
