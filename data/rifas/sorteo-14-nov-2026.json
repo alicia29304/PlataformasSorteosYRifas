@@ -130,6 +130,10 @@
       "estado": "PAGADO",
       "orden": "c1c2f1d2-24de-4ebf-a778-d5e41329daf2"
     },
+    "152": {
+      "estado": "PENDIENTE",
+      "orden": "27f79d65-dd87-4a7d-90e1-cd16202a50c5"
+    },
     "161": {
       "estado": "PENDIENTE",
       "orden": "c3db4d62-47ae-466b-85ed-24e59e1b224c"
@@ -217,6 +221,10 @@
     "269": {
       "estado": "PENDIENTE",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
+    },
+    "272": {
+      "estado": "PENDIENTE",
+      "orden": "27f79d65-dd87-4a7d-90e1-cd16202a50c5"
     },
     "274": {
       "estado": "PENDIENTE",
@@ -517,6 +525,10 @@
     "786": {
       "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
+    },
+    "787": {
+      "estado": "PENDIENTE",
+      "orden": "27f79d65-dd87-4a7d-90e1-cd16202a50c5"
     },
     "789": {
       "estado": "PAGADO",
@@ -1169,6 +1181,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794332071,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "27f79d65-dd87-4a7d-90e1-cd16202a50c5": {
+      "numeros": [
+        152,
+        272,
+        787
+      ],
+      "seudonimo": "Carmen C.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BNmmLFpnjjv5OW27QoL2Qekp4u9U8XAkgO9zNNzYaTaxC51NAaxCGyrws+LOLsB708AmIB6XSYE/15/FdO9aExJiATSQSbFCCEdbhZPcVJm4NKNJ9sOB9CYvqJ7/ML4ZGuhIfKpcMP/UpcIkOw27iZ3NJjdK104DZhxSS2p4A2/hwcUtWydoXGYNooGOfxDwzsiBi1RaGgseQPzdcXJlE/Dhz95xoDehHn/L",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794332648,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
