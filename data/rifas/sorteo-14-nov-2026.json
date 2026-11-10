@@ -306,6 +306,14 @@
       "estado": "PENDIENTE",
       "orden": "5e61ca66-482e-44b8-89d0-b4b424a40c25"
     },
+    "343": {
+      "estado": "PENDIENTE",
+      "orden": "4586e950-b435-4e92-986f-dec807308dff"
+    },
+    "347": {
+      "estado": "PENDIENTE",
+      "orden": "4586e950-b435-4e92-986f-dec807308dff"
+    },
     "350": {
       "estado": "PAGADO",
       "orden": "e36b65cb-1f2c-41e4-874a-ac5f84269e59"
@@ -381,6 +389,10 @@
     "454": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
+    },
+    "456": {
+      "estado": "PENDIENTE",
+      "orden": "4586e950-b435-4e92-986f-dec807308dff"
     },
     "462": {
       "estado": "PENDIENTE",
@@ -1332,6 +1344,23 @@
       "registrado": 1794334401,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794334430,
+      "comprobanteHash": null
+    },
+    "4586e950-b435-4e92-986f-dec807308dff": {
+      "numeros": [
+        343,
+        347,
+        456
+      ],
+      "seudonimo": "José M.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BH/vFqp46HbQF9eNlYb+nGi711CsulpllP13Tp5QWI+acQ0NtVSxoLJG1UNGS3kWwG8qoVyYaFzlR15UjNyoxrgwn0J5hkyoiqlUe9Am9gF/l6UGXAm/xx32ILfcC0SQ5rsTJqTHXFe+JlxVp5PivOPXqiF/4c+dZeJn2yIrX9Oy8TbcoMeBqLQDAhUL9Z6gvN1bdM3cbUCVu1oOK9jgtehJZvbzxXXs9GzQ",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794344791,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
