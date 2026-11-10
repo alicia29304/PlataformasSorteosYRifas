@@ -70,6 +70,10 @@
       "estado": "PAGADO",
       "orden": "9faf6c93-2977-4d14-b455-a54f743b2d22"
     },
+    "161": {
+      "estado": "PENDIENTE",
+      "orden": "c3db4d62-47ae-466b-85ed-24e59e1b224c"
+    },
     "172": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
@@ -146,6 +150,10 @@
       "estado": "PENDIENTE",
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
+    "436": {
+      "estado": "PENDIENTE",
+      "orden": "c3db4d62-47ae-466b-85ed-24e59e1b224c"
+    },
     "446": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
@@ -201,6 +209,10 @@
     "654": {
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
+    },
+    "674": {
+      "estado": "PENDIENTE",
+      "orden": "c3db4d62-47ae-466b-85ed-24e59e1b224c"
     },
     "691": {
       "estado": "PENDIENTE",
@@ -492,6 +504,23 @@
       "registrado": 1794277593,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794277769,
+      "comprobanteHash": null
+    },
+    "c3db4d62-47ae-466b-85ed-24e59e1b224c": {
+      "numeros": [
+        161,
+        436,
+        674
+      ],
+      "seudonimo": "Enzo C.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BNmCFGxf1AOTxjlcI74ygEdK3gn9PoLuZht5tDEADsUSGypo9FyP5FQODqD0AgDAd1MeHTm0fhxvmQ32/v5WIGZhe3PGMQhMsMg+11d1itzgIgxmHqe3fJEQyVhMmcx/Ed1bqkGy2w7qbmOpzqavLcUHCKYoX6vVDJRTTxpaMJA/fR9lSEYRlSbo+gbiUn36HI4XZoBdSPe3PU/N4R8ftQZyWbLPUbJXYnGK3THdJQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794278397,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
