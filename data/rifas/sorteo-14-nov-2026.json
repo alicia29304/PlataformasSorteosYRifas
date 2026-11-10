@@ -438,6 +438,10 @@
       "estado": "PENDIENTE",
       "orden": "c3db4d62-47ae-466b-85ed-24e59e1b224c"
     },
+    "676": {
+      "estado": "PENDIENTE",
+      "orden": "1e498c55-9dbb-46e7-8d1f-e5e9d6ecdb4f"
+    },
     "677": {
       "estado": "PAGADO",
       "orden": "c1c2f1d2-24de-4ebf-a778-d5e41329daf2"
@@ -530,6 +534,10 @@
       "estado": "PENDIENTE",
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
+    "823": {
+      "estado": "PENDIENTE",
+      "orden": "1e498c55-9dbb-46e7-8d1f-e5e9d6ecdb4f"
+    },
     "825": {
       "estado": "PENDIENTE",
       "orden": "0ab9314d-81b0-4e8e-9e82-f78a72bdc422"
@@ -565,6 +573,10 @@
     "883": {
       "estado": "PAGADO",
       "orden": "306d2bd7-ecda-4c3a-a61d-e1626ab92cc4"
+    },
+    "897": {
+      "estado": "PENDIENTE",
+      "orden": "1e498c55-9dbb-46e7-8d1f-e5e9d6ecdb4f"
     },
     "904": {
       "estado": "PENDIENTE",
@@ -1140,6 +1152,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794331961,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "1e498c55-9dbb-46e7-8d1f-e5e9d6ecdb4f": {
+      "numeros": [
+        676,
+        823,
+        897
+      ],
+      "seudonimo": "Carlos A.",
+      "ciudad": "Monterrey",
+      "metodo": "Efectivo",
+      "privado": "enc1:BIHdlUKm+XNbQnElW6UBETxb/6M3ugthc70lkPXGPgZYZmxfkRruQV2IA5a5mF+WWLVWN0Baw9A6x+EWqrolrcziKMcnTVOA17w/vxVGNOOITln8wMU+fDG3Qz/7klDYV6BBF1zPPxmYTSZGdBL2jBUcgE3v/9PMWXzw8d5JtRgZVH1UrtTt+YZYl8bsyEyX6DSOPa9tIG/W44NWSoStb7VvDg3Ts2wVqykL",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794332071,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
