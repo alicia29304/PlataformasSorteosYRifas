@@ -358,6 +358,10 @@
       "estado": "PAGADO",
       "orden": "811523da-9af5-4aa5-8a29-d94e1a7a7f6b"
     },
+    "381": {
+      "estado": "PENDIENTE",
+      "orden": "be837b19-0ee6-45f5-851a-8fa3b5ff4901"
+    },
     "383": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
@@ -458,6 +462,10 @@
       "estado": "PAGADO",
       "orden": "57f54464-553d-4885-9f31-c9023e8bb036"
     },
+    "545": {
+      "estado": "PENDIENTE",
+      "orden": "be837b19-0ee6-45f5-851a-8fa3b5ff4901"
+    },
     "562": {
       "estado": "PAGADO",
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
@@ -505,6 +513,10 @@
     "616": {
       "estado": "PAGADO",
       "orden": "cc377af3-f180-4d4a-8988-d2b96328539f"
+    },
+    "643": {
+      "estado": "PENDIENTE",
+      "orden": "be837b19-0ee6-45f5-851a-8fa3b5ff4901"
     },
     "649": {
       "estado": "PENDIENTE",
@@ -1419,6 +1431,23 @@
       "registrado": 1794348358,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794348391,
+      "comprobanteHash": null
+    },
+    "be837b19-0ee6-45f5-851a-8fa3b5ff4901": {
+      "numeros": [
+        381,
+        545,
+        643
+      ],
+      "seudonimo": "Gabriela H.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BNVnOKW09JQtuC3G0D+KrKZWVb3mRaqlEOw3MG6soC5NMcTGup+mYe80TnL1BQn/SMNMiPEntfuOLooOhS0gZ7jqr7KYSVySERHBUyNUmJVBYMFT/kNKDsbIBzQ1JI9pI5zo5WWWbzsw36PUTA5PeZDEleyC2XMmGJIHChla8/pZgWg23iUpOfgnN8HrE7zSg+I/zzBf0fYZX29wsWQURh7pZ6pVgmjgM7WPvoDpGpBQug==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794349271,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
