@@ -75,7 +75,7 @@
       "orden": "cfcbda3f-72ca-4add-9013-ea4b38c61c17"
     },
     "108": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
     "112": {
@@ -339,7 +339,7 @@
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
     },
     "653": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
     "654": {
@@ -347,7 +347,7 @@
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
     "662": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
     "670": {
@@ -411,7 +411,7 @@
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
     },
     "779": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
     "782": {
@@ -419,7 +419,7 @@
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
     },
     "786": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
     "789": {
@@ -467,7 +467,7 @@
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
     "926": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
     "935": {
@@ -913,11 +913,11 @@
       "ciudad": "Orocue",
       "metodo": "Transferencia",
       "privado": "enc1:BJv9lC/7ghqMXWIPbSxwEvoS4RA5vLhSsdSYypucge6ocesKRbYneLkgnLzNm4u8KwxMz5Emt01zxlY1TGv6gz/0rOgNseqgaHuORQd6K9o9GVs6tnkfGhyC7Bkoeys1fJ1up4cF8O9YjMdA6WkBtiSq6/XD1Ap2w/2Yls7R7WS/vopgCwRvMRmBgsf4bDPpk1+OzXanC4vN7gYUM7kdCWgAvDLzz9devMRHoQ==",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794328157,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1794328222,
       "comprobanteHash": null
     }
   }
