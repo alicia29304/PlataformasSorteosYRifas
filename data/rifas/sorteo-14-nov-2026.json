@@ -30,6 +30,10 @@
       "estado": "PAGADO",
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
     },
+    "22": {
+      "estado": "PENDIENTE",
+      "orden": "b714fb2f-0711-4f1f-92d5-59a6110b6089"
+    },
     "28": {
       "estado": "PENDIENTE",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
@@ -634,6 +638,10 @@
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
     },
+    "774": {
+      "estado": "PENDIENTE",
+      "orden": "b714fb2f-0711-4f1f-92d5-59a6110b6089"
+    },
     "779": {
       "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
@@ -717,6 +725,10 @@
     "883": {
       "estado": "PAGADO",
       "orden": "306d2bd7-ecda-4c3a-a61d-e1626ab92cc4"
+    },
+    "894": {
+      "estado": "PENDIENTE",
+      "orden": "b714fb2f-0711-4f1f-92d5-59a6110b6089"
     },
     "897": {
       "estado": "PENDIENTE",
@@ -1487,6 +1499,23 @@
       "registrado": 1794351838,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794351874,
+      "comprobanteHash": null
+    },
+    "b714fb2f-0711-4f1f-92d5-59a6110b6089": {
+      "numeros": [
+        22,
+        774,
+        894
+      ],
+      "seudonimo": "Lorennys M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BP+05cd+eOPreWULrDMv3a6q3yETc//GmKg3JiRwGPU7G8k0zn14KnLresNbSAoEx+UY6B5hGkTr3FiDivioytXpbmcHUih0tXQyIfG0P8hrOrQ7/lvCj6PoL5bWqS1jpsWJEZ0dRHl4Bfs9Wsswk/h7UQQSUl0XYkfrHAu4tdOPhCL0tRB40qlBVm+3OU7z565UjNaixG9uAvwCnYypyQFIx7/hCFvW9vQQMg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794355035,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
