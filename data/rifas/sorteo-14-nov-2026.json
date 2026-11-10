@@ -118,6 +118,10 @@
       "estado": "PENDIENTE",
       "orden": "fbe668e4-34a4-4c4c-ac29-8bea5561af92"
     },
+    "127": {
+      "estado": "PENDIENTE",
+      "orden": "e22c7a85-6fb3-4d30-adc3-282d50036ec3"
+    },
     "128": {
       "estado": "PAGADO",
       "orden": "cc377af3-f180-4d4a-8988-d2b96328539f"
@@ -218,6 +222,10 @@
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
+    "256": {
+      "estado": "PENDIENTE",
+      "orden": "e22c7a85-6fb3-4d30-adc3-282d50036ec3"
+    },
     "258": {
       "estado": "PAGADO",
       "orden": "35a7730f-9f86-4b2b-baf4-508bc260e2d1"
@@ -241,6 +249,10 @@
     "274": {
       "estado": "PENDIENTE",
       "orden": "00097e9e-59b7-4a55-8c16-9bf331449ac0"
+    },
+    "278": {
+      "estado": "PENDIENTE",
+      "orden": "e22c7a85-6fb3-4d30-adc3-282d50036ec3"
     },
     "282": {
       "estado": "PENDIENTE",
@@ -1390,6 +1402,23 @@
       "registrado": 1794347018,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794347051,
+      "comprobanteHash": null
+    },
+    "e22c7a85-6fb3-4d30-adc3-282d50036ec3": {
+      "numeros": [
+        127,
+        256,
+        278
+      ],
+      "seudonimo": "Katerine P.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BNTY9eM/uEYrYmp8wO8OjNfZHAZ3V1BwshtAxWcZi+lZGxABQkOJNshHuWf+waCHNd5pGemdv5f2vBd+PegQ6G4KT2YJwCwXSy5sQW91xaNJbP1nogg2YmAL9d3bSrsUOg2wuhfjwpDXy85fRJSEmIOHRfkm24mxR2GIi4y9P0xEh0TPpeFQqMWpmArgNhDFUqMbLBMSDhdCqP4OXX+QDtWKsYZQIWDGiAL8wzhUPnw=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794348358,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
