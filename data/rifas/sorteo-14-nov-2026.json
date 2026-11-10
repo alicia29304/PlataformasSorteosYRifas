@@ -166,6 +166,10 @@
       "estado": "PENDIENTE",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
     },
+    "532": {
+      "estado": "PENDIENTE",
+      "orden": "594fe2ca-467f-4bd1-810d-a17c3ef05196"
+    },
     "562": {
       "estado": "PAGADO",
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
@@ -423,6 +427,21 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794268066,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "594fe2ca-467f-4bd1-810d-a17c3ef05196": {
+      "numeros": [
+        532
+      ],
+      "seudonimo": "Mary M.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BAOv8/50uQANbsHQFQ7jx/bbP4r9RUbAX/pKmkp2ATKlEkmT7vb9nXOZaf5XeN1r8ksmhSoq34qLIkr+BKKl/GFkKYtG9Ipo6i15mHh/N2ytbWuqQmTsjjl+KcvQ5g1uG0eJgAK5z2h0mJSAPZL8zIrugIMRjDln9pK20x/1gBBfd8sZPdu0ucOAQb5B/2lKnH06zvlC+8n8DjV6wPYwDSwwMWj6YyUM",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794269036,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
