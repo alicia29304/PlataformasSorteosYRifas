@@ -34,6 +34,10 @@
       "estado": "PENDIENTE",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
     },
+    "33": {
+      "estado": "PENDIENTE",
+      "orden": "40c10589-2b3e-4f9a-a594-5b9558d632ab"
+    },
     "34": {
       "estado": "PENDIENTE",
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
@@ -161,6 +165,10 @@
     "211": {
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
+    },
+    "212": {
+      "estado": "PENDIENTE",
+      "orden": "40c10589-2b3e-4f9a-a594-5b9558d632ab"
     },
     "217": {
       "estado": "PENDIENTE",
@@ -293,6 +301,10 @@
     "384": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "387": {
+      "estado": "PENDIENTE",
+      "orden": "40c10589-2b3e-4f9a-a594-5b9558d632ab"
     },
     "389": {
       "estado": "PENDIENTE",
@@ -1111,6 +1123,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794331722,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "40c10589-2b3e-4f9a-a594-5b9558d632ab": {
+      "numeros": [
+        33,
+        212,
+        387
+      ],
+      "seudonimo": "Eduardo M.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BP6JOuvqHSSy1YwEmMvCtFc3F5WitNPcAjHuy2aV0Fe0BbxebdKYdCT1xrswsZPNlf+9aoWRsLmzhEh4KQCdRosIkikLSzuuY6/U4TrwCaDVwEBrWAUX44gndIiDDop8oTpITlm86r6l9eqXXV/DdIxdCtmarA3DEuaONXVM9hwd/6je3WGGgZQfmLxsM0dd740xJ1fHoW+ABNjnHTh/ZHaMt5mWSolKtFuMMxNRMvk=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794331961,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
