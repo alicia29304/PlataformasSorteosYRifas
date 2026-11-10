@@ -39,7 +39,7 @@
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
     "42": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "35a7730f-9f86-4b2b-baf4-508bc260e2d1"
     },
     "47": {
@@ -123,7 +123,7 @@
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
     "218": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "35a7730f-9f86-4b2b-baf4-508bc260e2d1"
     },
     "220": {
@@ -139,7 +139,7 @@
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
     "258": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "35a7730f-9f86-4b2b-baf4-508bc260e2d1"
     },
     "264": {
@@ -195,7 +195,7 @@
       "orden": "00097e9e-59b7-4a55-8c16-9bf331449ac0"
     },
     "353": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "35a7730f-9f86-4b2b-baf4-508bc260e2d1"
     },
     "359": {
@@ -291,7 +291,7 @@
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
     "670": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "35a7730f-9f86-4b2b-baf4-508bc260e2d1"
     },
     "674": {
@@ -335,7 +335,7 @@
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
     },
     "789": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "35a7730f-9f86-4b2b-baf4-508bc260e2d1"
     },
     "810": {
@@ -712,11 +712,11 @@
       "ciudad": "Villanueva",
       "metodo": "Efectivo",
       "privado": "enc1:BC8wfADEcm2rNhVY8tXInzb1X2JNPYNJoK1c0iQHvlhGJSw5jiyfz7eKcLIVn00ZPyjz0eS5HNyGayK8i6qfZyJwHudO485+cfDNCOBZ8oKafuoh/0KD1VGkvEJDHDCFhKDSxjDDuOouOJJXcfGW+LYBt0xnIO2BHcQUYV/+/o9+7hNBK/6VfuAozetDd8FqEdwTpLLshZeoVcLtAxqX5TMN5LDHDjMhxCpy",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794324565,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1794324602,
       "comprobanteHash": null
     }
   }
