@@ -78,6 +78,10 @@
       "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
+    "110": {
+      "estado": "PENDIENTE",
+      "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
+    },
     "112": {
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
@@ -378,6 +382,10 @@
       "estado": "PENDIENTE",
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
+    "710": {
+      "estado": "PENDIENTE",
+      "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
+    },
     "712": {
       "estado": "PENDIENTE",
       "orden": "cfcbda3f-72ca-4add-9013-ea4b38c61c17"
@@ -393,6 +401,10 @@
     "749": {
       "estado": "PENDIENTE",
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
+    },
+    "760": {
+      "estado": "PENDIENTE",
+      "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
     },
     "764": {
       "estado": "PENDIENTE",
@@ -918,6 +930,23 @@
       "registrado": 1794328157,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794328222,
+      "comprobanteHash": null
+    },
+    "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88": {
+      "numeros": [
+        110,
+        710,
+        760
+      ],
+      "seudonimo": "Daniela C.",
+      "ciudad": "Orocue",
+      "metodo": "Transferencia",
+      "privado": "enc1:BG0JbHY2o7tTDP4X2gLFCID768Z8oVqBikHJUlMFuMw5bPQiD6IjqG/Zd43mvLfVdaqWT3pwU75gsGdOl+J22vUiSOywmOHf00Z5AL/6Rh/4UoIGsK6MDjlJcLHq6kufb1eKnAHJgHiUdENh3d0lJ6H3d6SBOwpXi2MQkqH46T3mNf0Vwc43MgEBKzBkfJ2KQO0Uy8WqWsJ2VDbkHdabkUC30EB9JFOqCYVWe1U=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794328339,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
