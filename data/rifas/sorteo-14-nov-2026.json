@@ -79,7 +79,7 @@
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
     "110": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
     },
     "112": {
@@ -383,7 +383,7 @@
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
     "710": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
     },
     "712": {
@@ -403,7 +403,7 @@
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
     "760": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
     },
     "764": {
@@ -942,11 +942,11 @@
       "ciudad": "Orocue",
       "metodo": "Transferencia",
       "privado": "enc1:BG0JbHY2o7tTDP4X2gLFCID768Z8oVqBikHJUlMFuMw5bPQiD6IjqG/Zd43mvLfVdaqWT3pwU75gsGdOl+J22vUiSOywmOHf00Z5AL/6Rh/4UoIGsK6MDjlJcLHq6kufb1eKnAHJgHiUdENh3d0lJ6H3d6SBOwpXi2MQkqH46T3mNf0Vwc43MgEBKzBkfJ2KQO0Uy8WqWsJ2VDbkHdabkUC30EB9JFOqCYVWe1U=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794328339,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1794328383,
       "comprobanteHash": null
     }
   }
