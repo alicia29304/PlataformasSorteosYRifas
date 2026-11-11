@@ -102,6 +102,10 @@
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
+    "94": {
+      "estado": "PENDIENTE",
+      "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
+    },
     "97": {
       "estado": "PENDIENTE",
       "orden": "cfcbda3f-72ca-4add-9013-ea4b38c61c17"
@@ -117,6 +121,10 @@
     "110": {
       "estado": "PAGADO",
       "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
+    },
+    "111": {
+      "estado": "PENDIENTE",
+      "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
     },
     "112": {
       "estado": "PENDIENTE",
@@ -170,6 +178,10 @@
       "estado": "PENDIENTE",
       "orden": "c3db4d62-47ae-466b-85ed-24e59e1b224c"
     },
+    "165": {
+      "estado": "PENDIENTE",
+      "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
+    },
     "167": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
@@ -185,6 +197,10 @@
     "181": {
       "estado": "PAGADO",
       "orden": "2fda06ff-9773-4879-ad66-2d6ef4a6ab71"
+    },
+    "188": {
+      "estado": "PENDIENTE",
+      "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
     },
     "199": {
       "estado": "PENDIENTE",
@@ -710,6 +726,10 @@
       "estado": "PENDIENTE",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
     },
+    "758": {
+      "estado": "PENDIENTE",
+      "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
+    },
     "760": {
       "estado": "PAGADO",
       "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
@@ -737,6 +757,10 @@
     "779": {
       "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
+    },
+    "780": {
+      "estado": "PENDIENTE",
+      "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
     },
     "782": {
       "estado": "PENDIENTE",
@@ -1757,6 +1781,26 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794364718,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "01384d0e-3c1e-41bd-9943-39e61f6738d5": {
+      "numeros": [
+        94,
+        111,
+        165,
+        188,
+        758,
+        780
+      ],
+      "seudonimo": "Antury P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BBnwVKa9Mtvo2ot84ClY8AaipkqDJOPnSOfPdN38MgE+C2aERFTg8buY7hJw4shySO7b8v02SJecrF5AH3+41dddCL096fo8CtLahC3VZ+xiRbxQ7Xf6jFXFi5t8OROqwxVvVBGh3e/vc9qSam3DCWBvPbzMWXBz2Cu1qNaxo9dSMFQsLESnfp582RbwfPCdg+/kG2smmFxTq6dsMQ2l+jzJQJyIigB2PA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794369887,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
