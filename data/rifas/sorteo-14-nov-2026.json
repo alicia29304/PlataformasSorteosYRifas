@@ -166,6 +166,10 @@
       "estado": "PAGADO",
       "orden": "c1c2f1d2-24de-4ebf-a778-d5e41329daf2"
     },
+    "151": {
+      "estado": "PENDIENTE",
+      "orden": "cf2ddc26-cb69-4d23-b66f-b0da6010be89"
+    },
     "152": {
       "estado": "PAGADO",
       "orden": "27f79d65-dd87-4a7d-90e1-cd16202a50c5"
@@ -173,6 +177,10 @@
     "157": {
       "estado": "PENDIENTE",
       "orden": "8dacf09e-595e-4641-a6fd-73f7b6b018e0"
+    },
+    "158": {
+      "estado": "PENDIENTE",
+      "orden": "cf2ddc26-cb69-4d23-b66f-b0da6010be89"
     },
     "161": {
       "estado": "PENDIENTE",
@@ -366,6 +374,10 @@
       "estado": "PENDIENTE",
       "orden": "0d3def33-8e6e-4dca-a683-889d920f6ca9"
     },
+    "325": {
+      "estado": "PENDIENTE",
+      "orden": "cf2ddc26-cb69-4d23-b66f-b0da6010be89"
+    },
     "328": {
       "estado": "PENDIENTE",
       "orden": "8dacf09e-595e-4641-a6fd-73f7b6b018e0"
@@ -493,6 +505,10 @@
     "446": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "450": {
+      "estado": "PENDIENTE",
+      "orden": "cf2ddc26-cb69-4d23-b66f-b0da6010be89"
     },
     "454": {
       "estado": "PENDIENTE",
@@ -1801,6 +1817,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794369887,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "cf2ddc26-cb69-4d23-b66f-b0da6010be89": {
+      "numeros": [
+        151,
+        158,
+        325,
+        450
+      ],
+      "seudonimo": "MILER P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BJQ1rd9jmoTUGmFlSAs3reSQN45Zu1lJhw1D8KfdAaZ/CL8vOErZur/FmB1dtemoaXoPVA3iC8yf05boJ+eXh9g6SdyWe7gWUuwwblRh1sDE1P3fqGC5uaIKNbE9GZkff9dZJAugdruGY7sqjPvmgfvvaYLI6kGFlO6YTD6C8Wbeu6H5iHGaZNBsoSutdTDXusNCfPip6fuuKmP1N73bE8bxn+WLIsf/j6PS",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794403166,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
