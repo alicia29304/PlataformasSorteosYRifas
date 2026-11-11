@@ -130,6 +130,10 @@
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
+    "113": {
+      "estado": "PENDIENTE",
+      "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
+    },
     "116": {
       "estado": "PAGADO",
       "orden": "c1c2f1d2-24de-4ebf-a778-d5e41329daf2"
@@ -358,6 +362,10 @@
       "estado": "PENDIENTE",
       "orden": "91e150ed-2bc6-46dd-abd3-3d2d6b6b0a42"
     },
+    "319": {
+      "estado": "PENDIENTE",
+      "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
+    },
     "321": {
       "estado": "PENDIENTE",
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
@@ -470,6 +478,10 @@
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
     },
+    "404": {
+      "estado": "PENDIENTE",
+      "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
+    },
     "408": {
       "estado": "PAGADO",
       "orden": "89292d93-66ce-4431-aadb-3a4a96462b9f"
@@ -538,9 +550,17 @@
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
+    "492": {
+      "estado": "PENDIENTE",
+      "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
+    },
     "500": {
       "estado": "PAGADO",
       "orden": "6abb7b02-2548-4c4c-a359-af59e993c34b"
+    },
+    "508": {
+      "estado": "PENDIENTE",
+      "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
     },
     "524": {
       "estado": "PENDIENTE",
@@ -750,6 +770,10 @@
       "estado": "PAGADO",
       "orden": "3b9cc484-2d8e-4fd1-8231-9fc7c8420b88"
     },
+    "761": {
+      "estado": "PENDIENTE",
+      "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
+    },
     "764": {
       "estado": "PENDIENTE",
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
@@ -933,6 +957,10 @@
     "968": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
+    },
+    "977": {
+      "estado": "PENDIENTE",
+      "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
     }
   },
   "ordenes": {
@@ -1835,6 +1863,27 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794403166,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae": {
+      "numeros": [
+        113,
+        319,
+        404,
+        492,
+        508,
+        761,
+        977
+      ],
+      "seudonimo": "REY P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BHbLoZPsetwcbaRmnED3XddAAM2pqPACG/XPEwG6wzymT4A6bdyP4iTYowLyPMnJAjFJSOBW55g0qaODVn37GlbV520UEpXbd5g/aC0op79TtZ58rm3hhPbZpOwIjYiMZfvHMjtrW5FYpt66gjwz733xJzDFqzeWrADdNX8UO8RfPCUytZ59Oh9AEDlbjaQgcWL0e7brDanXAIeN0J5mHUFmm3E5qAGh",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794404337,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
