@@ -590,6 +590,10 @@
       "estado": "PENDIENTE",
       "orden": "00097e9e-59b7-4a55-8c16-9bf331449ac0"
     },
+    "526": {
+      "estado": "PENDIENTE",
+      "orden": "aa63ef88-61b1-4743-82d5-8b8bf6c2e847"
+    },
     "528": {
       "estado": "PENDIENTE",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
@@ -914,6 +918,10 @@
       "estado": "PAGADO",
       "orden": "6abb7b02-2548-4c4c-a359-af59e993c34b"
     },
+    "879": {
+      "estado": "PENDIENTE",
+      "orden": "aa63ef88-61b1-4743-82d5-8b8bf6c2e847"
+    },
     "880": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
@@ -941,6 +949,10 @@
     "904": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "908": {
+      "estado": "PENDIENTE",
+      "orden": "aa63ef88-61b1-4743-82d5-8b8bf6c2e847"
     },
     "909": {
       "estado": "PAGADO",
@@ -1988,6 +2000,23 @@
       "registrado": 1794409468,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794409506,
+      "comprobanteHash": null
+    },
+    "aa63ef88-61b1-4743-82d5-8b8bf6c2e847": {
+      "numeros": [
+        526,
+        879,
+        908
+      ],
+      "seudonimo": "Yorbelis A.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BFJC4T6OwXUx2VYNjFodxB73hguIpqhrfS3cKJTasbw1JCv6w7TSlKW4E8aY2XwjWAPUAU+1O4jIOabzYBDkxGMxfd6NsOLygaGdTJE6GVK/wr+X9dOWAId9tWd6KnrheBMZ/fiKS0koLDfjWzVB4NSvec/C4LNOCSyAJ8kobQqGXk9hjbJ6p16Lb+levOVvYp3e3CHpcGiPrWfX5AyqB97HGE1YG5CwTExyVHYNj2o=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794413532,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
