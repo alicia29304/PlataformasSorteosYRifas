@@ -142,6 +142,10 @@
       "estado": "PAGADO",
       "orden": "c1c2f1d2-24de-4ebf-a778-d5e41329daf2"
     },
+    "119": {
+      "estado": "PENDIENTE",
+      "orden": "9021d41d-ae0a-4c60-84e7-1bd9821c4223"
+    },
     "122": {
       "estado": "PAGADO",
       "orden": "cc377af3-f180-4d4a-8988-d2b96328539f"
@@ -602,6 +606,10 @@
       "estado": "PENDIENTE",
       "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
     },
+    "499": {
+      "estado": "PENDIENTE",
+      "orden": "9021d41d-ae0a-4c60-84e7-1bd9821c4223"
+    },
     "500": {
       "estado": "PAGADO",
       "orden": "6abb7b02-2548-4c4c-a359-af59e993c34b"
@@ -905,6 +913,10 @@
     "794": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
+    },
+    "796": {
+      "estado": "PENDIENTE",
+      "orden": "9021d41d-ae0a-4c60-84e7-1bd9821c4223"
     },
     "810": {
       "estado": "PENDIENTE",
@@ -2133,6 +2145,23 @@
       "registrado": 1794438818,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794438871,
+      "comprobanteHash": null
+    },
+    "9021d41d-ae0a-4c60-84e7-1bd9821c4223": {
+      "numeros": [
+        119,
+        499,
+        796
+      ],
+      "seudonimo": "CHEO C.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BNsnP2wb957GhkB2frgUQhzV2xqRIUMc+hLWesBzhStJdGAR/UKiIqiN1SZ6SS3qPRupEfIZjaPC4qxjwKglBXdhiTvwi6KMKxGonHmr0m7/GfZ+pAf2jtzMJGTnnrlwLYJGBS/g70FI7XygdX2/OJx7gVLeuMCnIelO4WuAqB27d/QHcpLe+GiH+kyqnuvEOUjQMdalpgKFIQb+yJzYPNnYnSfT",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794439035,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
