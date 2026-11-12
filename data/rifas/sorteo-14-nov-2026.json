@@ -106,6 +106,10 @@
       "estado": "PENDIENTE",
       "orden": "cb34d5f7-a0fe-4f8e-ba39-8c7f136cb13b"
     },
+    "68": {
+      "estado": "PENDIENTE",
+      "orden": "72389718-3a74-423a-b135-f9dca30ee0ef"
+    },
     "73": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
@@ -305,6 +309,10 @@
     "226": {
       "estado": "PENDIENTE",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
+    },
+    "228": {
+      "estado": "PENDIENTE",
+      "orden": "72389718-3a74-423a-b135-f9dca30ee0ef"
     },
     "233": {
       "estado": "PENDIENTE",
@@ -870,6 +878,10 @@
       "estado": "PENDIENTE",
       "orden": "cfcbda3f-72ca-4add-9013-ea4b38c61c17"
     },
+    "713": {
+      "estado": "PENDIENTE",
+      "orden": "72389718-3a74-423a-b135-f9dca30ee0ef"
+    },
     "714": {
       "estado": "PAGADO",
       "orden": "da8ea9bc-0f2c-423e-8207-f52000619d89"
@@ -1173,6 +1185,10 @@
     "995": {
       "estado": "PAGADO",
       "orden": "33018585-cd22-411d-a153-f56a4f03f360"
+    },
+    "999": {
+      "estado": "PENDIENTE",
+      "orden": "72389718-3a74-423a-b135-f9dca30ee0ef"
     }
   },
   "ordenes": {
@@ -2347,6 +2363,24 @@
       "registrado": 1794441956,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794441992,
+      "comprobanteHash": null
+    },
+    "72389718-3a74-423a-b135-f9dca30ee0ef": {
+      "numeros": [
+        68,
+        228,
+        713,
+        999
+      ],
+      "seudonimo": "Ivonne C.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BGJSS+wqxrQvH2FpqTJaQUbeMuEjlyE1xS0FBigJrZz+PX8TaXAJn2xcpy5MBn2Ogjh/fvt4EM+blUoYq7IDHsL6SjBTRdDkdZiDXtbqEVb44k29ZqMtQFdXKJxJVTB0JpVGThE7zBHsBYxfhnKq+Or2vgwp3XBfDc4Jph0n0s9dqvakqUXObk65Z0g1geNPyS5DKOmLQ+DI0Y2/EdCrtSgJmtpwP7+Ev2nXGy7KQ9U=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794445556,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
