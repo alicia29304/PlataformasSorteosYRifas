@@ -434,6 +434,10 @@
       "estado": "PAGADO",
       "orden": "e22c7a85-6fb3-4d30-adc3-282d50036ec3"
     },
+    "257": {
+      "estado": "PENDIENTE",
+      "orden": "bfb3f359-b7d3-4b61-9eda-50b27edf095c"
+    },
     "258": {
       "estado": "PAGADO",
       "orden": "35a7730f-9f86-4b2b-baf4-508bc260e2d1"
@@ -1026,6 +1030,10 @@
       "estado": "PAGADO",
       "orden": "bbea882a-41a7-43fa-9cec-97a9dad3ea77"
     },
+    "681": {
+      "estado": "PENDIENTE",
+      "orden": "bfb3f359-b7d3-4b61-9eda-50b27edf095c"
+    },
     "682": {
       "estado": "PAGADO",
       "orden": "c1c2f1d2-24de-4ebf-a778-d5e41329daf2"
@@ -1242,6 +1250,10 @@
       "estado": "PAGADO",
       "orden": "6e92807f-4828-473e-ac9d-40ba964c7830"
     },
+    "820": {
+      "estado": "PENDIENTE",
+      "orden": "bfb3f359-b7d3-4b61-9eda-50b27edf095c"
+    },
     "823": {
       "estado": "PENDIENTE",
       "orden": "1e498c55-9dbb-46e7-8d1f-e5e9d6ecdb4f"
@@ -1325,6 +1337,10 @@
     "883": {
       "estado": "PAGADO",
       "orden": "306d2bd7-ecda-4c3a-a61d-e1626ab92cc4"
+    },
+    "885": {
+      "estado": "PENDIENTE",
+      "orden": "bfb3f359-b7d3-4b61-9eda-50b27edf095c"
     },
     "887": {
       "estado": "PAGADO",
@@ -2965,6 +2981,24 @@
       "registrado": 1794490923,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794490952,
+      "comprobanteHash": null
+    },
+    "bfb3f359-b7d3-4b61-9eda-50b27edf095c": {
+      "numeros": [
+        257,
+        681,
+        820,
+        885
+      ],
+      "seudonimo": "Camila J.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BL9d9TTV8XTZCv5/wte8NI0fT6lLurz6igDzt7G+pEAaNqp9BelX+XP1SdLHIz+TL6ddcN+HinlI2dSY5VkfKwAWiT0tSfSVo7Ud3JuozE3hVqOHOYEwuNqyi9Wu1SifgH5TbRgUHkp6e/jko0EAChiFcBU1z+FlCHWH9uq0pT+8+5ZaT+BsePSrq9AHcwt+x0W24RKAWm7T4Uouz+K7VuxjAeBl3xbxwDQ6CJNfqw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794491511,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
