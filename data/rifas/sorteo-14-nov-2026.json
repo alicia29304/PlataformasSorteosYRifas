@@ -750,6 +750,10 @@
       "estado": "PAGADO",
       "orden": "4586e950-b435-4e92-986f-dec807308dff"
     },
+    "460": {
+      "estado": "PENDIENTE",
+      "orden": "68201639-d0a4-4e22-a5f4-81e08a561e3d"
+    },
     "462": {
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
@@ -877,6 +881,10 @@
     "569": {
       "estado": "PAGADO",
       "orden": "da8ea9bc-0f2c-423e-8207-f52000619d89"
+    },
+    "571": {
+      "estado": "PENDIENTE",
+      "orden": "68201639-d0a4-4e22-a5f4-81e08a561e3d"
     },
     "580": {
       "estado": "PAGADO",
@@ -1285,6 +1293,10 @@
     "874": {
       "estado": "PAGADO",
       "orden": "6abb7b02-2548-4c4c-a359-af59e993c34b"
+    },
+    "875": {
+      "estado": "PENDIENTE",
+      "orden": "68201639-d0a4-4e22-a5f4-81e08a561e3d"
     },
     "876": {
       "estado": "PAGADO",
@@ -2936,6 +2948,23 @@
       "registrado": 1794490786,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794490853,
+      "comprobanteHash": null
+    },
+    "68201639-d0a4-4e22-a5f4-81e08a561e3d": {
+      "numeros": [
+        460,
+        571,
+        875
+      ],
+      "seudonimo": "Laura P.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BEmIbtwAJSnOTEXD0X4RBNiF3fD01l5JHHrw61tYfyh3HuwTGFcvhtkLIIEdFFpHpVmj/Y6JQIO52AeZRJXNfvFgpHkwB0o4cG+Yly8H+BEExJz6RE1x7rW4kkq1o67jQzoPwMPuP2YFal6clcFJmJHzSiegCGQEvFaJOQdOD0/vthimSVaGxNpeOT+kFjqb7U8A8YhgozLCryW2c7uahkCwMgsImgTtxh9p",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794490923,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
