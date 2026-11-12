@@ -154,6 +154,10 @@
       "estado": "PENDIENTE",
       "orden": "cfcbda3f-72ca-4add-9013-ea4b38c61c17"
     },
+    "100": {
+      "estado": "PENDIENTE",
+      "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
+    },
     "107": {
       "estado": "PAGADO",
       "orden": "2a48698d-55e2-42d5-a309-e0e4dcd369e5"
@@ -394,9 +398,17 @@
       "estado": "PAGADO",
       "orden": "28f855e7-cb2a-492b-8419-b94b5d17a8c6"
     },
+    "243": {
+      "estado": "PENDIENTE",
+      "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
+    },
     "245": {
       "estado": "PENDIENTE",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
+    },
+    "247": {
+      "estado": "PENDIENTE",
+      "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "248": {
       "estado": "PAGADO",
@@ -701,6 +713,10 @@
     "432": {
       "estado": "PENDIENTE",
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
+    },
+    "435": {
+      "estado": "PENDIENTE",
+      "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "436": {
       "estado": "PENDIENTE",
@@ -1122,6 +1138,14 @@
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
     },
+    "766": {
+      "estado": "PENDIENTE",
+      "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
+    },
+    "767": {
+      "estado": "PENDIENTE",
+      "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
+    },
     "768": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
@@ -1309,6 +1333,10 @@
     "904": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "906": {
+      "estado": "PENDIENTE",
+      "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "908": {
       "estado": "PAGADO",
@@ -2887,6 +2915,27 @@
       "registrado": 1794490618,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794490657,
+      "comprobanteHash": null
+    },
+    "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6": {
+      "numeros": [
+        100,
+        243,
+        247,
+        435,
+        766,
+        767,
+        906
+      ],
+      "seudonimo": "Andrea C.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BMWYGuoiIcCOshPBE/3H4JBNI/lJQcahrx/x8E1mI+v1F4soTOa2adoyBPKr1jxxWwMXo1i8sFEllQKm3fDtUQx7sB20zI/jbEwgvVcfORtm4/0/12pgXQpwhSBUN4JKgJB1hvJX7HrA5WoRKW5HBp7uHf49KnPThK+f4zaiz5NnWm57hhBWxVUGVcnSCm38ZndGIGRVSBC0q8y2Ua9RFkO6ykF5QdmMhMmJcx8k",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794490786,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
