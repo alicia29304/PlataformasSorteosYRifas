@@ -379,7 +379,7 @@
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
     "253": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
     },
     "256": {
@@ -667,7 +667,7 @@
       "orden": "3086f16d-89f1-436a-9a43-8394556f55ba"
     },
     "442": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
     },
     "446": {
@@ -831,7 +831,7 @@
       "orden": "e36b65cb-1f2c-41e4-874a-ac5f84269e59"
     },
     "587": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
     },
     "590": {
@@ -1063,7 +1063,7 @@
       "orden": "551934e9-6421-48eb-ba26-9ea2d2451b7e"
     },
     "778": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
     },
     "779": {
@@ -1315,7 +1315,7 @@
       "orden": "da8ea9bc-0f2c-423e-8207-f52000619d89"
     },
     "992": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
     },
     "995": {
@@ -2663,11 +2663,11 @@
       "ciudad": "Monterrey",
       "metodo": "Transferencia",
       "privado": "enc1:BIn2NTFD+T15C/LA8xo/Tf7Ioqu3+quNR7nnKZc1YP1iRN8Cg/i2f34aJM4C6OdsQyEmSTelEFs2nziFOOsHWvB11mMu/WeL3iK5/4LS90UMJTGuCfZ0VwmGRIKTmO9NEl0LVq2a/+Nscka0CUtc6rpilB6hHj6Khc7MY/iQzNkFd72o8dxkEojl1ysq8Jkdiwm5dFO/2cVe9KcVQkOz3HWiNkkkGjZMcn/yZg==",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794489165,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1794489190,
       "comprobanteHash": null
     }
   }
