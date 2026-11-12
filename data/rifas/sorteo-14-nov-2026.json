@@ -54,6 +54,10 @@
       "estado": "PAGADO",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
     },
+    "32": {
+      "estado": "PENDIENTE",
+      "orden": "3afe0410-ae73-41e9-83be-17e8a7b62df8"
+    },
     "33": {
       "estado": "PAGADO",
       "orden": "40c10589-2b3e-4f9a-a594-5b9558d632ab"
@@ -798,6 +802,10 @@
       "estado": "PAGADO",
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
     },
+    "476": {
+      "estado": "PENDIENTE",
+      "orden": "3afe0410-ae73-41e9-83be-17e8a7b62df8"
+    },
     "479": {
       "estado": "PENDIENTE",
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
@@ -1333,6 +1341,10 @@
     "860": {
       "estado": "PAGADO",
       "orden": "8329adce-05d0-4f41-970c-553acaccfc5f"
+    },
+    "866": {
+      "estado": "PENDIENTE",
+      "orden": "3afe0410-ae73-41e9-83be-17e8a7b62df8"
     },
     "867": {
       "estado": "PAGADO",
@@ -3106,6 +3118,23 @@
       "registrado": 1794501583,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794501620,
+      "comprobanteHash": null
+    },
+    "3afe0410-ae73-41e9-83be-17e8a7b62df8": {
+      "numeros": [
+        32,
+        476,
+        866
+      ],
+      "seudonimo": "David V.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDigLxIyy8LB36++tRAjuhuq9sjh/nGk37ntUw3gbh4nIiSt2Rttl8K1eQzW1b1I03GL8/jGjO3lKZpUGyMdHkb/28IoLnjvW/idROyDzMS9A4wgOfjWeUdv+8hiNWjM0DgAnwUn5U4oj2YaqRWNwDX5vpWNmVFDoqYbmGhsUmy9PAGA8ccf8ATnbIHVnY5gCstAr/0p5pSi1XCw7s/ekDBCwhJNLVSWg+Ii",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794502646,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
