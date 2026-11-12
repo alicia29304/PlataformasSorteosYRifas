@@ -298,6 +298,10 @@
       "estado": "PAGADO",
       "orden": "7ca188bf-c837-4781-a512-f9aebdd114df"
     },
+    "163": {
+      "estado": "PENDIENTE",
+      "orden": "4ba051bb-f2d9-4671-9f5c-3c4a0b8396e9"
+    },
     "164": {
       "estado": "PAGADO",
       "orden": "c72e9628-f0ed-4e4a-a776-6eae6c051d91"
@@ -1054,6 +1058,10 @@
       "estado": "PAGADO",
       "orden": "0d3def33-8e6e-4dca-a683-889d920f6ca9"
     },
+    "627": {
+      "estado": "PENDIENTE",
+      "orden": "4ba051bb-f2d9-4671-9f5c-3c4a0b8396e9"
+    },
     "633": {
       "estado": "PAGADO",
       "orden": "bbea882a-41a7-43fa-9cec-97a9dad3ea77"
@@ -1593,6 +1601,10 @@
     "947": {
       "estado": "PAGADO",
       "orden": "9c41e59f-117a-4f9f-8ece-a8122314a123"
+    },
+    "948": {
+      "estado": "PENDIENTE",
+      "orden": "4ba051bb-f2d9-4671-9f5c-3c4a0b8396e9"
     },
     "955": {
       "estado": "PAGADO",
@@ -3337,6 +3349,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794525534,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "4ba051bb-f2d9-4671-9f5c-3c4a0b8396e9": {
+      "numeros": [
+        163,
+        627,
+        948
+      ],
+      "seudonimo": "Yusneidy G.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BJ7fKbekID5SAQ4loUExrYK24G53PPwZIqDttuf0gAuxHKJ8IXjQOq3aqPvMQE86DnvkvD7aIUYJrk1hueszeKQ61k8PGYj3oSjXvQJk/a9VB6MM19jBHuOIwvY2DwqMVC9oP+Z6T1ApwNLsafmTD60G+9cmNxXoX1805sKVZstbBm2ibezUFDeNLuc9iknrwxvEs08durWW1mhUd5CL31KejC3Y7Uouw6c0/ZviAct0",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794526096,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
