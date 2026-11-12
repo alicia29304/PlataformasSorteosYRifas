@@ -155,7 +155,7 @@
       "orden": "cfcbda3f-72ca-4add-9013-ea4b38c61c17"
     },
     "100": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "107": {
@@ -399,7 +399,7 @@
       "orden": "28f855e7-cb2a-492b-8419-b94b5d17a8c6"
     },
     "243": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "245": {
@@ -407,7 +407,7 @@
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
     },
     "247": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "248": {
@@ -715,7 +715,7 @@
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
     },
     "435": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "436": {
@@ -1139,11 +1139,11 @@
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
     },
     "766": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "767": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "768": {
@@ -1335,7 +1335,7 @@
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
     "906": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
     },
     "908": {
@@ -2931,11 +2931,11 @@
       "ciudad": "Monterrey",
       "metodo": "Transferencia",
       "privado": "enc1:BMWYGuoiIcCOshPBE/3H4JBNI/lJQcahrx/x8E1mI+v1F4soTOa2adoyBPKr1jxxWwMXo1i8sFEllQKm3fDtUQx7sB20zI/jbEwgvVcfORtm4/0/12pgXQpwhSBUN4JKgJB1hvJX7HrA5WoRKW5HBp7uHf49KnPThK+f4zaiz5NnWm57hhBWxVUGVcnSCm38ZndGIGRVSBC0q8y2Ua9RFkO6ykF5QdmMhMmJcx8k",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794490786,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1794490853,
       "comprobanteHash": null
     }
   }
