@@ -102,6 +102,10 @@
       "estado": "PAGADO",
       "orden": "8329adce-05d0-4f41-970c-553acaccfc5f"
     },
+    "62": {
+      "estado": "PENDIENTE",
+      "orden": "a8f007fa-e085-40ba-b5a4-8af86ced097e"
+    },
     "63": {
       "estado": "PAGADO",
       "orden": "57f54464-553d-4885-9f31-c9023e8bb036"
@@ -518,6 +522,10 @@
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
     },
+    "338": {
+      "estado": "PENDIENTE",
+      "orden": "a8f007fa-e085-40ba-b5a4-8af86ced097e"
+    },
     "340": {
       "estado": "PENDIENTE",
       "orden": "5e61ca66-482e-44b8-89d0-b4b424a40c25"
@@ -929,6 +937,10 @@
     "684": {
       "estado": "PAGADO",
       "orden": "c7fa8d37-6de0-4398-ab0d-7948b267509e"
+    },
+    "687": {
+      "estado": "PENDIENTE",
+      "orden": "a8f007fa-e085-40ba-b5a4-8af86ced097e"
     },
     "691": {
       "estado": "PENDIENTE",
@@ -2600,6 +2612,23 @@
       "registrado": 1794483393,
       "aprobadoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
       "aprobado": 1794483612,
+      "comprobanteHash": null
+    },
+    "a8f007fa-e085-40ba-b5a4-8af86ced097e": {
+      "numeros": [
+        62,
+        338,
+        687
+      ],
+      "seudonimo": "Yury S.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BKjFkPoJ9oIA9GZjwfcTo/m+MuPc1jEqWRcaAOf074D8O+sY1pL0S8SgpZMD3zXgSdSgSgIYaeFtKHyWmrczxJ0tAOlKXQyV0yNBiLhP3HYvfvS7Jo6CdrqZIcWCz1/1+8+zr9/kjlsMfpPGfQc5ndoGrfMR26Z4KDX8KY8Qf3WsGx9JwIIy4/eZ2Bo28Wzlz2fDN5aiD4XlGGRatnPHemC5GQYGx7EbPg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
+      "registrado": 1794484099,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
