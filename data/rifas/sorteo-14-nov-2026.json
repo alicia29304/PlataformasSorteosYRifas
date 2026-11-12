@@ -222,6 +222,10 @@
       "estado": "PENDIENTE",
       "orden": "c3db4d62-47ae-466b-85ed-24e59e1b224c"
     },
+    "162": {
+      "estado": "PENDIENTE",
+      "orden": "7ca188bf-c837-4781-a512-f9aebdd114df"
+    },
     "165": {
       "estado": "PENDIENTE",
       "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
@@ -317,6 +321,10 @@
     "248": {
       "estado": "PAGADO",
       "orden": "71882179-a9a8-48d5-a4f0-1498556bbcdd"
+    },
+    "250": {
+      "estado": "PENDIENTE",
+      "orden": "7ca188bf-c837-4781-a512-f9aebdd114df"
     },
     "251": {
       "estado": "PAGADO",
@@ -626,6 +634,10 @@
       "estado": "PENDIENTE",
       "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
     },
+    "495": {
+      "estado": "PENDIENTE",
+      "orden": "7ca188bf-c837-4781-a512-f9aebdd114df"
+    },
     "497": {
       "estado": "PAGADO",
       "orden": "6e92807f-4828-473e-ac9d-40ba964c7830"
@@ -777,6 +789,10 @@
     "658": {
       "estado": "PAGADO",
       "orden": "de44e443-187b-4fde-9acd-69ad5dc50a61"
+    },
+    "659": {
+      "estado": "PENDIENTE",
+      "orden": "7ca188bf-c837-4781-a512-f9aebdd114df"
     },
     "660": {
       "estado": "PAGADO",
@@ -1077,6 +1093,10 @@
     "926": {
       "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
+    },
+    "927": {
+      "estado": "PENDIENTE",
+      "orden": "7ca188bf-c837-4781-a512-f9aebdd114df"
     },
     "931": {
       "estado": "PAGADO",
@@ -2274,6 +2294,25 @@
       "registrado": 1794441389,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794441425,
+      "comprobanteHash": null
+    },
+    "7ca188bf-c837-4781-a512-f9aebdd114df": {
+      "numeros": [
+        162,
+        250,
+        495,
+        659,
+        927
+      ],
+      "seudonimo": "Linaiker L.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BCv78D/4jfYD+nfPd2sBsl/jiUAz5tC1IftxGeCWmgp5YIoCFywcOmtjUsm3JBGeCBq0wcgfhvYWG3+gj3v0w0BouGjXXlAqK+sFcv0zwXiIttMWBGGUplX/bH/bS01001EhnJgEP9a1BSGImPVywIxhYFExcMeVYERZE8YZ9D8h2eJ1bR7o6/ukIp9CtJOb0pKwne8tf1xkhjZGT7VUPwgdcFaSxmZ6ZXJtFQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794441718,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
