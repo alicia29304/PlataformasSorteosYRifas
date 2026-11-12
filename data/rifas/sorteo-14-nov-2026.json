@@ -326,6 +326,10 @@
       "estado": "PAGADO",
       "orden": "4d68098b-604d-4d28-ae7d-f4ed42765925"
     },
+    "178": {
+      "estado": "PENDIENTE",
+      "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
+    },
     "181": {
       "estado": "PAGADO",
       "orden": "2fda06ff-9773-4879-ad66-2d6ef4a6ab71"
@@ -341,6 +345,10 @@
     "194": {
       "estado": "PAGADO",
       "orden": "ba41ca07-099a-437e-9be9-f8482a349b5d"
+    },
+    "195": {
+      "estado": "PENDIENTE",
+      "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
     },
     "199": {
       "estado": "PENDIENTE",
@@ -510,6 +518,10 @@
       "estado": "PAGADO",
       "orden": "e22c7a85-6fb3-4d30-adc3-282d50036ec3"
     },
+    "280": {
+      "estado": "PENDIENTE",
+      "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
+    },
     "282": {
       "estado": "PENDIENTE",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
@@ -673,6 +685,10 @@
     "362": {
       "estado": "PAGADO",
       "orden": "551934e9-6421-48eb-ba26-9ea2d2451b7e"
+    },
+    "366": {
+      "estado": "PENDIENTE",
+      "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
     },
     "368": {
       "estado": "PAGADO",
@@ -1062,6 +1078,10 @@
       "estado": "PENDIENTE",
       "orden": "96c56b5b-8727-46bc-a8a5-4991ad03df1f"
     },
+    "652": {
+      "estado": "PENDIENTE",
+      "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
+    },
     "653": {
       "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
@@ -1157,6 +1177,10 @@
     "704": {
       "estado": "PAGADO",
       "orden": "d5de5211-9693-4711-9a80-93d45dcd99fa"
+    },
+    "706": {
+      "estado": "PENDIENTE",
+      "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
     },
     "710": {
       "estado": "PAGADO",
@@ -1505,6 +1529,14 @@
     "916": {
       "estado": "PENDIENTE",
       "orden": "c61c14b5-3c67-4682-9abc-ad9b186c4553"
+    },
+    "919": {
+      "estado": "PENDIENTE",
+      "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
+    },
+    "920": {
+      "estado": "PENDIENTE",
+      "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
     },
     "922": {
       "estado": "PAGADO",
@@ -3285,6 +3317,28 @@
       "registrado": 1794524916,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794524941,
+      "comprobanteHash": null
+    },
+    "82db04b7-a1d1-436c-9512-b6e5c0159baa": {
+      "numeros": [
+        178,
+        195,
+        280,
+        366,
+        652,
+        706,
+        919,
+        920
+      ],
+      "seudonimo": "Yamilet T.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BHa/IZ1/H42UGbBGuk8pylFRYX4IIlENa9VMl+pEMWj/N00gaJD7A4caL6XbAjqe9a0Kza4AdzKHx7gCynqMEDOJYw49a00x/Os+17khuLBTQ4SOtRpBvCsPXpOmo2vi/W3HVF5OpkwIz/gCedm5MAZty3nksjZgtDSYf+f+ihuzQDzHctnaoitKhOfLGH/EssE2gtSdMe7BaWSLPo0na2IiIxWObmvX8lyBXzXjiw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794525534,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
