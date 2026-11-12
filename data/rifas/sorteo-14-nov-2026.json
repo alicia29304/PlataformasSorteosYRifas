@@ -134,6 +134,10 @@
       "estado": "PENDIENTE",
       "orden": "00097e9e-59b7-4a55-8c16-9bf331449ac0"
     },
+    "75": {
+      "estado": "PENDIENTE",
+      "orden": "28f855e7-cb2a-492b-8419-b94b5d17a8c6"
+    },
     "76": {
       "estado": "PENDIENTE",
       "orden": "e758f6c9-a695-47ef-8c67-2017250ea60f"
@@ -249,6 +253,10 @@
     "158": {
       "estado": "PENDIENTE",
       "orden": "cf2ddc26-cb69-4d23-b66f-b0da6010be89"
+    },
+    "160": {
+      "estado": "PENDIENTE",
+      "orden": "28f855e7-cb2a-492b-8419-b94b5d17a8c6"
     },
     "161": {
       "estado": "PENDIENTE",
@@ -369,6 +377,10 @@
     "236": {
       "estado": "PAGADO",
       "orden": "d5de5211-9693-4711-9a80-93d45dcd99fa"
+    },
+    "239": {
+      "estado": "PENDIENTE",
+      "orden": "28f855e7-cb2a-492b-8419-b94b5d17a8c6"
     },
     "245": {
       "estado": "PENDIENTE",
@@ -2790,6 +2802,23 @@
       "registrado": 1794489843,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794489881,
+      "comprobanteHash": null
+    },
+    "28f855e7-cb2a-492b-8419-b94b5d17a8c6": {
+      "numeros": [
+        75,
+        160,
+        239
+      ],
+      "seudonimo": "Wilmari M.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BNEr1CpmuhodnDqLd4GHxIkgNUK3Wz33ag42SO8Z+yrtJiJr5GZf7BNrdtXWvShZm3cjyjwmGuKbTiYpORJnkf9ZRiaHOPEyq7sz2T38kgIsK9MohZ6rgS5ULeiBXz966Yqw4LD/CQQix2df/g9EQikDmcwvPyiHstDaIprietIFZNHNOPCynd1jQOFgcBusBAH2eWJB+sEkDsf00M2zYLmstrsOqNfYbPJ2SA6f",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794490060,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
