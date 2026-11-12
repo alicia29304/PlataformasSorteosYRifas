@@ -666,6 +666,10 @@
       "estado": "PAGADO",
       "orden": "46160f40-6d08-49f0-b38f-7fce2a849045"
     },
+    "379": {
+      "estado": "PENDIENTE",
+      "orden": "a166e229-fc6a-4f38-bc0c-1d07b7a5430d"
+    },
     "381": {
       "estado": "PAGADO",
       "orden": "be837b19-0ee6-45f5-851a-8fa3b5ff4901"
@@ -697,6 +701,10 @@
     "404": {
       "estado": "PENDIENTE",
       "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
+    },
+    "405": {
+      "estado": "PENDIENTE",
+      "orden": "a166e229-fc6a-4f38-bc0c-1d07b7a5430d"
     },
     "408": {
       "estado": "PAGADO",
@@ -1477,6 +1485,10 @@
     "945": {
       "estado": "PAGADO",
       "orden": "d5de5211-9693-4711-9a80-93d45dcd99fa"
+    },
+    "955": {
+      "estado": "PENDIENTE",
+      "orden": "a166e229-fc6a-4f38-bc0c-1d07b7a5430d"
     },
     "964": {
       "estado": "PENDIENTE",
@@ -3077,6 +3089,23 @@
       "registrado": 1794501115,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794501168,
+      "comprobanteHash": null
+    },
+    "a166e229-fc6a-4f38-bc0c-1d07b7a5430d": {
+      "numeros": [
+        379,
+        405,
+        955
+      ],
+      "seudonimo": "Alex N.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BLBtyxbWa+m4FK4Zc3KqyNTvWFI6c1AnLn+GLovSdvZCZBvevHnRJXZfsCA2Vz1vc0e0TgFSkPObjYFOcGFH/hmg7rQzFTEESuRHaUq2YdaKmagU8C9dDQw6YNeRgqgA3ou+LkUx/Fn4ZPl8R2VNxk2baCu0yaolxoekaH5vsVi+j3NHNEpQjAmKVLv+iHSlyns7YM3NX11b5nr3KM7q7viXnpkIgCi2Ww==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794501583,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
