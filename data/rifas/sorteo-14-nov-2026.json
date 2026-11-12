@@ -474,6 +474,10 @@
       "estado": "PENDIENTE",
       "orden": "6eeeed22-7f04-48ba-ac1a-4f4828b7f6ae"
     },
+    "320": {
+      "estado": "PENDIENTE",
+      "orden": "d3c56891-fe53-409a-9bb8-01cf9b5d0ce9"
+    },
     "321": {
       "estado": "PENDIENTE",
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
@@ -713,6 +717,10 @@
     "500": {
       "estado": "PAGADO",
       "orden": "6abb7b02-2548-4c4c-a359-af59e993c34b"
+    },
+    "502": {
+      "estado": "PENDIENTE",
+      "orden": "d3c56891-fe53-409a-9bb8-01cf9b5d0ce9"
     },
     "507": {
       "estado": "PAGADO",
@@ -1169,6 +1177,10 @@
     "897": {
       "estado": "PENDIENTE",
       "orden": "1e498c55-9dbb-46e7-8d1f-e5e9d6ecdb4f"
+    },
+    "902": {
+      "estado": "PENDIENTE",
+      "orden": "d3c56891-fe53-409a-9bb8-01cf9b5d0ce9"
     },
     "904": {
       "estado": "PENDIENTE",
@@ -2571,6 +2583,23 @@
       "registrado": 1794460282,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794460314,
+      "comprobanteHash": null
+    },
+    "d3c56891-fe53-409a-9bb8-01cf9b5d0ce9": {
+      "numeros": [
+        320,
+        502,
+        902
+      ],
+      "seudonimo": "Jessica R.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BBbIdEbRHXWVz3gElw947eaaYAfFqcgehoU2kYjzySTmF5sZFsVwnu1AIE3CDelWXSqwhj9RkYVWRJmpS0LvqM4gjPBfSuzY4LLx5N6YOsRFuA136RH9rQScagZ1MmEFvnXIigzuHrJ4fQ8C9YZ7JfmiW8xcjvOlgFgPbly2WcdN4d2O2zMOyJBKgMGSFea5LxY0zTKSCyW3L6MhcQ51nDEyKQ+XaeSXo2257Q==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
+      "registrado": 1794483393,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
