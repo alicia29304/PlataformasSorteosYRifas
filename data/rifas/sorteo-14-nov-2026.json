@@ -510,6 +510,10 @@
       "estado": "PAGADO",
       "orden": "6abb7b02-2548-4c4c-a359-af59e993c34b"
     },
+    "299": {
+      "estado": "PENDIENTE",
+      "orden": "9b628920-f352-4aea-b7c7-060ee8c24aa5"
+    },
     "300": {
       "estado": "PENDIENTE",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
@@ -898,6 +902,10 @@
       "estado": "PAGADO",
       "orden": "00a93eac-87cb-461f-820a-a98875ca2e9e"
     },
+    "542": {
+      "estado": "PENDIENTE",
+      "orden": "9b628920-f352-4aea-b7c7-060ee8c24aa5"
+    },
     "544": {
       "estado": "PAGADO",
       "orden": "57f54464-553d-4885-9f31-c9023e8bb036"
@@ -1169,6 +1177,10 @@
     "735": {
       "estado": "PAGADO",
       "orden": "bbea882a-41a7-43fa-9cec-97a9dad3ea77"
+    },
+    "737": {
+      "estado": "PENDIENTE",
+      "orden": "9b628920-f352-4aea-b7c7-060ee8c24aa5"
     },
     "749": {
       "estado": "PENDIENTE",
@@ -3164,6 +3176,23 @@
       "registrado": 1794504056,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794504299,
+      "comprobanteHash": null
+    },
+    "9b628920-f352-4aea-b7c7-060ee8c24aa5": {
+      "numeros": [
+        299,
+        542,
+        737
+      ],
+      "seudonimo": "Alberto J.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BLUOICeGcmLStB3R3iC/PXSBQF2HIk9Ep3oP/7kVmVEVGj6gd1Eoz7/VqfJG9EujQ32d3v7KrEJ43OruGA12OWwk89fHmmRW9LQK7c3tfWDLY9IQyNEq0s3LXIGbhhrb3Irk8QqfYQqzutpxh2z1TrHS6+lyuSOXDauVM3/uSYZcaqxUmxZ4rgZFufWqsilgp9RxOt5hTv8gN3aBIWcK/LBYmFdyzZAJtBBcGA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794513649,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
