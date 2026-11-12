@@ -210,6 +210,10 @@
       "estado": "PAGADO",
       "orden": "cc377af3-f180-4d4a-8988-d2b96328539f"
     },
+    "130": {
+      "estado": "PENDIENTE",
+      "orden": "c82bcfa4-d311-4b78-8a62-24df02e40272"
+    },
     "133": {
       "estado": "PENDIENTE",
       "orden": "ac2865dd-79d3-4055-bc5a-4dc5e70bcbc6"
@@ -1062,6 +1066,10 @@
       "estado": "PAGADO",
       "orden": "6abb7b02-2548-4c4c-a359-af59e993c34b"
     },
+    "728": {
+      "estado": "PENDIENTE",
+      "orden": "c82bcfa4-d311-4b78-8a62-24df02e40272"
+    },
     "729": {
       "estado": "PAGADO",
       "orden": "6e92807f-4828-473e-ac9d-40ba964c7830"
@@ -1117,6 +1125,10 @@
     "768": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
+    },
+    "769": {
+      "estado": "PENDIENTE",
+      "orden": "c82bcfa4-d311-4b78-8a62-24df02e40272"
     },
     "773": {
       "estado": "PENDIENTE",
@@ -2858,6 +2870,23 @@
       "registrado": 1794490270,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794490304,
+      "comprobanteHash": null
+    },
+    "c82bcfa4-d311-4b78-8a62-24df02e40272": {
+      "numeros": [
+        130,
+        728,
+        769
+      ],
+      "seudonimo": "Stiven C.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BN7O3bOKmuOkBlRRU/55TPvv78p1jiwdmCXhfwnjiVikSUOSqV22IAJMeXWd9S3pp0pGZY30SmmvzN6VQzcYS7eXqIeWam24c4r9uxlhNvyXm7TdLuF3c2kH31L0toQuLaVYbOr/vjuE7v+m4GQZVkEcyhAOWWJfiWAUnEJIBYrvDLB9shKAnupw9bVem0ditl+OvF4U4hHnFIo5FNHVV9SQ24ampEmjabzTXhA=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794490618,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
