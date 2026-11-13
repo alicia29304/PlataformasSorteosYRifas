@@ -63,7 +63,7 @@
       "orden": "cc1a3cff-c094-4158-9caa-c26dfb16c65a"
     },
     "31": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "189fc02b-54f4-4bce-b1c6-f1693cc1dbfb"
     },
     "32": {
@@ -235,7 +235,7 @@
       "orden": "9021d41d-ae0a-4c60-84e7-1bd9821c4223"
     },
     "121": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "189fc02b-54f4-4bce-b1c6-f1693cc1dbfb"
     },
     "122": {
@@ -895,7 +895,7 @@
       "orden": "551934e9-6421-48eb-ba26-9ea2d2451b7e"
     },
     "449": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "189fc02b-54f4-4bce-b1c6-f1693cc1dbfb"
     },
     "450": {
@@ -3644,11 +3644,11 @@
       "ciudad": "Villavo",
       "metodo": "Transferencia",
       "privado": "enc1:BCngzDlPdJ3fUGb77owSuU8unXoWorBk3aA/pzc6Gb0ker44/rr0yO6bbKXVCgUscvga4SQQ6fPHFoGDzH4lLYkY+vduHKCe6+q09EGy/vp2PUUZW0d3+s73STYyRbkW53yhijZbaf9FIu+sIx2gtB4UOKaBzjU21w037q2jkt9UTWFstLCDopcHcp0VWP8aIaY7q42y4Lz6C/4G9296AyeOobI+FpZv",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
       "registrado": 1794596439,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
+      "aprobado": 1794596495,
       "comprobanteHash": null
     }
   }
