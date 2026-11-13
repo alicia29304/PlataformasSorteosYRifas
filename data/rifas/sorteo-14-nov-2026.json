@@ -558,6 +558,10 @@
       "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
     },
+    "255": {
+      "estado": "PENDIENTE",
+      "orden": "47b833cc-a668-460c-aa78-dfb2b4b1d5d6"
+    },
     "256": {
       "estado": "PAGADO",
       "orden": "e22c7a85-6fb3-4d30-adc3-282d50036ec3"
@@ -994,6 +998,10 @@
       "estado": "PAGADO",
       "orden": "d3c56891-fe53-409a-9bb8-01cf9b5d0ce9"
     },
+    "503": {
+      "estado": "PENDIENTE",
+      "orden": "47b833cc-a668-460c-aa78-dfb2b4b1d5d6"
+    },
     "507": {
       "estado": "PAGADO",
       "orden": "71882179-a9a8-48d5-a4f0-1498556bbcdd"
@@ -1041,6 +1049,10 @@
     "532": {
       "estado": "PENDIENTE",
       "orden": "594fe2ca-467f-4bd1-810d-a17c3ef05196"
+    },
+    "535": {
+      "estado": "PENDIENTE",
+      "orden": "47b833cc-a668-460c-aa78-dfb2b4b1d5d6"
     },
     "537": {
       "estado": "PENDIENTE",
@@ -3794,6 +3806,23 @@
       "registrado": 1794612765,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794612796,
+      "comprobanteHash": null
+    },
+    "47b833cc-a668-460c-aa78-dfb2b4b1d5d6": {
+      "numeros": [
+        255,
+        503,
+        535
+      ],
+      "seudonimo": "Trabajoso T.",
+      "ciudad": "Tauramena",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDt96Og9Q1X9dCrKdlcqXu16b5lxZQGHsI91OMtRgWI7TcaQxkAh0Vklzxbj/YzcbvtDkHSg5ltIADdun0uN3b5iOOjfjdZykKTy4fymaf/rF1LbjAP9Bs53kdql9QwuayYQc+PddEYErQuospuGjE0ercixIEpVqeQkSzy2sr50UDTi3F72KBtedY9TQeqSZPSR1/l8gNmCeRNJPGoM0UGUJhCUVzWc0w==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794614181,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
