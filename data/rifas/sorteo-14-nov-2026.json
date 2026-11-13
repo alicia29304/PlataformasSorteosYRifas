@@ -110,6 +110,10 @@
       "estado": "PAGADO",
       "orden": "36a344e9-c039-4a6a-beff-d0213070a54c"
     },
+    "53": {
+      "estado": "PENDIENTE",
+      "orden": "99bf6963-6454-4609-8f66-976c30bcc953"
+    },
     "54": {
       "estado": "PAGADO",
       "orden": "46160f40-6d08-49f0-b38f-7fce2a849045"
@@ -1286,6 +1290,10 @@
       "estado": "PAGADO",
       "orden": "cd206ee6-18ea-4d19-ac65-aad6d78d9688"
     },
+    "757": {
+      "estado": "PENDIENTE",
+      "orden": "99bf6963-6454-4609-8f66-976c30bcc953"
+    },
     "758": {
       "estado": "PENDIENTE",
       "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
@@ -1469,6 +1477,10 @@
     "870": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
+    },
+    "873": {
+      "estado": "PENDIENTE",
+      "orden": "99bf6963-6454-4609-8f66-976c30bcc953"
     },
     "874": {
       "estado": "PAGADO",
@@ -3436,6 +3448,23 @@
       "registrado": 1794528141,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794528193,
+      "comprobanteHash": null
+    },
+    "99bf6963-6454-4609-8f66-976c30bcc953": {
+      "numeros": [
+        53,
+        757,
+        873
+      ],
+      "seudonimo": "Efrén G.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BFIJ6o0gbV5rpPTy8a2nHU+PTWOZyvGvwGIZitL81ioQSWi2wMmy59kkjR4TiM3+B9oHNmJYw5K3jtBzn1/fScgK8YVHOmiE0QGAPtvsItpcTG1XzuupKGoHbNYYgweMS/CipZJOywbL3mGzcsKiKSSpbI0r+2kc8WJ/8QpJOUrTGBPOOrGv6SMyJtb0wXwtJgniRt1NhcGph7GuZayZtA0yvZTR65i6ooWDPRG3uNQ=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794528316,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
