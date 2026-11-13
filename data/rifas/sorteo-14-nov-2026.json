@@ -82,6 +82,10 @@
       "estado": "PAGADO",
       "orden": "962f5623-496b-443f-81b5-1bdcd1319fc9"
     },
+    "38": {
+      "estado": "PENDIENTE",
+      "orden": "d0a04099-057f-468f-a34e-cd55796a8a9e"
+    },
     "40": {
       "estado": "PENDIENTE",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
@@ -3678,6 +3682,21 @@
       "registrado": 1794596831,
       "aprobadoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
       "aprobado": 1794596883,
+      "comprobanteHash": null
+    },
+    "d0a04099-057f-468f-a34e-cd55796a8a9e": {
+      "numeros": [
+        38
+      ],
+      "seudonimo": "Guanaro E.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDkfYZzCD0wkwrbPx70v8Wldk3h34BafoTveCVwosjona3YKGAYJ+8S2+yh3egoV3loVXDoIC7HMiz5nqtd0wRYMMvXUYLZLbgHHDovmdvd1kiiBkkt/plX1XanoEqkTVsHA3DnhzRgPmzA7Lj7OcQ+rjlEJs4bXzTB09yd8/nTM/0hpXB8QEU0IUruu6q4ArfHslkActrqSmDrGqCUNHphb4vU/lWxk3rS9yVe0TP5XTHQ=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794607282,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
