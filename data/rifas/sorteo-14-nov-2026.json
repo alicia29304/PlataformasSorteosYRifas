@@ -1030,6 +1030,10 @@
       "estado": "PAGADO",
       "orden": "027dcc50-b358-4221-9787-081770d0badc"
     },
+    "551": {
+      "estado": "PENDIENTE",
+      "orden": "ed3b17da-1636-4d7f-9e16-bbf17240ca98"
+    },
     "554": {
       "estado": "PAGADO",
       "orden": "2a48698d-55e2-42d5-a309-e0e4dcd369e5"
@@ -1249,6 +1253,10 @@
     "699": {
       "estado": "PENDIENTE",
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
+    },
+    "700": {
+      "estado": "PENDIENTE",
+      "orden": "ed3b17da-1636-4d7f-9e16-bbf17240ca98"
     },
     "704": {
       "estado": "PAGADO",
@@ -1509,6 +1517,10 @@
     "860": {
       "estado": "PAGADO",
       "orden": "8329adce-05d0-4f41-970c-553acaccfc5f"
+    },
+    "861": {
+      "estado": "PENDIENTE",
+      "orden": "ed3b17da-1636-4d7f-9e16-bbf17240ca98"
     },
     "866": {
       "estado": "PAGADO",
@@ -3562,6 +3574,23 @@
       "registrado": 1794533101,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794533143,
+      "comprobanteHash": null
+    },
+    "ed3b17da-1636-4d7f-9e16-bbf17240ca98": {
+      "numeros": [
+        551,
+        700,
+        861
+      ],
+      "seudonimo": "Patricia M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BObeH/99d4FSaNfZHy/6sy1AppngQoXQd4aa0bYwDWUCfJtJ+AZWfJprDRYRuAB+RHha93aW6BGb/mo29NkqDtCLgVR/G/C3DGEcBsUw7WphUeBW6Dl+Tqx4p2LbuLLlx8DFud8ydpqm8zXHvba+jbmrOm+uJ+4hPqPjPiqaUjQ0C2WjAk71o+ONtX/yFWE3fTNsmYxCgcDqTd2ZUj0rzpsKwyyhbBXA2P7p5NCxag==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794588494,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
