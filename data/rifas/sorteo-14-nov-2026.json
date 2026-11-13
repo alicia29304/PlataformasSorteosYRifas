@@ -270,6 +270,10 @@
       "estado": "PAGADO",
       "orden": "c1c2f1d2-24de-4ebf-a778-d5e41329daf2"
     },
+    "146": {
+      "estado": "PENDIENTE",
+      "orden": "3d16db7d-abed-4773-9a43-8a78a8c2bf6e"
+    },
     "147": {
       "estado": "PAGADO",
       "orden": "027dcc50-b358-4221-9787-081770d0badc"
@@ -645,6 +649,10 @@
     "317": {
       "estado": "PENDIENTE",
       "orden": "91e150ed-2bc6-46dd-abd3-3d2d6b6b0a42"
+    },
+    "318": {
+      "estado": "PENDIENTE",
+      "orden": "3d16db7d-abed-4773-9a43-8a78a8c2bf6e"
     },
     "319": {
       "estado": "PAGADO",
@@ -1065,6 +1073,10 @@
     "571": {
       "estado": "PAGADO",
       "orden": "68201639-d0a4-4e22-a5f4-81e08a561e3d"
+    },
+    "574": {
+      "estado": "PENDIENTE",
+      "orden": "3d16db7d-abed-4773-9a43-8a78a8c2bf6e"
     },
     "580": {
       "estado": "PAGADO",
@@ -3591,6 +3603,23 @@
       "registrado": 1794588494,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794588525,
+      "comprobanteHash": null
+    },
+    "3d16db7d-abed-4773-9a43-8a78a8c2bf6e": {
+      "numeros": [
+        146,
+        318,
+        574
+      ],
+      "seudonimo": "Gilma O.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BIbLvkw1bcuq/vWoF7ynZiPFygJhf+qGbgrh+NUSj8ExAWqaJDKG+JdxvehLlY2RUYxAUwH1CLcwLkyhGNoIzkz1S6ZS9wtfn+YxvsmFvIijIC1gHHw++DoSyML/4ulL8c42IiTVmSop0A6G0XHAWvfoidZEA2GwPUnQRF8TH74rOFrKoq1V1My4MpFgqrmKfIeMpDXogtfC0Qy5Y28nDZ3Ds2YunbSw4Ush",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
+      "registrado": 1794595925,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
