@@ -238,6 +238,10 @@
       "estado": "PAGADO",
       "orden": "7f9dd5fc-26d5-46c4-b695-756036b9607b"
     },
+    "106": {
+      "estado": "PENDIENTE",
+      "orden": "c895ebe0-37d5-41ba-8663-292260c5c92d"
+    },
     "107": {
       "estado": "PAGADO",
       "orden": "2a48698d-55e2-42d5-a309-e0e4dcd369e5"
@@ -850,6 +854,10 @@
       "estado": "PENDIENTE",
       "orden": "94bfac51-186d-40cf-8e7e-1a162720eef8"
     },
+    "360": {
+      "estado": "PENDIENTE",
+      "orden": "c895ebe0-37d5-41ba-8663-292260c5c92d"
+    },
     "362": {
       "estado": "PAGADO",
       "orden": "551934e9-6421-48eb-ba26-9ea2d2451b7e"
@@ -1045,6 +1053,10 @@
     "464": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
+    },
+    "467": {
+      "estado": "PENDIENTE",
+      "orden": "c895ebe0-37d5-41ba-8663-292260c5c92d"
     },
     "474": {
       "estado": "PAGADO",
@@ -4154,6 +4166,23 @@
       "registrado": 1794664762,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794664787,
+      "comprobanteHash": null
+    },
+    "c895ebe0-37d5-41ba-8663-292260c5c92d": {
+      "numeros": [
+        106,
+        360,
+        467
+      ],
+      "seudonimo": "Victor C.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BCDZvfot60gzC2CEXZu031veX1NV+Z8WxjnpWDjyr0QiD+pLAhBL+iNbS9gzs8OD2nCu4+qN69c8Oh2sy01YMXH3UdjUg3O6eYOiL1wAcEF1luDgVouWV6xJks32rl0UhC3bjLD85r/O9vJGj2eGEcr3w5PqwjLynVyRWXF90rr/gUguj/KMUgeDObCHdA+xgx5LC92rcfp4VU4kwiK4jm/OY0Y0Y3D5dPAymFGTLA0=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794671059,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
