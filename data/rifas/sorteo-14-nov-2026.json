@@ -206,6 +206,10 @@
       "estado": "PENDIENTE",
       "orden": "01384d0e-3c1e-41bd-9943-39e61f6738d5"
     },
+    "96": {
+      "estado": "PENDIENTE",
+      "orden": "7f9dd5fc-26d5-46c4-b695-756036b9607b"
+    },
     "97": {
       "estado": "PENDIENTE",
       "orden": "cfcbda3f-72ca-4add-9013-ea4b38c61c17"
@@ -217,6 +221,10 @@
     "103": {
       "estado": "PAGADO",
       "orden": "cd2df29f-34d3-4663-ad1a-861930414f3a"
+    },
+    "105": {
+      "estado": "PENDIENTE",
+      "orden": "7f9dd5fc-26d5-46c4-b695-756036b9607b"
     },
     "107": {
       "estado": "PAGADO",
@@ -1617,6 +1625,10 @@
     "850": {
       "estado": "PAGADO",
       "orden": "de44e443-187b-4fde-9acd-69ad5dc50a61"
+    },
+    "853": {
+      "estado": "PENDIENTE",
+      "orden": "7f9dd5fc-26d5-46c4-b695-756036b9607b"
     },
     "860": {
       "estado": "PAGADO",
@@ -3886,6 +3898,23 @@
       "registrado": 1794616069,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794616098,
+      "comprobanteHash": null
+    },
+    "7f9dd5fc-26d5-46c4-b695-756036b9607b": {
+      "numeros": [
+        96,
+        105,
+        853
+      ],
+      "seudonimo": "Luis C.",
+      "ciudad": "Tauramena",
+      "metodo": "Transferencia",
+      "privado": "enc1:BJDKmPgDW5B5dmfaOFAh8m05fIgJmwDrZzn0qR4FauGde46LkPdwl5+DVOmM2r0RY6LFlmiCw7lJeU4qlGOkVMjnSHE9bPCbz3etZQnJpR+KZZniKvkEQk1kk3YDxr1G6zCFFbHucE5t0xpYos9cuu2qP5x35Niop/jfw+WbhTr0DRNz8SjIYg+m0g93LFnd9YAzAa9GtLuia/e0Hu7nbXVlD3ghWlNd7Q==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794618693,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
