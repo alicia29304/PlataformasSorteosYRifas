@@ -658,6 +658,10 @@
       "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
     },
+    "254": {
+      "estado": "PENDIENTE",
+      "orden": "feea47b7-d15c-4bc1-9269-1760782f0ade"
+    },
     "255": {
       "estado": "PAGADO",
       "orden": "47b833cc-a668-460c-aa78-dfb2b4b1d5d6"
@@ -1398,6 +1402,10 @@
       "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
     },
+    "588": {
+      "estado": "PENDIENTE",
+      "orden": "feea47b7-d15c-4bc1-9269-1760782f0ade"
+    },
     "589": {
       "estado": "PAGADO",
       "orden": "0c830725-4a12-48a3-afe8-80421cbc1602"
@@ -1981,6 +1989,10 @@
     "867": {
       "estado": "PAGADO",
       "orden": "6e92807f-4828-473e-ac9d-40ba964c7830"
+    },
+    "868": {
+      "estado": "PENDIENTE",
+      "orden": "feea47b7-d15c-4bc1-9269-1760782f0ade"
     },
     "870": {
       "estado": "PENDIENTE",
@@ -4698,6 +4710,23 @@
       "registrado": 1794683376,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794683411,
+      "comprobanteHash": null
+    },
+    "feea47b7-d15c-4bc1-9269-1760782f0ade": {
+      "numeros": [
+        254,
+        588,
+        868
+      ],
+      "seudonimo": "Brian M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDXzXKBgd3ydevjF3mtwD/C47ojIlYvajeG2bg7c5q/NeaUo6KJsfUO9GP64n4DYR1sl6Jb0/l1/KGaGWhXxPbA/Ymrn6rI6eR+opEzbIeaAJUaYOulVyTMW960cSt+QJUDlC5Ip0c9WpE4rnqpdUQqKVnwJPnrXBxYADo23H5+1LxT0yXbj1vom5/SnS4ztYKdntwhQ4desGY7qecbNHY0abG2BVF/miTzs",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794684791,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
