@@ -670,6 +670,10 @@
       "estado": "PENDIENTE",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
     },
+    "288": {
+      "estado": "PENDIENTE",
+      "orden": "e0f07a37-5682-40ab-aa1f-35ac08de3e4f"
+    },
     "289": {
       "estado": "PAGADO",
       "orden": "b9d9f470-b1e9-422e-a76c-e78bcfaf167d"
@@ -809,6 +813,10 @@
     "343": {
       "estado": "PAGADO",
       "orden": "4586e950-b435-4e92-986f-dec807308dff"
+    },
+    "344": {
+      "estado": "PENDIENTE",
+      "orden": "e0f07a37-5682-40ab-aa1f-35ac08de3e4f"
     },
     "347": {
       "estado": "PAGADO",
@@ -1185,6 +1193,10 @@
     "551": {
       "estado": "PAGADO",
       "orden": "ed3b17da-1636-4d7f-9e16-bbf17240ca98"
+    },
+    "553": {
+      "estado": "PENDIENTE",
+      "orden": "e0f07a37-5682-40ab-aa1f-35ac08de3e4f"
     },
     "554": {
       "estado": "PAGADO",
@@ -4125,6 +4137,23 @@
       "registrado": 1794626039,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794626069,
+      "comprobanteHash": null
+    },
+    "e0f07a37-5682-40ab-aa1f-35ac08de3e4f": {
+      "numeros": [
+        288,
+        344,
+        553
+      ],
+      "seudonimo": "Nicolay M.",
+      "ciudad": "Villavicencio",
+      "metodo": "Transferencia",
+      "privado": "enc1:BNHCIHNjltTSuOmIR5iAAqazL026sQMSamv1j7r3lu+lUKd59p0CG3EtR/WDi/CyqN2IlDW2n+jH0JcJ9CZYt8MKv1BuBpYU11J7y8o1UOhFPhnnOycvJOphqhskC5hIUDTVmLzDIxqJfbPrdz3t1wY5/WLG9zV0cunkCOqXpwldlr1aDUYkILjx7XWko6QdkvcWMlmdq5zisTKyZzKS03wh3uJWrTvSMGP9YKmu",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794664762,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
