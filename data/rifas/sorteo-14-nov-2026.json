@@ -994,6 +994,10 @@
       "estado": "PAGADO",
       "orden": "7ca188bf-c837-4781-a512-f9aebdd114df"
     },
+    "496": {
+      "estado": "PENDIENTE",
+      "orden": "bada9fdf-6de2-4406-8b1f-6c3f6f876923"
+    },
     "497": {
       "estado": "PAGADO",
       "orden": "6e92807f-4828-473e-ac9d-40ba964c7830"
@@ -1189,6 +1193,10 @@
     "604": {
       "estado": "PAGADO",
       "orden": "89292d93-66ce-4431-aadb-3a4a96462b9f"
+    },
+    "606": {
+      "estado": "PENDIENTE",
+      "orden": "bada9fdf-6de2-4406-8b1f-6c3f6f876923"
     },
     "611": {
       "estado": "PAGADO",
@@ -1841,6 +1849,10 @@
     "970": {
       "estado": "PAGADO",
       "orden": "69b45427-06c3-45d6-854c-37d135233b3c"
+    },
+    "972": {
+      "estado": "PENDIENTE",
+      "orden": "bada9fdf-6de2-4406-8b1f-6c3f6f876923"
     },
     "975": {
       "estado": "PAGADO",
@@ -3857,6 +3869,23 @@
       "registrado": 1794615754,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794615782,
+      "comprobanteHash": null
+    },
+    "bada9fdf-6de2-4406-8b1f-6c3f6f876923": {
+      "numeros": [
+        496,
+        606,
+        972
+      ],
+      "seudonimo": "Libia F.",
+      "ciudad": "Tauramena",
+      "metodo": "Transferencia",
+      "privado": "enc1:BJ95Je0Qiiuwhp1cMrJziLjTTjARBOZQLdEI7M2TaNu2BKK9uGmHKsMOpDMhM5VBz6jVUvQCe9zCqDAIwA66v1EtZH9vuMFBnt12DCkt1+rn4hu+GPww1/K27GSccRYSP5W9sW2YHC8Z7VchmajSpqDaDH0CRLCRGTm0zdKtqqjpLO5ya23dF5GWNxc2gk2jMad37Qi8PAoJ2799B3pkwS8bJbELBIS/ch1NLPzj",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794616069,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
