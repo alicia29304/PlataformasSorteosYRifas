@@ -18,6 +18,10 @@
       "estado": "PAGADO",
       "orden": "9c41e59f-117a-4f9f-8ece-a8122314a123"
     },
+    "8": {
+      "estado": "PENDIENTE",
+      "orden": "3a9c3508-8241-4a3e-b5f5-1d0aad03044f"
+    },
     "9": {
       "estado": "PAGADO",
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
@@ -669,6 +673,10 @@
     "280": {
       "estado": "PAGADO",
       "orden": "82db04b7-a1d1-436c-9512-b6e5c0159baa"
+    },
+    "281": {
+      "estado": "PENDIENTE",
+      "orden": "3a9c3508-8241-4a3e-b5f5-1d0aad03044f"
     },
     "282": {
       "estado": "PAGADO",
@@ -1709,6 +1717,10 @@
     "820": {
       "estado": "PAGADO",
       "orden": "bfb3f359-b7d3-4b61-9eda-50b27edf095c"
+    },
+    "821": {
+      "estado": "PENDIENTE",
+      "orden": "3a9c3508-8241-4a3e-b5f5-1d0aad03044f"
     },
     "823": {
       "estado": "PENDIENTE",
@@ -4210,6 +4222,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794671659,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "3a9c3508-8241-4a3e-b5f5-1d0aad03044f": {
+      "numeros": [
+        8,
+        281,
+        821
+      ],
+      "seudonimo": "Javier T.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BBQmYIgK789ZNo8AO70aDty4fyCr0ZpP5nUwZDS21qGLXKx+zeoevKX2vNzbh9OJl3YubPxluWfYZQ4VwPUPLumfC6TjyvtZgT3ZDO1uBvY2Sas/92/nPPKxN6vsO9nctqGkkDF3IMUvA3VAWyoEM//BKmVP/GCYsUEpH/27GjALbqANZLvgIW4O5iuq0LM44Fwa35Ax7QWQSmAZJ0Jtk0nmefeweVpbCExw9hwHjvM=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794671939,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
