@@ -18,6 +18,10 @@
       "estado": "PAGADO",
       "orden": "9c41e59f-117a-4f9f-8ece-a8122314a123"
     },
+    "6": {
+      "estado": "PENDIENTE",
+      "orden": "fee7b799-0b0e-41a1-950e-ceced8b37e4b"
+    },
     "8": {
       "estado": "PAGADO",
       "orden": "3a9c3508-8241-4a3e-b5f5-1d0aad03044f"
@@ -490,6 +494,10 @@
       "estado": "PAGADO",
       "orden": "00097e9e-59b7-4a55-8c16-9bf331449ac0"
     },
+    "203": {
+      "estado": "PENDIENTE",
+      "orden": "fee7b799-0b0e-41a1-950e-ceced8b37e4b"
+    },
     "205": {
       "estado": "PAGADO",
       "orden": "ba41ca07-099a-437e-9be9-f8482a349b5d"
@@ -733,6 +741,10 @@
     "302": {
       "estado": "PAGADO",
       "orden": "c1c2f1d2-24de-4ebf-a778-d5e41329daf2"
+    },
+    "305": {
+      "estado": "PENDIENTE",
+      "orden": "fee7b799-0b0e-41a1-950e-ceced8b37e4b"
     },
     "307": {
       "estado": "PAGADO",
@@ -1749,6 +1761,10 @@
     "826": {
       "estado": "PAGADO",
       "orden": "00097e9e-59b7-4a55-8c16-9bf331449ac0"
+    },
+    "829": {
+      "estado": "PENDIENTE",
+      "orden": "fee7b799-0b0e-41a1-950e-ceced8b37e4b"
     },
     "830": {
       "estado": "PAGADO",
@@ -4304,6 +4320,24 @@
       "registrado": 1794674242,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794674282,
+      "comprobanteHash": null
+    },
+    "fee7b799-0b0e-41a1-950e-ceced8b37e4b": {
+      "numeros": [
+        6,
+        203,
+        305,
+        829
+      ],
+      "seudonimo": "Maritza M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BCTdWskmUtyM2iGYzvdyR5nugOTSvvRIxMQnOjRloRcXCzFeD+ChD/3W/uPVCvf75zrG6SkXV6xQAtMxnY8CUXKvwlsjk3tLKoqsau3JuYLKIWJAcpp1t9yhLmwAgqFCRxehJ66q6CkG8u4Lu/A8ntrFFZyJAuJo2sH7QZ/8OXveDr13NnhWxLgwQ02T/Ye8U/QtPv5fEWspiRLHUlG3F1o6OMMdcovs/0GH",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794678329,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
