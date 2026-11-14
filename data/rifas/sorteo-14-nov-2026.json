@@ -630,6 +630,10 @@
       "estado": "PAGADO",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
     },
+    "246": {
+      "estado": "PENDIENTE",
+      "orden": "574995b9-980b-48b1-b0ca-7075abcf4b34"
+    },
     "247": {
       "estado": "PAGADO",
       "orden": "cfac68c9-fdae-4e20-a1e9-8d2c4bc73fe6"
@@ -870,6 +874,10 @@
       "estado": "PAGADO",
       "orden": "6abb7b02-2548-4c4c-a359-af59e993c34b"
     },
+    "335": {
+      "estado": "PENDIENTE",
+      "orden": "574995b9-980b-48b1-b0ca-7075abcf4b34"
+    },
     "337": {
       "estado": "PENDIENTE",
       "orden": "4b386d47-4b67-4e74-a867-867d6a5bf8af"
@@ -933,6 +941,10 @@
     "362": {
       "estado": "PAGADO",
       "orden": "551934e9-6421-48eb-ba26-9ea2d2451b7e"
+    },
+    "364": {
+      "estado": "PENDIENTE",
+      "orden": "574995b9-980b-48b1-b0ca-7075abcf4b34"
     },
     "366": {
       "estado": "PAGADO",
@@ -1374,6 +1386,10 @@
       "estado": "PAGADO",
       "orden": "ed55d2da-26c6-45df-a0bc-2a4becbba004"
     },
+    "579": {
+      "estado": "PENDIENTE",
+      "orden": "574995b9-980b-48b1-b0ca-7075abcf4b34"
+    },
     "580": {
       "estado": "PAGADO",
       "orden": "c72e9628-f0ed-4e4a-a776-6eae6c051d91"
@@ -1734,6 +1750,10 @@
       "estado": "PAGADO",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
     },
+    "754": {
+      "estado": "PENDIENTE",
+      "orden": "574995b9-980b-48b1-b0ca-7075abcf4b34"
+    },
     "756": {
       "estado": "PAGADO",
       "orden": "cd206ee6-18ea-4d19-ac65-aad6d78d9688"
@@ -1869,6 +1889,10 @@
     "811": {
       "estado": "PAGADO",
       "orden": "8dacf09e-595e-4641-a6fd-73f7b6b018e0"
+    },
+    "812": {
+      "estado": "PENDIENTE",
+      "orden": "574995b9-980b-48b1-b0ca-7075abcf4b34"
     },
     "816": {
       "estado": "PENDIENTE",
@@ -4727,6 +4751,26 @@
       "registrado": 1794684791,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794684815,
+      "comprobanteHash": null
+    },
+    "574995b9-980b-48b1-b0ca-7075abcf4b34": {
+      "numeros": [
+        246,
+        335,
+        364,
+        579,
+        754,
+        812
+      ],
+      "seudonimo": "𝓓𝓲𝓭𝓲𝓮𝓻 L.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BMyxMCztGmHyi8Y3leCRlQs8pbS8HPoFsPD0QCDDvnt4GRIPoBsQIfoftsUA+bV3tBbsoVvn11LEOfGFXxs+WLKeF0enytvfhslyCEuklgyOC2HdsZB6lzGAjFTtwZK1Tq7WwLxqlxCbjkW1/IR3K0jjXJa1xsZQ/HEfY8RnRe8Yy06Ul43lu/FV7TNAQ/SKVWMKRqiKLc5tQoRUqZmCiV23PXIjCu46uN8vaC2rIxrzV4xpnAKy7OU1VPszzA4=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794685264,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
