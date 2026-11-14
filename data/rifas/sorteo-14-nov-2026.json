@@ -406,6 +406,10 @@
       "estado": "PAGADO",
       "orden": "f642006c-7868-4da3-a898-3ada3974d05a"
     },
+    "169": {
+      "estado": "PENDIENTE",
+      "orden": "2c49da74-9936-46ff-8480-a0cef9d686dd"
+    },
     "172": {
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
@@ -681,6 +685,10 @@
     "282": {
       "estado": "PAGADO",
       "orden": "ad0abe12-7cff-471b-a476-74d41506a031"
+    },
+    "283": {
+      "estado": "PENDIENTE",
+      "orden": "2c49da74-9936-46ff-8480-a0cef9d686dd"
     },
     "288": {
       "estado": "PAGADO",
@@ -1769,6 +1777,10 @@
     "850": {
       "estado": "PAGADO",
       "orden": "de44e443-187b-4fde-9acd-69ad5dc50a61"
+    },
+    "851": {
+      "estado": "PENDIENTE",
+      "orden": "2c49da74-9936-46ff-8480-a0cef9d686dd"
     },
     "852": {
       "estado": "PENDIENTE",
@@ -4241,6 +4253,23 @@
       "registrado": 1794671939,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794671974,
+      "comprobanteHash": null
+    },
+    "2c49da74-9936-46ff-8480-a0cef9d686dd": {
+      "numeros": [
+        169,
+        283,
+        851
+      ],
+      "seudonimo": "Aida M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BHeVyp+hYX7LKemsl4auqOVYY1M03qkNB4JCYccofbxaC9SK3GGiU6T/nXqFj0cfW08/jygxOSyCXvZ7M/xNj006JbeaetdpSrrouFMVVj6GDp7m0iSEFLLoy6Zz+k5iaqF58BK+hz7mHT4CkCVqu0SbHPg9VdVrAdOxvhxt9f9hNig/gYBinPIQyn9gpD2L4KTbsvq0CaAe0YRE47pAwAN5qGfnCVqNQw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
+      "registrado": 1794673652,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
