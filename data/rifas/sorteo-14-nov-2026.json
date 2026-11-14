@@ -726,6 +726,10 @@
       "estado": "PAGADO",
       "orden": "2c49da74-9936-46ff-8480-a0cef9d686dd"
     },
+    "287": {
+      "estado": "PENDIENTE",
+      "orden": "631c5bac-0951-4d1f-9422-e136e274dc07"
+    },
     "288": {
       "estado": "PAGADO",
       "orden": "e0f07a37-5682-40ab-aa1f-35ac08de3e4f"
@@ -1282,6 +1286,10 @@
       "estado": "PAGADO",
       "orden": "60685844-d645-49c3-864f-8a2ce4fe4d20"
     },
+    "548": {
+      "estado": "PENDIENTE",
+      "orden": "631c5bac-0951-4d1f-9422-e136e274dc07"
+    },
     "550": {
       "estado": "PAGADO",
       "orden": "027dcc50-b358-4221-9787-081770d0badc"
@@ -1406,6 +1414,10 @@
       "estado": "PAGADO",
       "orden": "00a93eac-87cb-461f-820a-a98875ca2e9e"
     },
+    "603": {
+      "estado": "PENDIENTE",
+      "orden": "631c5bac-0951-4d1f-9422-e136e274dc07"
+    },
     "604": {
       "estado": "PAGADO",
       "orden": "89292d93-66ce-4431-aadb-3a4a96462b9f"
@@ -1506,6 +1518,10 @@
       "estado": "PAGADO",
       "orden": "8d755e43-4fa3-421a-864f-5d1cde75e065"
     },
+    "664": {
+      "estado": "PENDIENTE",
+      "orden": "631c5bac-0951-4d1f-9422-e136e274dc07"
+    },
     "665": {
       "estado": "PAGADO",
       "orden": "71882179-a9a8-48d5-a4f0-1498556bbcdd"
@@ -1577,6 +1593,10 @@
     "692": {
       "estado": "PAGADO",
       "orden": "29227288-ed87-4de6-a62b-6fba817ac7f0"
+    },
+    "693": {
+      "estado": "PENDIENTE",
+      "orden": "631c5bac-0951-4d1f-9422-e136e274dc07"
     },
     "696": {
       "estado": "PENDIENTE",
@@ -2133,6 +2153,10 @@
     "939": {
       "estado": "PAGADO",
       "orden": "71882179-a9a8-48d5-a4f0-1498556bbcdd"
+    },
+    "941": {
+      "estado": "PENDIENTE",
+      "orden": "631c5bac-0951-4d1f-9422-e136e274dc07"
     },
     "942": {
       "estado": "PAGADO",
@@ -4620,6 +4644,26 @@
       "registrado": 1794682819,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794682851,
+      "comprobanteHash": null
+    },
+    "631c5bac-0951-4d1f-9422-e136e274dc07": {
+      "numeros": [
+        287,
+        548,
+        603,
+        664,
+        693,
+        941
+      ],
+      "seudonimo": "Sandra A.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BAnMJwXfQC1PAZAoZETXPpf+a18PV84CqvWhMorvlJ4MW1PbrHF8Nz+ZJ+vC7bmqSPboY2BbUn4s2Tq7BzUtJfGbKnxz56Sdz+kN4Y1J5Crtglk0zTRK1cPyZu5+H+KMEYw23U6qU+G0yimOBMfwldqeXdaDNrVARCt8Ufmp4+ckaJLmVcwoicxdCZgEVKdcc8zMEl73TMlnzfjYpKy9ZdGRjCmxfzLzhrEoxA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794682989,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
