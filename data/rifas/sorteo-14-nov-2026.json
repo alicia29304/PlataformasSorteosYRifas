@@ -526,6 +526,10 @@
       "estado": "PAGADO",
       "orden": "40c10589-2b3e-4f9a-a594-5b9558d632ab"
     },
+    "213": {
+      "estado": "PENDIENTE",
+      "orden": "0c830725-4a12-48a3-afe8-80421cbc1602"
+    },
     "215": {
       "estado": "PAGADO",
       "orden": "baafffa5-eddb-4efb-b266-0dfd381d7fa3"
@@ -1094,6 +1098,10 @@
       "estado": "PAGADO",
       "orden": "c895ebe0-37d5-41ba-8663-292260c5c92d"
     },
+    "469": {
+      "estado": "PENDIENTE",
+      "orden": "0c830725-4a12-48a3-afe8-80421cbc1602"
+    },
     "474": {
       "estado": "PAGADO",
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
@@ -1325,6 +1333,10 @@
     "587": {
       "estado": "PAGADO",
       "orden": "f9d42328-2a53-45f4-a843-e11738aeface"
+    },
+    "589": {
+      "estado": "PENDIENTE",
+      "orden": "0c830725-4a12-48a3-afe8-80421cbc1602"
     },
     "590": {
       "estado": "PAGADO",
@@ -1885,6 +1897,10 @@
     "887": {
       "estado": "PAGADO",
       "orden": "3b5d4f19-4785-44c0-bafe-a18643e1a454"
+    },
+    "889": {
+      "estado": "PENDIENTE",
+      "orden": "0c830725-4a12-48a3-afe8-80421cbc1602"
     },
     "891": {
       "estado": "PAGADO",
@@ -4336,6 +4352,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794678329,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "0c830725-4a12-48a3-afe8-80421cbc1602": {
+      "numeros": [
+        213,
+        469,
+        589,
+        889
+      ],
+      "seudonimo": "Genesis R.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BL8qf5lldxrrlqOudfsIsaofGhNnTbZOINXabS/YWo1JeTOznBizSD2Nop9CYrADatYdeErS4AVa9XgBSyblGlMNQdQOfLF8YJ5LwAiNJi086je+CyYqpTmEL68jBP4OL3gTWoaIAa1EDRBLpjiMtJvP4dRHF+Ze6+wDOR2l4Koo1Vcnp6/wvlCCrO6aKwXz7AlTgsCoG+Iuz47sh7Hw92Wxo1jy0AAg6bBptsXJUQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794678377,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
