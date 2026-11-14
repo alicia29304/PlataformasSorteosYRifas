@@ -335,7 +335,7 @@
       "orden": "cc377af3-f180-4d4a-8988-d2b96328539f"
     },
     "129": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "130": {
@@ -511,7 +511,7 @@
       "orden": "bf0d294e-fe1d-4279-8f9e-71d14df15ac0"
     },
     "193": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "194": {
@@ -835,7 +835,7 @@
       "orden": "962f5623-496b-443f-81b5-1bdcd1319fc9"
     },
     "310": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "311": {
@@ -1059,7 +1059,7 @@
       "orden": "46160f40-6d08-49f0-b38f-7fce2a849045"
     },
     "391": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "394": {
@@ -1211,7 +1211,7 @@
       "orden": "7ca7b50a-cb41-4afd-8c8c-24d11a47d9bf"
     },
     "475": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "476": {
@@ -1311,7 +1311,7 @@
       "orden": "3b65ad66-eb52-4b6f-a77d-415d51476725"
     },
     "519": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "521": {
@@ -1335,7 +1335,7 @@
       "orden": "aa63ef88-61b1-4743-82d5-8b8bf6c2e847"
     },
     "527": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "528": {
@@ -1839,7 +1839,7 @@
       "orden": "254213a2-a31f-4f55-9fea-00862732e9ca"
     },
     "748": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "749": {
@@ -2035,7 +2035,7 @@
       "orden": "1e498c55-9dbb-46e7-8d1f-e5e9d6ecdb4f"
     },
     "824": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "825": {
@@ -2427,7 +2427,7 @@
       "orden": "00a93eac-87cb-461f-820a-a98875ca2e9e"
     },
     "982": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "e467f11c-406e-421e-829b-e4f04a033a7d"
     },
     "986": {
@@ -5021,11 +5021,11 @@
       "ciudad": "Puerto mirian",
       "metodo": "Transferencia",
       "privado": "enc1:BEmy57k/tKj/I3gHLIopA4rtCkyxgJ1r/d46wKPCD9zZfqVDKsIf31ZFx+3MvL4CmORZ+ht9B5a/HhOjLcsBJWMDqjDYoqBAvgbiv31KXbJf/Ti+RYSGTU0FOUy8B1zbNnKlVPbCUnviPpA36XUVKM1lDsfhy2tZyql8oCpWibERyWxKf/It85FCCQYLKuBkE1cyXQd6to5qX6UrVCyXErNP49Ye048yalSNjGY=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794686921,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1794686948,
       "comprobanteHash": null
     }
   }
