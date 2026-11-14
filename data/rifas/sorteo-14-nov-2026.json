@@ -1074,6 +1074,10 @@
       "estado": "PENDIENTE",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
     },
+    "485": {
+      "estado": "PENDIENTE",
+      "orden": "c67cfab2-d021-4eec-a74d-c8713e6a01e3"
+    },
     "490": {
       "estado": "PAGADO",
       "orden": "ba41ca07-099a-437e-9be9-f8482a349b5d"
@@ -1217,6 +1221,10 @@
     "556": {
       "estado": "PAGADO",
       "orden": "4399b227-6c56-4758-88c9-5e663877a5e2"
+    },
+    "559": {
+      "estado": "PENDIENTE",
+      "orden": "c67cfab2-d021-4eec-a74d-c8713e6a01e3"
     },
     "561": {
       "estado": "PAGADO",
@@ -1749,6 +1757,10 @@
     "850": {
       "estado": "PAGADO",
       "orden": "de44e443-187b-4fde-9acd-69ad5dc50a61"
+    },
+    "852": {
+      "estado": "PENDIENTE",
+      "orden": "c67cfab2-d021-4eec-a74d-c8713e6a01e3"
     },
     "853": {
       "estado": "PAGADO",
@@ -4183,6 +4195,23 @@
       "registrado": 1794671059,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794671084,
+      "comprobanteHash": null
+    },
+    "c67cfab2-d021-4eec-a74d-c8713e6a01e3": {
+      "numeros": [
+        485,
+        559,
+        852
+      ],
+      "seudonimo": "Juancho Q.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BI9dcPuvxu70kKEmICPeFgR5YRtpDD/L2G9OvK9TsWTGNm/d1Jj43E7MW6812C6pPplHAfCGF9/sSr95AEb5vBAK93dTmuEVSXDamoFLtTaNO/zn8GeZDgkHxQBwJyi9a8NeA7Bd/eOfKJqcFDuGWeMpwYRwWrjQCyQw5jMX1qQ14Kz9/VZCeK9lBOs+uiTt45R6KbDo03gwnp7Du3M/fcTbPhb6VtWVcOUOgF0CIg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794671659,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
