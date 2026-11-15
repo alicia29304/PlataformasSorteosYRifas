@@ -326,19 +326,37 @@ function modalTicket(rifa, numeroInicial = null) {
 const BD = "sorteosweb3";
 let clavesEnMemoria = [];
 
+// La version 2 crea el almacen si una version anterior lo dejo sin el.
 function almacen(modo, operacion) {
   return new Promise((ok, falla) => {
-    const pedido = indexedDB.open(BD, 1);
-    pedido.onupgradeneeded = () => pedido.result.createObjectStore("claves");
+    const pedido = indexedDB.open(BD, 2);
+    pedido.onupgradeneeded = () => {
+      if (!pedido.result.objectStoreNames.contains("claves")) pedido.result.createObjectStore("claves");
+    };
     pedido.onerror = () => falla(pedido.error);
+    pedido.onblocked = () => falla(new Error("almacen bloqueado"));
     pedido.onsuccess = () => {
-      const tx = pedido.result.transaction("claves", modo);
-      const r = operacion(tx.objectStore("claves"));
-      tx.oncomplete = () => ok(r?.result);
-      tx.onerror = () => falla(tx.error);
+      const bd = pedido.result;
+      try {
+        const tx = bd.transaction("claves", modo);
+        const r = operacion(tx.objectStore("claves"));
+        tx.oncomplete = () => { bd.close(); ok(r?.result); };
+        tx.onerror = () => { bd.close(); falla(tx.error); };
+      } catch (e) {
+        bd.close();
+        falla(e);
+      }
     };
   });
 }
+
+// Una version anterior guardo la clave en texto en localStorage: se borra siempre.
+const borrarClaveAntigua = () => {
+  try {
+    localStorage.removeItem("sorteosweb3-claves");
+  } catch { /* sin acceso al almacenamiento: no hay nada que borrar */ }
+};
+borrarClaveAntigua();
 async function clavesLocales() {
   try {
     return (await almacen("readonly", (t) => t.get("datos"))) ?? clavesEnMemoria;
@@ -348,6 +366,7 @@ async function clavesLocales() {
 }
 async function guardarClavesLocales(lista) {
   clavesEnMemoria = lista;
+  borrarClaveAntigua();
   try {
     await almacen("readwrite", (t) => (lista.length ? t.put(lista, "datos") : t.delete("datos")));
     return true;
