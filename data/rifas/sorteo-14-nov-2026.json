@@ -1490,10 +1490,6 @@
       "estado": "PAGADO",
       "orden": "ba41ca07-099a-437e-9be9-f8482a349b5d"
     },
-    "532": {
-      "estado": "PENDIENTE",
-      "orden": "594fe2ca-467f-4bd1-810d-a17c3ef05196"
-    },
     "535": {
       "estado": "PAGADO",
       "orden": "47b833cc-a668-460c-aa78-dfb2b4b1d5d6"
@@ -2963,12 +2959,15 @@
       "ciudad": "Villanueva",
       "metodo": "Efectivo",
       "privado": "enc1:BAOv8/50uQANbsHQFQ7jx/bbP4r9RUbAX/pKmkp2ATKlEkmT7vb9nXOZaf5XeN1r8ksmhSoq34qLIkr+BKKl/GFkKYtG9Ipo6i15mHh/N2ytbWuqQmTsjjl+KcvQ5g1uG0eJgAK5z2h0mJSAPZL8zIrugIMRjDln9pK20x/1gBBfd8sZPdu0ucOAQb5B/2lKnH06zvlC+8n8DjV6wPYwDSwwMWj6YyUM",
-      "estado": "PENDIENTE",
+      "estado": "ANULADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794269036,
       "aprobadoPor": null,
       "aprobado": null,
-      "comprobanteHash": null
+      "comprobanteHash": null,
+      "anuladoPor": "0x1cc5ac7eff0165f86ef359f49d1e1e7ffed10280",
+      "anulado": 1794705572,
+      "motivoAnulacion": "Sagggy"
     },
     "cb34d5f7-a0fe-4f8e-ba39-8c7f136cb13b": {
       "numeros": [
