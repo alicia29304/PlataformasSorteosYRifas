@@ -7,7 +7,6 @@ import {
 } from "./comun.js";
 import { cifrar, descifrar, importarPrivada } from "./cifrado.js";
 import { ticketsAPng, compartirImagen, imprimirImagen } from "./compartirTickets.js";
-import { abrirEntrega, llaveDesdeFirma, mensajeLlaveHex } from "../../../services/verificador/src/llave.js";
 
 const MAX_SEL = 10;
 const raiz = document.getElementById("app");
@@ -422,30 +421,39 @@ async function datosPrivados(orden, claves) {
   return null;
 }
 
-/**
- * Un toque: firma el mensaje fijo y, si el administrador ya entrego la clave, la abre.
- * Si no, publica el candado para que la app del administrador la entregue sola.
- * Devuelve "lista", "pedida" o "esperando".
- */
+// Candado del vendedor: un par P-256 creado en este celular. La parte privada no se puede
+// exportar y nunca sale de aqui; solo se publica la publica, firmada con su cartera.
+const leerCandado = () => almacen("readonly", (t) => t.get("candado")).catch(() => null);
+
+/** Si el administrador ya entrego la clave a este candado, la abre sin pedir nada. */
+async function recibirClave(roles) {
+  const candado = await leerCandado();
+  const entrega = roles.vendedores[cuenta.direccion]?.llave?.entrega;
+  if (!candado || !entrega || entrega.para !== candado.publica) return false;
+  const lista = await clavesLocales();
+  for (const jwk of await descifrar(entrega.cifrado, candado.privada)) lista.push(await importarPrivada(jwk));
+  return guardarClavesLocales(lista);
+}
+
+/** Un toque: crea el candado (si falta) y lo publica con una firma. */
 async function activarTelefonos(alAvanzar) {
-  alAvanzar("Confirma en tu cartera. No cuesta nada ni autoriza cambios.");
-  const firma = await cuenta.proveedor.request({ method: "personal_sign", params: [mensajeLlaveHex(cuenta.direccion), cuenta.firmaCon] });
-  const { privada, publica } = llaveDesdeFirma(firma);
-  const roles = await pedir("/roles");
-  const mia = roles.vendedores[cuenta.direccion]?.llave;
-  if (mia?.publica === publica && mia.entrega?.para === publica) {
-    const lista = await clavesLocales();
-    for (const jwk of await abrirEntrega(privada, mia.entrega)) lista.push(await importarPrivada(jwk));
-    await guardarClavesLocales(lista);
-    return "lista";
+  let candado = await leerCandado();
+  if (!candado) {
+    const par = await crypto.subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, false, ["deriveKey"]);
+    const raw = new Uint8Array(await crypto.subtle.exportKey("raw", par.publicKey));
+    candado = { publica: btoa(String.fromCharCode(...raw)), privada: par.privateKey };
+    await almacen("readwrite", (t) => t.put(candado, "candado"));
   }
-  if (mia?.publica === publica) return "esperando";
-  await firmarYEnviar("registrar_llave", { publica }, (t) => alAvanzar(t === "Registrando…" ? "Solicitando acceso…" : t));
-  return "pedida";
+  await firmarYEnviar("registrar_llave", { publica: candado.publica }, (t) => alAvanzar(t === "Registrando…" ? "Solicitando acceso…" : t));
 }
 
 async function modalBuscar(rifaPublica) {
-  const claves = await clavesLocales();
+  let claves = await clavesLocales();
+  if (!claves.length && rolDe(rifaPublica.slug) === "VENDEDOR") {
+    // La clave pudo llegar desde la ultima vez: se abre sola.
+    cuenta.roles = await pedir("/roles");
+    if (await recibirClave(cuenta.roles).catch(() => false)) claves = await clavesLocales();
+  }
   const rifa = claves.length ? await pedir(`/rifas/${rifaPublica.slug}?cifrados=1`) : rifaPublica;
   const ordenes = Object.entries(rifa.ordenes).filter(([, o]) => o.estado !== "ANULADO").sort(([, a], [, b]) => b.registrado - a.registrado);
   const datos = await Promise.all(ordenes.map(([, o]) => (claves.length ? datosPrivados(o, claves) : null)));
@@ -467,22 +475,23 @@ async function modalBuscar(rifaPublica) {
         mostrarModal("No se pudo ocultar", h("p", {}, "Cierra las otras pestañas de esta página y vuelve a intentarlo. Los teléfonos siguen activos en este celular."));
       } }, "Ocultar"));
   } else if (esVendedor) {
-    const yaLlego = cuenta.roles?.vendedores[cuenta.direccion]?.llave?.entrega;
-    const boton = h("button", { class: "btn small", onclick: async () => {
+    const candado = await leerCandado();
+    const pedida = candado && cuenta.roles?.vendedores[cuenta.direccion]?.llave?.publica === candado.publica;
+    const aviso = h("p", { class: "mut small", style: "margin:6px 0 0" }, pedida
+      ? "Solicitud enviada. Se activan solos cuando el administrador abra su app."
+      : "Para buscar también por teléfono. Solo una vez en este celular.");
+    const boton = pedida ? null : h("button", { class: "btn small", onclick: async () => {
       boton.disabled = true;
       try {
-        const r = await activarTelefonos((t) => { aviso.textContent = t; });
-        if (r === "lista") { reabrir(); return; }
-        aviso.textContent = r === "pedida"
-          ? "Listo. Los teléfonos se activan cuando el administrador abra su app; vuelve a tocar el botón más tarde."
-          : "Aún esperando al administrador. Vuelve a intentarlo cuando abra su app.";
+        await activarTelefonos((t) => { aviso.textContent = t; });
+        boton.remove();
+        aviso.textContent = "Listo. Los teléfonos se activan solos cuando el administrador abra su app.";
       } catch (e) {
         aviso.textContent = e.message;
+        boton.disabled = false;
       }
-      boton.disabled = false;
-    } }, yaLlego ? "📞 Mostrar teléfonos" : "📞 Activar teléfonos");
-    const aviso = h("p", { class: "mut small", style: "margin:6px 0 0" }, yaLlego ? "El administrador ya te dio acceso: toca para verlos." : "Para buscar también por teléfono. Solo una vez en este celular.");
-    zonaClave.append(boton, aviso);
+    } }, "📞 Activar teléfonos");
+    zonaClave.append(boton ?? "", aviso);
   } else {
     zonaClave.append(h("button", { class: "buy-clear", onclick: () => pedirClaveLocal(reabrir) }, "Cargar clave de datos"), " para buscar por teléfono.");
   }

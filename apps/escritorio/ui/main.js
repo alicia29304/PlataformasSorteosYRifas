@@ -5,9 +5,8 @@ import {
   ZONA, avisarError, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, enviarFirmado, fecha, firmarYEnviar, h,
   modalAdjuntar, modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe,
 } from "../../web3/src/comun.js";
-import { descifrar } from "../../web3/src/cifrado.js";
+import { cifrar, descifrar } from "../../web3/src/cifrado.js";
 import { crearClaveSesion, delegacionHex, direccionDe, firmarConClave } from "../../../services/verificador/src/mensaje.js";
-import { cerrarPara } from "../../../services/verificador/src/llave.js";
 
 const WEB = "https://sorteos-web3.aliciagadiaz29304.workers.dev";
 const raiz = document.getElementById("app");
@@ -175,8 +174,8 @@ function entregarLlaves() {
     const para = v.llave?.publica;
     if (!para || v.llave.entrega?.para === para || entregando.has(`${direccion}${para}`)) continue;
     entregando.add(`${direccion}${para}`);
-    cerrarPara(para, estado.claves)
-      .then((entrega) => enviarFirmado("entregar_llave", { direccion, ...entrega }))
+    cifrar(estado.claves, para)
+      .then((cifrado) => enviarFirmado("entregar_llave", { direccion, para, cifrado }))
       .catch((e) => { entregando.delete(`${direccion}${para}`); console.error(e); });
   }
 }

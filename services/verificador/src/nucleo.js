@@ -21,8 +21,8 @@ const DIRECCION = /^0x[0-9a-f]{40}$/;
 const NONCE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/;
 const SHA256 = /^[0-9a-f]{64}$/;
-const LLAVE = /^0x04[0-9a-f]{128}$/;
-const BASE64 = /^[A-Za-z0-9+/=]{1,4000}$/;
+// Clave publica P-256 sin comprimir (65 bytes) en base64.
+const LLAVE = /^B[A-Za-z0-9+/]{86}[A-Za-z0-9+/=]$/;
 const CIFRADO = /^enc1:[A-Za-z0-9+/=]{1,8000}$/;
 // Sin digitos: un telefono o documento no puede colarse como nombre publico.
 const SEUDONIMO = /^\p{L}[\p{L}' -]{0,38}(?: \p{L}\.)?$/u;
@@ -157,14 +157,12 @@ const ACCIONES = {
 
   entregar_llave(estado, d, { rol }) {
     soloAdmin(rol);
-    soloCampos(d, ["direccion", "para", "efimera", "iv", "cifrado"]);
+    soloCampos(d, ["direccion", "para", "cifrado"]);
     const v = typeof d.direccion === "string" && Object.hasOwn(estado.roles.vendedores, d.direccion) ? estado.roles.vendedores[d.direccion] : null;
     regla(v, "Vendedor no encontrado");
     regla(v.llave?.publica && d.para === v.llave.publica, "El vendedor cambio su llave: se entregara a la nueva");
-    regla(typeof d.efimera === "string" && LLAVE.test(d.efimera), "Entrega invalida");
-    regla(typeof d.iv === "string" && /^[A-Za-z0-9+/=]{16}$/.test(d.iv), "Entrega invalida");
-    regla(typeof d.cifrado === "string" && BASE64.test(d.cifrado), "Entrega invalida");
-    v.llave.entrega = { para: d.para, efimera: d.efimera, iv: d.iv, cifrado: d.cifrado };
+    regla(typeof d.cifrado === "string" && CIFRADO.test(d.cifrado), "Entrega invalida");
+    v.llave.entrega = { para: d.para, cifrado: d.cifrado };
     return { roles: true };
   },
 

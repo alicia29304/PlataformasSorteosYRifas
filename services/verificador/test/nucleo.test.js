@@ -324,29 +324,31 @@ test("archivar: solo admin, con ventas cerradas, y se puede deshacer", async () 
   assert.equal(procesar(await firmar(admin, "cambiar_estado_rifa", { slug: "prueba", estado: "ACTIVA" }), e, AHORA).resultado, "ACEPTADA");
 });
 
-test("llave: el vendedor la registra, el admin entrega y solo esa cartera la abre", async () => {
-  const { mensajeLlave, llaveDesdeFirma, cerrarPara, abrirEntrega } = await import("../src/llave.js");
+test("llave: el vendedor publica su candado, el admin entrega y solo ese candado la abre", async () => {
+  const { cifrar, descifrar } = await import("../../../apps/web3/src/cifrado.js");
+  const candado = async () => {
+    const k = await crypto.subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, false, ["deriveKey"]);
+    return { privada: k.privateKey, publica: Buffer.from(await crypto.subtle.exportKey("raw", k.publicKey)).toString("base64") };
+  };
   const e = await escenario();
-  const firma = await vendedor.signMessage(mensajeLlave(dir(vendedor)));
-  assert.equal(firma, await vendedor.signMessage(mensajeLlave(dir(vendedor))), "la firma es siempre la misma");
-  const llave = llaveDesdeFirma(firma);
-
-  assert.match(procesar(await firmar(admin, "registrar_llave", { publica: llave.publica }), e, AHORA).motivo, /Solo los vendedores/);
-  assert.match(procesar(await firmar(vendedor, "registrar_llave", { publica: "0x04" }), e, AHORA).motivo, /invalida/);
-  assert.equal(procesar(await firmar(vendedor, "registrar_llave", { publica: llave.publica }), e, AHORA).resultado, "ACEPTADA");
+  const mio = await candado();
+  assert.match(procesar(await firmar(admin, "registrar_llave", { publica: mio.publica }), e, AHORA).motivo, /Solo los vendedores/);
+  assert.match(procesar(await firmar(vendedor, "registrar_llave", { publica: "BAAA" }), e, AHORA).motivo, /invalida/);
+  assert.equal(procesar(await firmar(vendedor, "registrar_llave", { publica: mio.publica }), e, AHORA).resultado, "ACEPTADA");
 
   const datos = [{ kty: "EC", d: "secreto" }];
-  const entrega = await cerrarPara(llave.publica, datos);
+  const entrega = { para: mio.publica, cifrado: await cifrar(datos, mio.publica) };
   assert.match(procesar(await firmar(vendedor, "entregar_llave", { direccion: dir(vendedor), ...entrega }), e, AHORA).motivo, /administrador/);
+  assert.match(procesar(await firmar(admin, "entregar_llave", { direccion: dir(vendedor), para: mio.publica, cifrado: "texto" }), e, AHORA).motivo, /invalida/);
   assert.equal(procesar(await firmar(admin, "entregar_llave", { direccion: dir(vendedor), ...entrega }), e, AHORA).resultado, "ACEPTADA");
-  assert.deepEqual(await abrirEntrega(llave.privada, e.roles.vendedores[dir(vendedor)].llave.entrega), datos);
-  const ajena = llaveDesdeFirma(await otroVendedor.signMessage(mensajeLlave(dir(otroVendedor))));
-  await assert.rejects(() => abrirEntrega(ajena.privada, e.roles.vendedores[dir(vendedor)].llave.entrega));
+  assert.deepEqual(await descifrar(e.roles.vendedores[dir(vendedor)].llave.entrega.cifrado, mio.privada), datos);
+  const ajeno = await candado();
+  await assert.rejects(() => descifrar(e.roles.vendedores[dir(vendedor)].llave.entrega.cifrado, ajeno.privada));
 
-  // Editar al vendedor conserva la llave; una llave nueva invalida entregas viejas.
+  // Editar al vendedor conserva su acceso; un candado nuevo invalida la entrega vieja.
   procesar(await firmar(admin, "asignar_vendedor", { direccion: dir(vendedor), nombre: "Alvaro", rifas: ["prueba", "otra"] }), e, AHORA);
   assert.ok(e.roles.vendedores[dir(vendedor)].llave.entrega);
-  procesar(await firmar(vendedor, "registrar_llave", { publica: ajena.publica }), e, AHORA);
+  procesar(await firmar(vendedor, "registrar_llave", { publica: ajeno.publica }), e, AHORA);
   assert.equal(e.roles.vendedores[dir(vendedor)].llave.entrega, undefined);
   assert.match(procesar(await firmar(admin, "entregar_llave", { direccion: dir(vendedor), ...entrega }), e, AHORA).motivo, /cambio su llave/);
 });
