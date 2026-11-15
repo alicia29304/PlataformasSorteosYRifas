@@ -7,6 +7,7 @@ import {
 } from "./comun.js";
 import { cifrar, descifrar, importarPrivada } from "./cifrado.js";
 import { ticketsAPng, compartirImagen, imprimirImagen } from "./compartirTickets.js";
+import { abrirEntrega, llaveDesdeFirma, mensajeLlaveHex } from "../../../services/verificador/src/llave.js";
 
 const MAX_SEL = 10;
 const raiz = document.getElementById("app");
@@ -375,6 +376,17 @@ async function guardarClavesLocales(lista) {
   }
 }
 
+/** Borrado que no falla en silencio: si la tabla esta bloqueada, se borra la base entera. */
+async function borrarClavesLocales() {
+  if (await guardarClavesLocales([])) return true;
+  return new Promise((ok) => {
+    const r = indexedDB.deleteDatabase(BD);
+    r.onsuccess = () => ok(true);
+    r.onerror = () => ok(false);
+    r.onblocked = () => ok(false);
+  });
+}
+
 /** Solo la clave de datos: el archivo del administrador trae su cartera y no debe circular. */
 function pedirClaveLocal(alListo) {
   const entrada = h("input", { class: "inp", type: "file", accept: ".json,application/json" });
@@ -410,41 +422,103 @@ async function datosPrivados(orden, claves) {
   return null;
 }
 
+/**
+ * Un toque: firma el mensaje fijo y, si el administrador ya entrego la clave, la abre.
+ * Si no, publica el candado para que la app del administrador la entregue sola.
+ * Devuelve "lista", "pedida" o "esperando".
+ */
+async function activarTelefonos(alAvanzar) {
+  alAvanzar("Confirma en tu cartera. No cuesta nada ni autoriza cambios.");
+  const firma = await cuenta.proveedor.request({ method: "personal_sign", params: [mensajeLlaveHex(cuenta.direccion), cuenta.firmaCon] });
+  const { privada, publica } = llaveDesdeFirma(firma);
+  const roles = await pedir("/roles");
+  const mia = roles.vendedores[cuenta.direccion]?.llave;
+  if (mia?.publica === publica && mia.entrega?.para === publica) {
+    const lista = await clavesLocales();
+    for (const jwk of await abrirEntrega(privada, mia.entrega)) lista.push(await importarPrivada(jwk));
+    await guardarClavesLocales(lista);
+    return "lista";
+  }
+  if (mia?.publica === publica) return "esperando";
+  await firmarYEnviar("registrar_llave", { publica }, (t) => alAvanzar(t === "Registrando…" ? "Solicitando acceso…" : t));
+  return "pedida";
+}
+
 async function modalBuscar(rifaPublica) {
   const claves = await clavesLocales();
   const rifa = claves.length ? await pedir(`/rifas/${rifaPublica.slug}?cifrados=1`) : rifaPublica;
   const ordenes = Object.entries(rifa.ordenes).filter(([, o]) => o.estado !== "ANULADO").sort(([, a], [, b]) => b.registrado - a.registrado);
   const datos = await Promise.all(ordenes.map(([, o]) => (claves.length ? datosPrivados(o, claves) : null)));
   const filas = ordenes.map(([, o], i) => ({ o, d: datos[i] }));
+  const esVendedor = rolDe(rifa.slug) === "VENDEDOR";
+  const filtro = { estado: "TODOS", mias: esVendedor };
 
   const resultados = h("div", { style: "margin-top:12px" });
   const entrada = h("input", { class: "inp", type: "search", autocomplete: "off",
     placeholder: claves.length ? "Nombre, teléfono o número…" : "Nombre o número…", oninput: () => mostrar() });
-  const estadoClave = claves.length
-    ? h("p", { class: "mut small" }, "🔑 Clave cargada en este celular. ",
-      h("button", { class: "buy-clear", onclick: async () => { await guardarClavesLocales([]); cerrar(); modalBuscar(rifaPublica).catch(avisarError); } }, "Olvidar clave"))
-    : h("p", { class: "mut small" }, "Para buscar por teléfono, ",
-      h("button", { class: "buy-clear", onclick: () => pedirClaveLocal(() => { cerrar(); modalBuscar(rifaPublica).catch(avisarError); }) }, "carga la clave de datos"), ".");
-  const cerrar = mostrarModal("🔎 Buscar comprador", entrada, estadoClave, resultados);
+  const chips = h("div", { class: "chips", style: "margin-top:10px" });
+  const reabrir = () => { cerrar(); modalBuscar(rifaPublica).catch(avisarError); };
 
+  const zonaClave = h("div", { class: "small", style: "margin-top:8px" });
+  if (claves.length) {
+    zonaClave.append("📞 Teléfonos visibles en este celular. ",
+      h("button", { class: "buy-clear", onclick: async () => {
+        if (await borrarClavesLocales()) { reabrir(); return; }
+        mostrarModal("No se pudo ocultar", h("p", {}, "Cierra las otras pestañas de esta página y vuelve a intentarlo. Los teléfonos siguen activos en este celular."));
+      } }, "Ocultar"));
+  } else if (esVendedor) {
+    const yaLlego = cuenta.roles?.vendedores[cuenta.direccion]?.llave?.entrega;
+    const boton = h("button", { class: "btn small", onclick: async () => {
+      boton.disabled = true;
+      try {
+        const r = await activarTelefonos((t) => { aviso.textContent = t; });
+        if (r === "lista") { reabrir(); return; }
+        aviso.textContent = r === "pedida"
+          ? "Listo. Los teléfonos se activan cuando el administrador abra su app; vuelve a tocar el botón más tarde."
+          : "Aún esperando al administrador. Vuelve a intentarlo cuando abra su app.";
+      } catch (e) {
+        aviso.textContent = e.message;
+      }
+      boton.disabled = false;
+    } }, yaLlego ? "📞 Mostrar teléfonos" : "📞 Activar teléfonos");
+    const aviso = h("p", { class: "mut small", style: "margin:6px 0 0" }, yaLlego ? "El administrador ya te dio acceso: toca para verlos." : "Para buscar también por teléfono. Solo una vez en este celular.");
+    zonaClave.append(boton, aviso);
+  } else {
+    zonaClave.append(h("button", { class: "buy-clear", onclick: () => pedirClaveLocal(reabrir) }, "Cargar clave de datos"), " para buscar por teléfono.");
+  }
+  const cerrar = mostrarModal("🔎 Buscar comprador", entrada, chips, zonaClave, resultados);
+
+  function pintarChips() {
+    const chip = (txt, activo, alTocar) => h("button", { class: `fchip${activo ? " on" : ""}`, onclick: () => { alTocar(); pintarChips(); mostrar(); } }, txt);
+    chips.replaceChildren(
+      chip("Todos", filtro.estado === "TODOS", () => { filtro.estado = "TODOS"; }),
+      chip("Pagados", filtro.estado === "PAGADO", () => { filtro.estado = "PAGADO"; }),
+      chip("Pendientes", filtro.estado === "PENDIENTE", () => { filtro.estado = "PENDIENTE"; }),
+      esVendedor ? chip("Solo mis ventas", filtro.mias, () => { filtro.mias = !filtro.mias; }) : "");
+  }
   function coincide({ o, d }, busca) {
+    if (filtro.estado !== "TODOS" && o.estado !== filtro.estado) return false;
+    if (filtro.mias && o.registradoPor !== cuenta.direccion) return false;
+    if (!busca) return true;
     const digitos = busca.replace(/\D/g, "");
     if (digitos && /^[\d\s+()-]+$/.test(busca)) return (d?.telefono ?? "").includes(digitos) || o.numeros.includes(Number(digitos));
     return [d?.nombre, d?.apellido, o.seudonimo, o.ciudad].filter(Boolean).join(" ").toLowerCase().includes(busca);
   }
   function mostrar() {
     const busca = entrada.value.trim().toLowerCase();
-    const encontrados = busca ? filas.filter((f) => coincide(f, busca)) : filas;
+    const encontrados = filas.filter((f) => coincide(f, busca));
+    const numeros = encontrados.reduce((t, { o }) => t + o.numeros.length, 0);
     resultados.replaceChildren(
-      h("p", { class: "mut small" }, busca ? `${encontrados.length} resultado(s)` : `${filas.length} compra(s) en este sorteo`),
+      h("p", { class: "mut small" }, `${encontrados.length} compra(s) · ${numeros} número(s)`),
       ...encontrados.slice(0, 40).map(({ o, d }) => h("div", { class: "orden" },
         h("div", {},
           h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")),
           h("div", { class: "small" }, d ? `👤 ${[d.nombre, d.apellido].filter(Boolean).join(" ")} · 📞 ${d.telefono}` : `👤 ${o.seudonimo}`),
-          h("div", { class: "mut small" }, `${o.ciudad ? `${o.ciudad} · ` : ""}${o.metodo} · ${o.estado === "PAGADO" ? "Pagado" : "Pendiente"}`)),
+          h("div", { class: "mut small" }, `${o.ciudad ? `${o.ciudad} · ` : ""}${o.metodo} · ${o.estado === "PAGADO" ? "Pagado" : "Pendiente"} · ${fecha(new Date(o.registrado * 1000).toISOString())}`)),
         h("button", { class: "btn-ghost small", onclick: () => modalTicket(rifaPublica, o.numeros[0]) }, "Ver ticket"))),
       encontrados.length > 40 ? h("p", { class: "mut small" }, "Hay más resultados: escribe algo más específico.") : "");
   }
+  pintarChips();
   mostrar();
   entrada.focus();
 }

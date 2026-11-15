@@ -7,6 +7,7 @@ import {
 } from "../../web3/src/comun.js";
 import { descifrar } from "../../web3/src/cifrado.js";
 import { crearClaveSesion, delegacionHex, direccionDe, firmarConClave } from "../../../services/verificador/src/mensaje.js";
+import { cerrarPara } from "../../../services/verificador/src/llave.js";
 
 const WEB = "https://sorteos-web3.aliciagadiaz29304.workers.dev";
 const raiz = document.getElementById("app");
@@ -163,11 +164,29 @@ async function inicio() {
       h("p", { class: "mut small", style: "margin-top:14px" }, "Tu cartera firmará cada cambio.")]));
 }
 
+// ------------------------------- Entrega de la clave a vendedores -------------------------------
+// Al abrir la app: los vendedores que pidieron acceso reciben la clave de datos, cerrada
+// con el candado de su cartera. Solo con la sesion de este equipo, para no pedir firmas.
+
+const entregando = new Set();
+function entregarLlaves() {
+  if (!cuenta.delegacion || !estado.claves.length) return;
+  for (const [direccion, v] of Object.entries(cuenta.roles.vendedores)) {
+    const para = v.llave?.publica;
+    if (!para || v.llave.entrega?.para === para || entregando.has(`${direccion}${para}`)) continue;
+    entregando.add(`${direccion}${para}`);
+    cerrarPara(para, estado.claves)
+      .then((entrega) => enviarFirmado("entregar_llave", { direccion, ...entrega }))
+      .catch((e) => { entregando.delete(`${direccion}${para}`); console.error(e); });
+  }
+}
+
 // ------------------------------- Panel -------------------------------
 
 async function panel() {
   // Antes de comprobar el rol: una sesion restaurada aun no tiene la lista.
   cuenta.roles = await pedir("/roles");
+  if (rolDe() === "ADMIN") entregarLlaves();
   if (rolDe() !== "ADMIN") {
     raiz.replaceChildren(h("main", { class: "contenedor", style: "max-width:520px;text-align:center" },
       h("h2", {}, "Esta cartera no es administradora"),
@@ -400,7 +419,8 @@ function vistaVendedores(rifas) {
       h("button", { class: "btn", onclick: () => modalVendedor(rifas) }, "+ Agregar vendedor")),
     lista.length === 0 ? h("p", { class: "mut" }, "Aún no hay vendedores.") : lista.map(([dir, v]) => h("div", { class: "orden" },
       h("div", {}, h("b", {}, v.nombre), h("div", { class: "mut small" }, dir),
-        h("div", { class: "mut small" }, v.rifas.length ? `Rifas: ${v.rifas.join(", ")}` : "Sin rifas asignadas")),
+        h("div", { class: "mut small" }, v.rifas.length ? `Rifas: ${v.rifas.join(", ")}` : "Sin rifas asignadas"),
+        h("div", { class: "mut small" }, v.llave?.entrega?.para === v.llave?.publica && v.llave?.entrega ? "📞 Teléfonos activos" : v.llave ? "📞 Activación en camino" : "📞 Aún no activa teléfonos")),
       h("div", { class: "acciones" },
         h("button", { class: "btn-ghost small", onclick: () => modalVendedor(rifas, dir, v) }, "Editar"),
         h("button", { class: "btn-ghost small", onclick: async () => {
