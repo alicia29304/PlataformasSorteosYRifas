@@ -10,17 +10,41 @@
   "estado": "ACTIVA",
   "creada": 1794727734,
   "numeros": {
+    "23": {
+      "estado": "PENDIENTE",
+      "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
     "161": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "270": {
+      "estado": "PENDIENTE",
+      "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
+    "303": {
+      "estado": "PENDIENTE",
+      "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
     },
     "436": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
     },
+    "588": {
+      "estado": "PENDIENTE",
+      "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
     "674": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "842": {
+      "estado": "PENDIENTE",
+      "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
+    "851": {
+      "estado": "PENDIENTE",
+      "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
     }
   },
   "ordenes": {
@@ -37,6 +61,26 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794775660,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "85e3c623-84e9-498d-b852-adac1f73a4d0": {
+      "numeros": [
+        23,
+        270,
+        303,
+        588,
+        842,
+        851
+      ],
+      "seudonimo": "Humberto B.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BG6qyRc76H0ZvV+19ZRIWa2s8mjHE+oA94i0AnjPAkU9Aw7cHL2z8MpRsUfMG0Q3rG7lSKH8Cm4LeGDmP4cbcKV/EL5HygRElm/TYCOTPBKyXnRJi6PVOFlRR/k/AfIRf5Uj8j4LH95dGtF1Dk914Z1RF6vH7BM7bU1U3kQb9I1jwsRK9yMjvDp//TdrbB6iJ9BsAm72TCuMqlqNum8RqW4hIyr6Gh0UrczYuqGvuw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794775740,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
