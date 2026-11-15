@@ -32,7 +32,11 @@
         "sorteo-21-nov-2026"
       ],
       "llave": {
-        "publica": "BPTfaAktOUcpBtnEpr439dZJZAxf5xX4I14D6EL/xLk5MULJiWUUtbNU8ye0jA9xajPLtMn+opmhL+X6jaEiZOM="
+        "publica": "BPTfaAktOUcpBtnEpr439dZJZAxf5xX4I14D6EL/xLk5MULJiWUUtbNU8ye0jA9xajPLtMn+opmhL+X6jaEiZOM=",
+        "entrega": {
+          "para": "BPTfaAktOUcpBtnEpr439dZJZAxf5xX4I14D6EL/xLk5MULJiWUUtbNU8ye0jA9xajPLtMn+opmhL+X6jaEiZOM=",
+          "cifrado": "enc1:BIkuImWrvd9Y8XHDgFX20UrLlD1BleA6TCW3VL6/hpeOWmEhP01HVoZbDwEcA1xNeAAEekIQKxJp4cFxgI6YOCKR+M+nFDVGLD+/HE6V9qan+6lpUm8y/B7Mz33TQlA1O1EotdNnWVDEPDhhqBs+VIL+HN3KKVgbQmx1YKbR1Jkjko6/f+0arIb3kotPviuLPF3RVCh3KeAPFJfgiYtBCdZsvTAwUDxpO/txOakSS1XnO957bWcXc1aoY7IfIuCfm3KuqPtBfjY+R4cfIs5qgdZOMwEDW8VlCDrxe+xB7ci3hrxdoZWn0h1sxlvUzH/HxUY8HGYPs8vgY7/vtvgG/mgQcUnzgdaZWfZvAFBsQTUWhwZ8H2zlowClZPLJ570LK1arjpWqeGokbnKw9exK8OxY"
+        }
       }
     }
   }
