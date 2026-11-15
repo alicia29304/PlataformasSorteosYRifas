@@ -5,7 +5,7 @@ import {
   avisarError, botonRecargar, config, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
   hayVersionNueva, modalAdjuntar, modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe, selectorComprobante,
 } from "./comun.js";
-import { cifrar } from "./cifrado.js";
+import { cifrar, descifrar } from "./cifrado.js";
 import { ticketsAPng, compartirImagen, imprimirImagen } from "./compartirTickets.js";
 
 const MAX_SEL = 10;
@@ -112,7 +112,9 @@ async function vistaRifa(slug, ticketInicial = null) {
     h("p", { class: "small" }, `${cop(rifa.precioCop)} por número · Cierre de ventas: ${fecha(rifa.finVentas)} · Sorteo: ${fecha(rifa.fechaSorteo)}`),
     bannerGanador(rifa),
     h("div", { class: "controls" },
-      h("button", { class: "btn-ghost", onclick: () => modalTicket(rifa) }, "🎫 Mis números"),
+      (rol === "ADMIN" || rol === "VENDEDOR")
+        ? h("button", { class: "btn-ghost", onclick: () => modalBuscar(rifa).catch(avisarError) }, "🔎 Buscar comprador")
+        : h("button", { class: "btn-ghost", onclick: () => modalTicket(rifa) }, "🎫 Mis números"),
       opera ? [3, 5, 10].map((k) => h("button", { class: "btn-azar", onclick: () => azar(k) }, `🎲 ${k} al azar`)) : null,
       h("input", { class: "buscador", inputmode: "numeric", placeholder: "Buscar número…", oninput: (e) => { busca = e.target.value.replace(/\D/g, ""); pintar(); } }),
       chips),
@@ -313,6 +315,99 @@ function modalTicket(rifa, numeroInicial = null) {
         h("button", { class: "btn-ghost", onclick: () => imagen().then((b) => (sinSoporte ? modalImagen(b, archivo, enlace) : imprimirImagen(b))).catch(avisarError) }, "🖨️ PDF"),
         h("button", { class: "btn-ghost", onclick: (e) => copiar(enlace, e.target) }, "🔗 Enlace")));
   }
+}
+
+// ------------------------------- Busqueda para vendedores -------------------------------
+// La clave de datos se carga una vez y queda solo en este navegador. Con ella se ven
+// nombre completo y telefono; sin ella se busca por el nombre publico y el numero.
+
+const CLAVES_LOCALES = "sorteosweb3-claves";
+const clavesLocales = () => {
+  try {
+    return JSON.parse(localStorage.getItem(CLAVES_LOCALES) ?? "[]");
+  } catch {
+    return [];
+  }
+};
+const guardarClavesLocales = (lista) => {
+  try {
+    if (lista.length) localStorage.setItem(CLAVES_LOCALES, JSON.stringify(lista));
+    else localStorage.removeItem(CLAVES_LOCALES);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+/** Acepta la clave sola o un archivo de credenciales (de este solo toma la clave de datos). */
+function pedirClaveLocal(alListo) {
+  const entrada = h("input", { class: "inp", type: "file", accept: ".json,application/json" });
+  const aviso = h("div");
+  const cerrar = mostrarModal("Cargar clave de datos",
+    h("p", { class: "mut small" }, "Pídele el archivo al administrador. Queda guardado solo en este celular para buscar por teléfono."),
+    entrada, aviso);
+  entrada.addEventListener("change", async () => {
+    try {
+      const leido = JSON.parse(await entrada.files[0].text());
+      const nuevas = leido.tipo === "sorteosweb3-credenciales" ? leido.clavesCifrado ?? [] : [leido];
+      if (!nuevas.length || nuevas.some((c) => c.kty !== "EC" || !c.d)) throw new Error();
+      const lista = clavesLocales();
+      for (const c of nuevas) if (!lista.some((x) => x.d === c.d)) lista.push(c);
+      if (!guardarClavesLocales(lista)) throw new Error("Este navegador no permite guardar la clave.");
+      cerrar();
+      alListo();
+    } catch (e) {
+      aviso.replaceChildren(h("p", { class: "err" }, e.message || "Ese archivo no es una clave válida."));
+    }
+  });
+}
+
+async function datosPrivados(orden, claves) {
+  for (const clave of claves) {
+    try {
+      return await descifrar(orden.privado, clave);
+    } catch { /* con esta clave no abre: se prueba la siguiente */ }
+  }
+  return null;
+}
+
+async function modalBuscar(rifaPublica) {
+  const claves = clavesLocales();
+  const rifa = claves.length ? await pedir(`/rifas/${rifaPublica.slug}?cifrados=1`) : rifaPublica;
+  const ordenes = Object.entries(rifa.ordenes).filter(([, o]) => o.estado !== "ANULADO").sort(([, a], [, b]) => b.registrado - a.registrado);
+  const datos = await Promise.all(ordenes.map(([, o]) => (claves.length ? datosPrivados(o, claves) : null)));
+  const filas = ordenes.map(([, o], i) => ({ o, d: datos[i] }));
+
+  const resultados = h("div", { style: "margin-top:12px" });
+  const entrada = h("input", { class: "inp", type: "search", autocomplete: "off",
+    placeholder: claves.length ? "Nombre, teléfono o número…" : "Nombre o número…", oninput: () => mostrar() });
+  const estadoClave = claves.length
+    ? h("p", { class: "mut small" }, "🔑 Clave cargada en este celular. ",
+      h("button", { class: "buy-clear", onclick: () => { guardarClavesLocales([]); cerrar(); modalBuscar(rifaPublica).catch(avisarError); } }, "Olvidar clave"))
+    : h("p", { class: "mut small" }, "Para buscar por teléfono, ",
+      h("button", { class: "buy-clear", onclick: () => pedirClaveLocal(() => { cerrar(); modalBuscar(rifaPublica).catch(avisarError); }) }, "carga la clave de datos"), ".");
+  const cerrar = mostrarModal("🔎 Buscar comprador", entrada, estadoClave, resultados);
+
+  function coincide({ o, d }, busca) {
+    const digitos = busca.replace(/\D/g, "");
+    if (digitos && /^[\d\s+()-]+$/.test(busca)) return (d?.telefono ?? "").includes(digitos) || o.numeros.includes(Number(digitos));
+    return [d?.nombre, d?.apellido, o.seudonimo, o.ciudad].filter(Boolean).join(" ").toLowerCase().includes(busca);
+  }
+  function mostrar() {
+    const busca = entrada.value.trim().toLowerCase();
+    const encontrados = busca ? filas.filter((f) => coincide(f, busca)) : filas;
+    resultados.replaceChildren(
+      h("p", { class: "mut small" }, busca ? `${encontrados.length} resultado(s)` : `${filas.length} compra(s) en este sorteo`),
+      ...encontrados.slice(0, 40).map(({ o, d }) => h("div", { class: "orden" },
+        h("div", {},
+          h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")),
+          h("div", { class: "small" }, d ? `👤 ${[d.nombre, d.apellido].filter(Boolean).join(" ")} · 📞 ${d.telefono}` : `👤 ${o.seudonimo}`),
+          h("div", { class: "mut small" }, `${o.ciudad ? `${o.ciudad} · ` : ""}${o.metodo} · ${o.estado === "PAGADO" ? "Pagado" : "Pendiente"}`)),
+        h("button", { class: "btn-ghost small", onclick: () => modalTicket(rifaPublica, o.numeros[0]) }, "Ver ticket"))),
+      encontrados.length > 40 ? h("p", { class: "mut small" }, "Hay más resultados: escribe algo más específico.") : "");
+  }
+  mostrar();
+  entrada.focus();
 }
 
 // ------------------------------- Rutas -------------------------------
