@@ -5,7 +5,7 @@
 //      node execution/inicializar_datos.mjs --confirmar --dir C:\otra\copia   (otra carpeta)
 //
 // NO lo ejecutes en una instalacion en uso: borra todas sus rifas y pagos.
-import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
@@ -28,6 +28,8 @@ if (existsSync(join(salida, "credenciales-admin.json"))) {
 }
 
 const escribir = (ruta, valor) => writeFileSync(ruta, `${JSON.stringify(valor, null, 2)}\n`);
+// Secretos: solo el dueno puede leerlos (en Linux/macOS) y nunca se sobrescribe uno existente.
+const escribirSecreto = (ruta, valor) => writeFileSync(ruta, `${JSON.stringify(valor, null, 2)}\n`, { mode: 0o600, flag: "wx" });
 for (const carpeta of ["rifas", "auditoria"]) {
   rmSync(join(data, carpeta), { recursive: true, force: true });
   mkdirSync(join(data, carpeta), { recursive: true });
@@ -47,11 +49,12 @@ escribir(join(data, "sesiones-revocadas.json"), {});
 escribir(join(data, "rifas", "index.json"), []);
 writeFileSync(join(data, "auditoria", ".gitkeep"), "");
 
-mkdirSync(salida, { recursive: true });
-escribir(join(salida, "credenciales-admin.json"), {
+mkdirSync(salida, { recursive: true, mode: 0o700 });
+chmodSync(salida, 0o700);
+escribirSecreto(join(salida, "credenciales-admin.json"), {
   tipo: "sorteosweb3-credenciales", direccion, clavePrivada: admin.privateKey, clavesCifrado: [claveDatos],
 });
-escribir(join(salida, "clave-datos.json"), claveDatos);
+escribirSecreto(join(salida, "clave-datos.json"), claveDatos);
 
 console.log("Datos en cero. Primer administrador:", direccion);
 console.log("Credenciales en:", salida);
