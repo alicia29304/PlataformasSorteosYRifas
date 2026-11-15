@@ -1050,6 +1050,10 @@
       "estado": "PAGADO",
       "orden": "e0f07a37-5682-40ab-aa1f-35ac08de3e4f"
     },
+    "345": {
+      "estado": "PENDIENTE",
+      "orden": "7596c2c9-147a-4dca-8453-701cd78ca78b"
+    },
     "347": {
       "estado": "PAGADO",
       "orden": "4586e950-b435-4e92-986f-dec807308dff"
@@ -1190,6 +1194,10 @@
       "estado": "PAGADO",
       "orden": "a166e229-fc6a-4f38-bc0c-1d07b7a5430d"
     },
+    "406": {
+      "estado": "PENDIENTE",
+      "orden": "7596c2c9-147a-4dca-8453-701cd78ca78b"
+    },
     "408": {
       "estado": "PAGADO",
       "orden": "89292d93-66ce-4431-aadb-3a4a96462b9f"
@@ -1313,6 +1321,10 @@
     "456": {
       "estado": "PAGADO",
       "orden": "4586e950-b435-4e92-986f-dec807308dff"
+    },
+    "458": {
+      "estado": "PENDIENTE",
+      "orden": "7596c2c9-147a-4dca-8453-701cd78ca78b"
     },
     "459": {
       "estado": "PAGADO",
@@ -5656,6 +5668,23 @@
       "registrado": 1794702977,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794703014,
+      "comprobanteHash": null
+    },
+    "7596c2c9-147a-4dca-8453-701cd78ca78b": {
+      "numeros": [
+        345,
+        406,
+        458
+      ],
+      "seudonimo": "Freddy C.",
+      "ciudad": "Mono",
+      "metodo": "Transferencia",
+      "privado": "enc1:BM7sHgNixK0Pxr4lxYaSIe6bXFWrFidYy4ESqK2XjJFLYTIfzfyHA7TEIKLBoiQUNf8ez5etXAlg8tNio15fhk4+1Wa7ZScbCWSfJUs0pgzxaWZZi2AQlrjtxPZZ8klQM4A8ruKq0h2VGaR/JgItSb/4qfoTuPwSiiUoXcaxkfQ02HIfKUFVe+iWdBF9V9Ty+suLvNynsq7STgKjyDTQjZ6izJkY2Yc6Ivf0cA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794705665,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
