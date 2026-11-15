@@ -12,7 +12,7 @@ export function leerEnv(ruta = new URL("../.env", import.meta.url)) {
 }
 
 const env = leerEnv();
-const faltan = ["PINATA_API_KEY", "PINATA_API_SECRET", "PINATA_JWT", "GITHUB_TOKEN_ALICIA", "CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN"]
+const faltan = ["PINATA_API_KEY", "PINATA_API_SECRET", "PINATA_JWT", "CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN"]
   .filter((k) => !env[k]);
 console.log("Campos vacios:", faltan.length ? faltan.join(", ") : "ninguno");
 
@@ -30,7 +30,7 @@ await revisar("Pinata API Key", async () => {
   return `HTTP ${r.status}`;
 });
 await revisar("GitHub", async () => {
-  const h = { Authorization: `Bearer ${env.GITHUB_TOKEN_ALICIA}`, Accept: "application/vnd.github+json" };
+  const h = { Authorization: `Bearer ${env.GITHUB_TOKEN || env.GITHUB_TOKEN_ALICIA}`, Accept: "application/vnd.github+json" };
   const yo = await fetch("https://api.github.com/user", { headers: h });
   const u = yo.ok ? (await yo.json()).login : "(token de grano fino sin lectura de perfil)";
   const r = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`, { headers: h });

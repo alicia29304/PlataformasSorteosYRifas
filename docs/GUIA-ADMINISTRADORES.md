@@ -30,7 +30,7 @@ importar en Trust Wallet o MetaMask.
 - Quien tenga un archivo de credenciales o una clave privada puede administrar los sorteos y ver
   los datos de los compradores. Guárdalos en un lugar seguro y no los publiques.
 - Si pierdes el computador o un archivo, entra con otro administrador y quita esa cartera.
-- Protege la cuenta de GitHub `alicia29304` con verificación en dos pasos: controla el repositorio.
+- Protege con verificación en dos pasos la cuenta de GitHub dueña del repositorio: controla todo el sistema.
 - Si no queda ningún administrador disponible, la lista se puede corregir en
-  [data/roles.json](https://github.com/alicia29304/PlataformasSorteosYRifas/edit/main/data/roles.json),
+  `data/roles.json` del repositorio (botón de lápiz en GitHub),
   con la dirección en minúsculas.

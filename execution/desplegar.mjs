@@ -1,5 +1,7 @@
 // Compila la web, publica el Worker en Cloudflare y deja una copia en Pinata.
 // Uso: node execution/desplegar.mjs
+//      node execution/desplegar.mjs --primera-vez   (ademas crea el almacenamiento de
+//      comprobantes y guarda el token de GitHub en el Worker)
 // Los secretos salen del .env y no se imprimen.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -19,12 +21,25 @@ function correr(cmd, cwd, entrada, extraEnv = {}) {
 correr("npm run build", "apps/web3");
 
 const cf = { CLOUDFLARE_API_TOKEN: env.CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID: env.CLOUDFLARE_ACCOUNT_ID };
+const primeraVez = process.argv.includes("--primera-vez");
+if (primeraVez) {
+  const bucket = readFileSync("services/relay/wrangler.toml", "utf8").match(/^bucket_name = "([^"]+)"/m)[1];
+  try {
+    correr(`npx wrangler r2 bucket create ${bucket}`, "services/relay", undefined, cf);
+  } catch {
+    console.log(`El almacenamiento ${bucket} ya existia o R2 no esta activado en Cloudflare.`);
+  }
+}
 correr("npx wrangler deploy", "services/relay", undefined, cf);
-if (process.argv.includes("--secreto")) {
-  correr("npx wrangler secret put GITHUB_TOKEN", "services/relay", env.GITHUB_TOKEN_ALICIA, cf);
+if (primeraVez || process.argv.includes("--secreto")) {
+  correr("npx wrangler secret put GITHUB_TOKEN", "services/relay", env.GITHUB_TOKEN || env.GITHUB_TOKEN_ALICIA, cf);
 }
 
-// Copia en IPFS: un solo pin; se retiran los anteriores para no gastar el plan gratuito.
+// Copia en IPFS (opcional): un solo pin; se retiran los anteriores para no gastar el plan gratuito.
+if (!env.PINATA_JWT) {
+  console.log("Sin PINATA_JWT: se omite la copia en IPFS.");
+  process.exit(0);
+}
 const H = { Authorization: `Bearer ${env.PINATA_JWT}` };
 const previos = await (await fetch(`https://api.pinata.cloud/data/pinList?status=pinned&metadata[name]=${NOMBRE_PIN}&pageLimit=50`, { headers: H })).json();
 

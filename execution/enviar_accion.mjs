@@ -23,7 +23,7 @@ export async function enviar(rol, accion, datos, extra = {}) {
   const sobre = { ...base, firma: await cartera.signMessage(mensajeAFirmar(base)) };
   const r = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/dispatches`, {
     method: "POST",
-    headers: { Authorization: `Bearer ${env.GITHUB_TOKEN_ALICIA}`, Accept: "application/vnd.github+json" },
+    headers: { Authorization: `Bearer ${env.GITHUB_TOKEN || env.GITHUB_TOKEN_ALICIA}`, Accept: "application/vnd.github+json" },
     body: JSON.stringify({ event_type: "accion-firmada", client_payload: sobre }),
   });
   if (r.status !== 204) throw new Error(`GitHub respondio ${r.status}: ${await r.text()}`);
