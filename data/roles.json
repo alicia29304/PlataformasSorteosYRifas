@@ -30,7 +30,10 @@
       "rifas": [
         "sorteo-14-nov-2026",
         "sorteo-21-nov-2026"
-      ]
+      ],
+      "llave": {
+        "publica": "BPTfaAktOUcpBtnEpr439dZJZAxf5xX4I14D6EL/xLk5MULJiWUUtbNU8ye0jA9xajPLtMn+opmhL+X6jaEiZOM="
+      }
     }
   }
 }
