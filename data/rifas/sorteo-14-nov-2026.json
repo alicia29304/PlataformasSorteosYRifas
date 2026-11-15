@@ -218,6 +218,10 @@
       "estado": "PAGADO",
       "orden": "c4f4b63a-d7d5-4400-a4da-dc10fe48accb"
     },
+    "70": {
+      "estado": "PENDIENTE",
+      "orden": "67f04aac-62ab-44dc-bd68-4cdd1ce2b95f"
+    },
     "71": {
       "estado": "PAGADO",
       "orden": "00a93eac-87cb-461f-820a-a98875ca2e9e"
@@ -561,6 +565,10 @@
     "185": {
       "estado": "PAGADO",
       "orden": "1573c4fa-df89-42f5-8dd2-409568b73d78"
+    },
+    "187": {
+      "estado": "PENDIENTE",
+      "orden": "67f04aac-62ab-44dc-bd68-4cdd1ce2b95f"
     },
     "188": {
       "estado": "PENDIENTE",
@@ -1409,6 +1417,10 @@
     "511": {
       "estado": "PAGADO",
       "orden": "d25fcd71-0a2d-458b-a52a-08ea13a8d1f0"
+    },
+    "512": {
+      "estado": "PENDIENTE",
+      "orden": "67f04aac-62ab-44dc-bd68-4cdd1ce2b95f"
     },
     "514": {
       "estado": "PAGADO",
@@ -5557,6 +5569,23 @@
       "registrado": 1794701776,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794701816,
+      "comprobanteHash": null
+    },
+    "67f04aac-62ab-44dc-bd68-4cdd1ce2b95f": {
+      "numeros": [
+        70,
+        187,
+        512
+      ],
+      "seudonimo": "Yulimar M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BFFtE93Dx8MvMkbuTDOJkDsETi898SAuG8OXLIaqCJqmICTPClEkpK+MJXN/daUncsJJ1VI3jZohw8I/2D/qimSulXcg1lKE+LP7XsfMDE400oiJL8CasX8T+YBPPimJBYfUFZI9+hnj78VPn/Pd5rKQ877ZFV88lE0l/iRd1lCD6sOAQXc503ZXzs4UPGblMbmrMpnoca61oFswJwFCbO0k5wxkd9FyiY2HjpKS",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794701973,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
