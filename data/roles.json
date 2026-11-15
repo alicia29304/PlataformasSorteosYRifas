@@ -26,7 +26,11 @@
       "nombre": "Prueba temporal",
       "rifas": [],
       "llave": {
-        "publica": "BOa5HgZ7woPsOzMu3YlT+8NrRZF6WNUX6qq6otMEopiK4ZvTcLOpJxGIzjdbIsg8nvf+2pCPzC26zwrGAs3Tx0E="
+        "publica": "BOa5HgZ7woPsOzMu3YlT+8NrRZF6WNUX6qq6otMEopiK4ZvTcLOpJxGIzjdbIsg8nvf+2pCPzC26zwrGAs3Tx0E=",
+        "entrega": {
+          "para": "BOa5HgZ7woPsOzMu3YlT+8NrRZF6WNUX6qq6otMEopiK4ZvTcLOpJxGIzjdbIsg8nvf+2pCPzC26zwrGAs3Tx0E=",
+          "cifrado": "enc1:BOJYX48Y6Ic0WKoWTYWa86FEjgl47oWNc9ezSAMTY545VMIpHaRSyyKd78GuZ5/hkMEQr/VRbqDw1ZViGPm9QIIv/PD8dg5IvtWkBZn0Bwn8BThL1YpauoZJNmjxRLIcxJEoLFdQk734rTvN7GhqKbDHzwZhLsRrEOIQ0zbo+OK2MGd8b5MDJfK39b9h5b25jM4anAjsdqR9A5D69Aeo"
+        }
       }
     }
   }
