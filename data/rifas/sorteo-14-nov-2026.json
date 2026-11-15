@@ -1806,6 +1806,10 @@
       "estado": "PAGADO",
       "orden": "3bf16f0e-c10b-4262-96c6-52c2b455b1b3"
     },
+    "668": {
+      "estado": "PENDIENTE",
+      "orden": "0b1d6f1e-3379-4da2-8612-8d27125f879a"
+    },
     "669": {
       "estado": "PAGADO",
       "orden": "c4f4b63a-d7d5-4400-a4da-dc10fe48accb"
@@ -2001,6 +2005,10 @@
     "743": {
       "estado": "PAGADO",
       "orden": "73937a9b-6b23-4c68-ad33-731b424dd968"
+    },
+    "745": {
+      "estado": "PENDIENTE",
+      "orden": "0b1d6f1e-3379-4da2-8612-8d27125f879a"
     },
     "746": {
       "estado": "PAGADO",
@@ -2433,6 +2441,10 @@
     "894": {
       "estado": "PAGADO",
       "orden": "b714fb2f-0711-4f1f-92d5-59a6110b6089"
+    },
+    "895": {
+      "estado": "PENDIENTE",
+      "orden": "0b1d6f1e-3379-4da2-8612-8d27125f879a"
     },
     "897": {
       "estado": "PENDIENTE",
@@ -5528,6 +5540,23 @@
       "registrado": 1794700889,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794700927,
+      "comprobanteHash": null
+    },
+    "0b1d6f1e-3379-4da2-8612-8d27125f879a": {
+      "numeros": [
+        668,
+        745,
+        895
+      ],
+      "seudonimo": "Estefanía M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDOU71UYN8JWEbzGnAHq05Vb7WCsFyPfLlmdTaDAbWXrUMG/of7aBSUemgnS8A3yPeB5D1dIB/cy4BgZb8f7/3a34fPAyEFWIENb5Z1jVQkm9lGNmGZTtGVTe9mQ1Lte+m0kwdARDwdydJDvncEGUCS5S6uhsfjE5gWHwQ9ZaL6ka/o3PJ3bNsYpXTFWqpnYvgP6POKZ+SRHU1Mk1qYdgXMly7iByZyuDXRuxFf6",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794701776,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
