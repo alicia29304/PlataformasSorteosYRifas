@@ -33,7 +33,7 @@ export async function descifrar(texto, clave) {
   const todo = deBase64(texto.replace(/^enc1:/, ""));
   const privada = clave instanceof CryptoKey ? clave : await importarPrivada(clave);
   const publica = await crypto.subtle.importKey("raw", todo.slice(0, 65), CURVA, false, []);
-  const clave = await claveAes(privada, publica, ["decrypt"]);
-  const claro = await crypto.subtle.decrypt({ name: "AES-GCM", iv: todo.slice(65, 77) }, clave, todo.slice(77));
+  const aes = await claveAes(privada, publica, ["decrypt"]);
+  const claro = await crypto.subtle.decrypt({ name: "AES-GCM", iv: todo.slice(65, 77) }, aes, todo.slice(77));
   return JSON.parse(new TextDecoder().decode(claro));
 }
