@@ -78,9 +78,24 @@ test("un vendedor solo opera sus rifas y no hace tareas de admin", async () => {
   assert.equal(r.resultado, "RECHAZADA");
   assert.match(r.motivo, /no esta asignada/);
   assert.equal(procesar(await firmar(vendedor, "crear_rifa", { ...RIFA, slug: "x" }), e, AHORA).resultado, "RECHAZADA");
-  const reg = await firmar(vendedor, "registrar_pago", PAGO);
-  procesar(reg, e, AHORA);
-  assert.equal(procesar(await firmar(vendedor, "anular_pago", { slug: "prueba", orden: reg.nonce, motivo: "x" }), e, AHORA).resultado, "RECHAZADA");
+});
+
+test("el vendedor anula sus pagos pendientes, pero no los aprobados ni los ajenos", async () => {
+  const e = await escenario();
+  procesar(await firmar(admin, "asignar_vendedor", { direccion: dir(otroVendedor), nombre: "Bea", rifas: ["prueba", "otra"] }), e, AHORA);
+  const suyo = await firmar(vendedor, "registrar_pago", PAGO);
+  procesar(suyo, e, AHORA);
+  const ajeno = await firmar(otroVendedor, "registrar_pago", { ...PAGO, numeros: [20] });
+  procesar(ajeno, e, AHORA);
+  const anular = (quien, orden) => firmar(quien, "anular_pago", { slug: "prueba", orden, motivo: "no pago" });
+
+  assert.match(procesar(await anular(vendedor, ajeno.nonce), e, AHORA).motivo, /que registraste/);
+  assert.equal(procesar(await anular(vendedor, suyo.nonce), e, AHORA).resultado, "ACEPTADA");
+  assert.equal(e.rifas.prueba.numeros["7"], undefined, "los numeros quedan libres");
+
+  procesar(await firmar(otroVendedor, "aprobar_pago", { slug: "prueba", orden: ajeno.nonce }), e, AHORA);
+  assert.match(procesar(await anular(otroVendedor, ajeno.nonce), e, AHORA).motivo, /aprobado/);
+  assert.equal(procesar(await anular(admin, ajeno.nonce), e, AHORA).resultado, "ACEPTADA");
 });
 
 test("un numero ya tomado no se vende dos veces, y anular lo libera", async () => {

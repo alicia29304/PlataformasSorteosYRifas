@@ -106,6 +106,9 @@ async function vistaRifa(slug, ticketInicial = null) {
 
   const pendientes = Object.entries(rifa.ordenes).filter(([, o]) => o.estado !== "ANULADO" && (o.estado === "PENDIENTE" || rol === "ADMIN"));
 
+  const seccionPagos = h("section", { style: "margin-top:26px;scroll-margin-top:12px" }, h("h2", {}, "Pagos por revisar"),
+    pendientes.length === 0 ? h("p", { class: "mut" }, "No hay pagos por revisar.")
+      : pendientes.map(([id, o]) => filaOrden(rifa, id, o, rol)));
   raiz.replaceChildren(h("main", { class: "contenedor" }, encabezado(),
     h("h1", { style: "margin-bottom:4px" }, rifa.titulo),
     rifa.descripcion ? h("p", { class: "mut", style: "margin-top:0" }, rifa.descripcion) : null,
@@ -113,15 +116,15 @@ async function vistaRifa(slug, ticketInicial = null) {
     bannerGanador(rifa),
     h("div", { class: "controls" },
       (rol === "ADMIN" || rol === "VENDEDOR")
-        ? h("button", { class: "btn-ghost", onclick: () => modalBuscar(rifa).catch(avisarError) }, "🔎 Buscar comprador")
+        ? [h("button", { class: "btn-ghost", onclick: () => modalBuscar(rifa).catch(avisarError) }, "🔎 Buscar comprador"),
+          h("button", { class: "btn-ghost", onclick: () => seccionPagos.scrollIntoView({ behavior: "smooth", block: "start" }) },
+            `🧾 Pagos por revisar${pendientes.length ? ` (${pendientes.length})` : ""}`)]
         : h("button", { class: "btn-ghost", onclick: () => modalTicket(rifa) }, "🎫 Mis números"),
       opera ? [3, 5, 10].map((k) => h("button", { class: "btn-azar", onclick: () => azar(k) }, `🎲 ${k} al azar`)) : null,
       h("input", { class: "buscador", inputmode: "numeric", placeholder: "Buscar número…", oninput: (e) => { busca = e.target.value.replace(/\D/g, ""); pintar(); } }),
       chips),
     rejilla, barra,
-    (rol === "ADMIN" || rol === "VENDEDOR") ? h("section", { style: "margin-top:26px" }, h("h2", {}, "Pagos por revisar"),
-      pendientes.length === 0 ? h("p", { class: "mut" }, "No hay pagos por revisar.")
-        : pendientes.map(([id, o]) => filaOrden(rifa, id, o, rol))) : null));
+    (rol === "ADMIN" || rol === "VENDEDOR") ? seccionPagos : null));
   pintar();
   if (ticketInicial !== null) modalTicket(rifa, ticketInicial);
 }
@@ -155,14 +158,15 @@ function filaOrden(rifa, id, o, rol) {
   const adjuntar = (c) => accion("adjuntar_comprobante", { slug: rifa.slug, orden: id, comprobanteHash: c.hash }, "Adjuntando comprobante", c.base64);
   return h("div", { class: "orden" },
     h("div", {}, h("b", {}, o.numeros.map((n) => pad(n, rifa.max)).join(", ")), ` · ${o.seudonimo} · ${o.metodo} · ${o.estado}`,
-      h("div", { class: "mut small" }, `Registró ${corta(o.registradoPor)}`)),
+      h("div", { class: "mut small" }, `Registró ${o.registradoPor === cuenta.direccion ? "tú" : cuenta.roles?.admins.includes(o.registradoPor) ? "Administrador" : cuenta.roles?.vendedores[o.registradoPor]?.nombre ?? corta(o.registradoPor)}`)),
     h("div", { class: "acciones" },
       h("button", { class: "btn-ghost small", onclick: () => modalTicket(rifa, o.numeros[0]) }, "Ver ticket"),
       o.comprobanteHash
         ? h("button", { class: "btn-ghost small", onclick: () => modalComprobante(rifa.slug, id) }, "Ver comprobante")
         : o.estado !== "ANULADO" ? h("button", { class: "btn-ghost small", onclick: () => modalAdjuntar(adjuntar) }, "Adjuntar comprobante") : null,
       o.estado === "PENDIENTE" ? h("button", { class: "btn small", onclick: () => accion("aprobar_pago", { slug: rifa.slug, orden: id }, "Aprobando pago") }, "Aprobar") : null,
-      rol === "ADMIN" ? h("button", { class: "btn-ghost small", onclick: async () => {
+      // El vendedor anula solo sus pagos pendientes; lo demas lo decide el administrador.
+      rol === "ADMIN" || (o.estado === "PENDIENTE" && o.registradoPor === cuenta.direccion) ? h("button", { class: "btn-ghost small", onclick: async () => {
         const motivo = await confirmar("Anular pago", "Los números quedarán libres otra vez.", { conMotivo: true, boton: "Continuar" });
         accion("anular_pago", { slug: rifa.slug, orden: id, motivo }, "Anulando pago");
       } }, "Anular") : null));

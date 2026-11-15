@@ -311,11 +311,16 @@ const ACCIONES = {
   },
 
   anular_pago(estado, d, { rol, firmante, fecha }) {
-    soloAdmin(rol);
     soloCampos(d, ["slug", "orden", "motivo"]);
     const rifa = rifaDe(estado, d.slug);
     const orden = typeof d.orden === "string" && Object.hasOwn(rifa.ordenes, d.orden) ? rifa.ordenes[d.orden] : null;
     regla(orden, "Orden no encontrada");
+    // El vendedor solo libera lo suyo y lo que aun no esta pagado; el resto es del admin.
+    if (rol !== "ADMIN") {
+      regla(puedeOperar(estado, rol, firmante, d.slug), "Esta rifa no esta asignada a tu cartera");
+      regla(orden.registradoPor === firmante, "Solo puedes anular los pagos que registraste");
+      regla(orden.estado === "PENDIENTE", "Solo un administrador puede anular un pago aprobado");
+    }
     regla(orden.estado !== "ANULADO", "La orden ya esta anulada");
     regla(rifa.ganador?.orden !== d.orden, "Esta orden tiene el numero ganador");
     texto(d.motivo, 200, "Motivo");
