@@ -1390,6 +1390,10 @@
       "estado": "PAGADO",
       "orden": "d9e614f5-55fb-4b08-8824-21088be25555"
     },
+    "483": {
+      "estado": "PENDIENTE",
+      "orden": "e3c4ec69-9b67-4090-ac49-d03956b10617"
+    },
     "484": {
       "estado": "PAGADO",
       "orden": "9ccd3359-a378-4132-a303-e32f57f6421b"
@@ -1750,6 +1754,10 @@
       "estado": "PAGADO",
       "orden": "bada9fdf-6de2-4406-8b1f-6c3f6f876923"
     },
+    "607": {
+      "estado": "PENDIENTE",
+      "orden": "e3c4ec69-9b67-4090-ac49-d03956b10617"
+    },
     "608": {
       "estado": "PAGADO",
       "orden": "6a86e797-0ca8-45c6-9ca9-f0467c093a80"
@@ -1773,6 +1781,10 @@
     "616": {
       "estado": "PAGADO",
       "orden": "cc377af3-f180-4d4a-8988-d2b96328539f"
+    },
+    "622": {
+      "estado": "PENDIENTE",
+      "orden": "e3c4ec69-9b67-4090-ac49-d03956b10617"
     },
     "623": {
       "estado": "PAGADO",
@@ -5792,6 +5804,23 @@
       "registrado": 1794706872,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794706915,
+      "comprobanteHash": null
+    },
+    "e3c4ec69-9b67-4090-ac49-d03956b10617": {
+      "numeros": [
+        483,
+        607,
+        622
+      ],
+      "seudonimo": "antonio G.",
+      "ciudad": "villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BGz56hb3Ej23Coyx6YnhIfc/Z6qaNiImJKQPzcgoyYNrRZ+fHwm8BUHsz7D8bl+3zELPWn9rzV2sCBgPRKitG+n0fTcXtF+xPmC/iQMwQkQrf+KfqKoN14ts9v2yXhdtyYiBsz6X1KOKVqRFssjGbs7/7co49a7j7D0Y1+90vnOLsbxdBTiDCBmcorYYxJoGseKb2zD4NyM3RPHfn+2lywDIJ2DwnLmPSE86fghGzQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4b33c7d77dee1a570664c36bd3eb6471de8b6627",
+      "registrado": 1794714172,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
