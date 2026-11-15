@@ -24,6 +24,13 @@
         "sorteo-14-nov-2026",
         "sorteo-21-nov-2026"
       ]
+    },
+    "0xa2b253e690b53856ec9b773c6582e794ff9de2e8": {
+      "nombre": "Test",
+      "rifas": [
+        "sorteo-14-nov-2026",
+        "sorteo-21-nov-2026"
+      ]
     }
   }
 }
