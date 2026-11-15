@@ -7,7 +7,7 @@
   "max": 999,
   "finVentas": "2026-11-15T04:05:00.000Z",
   "fechaSorteo": "2026-11-15T04:30:00.000Z",
-  "estado": "ACTIVA",
+  "estado": "CERRADA",
   "creada": 1794253745,
   "numeros": {
     "3": {
