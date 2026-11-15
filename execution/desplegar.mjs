@@ -7,6 +7,9 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 
+// Todas las rutas son relativas a la raiz del proyecto, se ejecute desde donde se ejecute.
+process.chdir(new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
+
 const env = Object.fromEntries(
   readFileSync(new URL("../.env", import.meta.url), "utf8").split(/\r?\n/)
     .map((l) => l.match(/^([A-Z0-9_]+)=(.*)$/)).filter(Boolean).map((m) => [m[1], m[2].trim()])
@@ -24,6 +27,8 @@ const cf = { CLOUDFLARE_API_TOKEN: env.CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_
 const primeraVez = process.argv.includes("--primera-vez");
 if (primeraVez) {
   const bucket = readFileSync("services/relay/wrangler.toml", "utf8").match(/^bucket_name = "([^"]+)"/m)[1];
+  // Va a una orden de consola: solo se acepta un nombre valido de R2.
+  if (!/^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/.test(bucket)) throw new Error(`Nombre de almacenamiento invalido: ${bucket}`);
   try {
     correr(`npx wrangler r2 bucket create ${bucket}`, "services/relay", undefined, cf);
   } catch {
