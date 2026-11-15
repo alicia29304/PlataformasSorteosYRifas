@@ -117,7 +117,7 @@ async function vistaRifa(slug, ticketInicial = null) {
     h("div", { class: "controls" },
       (rol === "ADMIN" || rol === "VENDEDOR")
         ? [h("button", { class: "btn-ghost", onclick: () => modalBuscar(rifa).catch(avisarError) }, "🔎 Buscar comprador"),
-          h("button", { class: "btn-ghost", onclick: () => seccionPagos.scrollIntoView({ behavior: "smooth", block: "start" }) },
+          h("button", { class: "btn-ghost", onclick: () => seccionPagos.scrollIntoView({ behavior: "instant", block: "start" }) },
             `🧾 Pagos por revisar${pendientes.length ? ` (${pendientes.length})` : ""}`)]
         : h("button", { class: "btn-ghost", onclick: () => modalTicket(rifa) }, "🎫 Mis números"),
       opera ? [3, 5, 10].map((k) => h("button", { class: "btn-azar", onclick: () => azar(k) }, `🎲 ${k} al azar`)) : null,
