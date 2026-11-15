@@ -21,19 +21,6 @@
       "rifas": [
         "sorteo-14-nov-2026"
       ]
-    },
-    "0x86d44cac043c83c38727f4337f861dceeccc9f78": {
-      "nombre": "Prueba temporal 2",
-      "rifas": [],
-      "llave": {
-        "publica": "0x048296de4c0f25921bb3b332a1c7c56069a34a596a7512d57873178104b6bb69a4b0a9f98beb9f17049f1d5d4616edb2a7e7e5808b281665e3bf117c260e1b12d5",
-        "entrega": {
-          "para": "0x048296de4c0f25921bb3b332a1c7c56069a34a596a7512d57873178104b6bb69a4b0a9f98beb9f17049f1d5d4616edb2a7e7e5808b281665e3bf117c260e1b12d5",
-          "efimera": "0x0459d8a8e195c7386a6fb8f218b716448adec21f9e1b75eea60d845b36461ab9ff76989bc0dee6b3eee418c1d5d606f68d9e940c2fbcdfa037b0fc1cfe098940b1",
-          "iv": "a79imzfbvn0YSzug",
-          "cifrado": "mKnhuXAfEnqUVivYJsuy8VLhbHthAvE9cfzcgfzLI+4YAOH8FTTAGobUQ3QYEQTS5zznDwnKj+Eln3JYlVPoq0HIUrJFwbOAoqaEXxElq3Ft1A=="
-        }
-      }
     }
   }
 }
