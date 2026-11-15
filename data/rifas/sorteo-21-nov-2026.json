@@ -9,6 +9,37 @@
   "fechaSorteo": "2026-11-22T04:30:00.000Z",
   "estado": "ACTIVA",
   "creada": 1794727734,
-  "numeros": {},
-  "ordenes": {}
+  "numeros": {
+    "161": {
+      "estado": "PENDIENTE",
+      "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "436": {
+      "estado": "PENDIENTE",
+      "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "674": {
+      "estado": "PENDIENTE",
+      "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    }
+  },
+  "ordenes": {
+    "bc211dec-eee1-4e63-aed8-d8e7ae666966": {
+      "numeros": [
+        161,
+        436,
+        674
+      ],
+      "seudonimo": "Enzo A.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BO0g/mOUMBE6Yt900VouEc7ykizFYA0KWumwXu4n6SYRE4h89Kn1dSgFtzIt+oErZuGl4rrtvfQ1K6rXmRB4FrbHMSLtNcYwCCZIjnFBgPnObZVRdeqeK8MXnDefxAt3TsMwTmWnE0wqRbbem5ilKbE45fXFWH5kQx/aISQi5ddkJLMgsyIaiBOHYUgwuaSlB+rkZCfJss5u1sKhAG1Va4QGm1lZhmU1Pkw=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794775660,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    }
+  }
 }
