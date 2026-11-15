@@ -21,6 +21,10 @@
       "rifas": [
         "sorteo-14-nov-2026"
       ]
+    },
+    "0x86d44cac043c83c38727f4337f861dceeccc9f78": {
+      "nombre": "Prueba temporal",
+      "rifas": []
     }
   }
 }
