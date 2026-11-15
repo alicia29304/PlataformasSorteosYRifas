@@ -5,7 +5,7 @@ import {
   avisarError, botonRecargar, config, confirmar, conectarCartera, cop, corta, cuenta, desconectarCartera, fecha, firmarYEnviar, h,
   hayVersionNueva, modalAdjuntar, modalComprobante, mostrarModal, pad, panelEspera, pedir, rolDe, selectorComprobante,
 } from "./comun.js";
-import { cifrar, descifrar } from "./cifrado.js";
+import { cifrar, descifrar, importarPrivada } from "./cifrado.js";
 import { ticketsAPng, compartirImagen, imprimirImagen } from "./compartirTickets.js";
 
 const MAX_SEL = 10;
@@ -321,40 +321,60 @@ function modalTicket(rifa, numeroInicial = null) {
 // La clave de datos se carga una vez y queda solo en este navegador. Con ella se ven
 // nombre completo y telefono; sin ella se busca por el nombre publico y el numero.
 
-const CLAVES_LOCALES = "sorteosweb3-claves";
-const clavesLocales = () => {
+// IndexedDB guarda la CryptoKey no exportable: se puede usar para descifrar, pero ningun
+// script puede leer ni copiar la clave. Si el navegador no lo permite, dura lo que la pagina.
+const BD = "sorteosweb3";
+let clavesEnMemoria = [];
+
+function almacen(modo, operacion) {
+  return new Promise((ok, falla) => {
+    const pedido = indexedDB.open(BD, 1);
+    pedido.onupgradeneeded = () => pedido.result.createObjectStore("claves");
+    pedido.onerror = () => falla(pedido.error);
+    pedido.onsuccess = () => {
+      const tx = pedido.result.transaction("claves", modo);
+      const r = operacion(tx.objectStore("claves"));
+      tx.oncomplete = () => ok(r?.result);
+      tx.onerror = () => falla(tx.error);
+    };
+  });
+}
+async function clavesLocales() {
   try {
-    return JSON.parse(localStorage.getItem(CLAVES_LOCALES) ?? "[]");
+    return (await almacen("readonly", (t) => t.get("datos"))) ?? clavesEnMemoria;
   } catch {
-    return [];
+    return clavesEnMemoria;
   }
-};
-const guardarClavesLocales = (lista) => {
+}
+async function guardarClavesLocales(lista) {
+  clavesEnMemoria = lista;
   try {
-    if (lista.length) localStorage.setItem(CLAVES_LOCALES, JSON.stringify(lista));
-    else localStorage.removeItem(CLAVES_LOCALES);
+    await almacen("readwrite", (t) => (lista.length ? t.put(lista, "datos") : t.delete("datos")));
     return true;
   } catch {
     return false;
   }
-};
+}
 
-/** Acepta la clave sola o un archivo de credenciales (de este solo toma la clave de datos). */
+/** Solo la clave de datos: el archivo del administrador trae su cartera y no debe circular. */
 function pedirClaveLocal(alListo) {
   const entrada = h("input", { class: "inp", type: "file", accept: ".json,application/json" });
   const aviso = h("div");
   const cerrar = mostrarModal("Cargar clave de datos",
-    h("p", { class: "mut small" }, "Pídele el archivo al administrador. Queda guardado solo en este celular para buscar por teléfono."),
+    h("p", { class: "mut small" }, "Pídele al administrador el archivo clave-datos.json. Queda en este celular para buscar por teléfono y no se puede copiar desde aquí."),
     entrada, aviso);
   entrada.addEventListener("change", async () => {
     try {
       const leido = JSON.parse(await entrada.files[0].text());
-      const nuevas = leido.tipo === "sorteosweb3-credenciales" ? leido.clavesCifrado ?? [] : [leido];
-      if (!nuevas.length || nuevas.some((c) => c.kty !== "EC" || !c.d)) throw new Error();
-      const lista = clavesLocales();
-      for (const c of nuevas) if (!lista.some((x) => x.d === c.d)) lista.push(c);
-      if (!guardarClavesLocales(lista)) throw new Error("Este navegador no permite guardar la clave.");
+      if (leido.tipo === "sorteosweb3-credenciales" || leido.clavePrivada) {
+        throw new Error("Ese archivo es el del administrador y trae su cartera. Pide solo clave-datos.json.");
+      }
+      if (leido.kty !== "EC" || !leido.d) throw new Error("Ese archivo no es una clave válida.");
+      const lista = await clavesLocales();
+      lista.push(await importarPrivada(leido));
+      const guardada = await guardarClavesLocales(lista);
       cerrar();
+      if (!guardada) mostrarModal("Clave cargada", h("p", {}, "Este navegador no permite guardarla: tendrás que cargarla de nuevo la próxima vez."));
       alListo();
     } catch (e) {
       aviso.replaceChildren(h("p", { class: "err" }, e.message || "Ese archivo no es una clave válida."));
@@ -372,7 +392,7 @@ async function datosPrivados(orden, claves) {
 }
 
 async function modalBuscar(rifaPublica) {
-  const claves = clavesLocales();
+  const claves = await clavesLocales();
   const rifa = claves.length ? await pedir(`/rifas/${rifaPublica.slug}?cifrados=1`) : rifaPublica;
   const ordenes = Object.entries(rifa.ordenes).filter(([, o]) => o.estado !== "ANULADO").sort(([, a], [, b]) => b.registrado - a.registrado);
   const datos = await Promise.all(ordenes.map(([, o]) => (claves.length ? datosPrivados(o, claves) : null)));
@@ -383,7 +403,7 @@ async function modalBuscar(rifaPublica) {
     placeholder: claves.length ? "Nombre, teléfono o número…" : "Nombre o número…", oninput: () => mostrar() });
   const estadoClave = claves.length
     ? h("p", { class: "mut small" }, "🔑 Clave cargada en este celular. ",
-      h("button", { class: "buy-clear", onclick: () => { guardarClavesLocales([]); cerrar(); modalBuscar(rifaPublica).catch(avisarError); } }, "Olvidar clave"))
+      h("button", { class: "buy-clear", onclick: async () => { await guardarClavesLocales([]); cerrar(); modalBuscar(rifaPublica).catch(avisarError); } }, "Olvidar clave"))
     : h("p", { class: "mut small" }, "Para buscar por teléfono, ",
       h("button", { class: "buy-clear", onclick: () => pedirClaveLocal(() => { cerrar(); modalBuscar(rifaPublica).catch(avisarError); }) }, "carga la clave de datos"), ".");
   const cerrar = mostrarModal("🔎 Buscar comprador", entrada, estadoClave, resultados);

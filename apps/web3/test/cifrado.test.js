@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { cifrar, descifrar } from "../src/cifrado.js";
+import { cifrar, descifrar, importarPrivada } from "../src/cifrado.js";
 
 const CURVA = { name: "ECDH", namedCurve: "P-256" };
 const par = async () => {
@@ -33,4 +33,12 @@ test("un cifrado alterado se rechaza", async () => {
   const bytes = Uint8Array.from(atob((await cifrar({ a: 1 }, publica)).slice(5)), (x) => x.charCodeAt(0));
   bytes[bytes.length - 1] ^= 1;
   await assert.rejects(() => descifrar(`enc1:${btoa(String.fromCharCode(...bytes))}`, privada));
+});
+
+test("una clave importada no se puede exportar, pero descifra", async () => {
+  const { publica, privada } = await par();
+  const clave = await importarPrivada(privada);
+  assert.equal(clave.extractable, false);
+  await assert.rejects(() => crypto.subtle.exportKey("jwk", clave));
+  assert.deepEqual(await descifrar(await cifrar({ telefono: "3001112233" }, publica), clave), { telefono: "3001112233" });
 });

@@ -25,10 +25,13 @@ export async function cifrar(datos, publicaBase64) {
   return `enc1:${aBase64(todo)}`;
 }
 
-/** Solo lo usa el admin, con su clave privada (JWK). */
-export async function descifrar(texto, privadaJwk) {
+/** Importa la clave privada sin posibilidad de volver a exportarla. */
+export const importarPrivada = (jwk) => crypto.subtle.importKey("jwk", jwk, CURVA, false, ["deriveKey"]);
+
+/** Recibe la clave privada como JWK o como CryptoKey ya importada. */
+export async function descifrar(texto, clave) {
   const todo = deBase64(texto.replace(/^enc1:/, ""));
-  const privada = await crypto.subtle.importKey("jwk", privadaJwk, CURVA, false, ["deriveKey"]);
+  const privada = clave instanceof CryptoKey ? clave : await importarPrivada(clave);
   const publica = await crypto.subtle.importKey("raw", todo.slice(0, 65), CURVA, false, []);
   const clave = await claveAes(privada, publica, ["decrypt"]);
   const claro = await crypto.subtle.decrypt({ name: "AES-GCM", iv: todo.slice(65, 77) }, clave, todo.slice(77));
