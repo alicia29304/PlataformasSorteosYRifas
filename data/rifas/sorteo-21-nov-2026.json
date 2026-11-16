@@ -14,6 +14,10 @@
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
     },
+    "28": {
+      "estado": "PENDIENTE",
+      "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
+    },
     "42": {
       "estado": "PAGADO",
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
@@ -25,6 +29,14 @@
     "161": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "176": {
+      "estado": "PENDIENTE",
+      "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
+    },
+    "269": {
+      "estado": "PENDIENTE",
+      "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
     },
     "270": {
       "estado": "PENDIENTE",
@@ -49,6 +61,10 @@
     "500": {
       "estado": "PAGADO",
       "orden": "1921708b-623f-4872-b8e6-486e44be529a"
+    },
+    "528": {
+      "estado": "PENDIENTE",
+      "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
     },
     "588": {
       "estado": "PENDIENTE",
@@ -141,6 +157,24 @@
       "registrado": 1794846515,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794846541,
+      "comprobanteHash": null
+    },
+    "66ee42c0-4e4a-45c4-b92d-b20f04501bb4": {
+      "numeros": [
+        28,
+        176,
+        269,
+        528
+      ],
+      "seudonimo": "Eliberto A.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BL3ACBTwE5C/2BwORAay4pr5QpRecvRwJ+gl8swG+rbiYXuMY4TOrcB5z/nZkp6iICve/unGIua85vsDVRs62A0W1sWiTbyyQGXk5IPigf0G5YvQhjsAV8y4viuGGWQbecYhPPfN4nsZ2FI27cscNuDLprVq3sASnJx73feXhq/45fMWI/VPo9EJwVoCRjlYw22p72n8tjCeOKfW11oip03Y0w1uVjtWb7qT0FQ0mg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794846826,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
