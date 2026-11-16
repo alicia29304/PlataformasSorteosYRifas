@@ -22,6 +22,10 @@
       "estado": "PAGADO",
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
     },
+    "47": {
+      "estado": "PENDIENTE",
+      "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
+    },
     "101": {
       "estado": "PAGADO",
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
@@ -29,6 +33,10 @@
     "124": {
       "estado": "PAGADO",
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
+    },
+    "126": {
+      "estado": "PENDIENTE",
+      "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "161": {
       "estado": "PENDIENTE",
@@ -41,6 +49,10 @@
     "255": {
       "estado": "PAGADO",
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
+    },
+    "265": {
+      "estado": "PENDIENTE",
+      "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "269": {
       "estado": "PENDIENTE",
@@ -62,6 +74,10 @@
       "estado": "PAGADO",
       "orden": "1921708b-623f-4872-b8e6-486e44be529a"
     },
+    "389": {
+      "estado": "PENDIENTE",
+      "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
+    },
     "436": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
@@ -73,6 +89,10 @@
     "528": {
       "estado": "PENDIENTE",
       "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
+    },
+    "584": {
+      "estado": "PENDIENTE",
+      "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "588": {
       "estado": "PENDIENTE",
@@ -89,6 +109,10 @@
     "822": {
       "estado": "PAGADO",
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
+    },
+    "832": {
+      "estado": "PENDIENTE",
+      "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "842": {
       "estado": "PENDIENTE",
@@ -204,6 +228,26 @@
       "registrado": 1794846934,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794846960,
+      "comprobanteHash": null
+    },
+    "5162c86d-a054-48b8-bac1-ce648feea456": {
+      "numeros": [
+        47,
+        126,
+        265,
+        389,
+        584,
+        832
+      ],
+      "seudonimo": "Especialista G.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BAeY09dwDajpo2D3UFilNl/Vkh+sorQxQ+uX3q84DMD4OG4m4YeOW8JvQ6Xl3xumlE92stoVo7+n37qpfpRpDegavNcJlePWnyXtWJCSS8zHBszd3INl7nXlF/PwWTv3x80sKECGYLdSdfG2sqwsj8D1LCwARzHLRA4cQKAxF5bTPKIMZNJQj+UQb8Mi71Q6oCkpYbOUf/Yf8XXEPdn/zynslmW3oulrdvPkMirX/7kmJiM=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794847517,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
