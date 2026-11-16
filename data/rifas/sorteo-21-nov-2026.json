@@ -30,13 +30,25 @@
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
     },
+    "285": {
+      "estado": "PENDIENTE",
+      "orden": "1921708b-623f-4872-b8e6-486e44be529a"
+    },
     "303": {
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
     },
+    "337": {
+      "estado": "PENDIENTE",
+      "orden": "1921708b-623f-4872-b8e6-486e44be529a"
+    },
     "436": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "500": {
+      "estado": "PENDIENTE",
+      "orden": "1921708b-623f-4872-b8e6-486e44be529a"
     },
     "588": {
       "estado": "PENDIENTE",
@@ -112,6 +124,23 @@
       "registrado": 1794845684,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794845714,
+      "comprobanteHash": null
+    },
+    "1921708b-623f-4872-b8e6-486e44be529a": {
+      "numeros": [
+        285,
+        337,
+        500
+      ],
+      "seudonimo": "David R.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BBBSm2mzbb3UN2rcVhQBgO3z+we9/dCHMAUyeUkBAhJMZYc/iuGs25FWnMmasSczo3eKIXfPW7GTxPAHK4JbTnFL0AwG3Ge815Nvey2YbEEfQ2u6GkkrfC8/eYfqtQZP7L8dNiyhiFRLTMAZ3PWK+9guH6Jkbc76OMCrAEANNQ4iICbi0BsTN2/9xRp56yHot3ce+RoKibJI3B5Pn5SJ1MiVOrtp42126JJe",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794846515,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
