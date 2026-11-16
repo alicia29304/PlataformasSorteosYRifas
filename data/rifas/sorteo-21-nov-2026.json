@@ -14,6 +14,14 @@
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
     },
+    "42": {
+      "estado": "PENDIENTE",
+      "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
+    },
+    "124": {
+      "estado": "PENDIENTE",
+      "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
+    },
     "161": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
@@ -37,6 +45,10 @@
     "674": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "767": {
+      "estado": "PENDIENTE",
+      "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
     },
     "842": {
       "estado": "PENDIENTE",
@@ -81,6 +93,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794775740,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "f6044a40-2848-487f-8421-956bf22c4b46": {
+      "numeros": [
+        42,
+        124,
+        767
+      ],
+      "seudonimo": "Alejandra P.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BHCT6YGtC7430/Puqmkd2sN1A+8JV5F7JQSx1ExWwCmdT86Qwi+W7LTIBxwNeC9pPh0LbNs+HJd9Twva3DvPfEYeK+qtchBpUvU/SxKUy0jFcPpoIsaF0JFImOQxnoFMw6axmkyfwYVMR+sLsSnwlxdrwasb9JZPm0MiwrNfrXW9QBsBImiCc7KosahpKpFpN8pbDq6B0UJP1ZO2eXCU3kewmWUbpa3nPHkFGmaN",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794845684,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
