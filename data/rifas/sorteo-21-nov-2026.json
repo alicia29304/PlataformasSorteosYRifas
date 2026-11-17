@@ -30,6 +30,10 @@
       "estado": "PENDIENTE",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
+    "96": {
+      "estado": "PENDIENTE",
+      "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
+    },
     "99": {
       "estado": "PENDIENTE",
       "orden": "9d131d99-731e-4670-9037-614634cd743f"
@@ -46,6 +50,10 @@
       "estado": "PENDIENTE",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
+    "138": {
+      "estado": "PENDIENTE",
+      "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
+    },
     "151": {
       "estado": "PENDIENTE",
       "orden": "69e123c8-4922-4956-94f7-cf641ba4385c"
@@ -61,6 +69,10 @@
     "176": {
       "estado": "PENDIENTE",
       "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
+    },
+    "178": {
+      "estado": "PENDIENTE",
+      "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
     },
     "255": {
       "estado": "PAGADO",
@@ -101,6 +113,10 @@
     "389": {
       "estado": "PENDIENTE",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
+    },
+    "428": {
+      "estado": "PENDIENTE",
+      "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
     },
     "436": {
       "estado": "PENDIENTE",
@@ -314,6 +330,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794944819,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "922984a4-5c35-4177-9cd4-0da9ab7032ae": {
+      "numeros": [
+        96,
+        138,
+        178,
+        428
+      ],
+      "seudonimo": "Yeison T.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BE48Vdn2lzMFTT6c1TdNz9oVmoTdKN9kB0PaXvGbgM9GBQ42V6t8p0PXadDztPhD+JcJLywpagsEKYPcB9D7uTRgIVEyYFP9IqwNjUSjoNkWiZYbM/9HKoLXmKHZ6CgJPhS/JshW+StFM45tso5QLS/mjg6v9vpCzCeO3BeSWMZgNp3w3nrFkV7xqJkZleNP41biHdnzsf2x6xdlKBkawTR+JxyovhbKSVeKXw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794952224,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
