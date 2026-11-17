@@ -14,6 +14,10 @@
       "estado": "PENDIENTE",
       "orden": "9d131d99-731e-4670-9037-614634cd743f"
     },
+    "15": {
+      "estado": "PENDIENTE",
+      "orden": "1e067761-65ad-4a34-9fd4-62c7a8fcd1be"
+    },
     "23": {
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
@@ -77,6 +81,10 @@
     "255": {
       "estado": "PAGADO",
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
+    },
+    "257": {
+      "estado": "PENDIENTE",
+      "orden": "1e067761-65ad-4a34-9fd4-62c7a8fcd1be"
     },
     "265": {
       "estado": "PENDIENTE",
@@ -146,6 +154,10 @@
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
     },
+    "653": {
+      "estado": "PENDIENTE",
+      "orden": "1e067761-65ad-4a34-9fd4-62c7a8fcd1be"
+    },
     "674": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
@@ -169,6 +181,10 @@
     "851": {
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
+    "947": {
+      "estado": "PENDIENTE",
+      "orden": "1e067761-65ad-4a34-9fd4-62c7a8fcd1be"
     }
   },
   "ordenes": {
@@ -350,6 +366,24 @@
       "registrado": 1794952224,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1794952250,
+      "comprobanteHash": null
+    },
+    "1e067761-65ad-4a34-9fd4-62c7a8fcd1be": {
+      "numeros": [
+        15,
+        257,
+        653,
+        947
+      ],
+      "seudonimo": "Yamilet T.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BCoTKODaMSukdCQ9KS2z2PVMDNOVTADO26at/I3IxY0nVik7Sut/MmMJqwNSG5wUeXenwfpkJ2JMWspjbkKepDV/D9ZJKXCp6FDKDccQwfyrwtG7l7/dmBE/mzPrkO78HxKkfeQ1nJaPOW97Gt4/wBY+cbyfaXLXCgzoil+kqm0VT8iW+WCrzUc3HYJbPeaFOwselC4qep2j1mBDnnTFjMEB95anSxju2zx/3JQUKQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794959493,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
