@@ -31,7 +31,7 @@
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
     },
     "47": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "51": {
@@ -63,7 +63,7 @@
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
     },
     "126": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "138": {
@@ -111,7 +111,7 @@
       "orden": "1e067761-65ad-4a34-9fd4-62c7a8fcd1be"
     },
     "265": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "269": {
@@ -151,7 +151,7 @@
       "orden": "4baff0fa-cc11-4fd5-86f7-80dcee75a32b"
     },
     "389": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "428": {
@@ -179,7 +179,7 @@
       "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
     },
     "584": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "588": {
@@ -239,7 +239,7 @@
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
     },
     "832": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
     },
     "842": {
@@ -375,11 +375,11 @@
       "ciudad": "Villanueva",
       "metodo": "Transferencia",
       "privado": "enc1:BAeY09dwDajpo2D3UFilNl/Vkh+sorQxQ+uX3q84DMD4OG4m4YeOW8JvQ6Xl3xumlE92stoVo7+n37qpfpRpDegavNcJlePWnyXtWJCSS8zHBszd3INl7nXlF/PwWTv3x80sKECGYLdSdfG2sqwsj8D1LCwARzHLRA4cQKAxF5bTPKIMZNJQj+UQb8Mi71Q6oCkpYbOUf/Yf8XXEPdn/zynslmW3oulrdvPkMirX/7kmJiM=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794847517,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795044568,
       "comprobanteHash": null
     },
     "9d131d99-731e-4670-9037-614634cd743f": {
