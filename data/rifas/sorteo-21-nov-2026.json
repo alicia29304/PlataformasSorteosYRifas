@@ -78,6 +78,10 @@
       "estado": "PAGADO",
       "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
     },
+    "201": {
+      "estado": "PENDIENTE",
+      "orden": "133d0b67-7515-40d7-bb91-482fa87a7dff"
+    },
     "255": {
       "estado": "PAGADO",
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
@@ -105,6 +109,10 @@
     "303": {
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
+    "305": {
+      "estado": "PENDIENTE",
+      "orden": "133d0b67-7515-40d7-bb91-482fa87a7dff"
     },
     "325": {
       "estado": "PENDIENTE",
@@ -161,6 +169,10 @@
     "674": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "723": {
+      "estado": "PENDIENTE",
+      "orden": "133d0b67-7515-40d7-bb91-482fa87a7dff"
     },
     "767": {
       "estado": "PAGADO",
@@ -382,6 +394,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1794959493,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "133d0b67-7515-40d7-bb91-482fa87a7dff": {
+      "numeros": [
+        201,
+        305,
+        723
+      ],
+      "seudonimo": "Yuliany S.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BCoI6S9RjkjNnRq54KKAj4UE743ey4WOboGpkGXFwdn+aj92y7F9hx4cfP7k9QoyQM2BxFVajOUPqpcrSD/fiIKryycMrq0nk0CR0ypINy9t+ydQPJAsK+BvH/PEHleb6Afj7644Qu0UGyKCmSZXkc1eIn8Vuo+UQ0QwYDO3vtcqr3OEykKbAL1370zE4oQHfoimpsRjxXHBtT+qNfv4OAW2O87DaI61YSWmvdW3",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1794963583,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
