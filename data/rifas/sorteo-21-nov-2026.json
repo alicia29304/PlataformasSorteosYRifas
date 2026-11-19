@@ -18,6 +18,10 @@
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
     },
+    "12": {
+      "estado": "PENDIENTE",
+      "orden": "c9e167ab-8e75-428f-8bfd-e1c6255f662e"
+    },
     "15": {
       "estado": "PENDIENTE",
       "orden": "1e067761-65ad-4a34-9fd4-62c7a8fcd1be"
@@ -45,6 +49,10 @@
     "51": {
       "estado": "PAGADO",
       "orden": "f9f13e29-26ce-4fb0-b1b0-3bb3a36a8613"
+    },
+    "87": {
+      "estado": "PENDIENTE",
+      "orden": "c9e167ab-8e75-428f-8bfd-e1c6255f662e"
     },
     "96": {
       "estado": "PAGADO",
@@ -113,6 +121,10 @@
     "220": {
       "estado": "PAGADO",
       "orden": "f9f13e29-26ce-4fb0-b1b0-3bb3a36a8613"
+    },
+    "233": {
+      "estado": "PENDIENTE",
+      "orden": "c9e167ab-8e75-428f-8bfd-e1c6255f662e"
     },
     "255": {
       "estado": "PAGADO",
@@ -651,6 +663,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795046664,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "c9e167ab-8e75-428f-8bfd-e1c6255f662e": {
+      "numeros": [
+        12,
+        87,
+        233
+      ],
+      "seudonimo": "Eduardo M.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BMoOWvd0vTOBPU1pLsoqzFiEy+dY+teNDDxMVDdaZEvJd+kfK04+eSD5E9p/YfgFDNP25+Izko+5IClsxOj1ASybSvHBIs+BsiWJKyRjIYWdVQr2N4yhpe+bcBmyuhH1jh/O+8wxt1E2HOBf5v7etwODvuXvbwaDVJCHR959znyYs7fH/f19U9336dAyJi3TQOG7XC4NkMC7JWFUBA66XAOQNCL/eA7idWzHU1MaKic=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795047356,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
