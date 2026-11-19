@@ -10,6 +10,10 @@
   "estado": "ACTIVA",
   "creada": 1794727734,
   "numeros": {
+    "1": {
+      "estado": "PENDIENTE",
+      "orden": "b2caa53c-64b4-4c43-8631-88a36a6edb1d"
+    },
     "2": {
       "estado": "PENDIENTE",
       "orden": "9d131d99-731e-4670-9037-614634cd743f"
@@ -201,6 +205,10 @@
     "192": {
       "estado": "PENDIENTE",
       "orden": "1dff7a23-ba1c-42f7-8e46-e5123be44c45"
+    },
+    "196": {
+      "estado": "PENDIENTE",
+      "orden": "b2caa53c-64b4-4c43-8631-88a36a6edb1d"
     },
     "201": {
       "estado": "PAGADO",
@@ -430,6 +438,10 @@
       "estado": "PAGADO",
       "orden": "2a8e8a4e-2e66-4777-8808-bffaae8a795d"
     },
+    "427": {
+      "estado": "PENDIENTE",
+      "orden": "b2caa53c-64b4-4c43-8631-88a36a6edb1d"
+    },
     "428": {
       "estado": "PAGADO",
       "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
@@ -537,6 +549,10 @@
     "598": {
       "estado": "PENDIENTE",
       "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
+    },
+    "606": {
+      "estado": "PENDIENTE",
+      "orden": "b2caa53c-64b4-4c43-8631-88a36a6edb1d"
     },
     "617": {
       "estado": "PENDIENTE",
@@ -718,6 +734,10 @@
       "estado": "PENDIENTE",
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
     },
+    "859": {
+      "estado": "PENDIENTE",
+      "orden": "b2caa53c-64b4-4c43-8631-88a36a6edb1d"
+    },
     "873": {
       "estado": "PENDIENTE",
       "orden": "1dff7a23-ba1c-42f7-8e46-e5123be44c45"
@@ -761,6 +781,10 @@
     "945": {
       "estado": "PENDIENTE",
       "orden": "2fe1554b-99c9-4592-acac-c4080336c2c6"
+    },
+    "946": {
+      "estado": "PENDIENTE",
+      "orden": "b2caa53c-64b4-4c43-8631-88a36a6edb1d"
     },
     "947": {
       "estado": "PENDIENTE",
@@ -1528,6 +1552,26 @@
       "registrado": 1795099468,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795099518,
+      "comprobanteHash": null
+    },
+    "b2caa53c-64b4-4c43-8631-88a36a6edb1d": {
+      "numeros": [
+        1,
+        196,
+        427,
+        606,
+        859,
+        946
+      ],
+      "seudonimo": "Katiuska M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDFnRzh68v2wv0KAswbBkKDM92s24XKnLbZalnAasSmtSCcKJJTMHLvRzU2SqmKg8H0C6G8cvsrwwwd0DTvvrCH2yKjjeCiTh+bPLxsH1FpRGgtDamWUECwWVcBOhZJ20jFG7LEfRmbai5oeQihqQ2/nyrMnbdSaciUlblBVzeJBT/USikFxtOU52/Mqfae0cs2isqm3Ulgnwsu/euXMS7ROQtlC3YRzgkKXQlgpRQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795099618,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
