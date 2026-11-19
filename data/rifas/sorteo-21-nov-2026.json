@@ -290,6 +290,10 @@
       "estado": "PAGADO",
       "orden": "1921708b-623f-4872-b8e6-486e44be529a"
     },
+    "343": {
+      "estado": "PENDIENTE",
+      "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
+    },
     "350": {
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
@@ -386,6 +390,10 @@
       "estado": "PAGADO",
       "orden": "1921708b-623f-4872-b8e6-486e44be529a"
     },
+    "511": {
+      "estado": "PENDIENTE",
+      "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
+    },
     "524": {
       "estado": "PAGADO",
       "orden": "2a8e8a4e-2e66-4777-8808-bffaae8a795d"
@@ -425,6 +433,10 @@
     "634": {
       "estado": "PENDIENTE",
       "orden": "2fe1554b-99c9-4592-acac-c4080336c2c6"
+    },
+    "635": {
+      "estado": "PENDIENTE",
+      "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
     },
     "653": {
       "estado": "PENDIENTE",
@@ -1149,6 +1161,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795093024,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "0fcfac04-3f82-4ec9-873f-8361c78a996a": {
+      "numeros": [
+        343,
+        511,
+        635
+      ],
+      "seudonimo": "Erick C.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BFTyiHPpM/9j3AERlZmkr2HaVckR3cppORw7QdB75Xn3RddGMz5LbcITkPHuiOMDvg6XE6rF9Zii98c3SEa1hgS7bCeMMgAtOraR6uKZpIBaxFNmJY5DCzd5YK7hgW6KZnvyRiM1ivtu7snuPSgu5PzVjOZx/9CJvsntBeLLdoMHdY0AkJoO4lAqjeVZ6H2m5M1b3KYcASA35kC96QhQVVoQcxze/006pEEuIA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795093137,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
