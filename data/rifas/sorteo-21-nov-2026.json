@@ -134,6 +134,10 @@
       "estado": "PENDIENTE",
       "orden": "821efbf8-2e4a-42c5-aeb3-f7ab70e38c14"
     },
+    "94": {
+      "estado": "PENDIENTE",
+      "orden": "5a50a5dd-7469-4bce-9482-d8ca3f25c3de"
+    },
     "96": {
       "estado": "PAGADO",
       "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
@@ -858,6 +862,10 @@
       "estado": "PAGADO",
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
     },
+    "831": {
+      "estado": "PENDIENTE",
+      "orden": "5a50a5dd-7469-4bce-9482-d8ca3f25c3de"
+    },
     "832": {
       "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
@@ -1001,6 +1009,10 @@
     "969": {
       "estado": "PAGADO",
       "orden": "6f40d630-4382-4d9c-aa49-90e47fc8a694"
+    },
+    "970": {
+      "estado": "PENDIENTE",
+      "orden": "5a50a5dd-7469-4bce-9482-d8ca3f25c3de"
     },
     "971": {
       "estado": "PENDIENTE",
@@ -1966,6 +1978,23 @@
       "registrado": 1795123050,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795123078,
+      "comprobanteHash": null
+    },
+    "5a50a5dd-7469-4bce-9482-d8ca3f25c3de": {
+      "numeros": [
+        94,
+        831,
+        970
+      ],
+      "seudonimo": "Paula C.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BOpr1qZym5MaXJyzQ4uR+Ef/2GMNdyvpHwdjBw26jycUOFFJkrHQwP450RPm1PCzLGfjLUR3flAAx9VC5R9TRA9fRcxN4AXmoDZMynzFtTauNkGfJvzqLCN3omz/LctoxCf5fqxOEtpwaLLQ6wwJdI8nipkQBkviqkkvUcjEAhUL3hG5f4t6P3RQbQUZ9TrSzU+JkKogxmk/13mOGlcgIJla9QV87cdToxMfAQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795128114,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
