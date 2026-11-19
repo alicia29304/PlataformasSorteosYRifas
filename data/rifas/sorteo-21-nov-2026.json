@@ -166,6 +166,10 @@
       "estado": "PENDIENTE",
       "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
     },
+    "274": {
+      "estado": "PENDIENTE",
+      "orden": "f64dd9eb-02ef-486e-8dda-2f6b3b087e63"
+    },
     "285": {
       "estado": "PAGADO",
       "orden": "1921708b-623f-4872-b8e6-486e44be529a"
@@ -397,6 +401,14 @@
     "958": {
       "estado": "PENDIENTE",
       "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
+    },
+    "959": {
+      "estado": "PENDIENTE",
+      "orden": "f64dd9eb-02ef-486e-8dda-2f6b3b087e63"
+    },
+    "994": {
+      "estado": "PENDIENTE",
+      "orden": "f64dd9eb-02ef-486e-8dda-2f6b3b087e63"
     }
   },
   "ordenes": {
@@ -789,6 +801,23 @@
       "registrado": 1795053183,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795053212,
+      "comprobanteHash": null
+    },
+    "f64dd9eb-02ef-486e-8dda-2f6b3b087e63": {
+      "numeros": [
+        274,
+        959,
+        994
+      ],
+      "seudonimo": "Luis M.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BJdEqSnUNVlx/tDdpWy3vZwIBlYbFca21+0i36UL3sXwQ5WyixbNUiUmxvyVWcpNbC5rAL4GM0qrh1zaf3wOpWBv5Qs0aT3Gk9l+Rht6kyOli0PSQE8jzXEeFy/4ooGMWiLeyKCuXA3dcEaEFsBWP7OG5BSDBb05vfFZTIaNcrFN3A0baIEZYF4anPzVb8DiLglyQNrufyyULwgbKphmZxwRAPPxgXXaa2O+",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795053340,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
