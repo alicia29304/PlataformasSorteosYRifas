@@ -362,6 +362,10 @@
       "estado": "PENDIENTE",
       "orden": "8cbeb415-3e3c-4eb0-9328-47b44423a219"
     },
+    "342": {
+      "estado": "PENDIENTE",
+      "orden": "b7b31e86-cc11-486d-98b3-61abe4246a41"
+    },
     "343": {
       "estado": "PAGADO",
       "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
@@ -485,6 +489,10 @@
     "500": {
       "estado": "PAGADO",
       "orden": "1921708b-623f-4872-b8e6-486e44be529a"
+    },
+    "509": {
+      "estado": "PENDIENTE",
+      "orden": "b7b31e86-cc11-486d-98b3-61abe4246a41"
     },
     "511": {
       "estado": "PAGADO",
@@ -741,6 +749,10 @@
     "921": {
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
+    },
+    "928": {
+      "estado": "PENDIENTE",
+      "orden": "b7b31e86-cc11-486d-98b3-61abe4246a41"
     },
     "936": {
       "estado": "PENDIENTE",
@@ -1497,6 +1509,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795097554,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "b7b31e86-cc11-486d-98b3-61abe4246a41": {
+      "numeros": [
+        342,
+        509,
+        928
+      ],
+      "seudonimo": "Cesar B.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BKyOMf7WNk/nFRLOCZpX4fQcRRLAeD8rO3MjMSMtoqveNwmZ05yRn/7BfEskxe/ioDCOFsIfvliCPlTRSZ01wkTWqfica4/U6xU9Zz6rJiz/MaYBRXV5swmgeJJu7xCZuHOGBQy60mlAK0VewtQApTlxr+UtZ3YpZ3uOuk0s57sgVpRNkghmMbzavne6SEKQG6nAU1mHK9TXdH8bK5oRpShb/E8+JvVdxJXL",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795099468,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
