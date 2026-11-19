@@ -22,6 +22,10 @@
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
     },
+    "10": {
+      "estado": "PENDIENTE",
+      "orden": "821efbf8-2e4a-42c5-aeb3-f7ab70e38c14"
+    },
     "12": {
       "estado": "PENDIENTE",
       "orden": "c9e167ab-8e75-428f-8bfd-e1c6255f662e"
@@ -65,6 +69,10 @@
     "87": {
       "estado": "PENDIENTE",
       "orden": "c9e167ab-8e75-428f-8bfd-e1c6255f662e"
+    },
+    "90": {
+      "estado": "PENDIENTE",
+      "orden": "821efbf8-2e4a-42c5-aeb3-f7ab70e38c14"
     },
     "96": {
       "estado": "PAGADO",
@@ -113,6 +121,10 @@
     "161": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "170": {
+      "estado": "PENDIENTE",
+      "orden": "821efbf8-2e4a-42c5-aeb3-f7ab70e38c14"
     },
     "172": {
       "estado": "PENDIENTE",
@@ -193,6 +205,10 @@
     "274": {
       "estado": "PAGADO",
       "orden": "f64dd9eb-02ef-486e-8dda-2f6b3b087e63"
+    },
+    "280": {
+      "estado": "PENDIENTE",
+      "orden": "821efbf8-2e4a-42c5-aeb3-f7ab70e38c14"
     },
     "285": {
       "estado": "PAGADO",
@@ -944,6 +960,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795057445,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "821efbf8-2e4a-42c5-aeb3-f7ab70e38c14": {
+      "numeros": [
+        10,
+        90,
+        170,
+        280
+      ],
+      "seudonimo": "Jhoel R.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BFG+IXy1byhCzJ7uSwfLpKmYeT1mLrr4CyQNY7NsZuuyK9DVG/KyV9S7Tu03DfPsRZG8V4OqQ3YYCmUz7NO9Q7NDoTCVdszHnaakVSOj+APNTG/f5oTa6BhYcEdT+DQ2zNkRjdq1k5n//vyTAZmqAqeUFMpVr25qxwkVnCLTzCDtHW8CGfm3fuPSOV8nmU55fs0f1J13NmA1EYlGiZRZEe4B8XXQxaD+4FZZ",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795060516,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
