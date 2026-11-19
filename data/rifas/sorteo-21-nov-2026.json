@@ -702,6 +702,10 @@
       "estado": "PENDIENTE",
       "orden": "cc599e8b-d8bd-4385-92c9-8f624a4a7926"
     },
+    "713": {
+      "estado": "PENDIENTE",
+      "orden": "4bfc1210-6ab8-4193-a96e-70004685bb08"
+    },
     "714": {
       "estado": "PENDIENTE",
       "orden": "f929cfae-7e8b-4e84-a36a-951abfa6eeac"
@@ -1787,6 +1791,21 @@
       "registrado": 1795104184,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795104224,
+      "comprobanteHash": null
+    },
+    "4bfc1210-6ab8-4193-a96e-70004685bb08": {
+      "numeros": [
+        713
+      ],
+      "seudonimo": "Reny A.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BEGfau4u6XbsD90yLm3NDNwObUwENIuVcq1+W5roiyefHIw61bgEK9MBfbNvmGEpbueNxBvGxgLjiK0C1n7P2tnbh+ZPwS1QA9OqQ4VbbQ7u7tOJ8DSf3I5WPiMdsUNuvDTR4PR1d5D4QPAbyo+4Bck6/S6LJvj1qTk02Rt0+73UK/eJjkBSFNc5BadH7BkVLIDOVkLnWkxRtncYYd6QPk9EG7QJoqFPFQvMSHE=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795107757,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
