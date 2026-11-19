@@ -14,6 +14,10 @@
       "estado": "PENDIENTE",
       "orden": "9d131d99-731e-4670-9037-614634cd743f"
     },
+    "8": {
+      "estado": "PENDIENTE",
+      "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
+    },
     "9": {
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
@@ -86,6 +90,10 @@
       "estado": "PAGADO",
       "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
     },
+    "148": {
+      "estado": "PENDIENTE",
+      "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
+    },
     "151": {
       "estado": "PENDIENTE",
       "orden": "69e123c8-4922-4956-94f7-cf641ba4385c"
@@ -126,6 +134,10 @@
       "estado": "PENDIENTE",
       "orden": "c9e167ab-8e75-428f-8bfd-e1c6255f662e"
     },
+    "243": {
+      "estado": "PENDIENTE",
+      "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
+    },
     "255": {
       "estado": "PAGADO",
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
@@ -145,6 +157,10 @@
     "270": {
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
+    "272": {
+      "estado": "PENDIENTE",
+      "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
     },
     "285": {
       "estado": "PAGADO",
@@ -181,6 +197,10 @@
     "363": {
       "estado": "PENDIENTE",
       "orden": "9d131d99-731e-4670-9037-614634cd743f"
+    },
+    "373": {
+      "estado": "PENDIENTE",
+      "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
     },
     "387": {
       "estado": "PAGADO",
@@ -241,6 +261,10 @@
     "674": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "706": {
+      "estado": "PENDIENTE",
+      "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
     },
     "709": {
       "estado": "PENDIENTE",
@@ -345,6 +369,10 @@
     "949": {
       "estado": "PENDIENTE",
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
+    },
+    "958": {
+      "estado": "PENDIENTE",
+      "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
     }
   },
   "ordenes": {
@@ -680,6 +708,27 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795047356,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "9c5f4586-beef-4427-a4bb-676b84ddce96": {
+      "numeros": [
+        8,
+        148,
+        243,
+        272,
+        373,
+        706,
+        958
+      ],
+      "seudonimo": "Cristian P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BEqTq2Qixvawch7r74Mba96C36ZvIcjdX/FoFdo7Wd2wQMlSULNHHuX4dP728ZkplRketD6o6zbiup0OiL94i/gLYIf9vxQhd264I+Pk5J6L80iC5ayBqMuakPnBPtq2iEL5YlRwjLa1Z0GL1WjfSyKIR5z0r9I/VZEk9eyGW5Nv/eTjcyCNUwkqAD7zKWoJkTK1gDo695lDENtXmgJ3gQHdAbUDgZZIFfLh3ls=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795047632,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
