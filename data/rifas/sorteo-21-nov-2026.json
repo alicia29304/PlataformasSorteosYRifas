@@ -406,6 +406,10 @@
       "estado": "PENDIENTE",
       "orden": "69e123c8-4922-4956-94f7-cf641ba4385c"
     },
+    "329": {
+      "estado": "PENDIENTE",
+      "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
+    },
     "330": {
       "estado": "PENDIENTE",
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
@@ -461,6 +465,10 @@
     "373": {
       "estado": "PENDIENTE",
       "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
+    },
+    "378": {
+      "estado": "PENDIENTE",
+      "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
     },
     "380": {
       "estado": "PENDIENTE",
@@ -586,6 +594,10 @@
       "estado": "PENDIENTE",
       "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
     },
+    "532": {
+      "estado": "PENDIENTE",
+      "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
+    },
     "541": {
       "estado": "PENDIENTE",
       "orden": "cc599e8b-d8bd-4385-92c9-8f624a4a7926"
@@ -693,6 +705,10 @@
     "685": {
       "estado": "PENDIENTE",
       "orden": "664eba95-8611-4dca-9deb-76397f06e7e2"
+    },
+    "705": {
+      "estado": "PENDIENTE",
+      "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
     },
     "706": {
       "estado": "PENDIENTE",
@@ -918,9 +934,17 @@
       "estado": "PAGADO",
       "orden": "b7b31e86-cc11-486d-98b3-61abe4246a41"
     },
+    "929": {
+      "estado": "PENDIENTE",
+      "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
+    },
     "936": {
       "estado": "PENDIENTE",
       "orden": "664eba95-8611-4dca-9deb-76397f06e7e2"
+    },
+    "941": {
+      "estado": "PENDIENTE",
+      "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
     },
     "945": {
       "estado": "PENDIENTE",
@@ -1864,6 +1888,26 @@
       "registrado": 1795111478,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795111502,
+      "comprobanteHash": null
+    },
+    "1cd95e21-c670-4e18-ac0c-19a0a8e2620a": {
+      "numeros": [
+        329,
+        378,
+        532,
+        705,
+        929,
+        941
+      ],
+      "seudonimo": "Sebastián P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BBKVkYFCa9tOQBcXII/Sf8eJVq2Eap41pJBlxaK8veHYAE3LaXWcbBg+YSgWtDnpsTpZn8AwbFxXZRQ82U0/TJdH1qkPjkQX+ayPVx/t1ESJrTzqxph74mPSMdjSsFQ9fZtnzjZExsgDqrx4pwEi2DQGacSDqQ2xAnxVhRDRteIuWlabsn4AqKnSpLoBdiS1KzlpsBmbAdiILVsJ74lP+op7c6nKjICm57lYJ3eMpQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795113318,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
