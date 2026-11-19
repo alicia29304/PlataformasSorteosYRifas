@@ -62,6 +62,10 @@
       "estado": "PAGADO",
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
     },
+    "43": {
+      "estado": "PENDIENTE",
+      "orden": "0240a47e-2f3f-4e70-bff1-64d96f41ddc1"
+    },
     "47": {
       "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
@@ -234,6 +238,10 @@
       "estado": "PAGADO",
       "orden": "133d0b67-7515-40d7-bb91-482fa87a7dff"
     },
+    "308": {
+      "estado": "PENDIENTE",
+      "orden": "0240a47e-2f3f-4e70-bff1-64d96f41ddc1"
+    },
     "311": {
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
@@ -349,6 +357,10 @@
     "528": {
       "estado": "PENDIENTE",
       "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
+    },
+    "569": {
+      "estado": "PENDIENTE",
+      "orden": "0240a47e-2f3f-4e70-bff1-64d96f41ddc1"
     },
     "584": {
       "estado": "PAGADO",
@@ -1012,6 +1024,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795060726,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "0240a47e-2f3f-4e70-bff1-64d96f41ddc1": {
+      "numeros": [
+        43,
+        308,
+        569
+      ],
+      "seudonimo": "Daniela R.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BKqiJgm8Q3NCYfj1Zdcm3XsWSepaQUdTbw6IvJH5iaKGfeh8QCHG5fsdQ1HgL8nfkIUVjfQ48Vn2FASOvYbyn2PeDqDNRMtkD/aiiG+NWlfLr+UihhX+F7LzkGBivbiHUaJ8fZnVDYGg9z1kJ59mHUFT0oXq5zcvNbwmP/VnOSw+zK5Rq8d7HlVMLU0OkPzOLapf8zD6JWPZBGTlo8OEjBmgs1b72BJ0sa2DwZv3mQnQ",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795092883,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
