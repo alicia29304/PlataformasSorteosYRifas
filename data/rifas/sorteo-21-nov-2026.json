@@ -78,6 +78,14 @@
       "estado": "PAGADO",
       "orden": "f9f13e29-26ce-4fb0-b1b0-3bb3a36a8613"
     },
+    "75": {
+      "estado": "PENDIENTE",
+      "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
+    },
+    "79": {
+      "estado": "PENDIENTE",
+      "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
+    },
     "87": {
       "estado": "PENDIENTE",
       "orden": "c9e167ab-8e75-428f-8bfd-e1c6255f662e"
@@ -97,6 +105,10 @@
     "101": {
       "estado": "PAGADO",
       "orden": "b634bfd6-e64c-460a-bcea-ee67aad0175b"
+    },
+    "102": {
+      "estado": "PENDIENTE",
+      "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
     },
     "112": {
       "estado": "PAGADO",
@@ -314,6 +326,10 @@
       "estado": "PAGADO",
       "orden": "defef782-f096-4cfc-8d2a-536545f81a89"
     },
+    "422": {
+      "estado": "PENDIENTE",
+      "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
+    },
     "424": {
       "estado": "PAGADO",
       "orden": "2a8e8a4e-2e66-4777-8808-bffaae8a795d"
@@ -393,6 +409,10 @@
     "597": {
       "estado": "PENDIENTE",
       "orden": "2fe1554b-99c9-4592-acac-c4080336c2c6"
+    },
+    "598": {
+      "estado": "PENDIENTE",
+      "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
     },
     "617": {
       "estado": "PENDIENTE",
@@ -569,6 +589,10 @@
     "959": {
       "estado": "PAGADO",
       "orden": "f64dd9eb-02ef-486e-8dda-2f6b3b087e63"
+    },
+    "990": {
+      "estado": "PENDIENTE",
+      "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
     },
     "994": {
       "estado": "PAGADO",
@@ -1105,6 +1129,26 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795092964,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "21ee2aca-92a0-4fcb-aae2-3befd60f45f9": {
+      "numeros": [
+        75,
+        79,
+        102,
+        422,
+        598,
+        990
+      ],
+      "seudonimo": "Antury M.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BKyupbkR13W0n7mdoGKdnCEXsBVSu9MGvZLexAuu4HhgSvwq0ha5+gixSLjCEdUH6eeUeyuI5jN44d5N0WLcybJ/z8jU7xXZV2VwiUD/uICobOEKp+ZlUQPfya//qmXT4obVlV4MF7IeNPleuXgT3J1xlvHW5yWNHdi3JeWPA+aE4toZ5oZIixpUtR5axj1tBLi6wGpst5x1zQ74bO66vhp9L63jZF8anWBfDks=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795093024,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
