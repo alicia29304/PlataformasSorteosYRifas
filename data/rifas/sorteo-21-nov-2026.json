@@ -78,6 +78,10 @@
       "estado": "PAGADO",
       "orden": "f9f13e29-26ce-4fb0-b1b0-3bb3a36a8613"
     },
+    "74": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
+    },
     "75": {
       "estado": "PENDIENTE",
       "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
@@ -145,6 +149,10 @@
     "161": {
       "estado": "PENDIENTE",
       "orden": "bc211dec-eee1-4e63-aed8-d8e7ae666966"
+    },
+    "162": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
     "170": {
       "estado": "PENDIENTE",
@@ -262,9 +270,17 @@
       "estado": "PENDIENTE",
       "orden": "0240a47e-2f3f-4e70-bff1-64d96f41ddc1"
     },
+    "309": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
+    },
     "311": {
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
+    },
+    "318": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
     "322": {
       "estado": "PENDIENTE",
@@ -342,6 +358,10 @@
       "estado": "PAGADO",
       "orden": "922984a4-5c35-4177-9cd4-0da9ab7032ae"
     },
+    "433": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
+    },
     "435": {
       "estado": "PENDIENTE",
       "orden": "2fe1554b-99c9-4592-acac-c4080336c2c6"
@@ -397,6 +417,10 @@
     "511": {
       "estado": "PAGADO",
       "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
+    },
+    "516": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
     "524": {
       "estado": "PAGADO",
@@ -510,6 +534,10 @@
       "estado": "PENDIENTE",
       "orden": "f929cfae-7e8b-4e84-a36a-951abfa6eeac"
     },
+    "753": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
+    },
     "767": {
       "estado": "PAGADO",
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
@@ -554,9 +582,17 @@
       "estado": "PENDIENTE",
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
     },
+    "841": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
+    },
     "842": {
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
+    "845": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
     "851": {
       "estado": "PENDIENTE",
@@ -569,6 +605,10 @@
     "884": {
       "estado": "PAGADO",
       "orden": "d706594d-35c5-45ad-8ec5-76f9f8847043"
+    },
+    "887": {
+      "estado": "PENDIENTE",
+      "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
     "895": {
       "estado": "PENDIENTE",
@@ -1209,6 +1249,30 @@
       "registrado": 1795096723,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795096750,
+      "comprobanteHash": null
+    },
+    "08a99c9c-59ee-4458-9d7e-211917db08d9": {
+      "numeros": [
+        74,
+        162,
+        309,
+        318,
+        433,
+        516,
+        753,
+        841,
+        845,
+        887
+      ],
+      "seudonimo": "Elismary S.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BJHoUo9YdH+ySojmqLYkHueOA08ZNPCbD1mgt3ad5j07CT1jg2xfDm/B2xNyOfAQiGKZ6xqnWQJ5KhJKHq6OJvwtaGGIM6wg/f3SmCtKJHfeyaiT1G+ur3aJFH5i0La1lNGB8ShqxwqAUn3LnGVNE9Ekyf7l82krWSx7fGZKgAij8eFkNDAWSr/M5fWz9kk/LPPzEgT+v7tdQ0aKVIbvE4xW/Nvd0ix4JGePlAE=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795096921,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
