@@ -355,7 +355,7 @@
       "orden": "8a643e75-acad-4e85-9361-af35417c22b6"
     },
     "226": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "da5bb63f-6797-4210-a95e-e72bd49e01b0"
     },
     "230": {
@@ -835,7 +835,7 @@
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
     },
     "581": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "da5bb63f-6797-4210-a95e-e72bd49e01b0"
     },
     "584": {
@@ -939,7 +939,7 @@
       "orden": "1935dc8d-938f-47bd-98f7-672ea54a1ecf"
     },
     "652": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "da5bb63f-6797-4210-a95e-e72bd49e01b0"
     },
     "653": {
@@ -2735,11 +2735,11 @@
       "ciudad": "Villavicencio",
       "metodo": "Transferencia",
       "privado": "enc1:BBoHkJJhItVh9hQFd7UD9BZo16Tz4V/kbepDFypC3M9xeD2eAg+UZ3WR9FgjOubxZq2pdpv+HI209ExRcezFRVaLXhGkmBrVq+lC4qBdANrBRek0MWNbNP4j/wpGxEI5q1OUg11nHLcgiEujUEHCnGffQNvdmKMc7j+qEBRHiwKQJYtk5da8CVV9xGF3lyybbeptjcQB440sETNWgIHEceZ0YazcDoEzQC1PQfQy",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795216920,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795216952,
       "comprobanteHash": null
     }
   }
