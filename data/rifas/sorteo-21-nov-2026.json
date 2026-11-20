@@ -435,7 +435,7 @@
       "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
     "320": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "f135e8f7-a268-4959-b478-01b2e96f1f67"
     },
     "322": {
@@ -483,7 +483,7 @@
       "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
     },
     "347": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "f135e8f7-a268-4959-b478-01b2e96f1f67"
     },
     "349": {
@@ -915,7 +915,7 @@
       "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
     "757": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "f135e8f7-a268-4959-b478-01b2e96f1f67"
     },
     "763": {
@@ -2273,11 +2273,11 @@
       "ciudad": "Vilo",
       "metodo": "Transferencia",
       "privado": "enc1:BGMUHHKBluTYCVF++WSo/nLD27zd9zXZD7QXE/8MknimbElGG1I1WnvezYeiWaFKwnr995r6CmKJ3WHbtGgT5oMoNWKdVm1T6t4FUocsQz7Nh7Hu+vFHenGmU1Ewx2R8sgvgElz/SnXwdWBtPiGojKSUTBqmPiD5o5vIfpJKTh8qA3s57GHZnIjphGW1qAjYkYxJI344jXlgA0dZQsdXtn9xOsHJoMkWNuTevmc=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795191062,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795191102,
       "comprobanteHash": null
     }
   }
