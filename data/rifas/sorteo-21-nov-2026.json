@@ -106,6 +106,14 @@
       "estado": "PAGADO",
       "orden": "1dff7a23-ba1c-42f7-8e46-e5123be44c45"
     },
+    "57": {
+      "estado": "PENDIENTE",
+      "orden": "1dc4719e-c053-4592-b82b-7a6d91e8cea0"
+    },
+    "68": {
+      "estado": "PENDIENTE",
+      "orden": "1dc4719e-c053-4592-b82b-7a6d91e8cea0"
+    },
     "69": {
       "estado": "PAGADO",
       "orden": "4ff316dc-2437-499c-befd-11edc9945e08"
@@ -186,6 +194,10 @@
       "estado": "PAGADO",
       "orden": "be8ba76a-b25e-4701-8ad4-671cc2c3daf4"
     },
+    "146": {
+      "estado": "PENDIENTE",
+      "orden": "1dc4719e-c053-4592-b82b-7a6d91e8cea0"
+    },
     "148": {
       "estado": "PENDIENTE",
       "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
@@ -237,6 +249,10 @@
     "180": {
       "estado": "PAGADO",
       "orden": "4baff0fa-cc11-4fd5-86f7-80dcee75a32b"
+    },
+    "181": {
+      "estado": "PENDIENTE",
+      "orden": "1dc4719e-c053-4592-b82b-7a6d91e8cea0"
     },
     "189": {
       "estado": "PENDIENTE",
@@ -2215,6 +2231,24 @@
       "registrado": 1795190678,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795190713,
+      "comprobanteHash": null
+    },
+    "1dc4719e-c053-4592-b82b-7a6d91e8cea0": {
+      "numeros": [
+        57,
+        68,
+        146,
+        181
+      ],
+      "seudonimo": "Anneidys R.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BBW46qBStWGoHAJ3oeuWrZzQoj3VhcFQ8Z3VBPlQ/Q2yfLGeYcJ8/gHlJHp4pgG7ivPZPYkFKf7pzHnONQE1WunHh3KeX83+14P8DI9c5+BpaW/Gh2LWz9c2gzO4ZAmVMNwbcLz7DMUhmcYwUmvv6XaGYvt5hVIvQEJIxdb3gxWx8cq+7i3gVvCYBjey/2Ei9ePEmjUEmPVNMTUKdk0tgaNt74MlGRPgd2iucO+1",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795190916,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
