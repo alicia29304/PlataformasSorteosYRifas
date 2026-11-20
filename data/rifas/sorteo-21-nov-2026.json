@@ -194,6 +194,10 @@
       "estado": "PAGADO",
       "orden": "f9f13e29-26ce-4fb0-b1b0-3bb3a36a8613"
     },
+    "115": {
+      "estado": "PENDIENTE",
+      "orden": "06209906-1ccd-4634-b3af-88ef7a311429"
+    },
     "116": {
       "estado": "PAGADO",
       "orden": "f9f13e29-26ce-4fb0-b1b0-3bb3a36a8613"
@@ -458,6 +462,10 @@
       "estado": "PENDIENTE",
       "orden": "1935dc8d-938f-47bd-98f7-672ea54a1ecf"
     },
+    "301": {
+      "estado": "PENDIENTE",
+      "orden": "06209906-1ccd-4634-b3af-88ef7a311429"
+    },
     "303": {
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
@@ -710,6 +718,10 @@
       "estado": "PAGADO",
       "orden": "763a35f0-bd77-4b16-98d5-bafb9dc23234"
     },
+    "481": {
+      "estado": "PENDIENTE",
+      "orden": "06209906-1ccd-4634-b3af-88ef7a311429"
+    },
     "484": {
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
@@ -949,6 +961,10 @@
     "676": {
       "estado": "PAGADO",
       "orden": "cfb1ea5a-1242-42b1-bc9e-71e95e45a30b"
+    },
+    "678": {
+      "estado": "PENDIENTE",
+      "orden": "06209906-1ccd-4634-b3af-88ef7a311429"
     },
     "682": {
       "estado": "PENDIENTE",
@@ -2675,6 +2691,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795216579,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "06209906-1ccd-4634-b3af-88ef7a311429": {
+      "numeros": [
+        115,
+        301,
+        481,
+        678
+      ],
+      "seudonimo": "TANY P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BGLqu9rSvWY+DLqc0nb8zQw2lu8iCgPsNsAcnn8ielucfi6Nebywxa52Wf5LizyUiDZ7mn40BYd+JQ0tSLml7Ys44kaFiso0+kggNi0OQG/GNjUemna+DwB04vi4N0TkMOBLiIktvfa/esB+66lUCu0hcogHaqsbMT9HjrmeGuyGpJWrPBscedou8Wm1S7BtG2wbeC/1L/BXzVNXhj8/rPb8CykVm8OxFojD",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795216733,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
