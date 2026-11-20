@@ -366,6 +366,10 @@
       "estado": "PAGADO",
       "orden": "1921708b-623f-4872-b8e6-486e44be529a"
     },
+    "290": {
+      "estado": "PENDIENTE",
+      "orden": "763a35f0-bd77-4b16-98d5-bafb9dc23234"
+    },
     "293": {
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
@@ -589,6 +593,10 @@
     "476": {
       "estado": "PENDIENTE",
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
+    },
+    "480": {
+      "estado": "PENDIENTE",
+      "orden": "763a35f0-bd77-4b16-98d5-bafb9dc23234"
     },
     "484": {
       "estado": "PENDIENTE",
@@ -1057,6 +1065,10 @@
     "967": {
       "estado": "PENDIENTE",
       "orden": "1935dc8d-938f-47bd-98f7-672ea54a1ecf"
+    },
+    "968": {
+      "estado": "PENDIENTE",
+      "orden": "763a35f0-bd77-4b16-98d5-bafb9dc23234"
     },
     "969": {
       "estado": "PAGADO",
@@ -2091,6 +2103,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795132604,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "763a35f0-bd77-4b16-98d5-bafb9dc23234": {
+      "numeros": [
+        290,
+        480,
+        968
+      ],
+      "seudonimo": "Ramón Q.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BO9mPiGraNVp46YyeO1ya6ZDBdIogdr2oqO8JnPL53WGJi8mAY7y017AiuB7Q7TDCnN/Mec59DOHG+DYVgbsXubm/mEBKLFUz+hSF1zz8DEFqeHkP51w44XCg2ZXizWrz+VwKzSI4Ay57S3WY7Sv2rOBB71N8B3s4i9JQ4emxEb2Z9Em/4VfpV9WI/TkmYQkem0oz3VlHyNfKfgDo+uxAwhdMazln+bZRX5ulXv0",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795147365,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
