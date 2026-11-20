@@ -90,6 +90,10 @@
       "estado": "PENDIENTE",
       "orden": "0240a47e-2f3f-4e70-bff1-64d96f41ddc1"
     },
+    "46": {
+      "estado": "PENDIENTE",
+      "orden": "8aecddd2-03d2-4de8-8a51-74f89896705f"
+    },
     "47": {
       "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
@@ -445,6 +449,10 @@
     "303": {
       "estado": "PENDIENTE",
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
+    },
+    "304": {
+      "estado": "PENDIENTE",
+      "orden": "8aecddd2-03d2-4de8-8a51-74f89896705f"
     },
     "305": {
       "estado": "PAGADO",
@@ -1033,6 +1041,10 @@
     "767": {
       "estado": "PAGADO",
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
+    },
+    "768": {
+      "estado": "PENDIENTE",
+      "orden": "8aecddd2-03d2-4de8-8a51-74f89896705f"
     },
     "770": {
       "estado": "PAGADO",
@@ -2584,6 +2596,23 @@
       "registrado": 1795216017,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795216047,
+      "comprobanteHash": null
+    },
+    "8aecddd2-03d2-4de8-8a51-74f89896705f": {
+      "numeros": [
+        46,
+        304,
+        768
+      ],
+      "seudonimo": "Dayana B.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDY1BRxyKVuuLkup+koJhD+hB+zd5DhXGPJJQB5AqFYnVpYH2fIY+C+idUA1KXQFt3iu1MHbDEEq9g8Wpj7AoPZCEYCX2WKgIc03qtlOKdBraBlfoZN6DF5gqHIvUBpRW/lZ2lqY7vLfGcgJBIpLyLlhhgjcWNxWAlx6b74gh4nKwi+3juI3/w3ULPsuqXc3c6ps5MkqOTkX/1BPXHtsURHRJ43LNXRO8JX9c4mo",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795216182,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
