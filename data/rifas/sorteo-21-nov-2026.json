@@ -434,6 +434,10 @@
       "estado": "PENDIENTE",
       "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
+    "320": {
+      "estado": "PENDIENTE",
+      "orden": "f135e8f7-a268-4959-b478-01b2e96f1f67"
+    },
     "322": {
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
@@ -477,6 +481,10 @@
     "343": {
       "estado": "PAGADO",
       "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
+    },
+    "347": {
+      "estado": "PENDIENTE",
+      "orden": "f135e8f7-a268-4959-b478-01b2e96f1f67"
     },
     "349": {
       "estado": "PENDIENTE",
@@ -905,6 +913,10 @@
     "753": {
       "estado": "PENDIENTE",
       "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
+    },
+    "757": {
+      "estado": "PENDIENTE",
+      "orden": "f135e8f7-a268-4959-b478-01b2e96f1f67"
     },
     "763": {
       "estado": "PAGADO",
@@ -2249,6 +2261,23 @@
       "registrado": 1795190916,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795190967,
+      "comprobanteHash": null
+    },
+    "f135e8f7-a268-4959-b478-01b2e96f1f67": {
+      "numeros": [
+        320,
+        347,
+        757
+      ],
+      "seudonimo": "Astrid M.",
+      "ciudad": "Vilo",
+      "metodo": "Transferencia",
+      "privado": "enc1:BGMUHHKBluTYCVF++WSo/nLD27zd9zXZD7QXE/8MknimbElGG1I1WnvezYeiWaFKwnr995r6CmKJ3WHbtGgT5oMoNWKdVm1T6t4FUocsQz7Nh7Hu+vFHenGmU1Ewx2R8sgvgElz/SnXwdWBtPiGojKSUTBqmPiD5o5vIfpJKTh8qA3s57GHZnIjphGW1qAjYkYxJI344jXlgA0dZQsdXtn9xOsHJoMkWNuTevmc=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795191062,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
