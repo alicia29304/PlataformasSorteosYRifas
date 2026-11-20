@@ -750,6 +750,10 @@
       "estado": "PENDIENTE",
       "orden": "0240a47e-2f3f-4e70-bff1-64d96f41ddc1"
     },
+    "578": {
+      "estado": "PENDIENTE",
+      "orden": "0c24cf87-2035-43a6-981f-0d0a5defd79e"
+    },
     "580": {
       "estado": "PENDIENTE",
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
@@ -789,6 +793,10 @@
     "606": {
       "estado": "PAGADO",
       "orden": "b2caa53c-64b4-4c43-8631-88a36a6edb1d"
+    },
+    "609": {
+      "estado": "PENDIENTE",
+      "orden": "0c24cf87-2035-43a6-981f-0d0a5defd79e"
     },
     "610": {
       "estado": "PAGADO",
@@ -953,6 +961,10 @@
     "743": {
       "estado": "PAGADO",
       "orden": "be8ba76a-b25e-4701-8ad4-671cc2c3daf4"
+    },
+    "744": {
+      "estado": "PENDIENTE",
+      "orden": "0c24cf87-2035-43a6-981f-0d0a5defd79e"
     },
     "747": {
       "estado": "PENDIENTE",
@@ -2448,6 +2460,23 @@
       "registrado": 1795205363,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795205387,
+      "comprobanteHash": null
+    },
+    "0c24cf87-2035-43a6-981f-0d0a5defd79e": {
+      "numeros": [
+        578,
+        609,
+        744
+      ],
+      "seudonimo": "Breidy F.",
+      "ciudad": "Barranca de upia",
+      "metodo": "Transferencia",
+      "privado": "enc1:BA4RVXHdg5NtPXkYDbKur+nijzJl7jOAWX7Z4GAtThGnSM1/v4VN3MYd4GOqpKdP6GP2FlQNsOni86GW4QsMXOW9xTErzFM8taZ0QEp/q21Cpw5zkWhld8WUgBjCb6NYgKHlF4UXQs3SMnLjAuwUdM04Mgnz5ixlxvtNlmOSTg0yRMVfu0trg3vN8d58M7qVIl3cc2Cim6u/4zgPWjf1txQEJXRq+d9nIHoYgQhIbTk=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795205467,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
