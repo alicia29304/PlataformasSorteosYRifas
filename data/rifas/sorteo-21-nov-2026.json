@@ -234,6 +234,10 @@
       "estado": "PENDIENTE",
       "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
+    "168": {
+      "estado": "PENDIENTE",
+      "orden": "973c575a-4a5f-4852-b52a-e1edcdc1d7ba"
+    },
     "169": {
       "estado": "PAGADO",
       "orden": "6ad7cf31-8b49-48df-adf7-ad8cc279f93b"
@@ -974,6 +978,10 @@
       "estado": "PAGADO",
       "orden": "f6044a40-2848-487f-8421-956bf22c4b46"
     },
+    "770": {
+      "estado": "PENDIENTE",
+      "orden": "973c575a-4a5f-4852-b52a-e1edcdc1d7ba"
+    },
     "773": {
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
@@ -1057,6 +1065,10 @@
     "832": {
       "estado": "PAGADO",
       "orden": "5162c86d-a054-48b8-bac1-ce648feea456"
+    },
+    "833": {
+      "estado": "PENDIENTE",
+      "orden": "973c575a-4a5f-4852-b52a-e1edcdc1d7ba"
     },
     "838": {
       "estado": "PENDIENTE",
@@ -2390,6 +2402,23 @@
       "registrado": 1795197666,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795197709,
+      "comprobanteHash": null
+    },
+    "973c575a-4a5f-4852-b52a-e1edcdc1d7ba": {
+      "numeros": [
+        168,
+        770,
+        833
+      ],
+      "seudonimo": "Lorena L.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BKrKBSGmXj9FaKxcVkFXZ9aIP+EsnXgFIg9gch7jOxgcD20jqxIFOp6J0rlZndW/HAPaswVYr+xah+ojYmNpCHRzFyCE8xgfZzzPlYCFyjoRt/MwQvyZPpNBGbsBn1Wtbmv2JJGLquhirBJZMjud+1b2XipuD5g62xLabGdgIlW4s+7YNWWIiw3PClVql5h4E8HQ00Oc/jLN0shsALKU9dlC2elcot/Wav0=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795204860,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
