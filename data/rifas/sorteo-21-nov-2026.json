@@ -91,7 +91,7 @@
       "orden": "2fe1554b-99c9-4592-acac-c4080336c2c6"
     },
     "35": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "41": {
@@ -647,7 +647,7 @@
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
     },
     "331": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "335": {
@@ -711,7 +711,7 @@
       "orden": "6f40d630-4382-4d9c-aa49-90e47fc8a694"
     },
     "367": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "372": {
@@ -1027,11 +1027,11 @@
       "orden": "0013c477-ed1d-4f50-b25f-741dc53a9aca"
     },
     "575": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "576": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "578": {
@@ -1271,7 +1271,7 @@
       "orden": "c2bc8028-5072-45ab-a032-1ab2c12d2d60"
     },
     "721": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "722": {
@@ -1467,7 +1467,7 @@
       "orden": "71f5fc99-2b90-4eee-a4d9-c76c441e16c9"
     },
     "807": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "808": {
@@ -1607,7 +1607,7 @@
       "orden": "cfb1ea5a-1242-42b1-bc9e-71e95e45a30b"
     },
     "891": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "894": {
@@ -1623,7 +1623,7 @@
       "orden": "2fe1554b-99c9-4592-acac-c4080336c2c6"
     },
     "901": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "902": {
@@ -1679,7 +1679,7 @@
       "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
     },
     "932": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
     "936": {
@@ -3529,11 +3529,11 @@
       "ciudad": "Villanueva",
       "metodo": "Efectivo",
       "privado": "enc1:BDtaplV0dR5UbEtIIeHYBGizUplbx83IIGxMqkzzzzMjYvA92f8rVdUiNyKWt1BaC8RCpQcnqzE0BwrNqqxnXnrsD1swTm4ioLjyTyqPbP2iOELesQMFRrTUnA2QyRUn61Aeyi72dOix+eacVPuWd477JOIyiKjP2gfhJE4zGjDxwT9Qvw9JzAFUSU/KytN3+BZOw6XFFdk53VrTo4u3CMTLGQEZebWPUdKdksemOg==",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795282819,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795282851,
       "comprobanteHash": null
     }
   }
