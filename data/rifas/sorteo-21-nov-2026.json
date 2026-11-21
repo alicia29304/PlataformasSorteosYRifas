@@ -530,6 +530,10 @@
       "estado": "PAGADO",
       "orden": "1bfa8c22-7dfa-4f61-8066-6afb01889cb7"
     },
+    "251": {
+      "estado": "PENDIENTE",
+      "orden": "dd607b69-5a55-4229-a253-afa2800aac06"
+    },
     "252": {
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
@@ -1550,6 +1554,10 @@
       "estado": "PENDIENTE",
       "orden": "f929cfae-7e8b-4e84-a36a-951abfa6eeac"
     },
+    "748": {
+      "estado": "PENDIENTE",
+      "orden": "dd607b69-5a55-4229-a253-afa2800aac06"
+    },
     "749": {
       "estado": "PENDIENTE",
       "orden": "f929cfae-7e8b-4e84-a36a-951abfa6eeac"
@@ -1909,6 +1917,10 @@
     "909": {
       "estado": "PENDIENTE",
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
+    },
+    "914": {
+      "estado": "PENDIENTE",
+      "orden": "dd607b69-5a55-4229-a253-afa2800aac06"
     },
     "915": {
       "estado": "PAGADO",
@@ -4211,6 +4223,23 @@
       "registrado": 1795294801,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795294829,
+      "comprobanteHash": null
+    },
+    "dd607b69-5a55-4229-a253-afa2800aac06": {
+      "numeros": [
+        251,
+        748,
+        914
+      ],
+      "seudonimo": "José B.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BMNO7c7dMT4nJ6kI1Rn7MQb7SBBNXpdBzxGqGd9bAPoSLYvvIBXu4TaQ/myhBU1wry3Jq4HSlqRuXfzLAXFEXECIAFmQcdKFPqbYthFeUWq2TFv/5mUb160GjavP6HtMcHp/W68CmxsR1vsERcgDDpNQ3CZYy/becFxrfmOEUeyMIJY3DM9tRX8ZSINM9+YTSBbVUWRx8CZGo37HFaT/IzhG6cRPhwEmzPmel6o=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795295183,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
