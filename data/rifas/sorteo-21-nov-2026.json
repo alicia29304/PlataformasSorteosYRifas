@@ -86,6 +86,10 @@
       "estado": "PENDIENTE",
       "orden": "664eba95-8611-4dca-9deb-76397f06e7e2"
     },
+    "30": {
+      "estado": "PENDIENTE",
+      "orden": "13c184ba-760c-4ed1-ae7a-dcb80000edd0"
+    },
     "34": {
       "estado": "PAGADO",
       "orden": "3eb45c0a-f8df-416f-823d-d7d36788a277"
@@ -1510,6 +1514,10 @@
       "estado": "PENDIENTE",
       "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
     },
+    "754": {
+      "estado": "PENDIENTE",
+      "orden": "13c184ba-760c-4ed1-ae7a-dcb80000edd0"
+    },
     "755": {
       "estado": "PAGADO",
       "orden": "0013c477-ed1d-4f50-b25f-741dc53a9aca"
@@ -1693,6 +1701,10 @@
     "833": {
       "estado": "PAGADO",
       "orden": "973c575a-4a5f-4852-b52a-e1edcdc1d7ba"
+    },
+    "836": {
+      "estado": "PENDIENTE",
+      "orden": "13c184ba-760c-4ed1-ae7a-dcb80000edd0"
     },
     "838": {
       "estado": "PENDIENTE",
@@ -4066,6 +4078,23 @@
       "registrado": 1795294019,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795294050,
+      "comprobanteHash": null
+    },
+    "13c184ba-760c-4ed1-ae7a-dcb80000edd0": {
+      "numeros": [
+        30,
+        754,
+        836
+      ],
+      "seudonimo": "Verónica D.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BLH/10KQw+F19s3VqV76hSF5rx57gDrAf3gsC5Gw8bbFMNOxT/0/qdnVbPSJe4rvFy6kf4YYLulwPvZ9qK43n4yDdZe8yeEhnUtBbB9sJGusHbI8YyF/90iCs4MMCSnm5q054KETdAJc2pD51rTxwT8TN2AmFHpY4ou1hT2iss6xgFZw9mAF81hUp9zhLpTwdznNb4ikDMdIAafgXBW9tH2RUWKdip3Rrw8tiZ0x6Q==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795294139,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
