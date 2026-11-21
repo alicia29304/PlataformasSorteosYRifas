@@ -722,6 +722,10 @@
       "estado": "PAGADO",
       "orden": "6f40d630-4382-4d9c-aa49-90e47fc8a694"
     },
+    "366": {
+      "estado": "PENDIENTE",
+      "orden": "2a76f522-6476-485f-90a8-038b46d0f14c"
+    },
     "367": {
       "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
@@ -1069,6 +1073,10 @@
     "576": {
       "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
+    },
+    "577": {
+      "estado": "PENDIENTE",
+      "orden": "2a76f522-6476-485f-90a8-038b46d0f14c"
     },
     "578": {
       "estado": "PAGADO",
@@ -1677,6 +1685,10 @@
     "895": {
       "estado": "PENDIENTE",
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
+    },
+    "899": {
+      "estado": "PENDIENTE",
+      "orden": "2a76f522-6476-485f-90a8-038b46d0f14c"
     },
     "900": {
       "estado": "PENDIENTE",
@@ -3665,6 +3677,23 @@
       "registrado": 1795285479,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795285511,
+      "comprobanteHash": null
+    },
+    "2a76f522-6476-485f-90a8-038b46d0f14c": {
+      "numeros": [
+        366,
+        577,
+        899
+      ],
+      "seudonimo": "Luis O.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BCWe1/+yPKR/+O+nVRXBCSt1B51X5vkNtxBO7r8DJclIYF3Lz8wS7cevqfPQNGZ4/+CsC7LrzGmmWe6QPvaPflk1WbO8ndSXQ8Lhj9VxuKQ3GAOr70HItIt40A2J0riIUhFBSNgs9FhZx3xZKNQa4lJBVkufFld1tTC1KaWW+1L3BNWK39W+ZrTPlkhSvM1b+7aJKdnPVNdpNj2IJnhgg2xvuLLkeGCXyQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795286693,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
