@@ -730,6 +730,10 @@
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
     },
+    "351": {
+      "estado": "PENDIENTE",
+      "orden": "12e6ac23-87cf-41e7-a5b4-3add5a7b6085"
+    },
     "352": {
       "estado": "PENDIENTE",
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
@@ -1734,6 +1738,10 @@
       "estado": "PAGADO",
       "orden": "338e2376-8d26-40d6-9fb3-87028c431106"
     },
+    "881": {
+      "estado": "PENDIENTE",
+      "orden": "12e6ac23-87cf-41e7-a5b4-3add5a7b6085"
+    },
     "882": {
       "estado": "PAGADO",
       "orden": "c7d4732f-dcd3-40ab-a629-f81a419dcb76"
@@ -1853,6 +1861,10 @@
     "932": {
       "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
+    },
+    "934": {
+      "estado": "PENDIENTE",
+      "orden": "12e6ac23-87cf-41e7-a5b4-3add5a7b6085"
     },
     "936": {
       "estado": "PENDIENTE",
@@ -3950,6 +3962,23 @@
       "registrado": 1795293263,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795293299,
+      "comprobanteHash": null
+    },
+    "12e6ac23-87cf-41e7-a5b4-3add5a7b6085": {
+      "numeros": [
+        351,
+        881,
+        934
+      ],
+      "seudonimo": "Ninfa H.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BBLiQpay3Tx1uw2KpFHrwsszGYw97GeqCJpmbNF1+39LBmzZKh/t5i3HxVEL+vw5DrFU/yoZ3diaxO4xNfny9SmOXfkMTStF+EqPhsiMwJfMRDPx0ZWgNNlPtlO6VIwBAwKxPq1ubhErOo9KKv+CuDZxAy66iMdfpzNmmoTnGHh0UqJpf2ef96mVucI9PAqOPa3TTF4CTeHmgXjwy84ivTurnMwV2u1Bm37c",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795293409,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
