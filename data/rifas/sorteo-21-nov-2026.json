@@ -427,7 +427,7 @@
       "orden": "41c0abfb-c2ee-4ce0-8f3e-e3eeed99c539"
     },
     "187": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "00241a11-fba1-4744-9669-f1a1c4fa9fd9"
     },
     "189": {
@@ -1035,7 +1035,7 @@
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
     },
     "470": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "00241a11-fba1-4744-9669-f1a1c4fa9fd9"
     },
     "472": {
@@ -1195,7 +1195,7 @@
       "orden": "0aa797ed-190c-4182-bb5f-d99584af98aa"
     },
     "549": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "00241a11-fba1-4744-9669-f1a1c4fa9fd9"
     },
     "553": {
@@ -1207,7 +1207,7 @@
       "orden": "3c11b0ee-d324-486a-8f85-0b1fac1051cf"
     },
     "558": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "00241a11-fba1-4744-9669-f1a1c4fa9fd9"
     },
     "559": {
@@ -1507,7 +1507,7 @@
       "orden": "01643ed8-5210-4a15-94a0-c7a732a95f2a"
     },
     "688": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "00241a11-fba1-4744-9669-f1a1c4fa9fd9"
     },
     "694": {
@@ -1899,7 +1899,7 @@
       "orden": "ddb8dedf-71b0-4e4c-b4ce-ba45c95a3f32"
     },
     "865": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "00241a11-fba1-4744-9669-f1a1c4fa9fd9"
     },
     "867": {
@@ -4444,11 +4444,11 @@
       "ciudad": "Villanueva",
       "metodo": "Transferencia",
       "privado": "enc1:BBFcoGaiIvfKMuI1vko37N8K5s804EJTzw+oZ6MyNnvVETKnyHwYqs0BsqflQ4B1WV4O4xNe4PnrpkA5WW7fM706ahsVvBVWSixkxNv/i0/+sl6mSPMzy/jP8qeXxu83AekZ8bd71LmD96zf+vjoqQ5Yc6gARlI9zxt0wIGjtiOxuhGX5lDi3Tmas+anZXTq1zseyoNhnv3XitUB1XRZJwdthWes0xvL0aRY1Q==",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795298481,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795298511,
       "comprobanteHash": null
     }
   }
