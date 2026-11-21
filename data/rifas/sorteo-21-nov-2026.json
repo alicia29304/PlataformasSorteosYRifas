@@ -686,6 +686,10 @@
       "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
+    "334": {
+      "estado": "PENDIENTE",
+      "orden": "18f6e412-28d0-4fdc-8143-0f193fbf9e7e"
+    },
     "335": {
       "estado": "PENDIENTE",
       "orden": "664eba95-8611-4dca-9deb-76397f06e7e2"
@@ -813,6 +817,10 @@
     "397": {
       "estado": "PAGADO",
       "orden": "afaea69e-9b6b-49e8-b7e5-6cb3d6c0b547"
+    },
+    "398": {
+      "estado": "PENDIENTE",
+      "orden": "18f6e412-28d0-4fdc-8143-0f193fbf9e7e"
     },
     "400": {
       "estado": "PENDIENTE",
@@ -1125,6 +1133,10 @@
     "578": {
       "estado": "PAGADO",
       "orden": "0c24cf87-2035-43a6-981f-0d0a5defd79e"
+    },
+    "579": {
+      "estado": "PENDIENTE",
+      "orden": "18f6e412-28d0-4fdc-8143-0f193fbf9e7e"
     },
     "580": {
       "estado": "PENDIENTE",
@@ -3921,6 +3933,23 @@
       "registrado": 1795290847,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795290874,
+      "comprobanteHash": null
+    },
+    "18f6e412-28d0-4fdc-8143-0f193fbf9e7e": {
+      "numeros": [
+        334,
+        398,
+        579
+      ],
+      "seudonimo": "Diana G.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BH5dog40S4o1xSkybgcnjgrqG16Q2YA6RVbwc9zIsZ9JdpuzyAwoisF5PH2x9Hyv5t+1bxPu23gdyOEFxBdrzPvn8vK0B5aGYAeUgQu4JUJmRcW22QCMPQKRW1uzfr6oRV2BBha1CJIu3H4P9GDRH9txXANIkpvRQSuW5iVoDH/v2YSl9/PKrZ0hAboQMteZyubvK77fq+HgFl2GICGvh8xGF3mitmI3OkcR+Q==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795293263,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
