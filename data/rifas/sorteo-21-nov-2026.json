@@ -259,7 +259,7 @@
       "orden": "69e123c8-4922-4956-94f7-cf641ba4385c"
     },
     "159": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "41c0abfb-c2ee-4ce0-8f3e-e3eeed99c539"
     },
     "161": {
@@ -315,7 +315,7 @@
       "orden": "1dc4719e-c053-4592-b82b-7a6d91e8cea0"
     },
     "186": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "41c0abfb-c2ee-4ce0-8f3e-e3eeed99c539"
     },
     "189": {
@@ -1015,7 +1015,7 @@
       "orden": "6ad7cf31-8b49-48df-adf7-ad8cc279f93b"
     },
     "662": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "41c0abfb-c2ee-4ce0-8f3e-e3eeed99c539"
     },
     "666": {
@@ -2935,11 +2935,11 @@
       "ciudad": "Tauramena",
       "metodo": "Transferencia",
       "privado": "enc1:BIPaLd1QOdaxN9zlqcrzP/PFhHCagT3xNDjQ1350r3oZNyPZuxItClONJcxBCKlXORts6tjmCtcC+W2Ardv/2/xwaOtZO3SskyQKs83CA/a6EPwUoF9QqfPv1rUIamhHXk3sRGheVASYtMCljKR5dtdVIPSJk82/mRR6bUdHfpJLeggdkds3BjzCncTArYSDme0/dwxRXhfXOaGROgcZn+3krHe7M2SgaYvx",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795222134,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795222159,
       "comprobanteHash": null
     }
   }
