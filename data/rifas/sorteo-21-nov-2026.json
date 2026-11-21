@@ -366,6 +366,10 @@
       "estado": "PAGADO",
       "orden": "391a2dca-cb56-483d-abca-8b5c924e16b1"
     },
+    "157": {
+      "estado": "PENDIENTE",
+      "orden": "fb1c49ca-97dd-498b-8fda-49a316fd69f1"
+    },
     "158": {
       "estado": "PAGADO",
       "orden": "69e123c8-4922-4956-94f7-cf641ba4385c"
@@ -949,6 +953,10 @@
     "400": {
       "estado": "PENDIENTE",
       "orden": "72db0a31-8302-4092-aaf8-e0937689a3b7"
+    },
+    "401": {
+      "estado": "PENDIENTE",
+      "orden": "fb1c49ca-97dd-498b-8fda-49a316fd69f1"
     },
     "403": {
       "estado": "PENDIENTE",
@@ -4677,6 +4685,22 @@
       "registrado": 1795304171,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795304207,
+      "comprobanteHash": null
+    },
+    "fb1c49ca-97dd-498b-8fda-49a316fd69f1": {
+      "numeros": [
+        157,
+        401
+      ],
+      "seudonimo": "Yenifer E.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BGWoXPLq5bkYw54LP7eWJMoBHUKOu05KlA19hGw71KstNAfPHF/El9EegP1aaMfr1ZoOYzY9561A/dSCpn4G3HGzafMdmG1VuI+y+s2BxyaigPomO48qeJG2MCVe/Qc/SBg0E/CY6zYSIVfuq/d/DHbi9Ae9LfSNE08Qr0qnrklAyrUsQGrqgMcHbnsXFOICaabEpEcWlDLb/KR29R8tLWh32AcP7YTfFVJ6yKLR",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795304376,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
