@@ -86,6 +86,10 @@
       "estado": "PENDIENTE",
       "orden": "664eba95-8611-4dca-9deb-76397f06e7e2"
     },
+    "34": {
+      "estado": "PENDIENTE",
+      "orden": "3eb45c0a-f8df-416f-823d-d7d36788a277"
+    },
     "35": {
       "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
@@ -958,6 +962,10 @@
       "estado": "PAGADO",
       "orden": "063e44b1-05ed-4afd-a1c7-65c39955cb61"
     },
+    "473": {
+      "estado": "PENDIENTE",
+      "orden": "3eb45c0a-f8df-416f-823d-d7d36788a277"
+    },
     "476": {
       "estado": "PENDIENTE",
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
@@ -1717,6 +1725,10 @@
     "861": {
       "estado": "PAGADO",
       "orden": "ddb8dedf-71b0-4e4c-b4ce-ba45c95a3f32"
+    },
+    "867": {
+      "estado": "PENDIENTE",
+      "orden": "3eb45c0a-f8df-416f-823d-d7d36788a277"
     },
     "869": {
       "estado": "PAGADO",
@@ -3979,6 +3991,23 @@
       "registrado": 1795293409,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795293435,
+      "comprobanteHash": null
+    },
+    "3eb45c0a-f8df-416f-823d-d7d36788a277": {
+      "numeros": [
+        34,
+        473,
+        867
+      ],
+      "seudonimo": "Nelly L.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BAjvBkUR5fBf9T2o3lIzLwCoBleyPtHhnotZR4CRJCBRS4nlHLLDoVrF3Hhv2eUYadrLhXpIUt8GCGB92w4z+4Ys05qmEqdrOeLmlIk1uM78FjL3v6GVoFQEoNCh69MJrbLncFPWtWbzb9A09+w0l3gvw0Sfrv25sQQFOVBOvMubhz0VbXsqFNQZXRN69IeiboOkPTq9f3csXU04XaMZzsuwSB+GNzrYl5pBQw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795293595,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
