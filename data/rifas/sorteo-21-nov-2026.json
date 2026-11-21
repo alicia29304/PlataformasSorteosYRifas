@@ -151,7 +151,7 @@
       "orden": "1dc4719e-c053-4592-b82b-7a6d91e8cea0"
     },
     "59": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
     },
     "68": {
@@ -483,7 +483,7 @@
       "orden": "da5bb63f-6797-4210-a95e-e72bd49e01b0"
     },
     "227": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
     },
     "228": {
@@ -775,7 +775,7 @@
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
     },
     "354": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
     },
     "356": {
@@ -835,7 +835,7 @@
       "orden": "6f40d630-4382-4d9c-aa49-90e47fc8a694"
     },
     "381": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
     },
     "384": {
@@ -1251,7 +1251,7 @@
       "orden": "85e3c623-84e9-498d-b852-adac1f73a4d0"
     },
     "589": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
     },
     "590": {
@@ -1267,7 +1267,7 @@
       "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
     },
     "600": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
     },
     "601": {
@@ -1491,7 +1491,7 @@
       "orden": "f929cfae-7e8b-4e84-a36a-951abfa6eeac"
     },
     "710": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
     },
     "712": {
@@ -4284,11 +4284,11 @@
       "ciudad": "Villanueva",
       "metodo": "Transferencia",
       "privado": "enc1:BH+L73U03mj31g7t5wgkkfxkYbqoHnLlFQaftCXh93Pee2vEGSY2wQrrjNWiq8D154HEahTvqqyfoDaobH8lBPX9UMhK2YklyI2nXWXGruDZ64Y/IjZPkGvJP6qQWwgXbH/PxNwCTSmESRDI3I44k20ocltKTaDgOCtEzv+FrOjaeoW8x6mwPSGn2U0ApIqOg+eVDE5sV7nufYV913FSkPhyc+0w7a2bo+Hz8MI=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795295718,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795295747,
       "comprobanteHash": null
     }
   }
