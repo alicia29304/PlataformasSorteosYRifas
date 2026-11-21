@@ -670,6 +670,10 @@
       "estado": "PENDIENTE",
       "orden": "1935dc8d-938f-47bd-98f7-672ea54a1ecf"
     },
+    "300": {
+      "estado": "PENDIENTE",
+      "orden": "b8ed6863-bad3-429e-9b51-fda4e9974a60"
+    },
     "301": {
       "estado": "PENDIENTE",
       "orden": "06209906-1ccd-4634-b3af-88ef7a311429"
@@ -1126,6 +1130,10 @@
       "estado": "PAGADO",
       "orden": "01643ed8-5210-4a15-94a0-c7a732a95f2a"
     },
+    "508": {
+      "estado": "PENDIENTE",
+      "orden": "b8ed6863-bad3-429e-9b51-fda4e9974a60"
+    },
     "509": {
       "estado": "PAGADO",
       "orden": "b7b31e86-cc11-486d-98b3-61abe4246a41"
@@ -1557,6 +1565,10 @@
     "699": {
       "estado": "PAGADO",
       "orden": "6ad7cf31-8b49-48df-adf7-ad8cc279f93b"
+    },
+    "700": {
+      "estado": "PENDIENTE",
+      "orden": "b8ed6863-bad3-429e-9b51-fda4e9974a60"
     },
     "702": {
       "estado": "PAGADO",
@@ -4541,6 +4553,23 @@
       "registrado": 1795299660,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795299710,
+      "comprobanteHash": null
+    },
+    "b8ed6863-bad3-429e-9b51-fda4e9974a60": {
+      "numeros": [
+        300,
+        508,
+        700
+      ],
+      "seudonimo": "Anaís A.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BNKYt9EN/D6g55f2hEMp7rnL5MZMLFsh5ULiyHySDoY+HScn9R8OCBBe1bQHYnLOU8iG4NVJQfSDZh+cO476JOhgXSoLmwnXq1SFUusnEqJy6xihUcUFXvaMTAW+UWQwmYeiOgqKuyThoMZTfJipoPHFtoZGRKYpdaTTd2m/mctUA1sO/oa8eAyyFhoSKRne9nZyiZDlgFbz73bJRoYkd1PDKbKXBfl26ZccsQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795300134,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
