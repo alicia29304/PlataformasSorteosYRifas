@@ -598,6 +598,10 @@
       "estado": "PAGADO",
       "orden": "133d0b67-7515-40d7-bb91-482fa87a7dff"
     },
+    "306": {
+      "estado": "PENDIENTE",
+      "orden": "38f4bb45-4cd1-42e7-aa06-8f1c5ecbe67c"
+    },
     "307": {
       "estado": "PAGADO",
       "orden": "8a643e75-acad-4e85-9361-af35417c22b6"
@@ -825,6 +829,10 @@
     "429": {
       "estado": "PAGADO",
       "orden": "8309f14a-0347-44ab-95f5-ac08776cca53"
+    },
+    "431": {
+      "estado": "PENDIENTE",
+      "orden": "38f4bb45-4cd1-42e7-aa06-8f1c5ecbe67c"
     },
     "433": {
       "estado": "PENDIENTE",
@@ -1561,6 +1569,10 @@
     "845": {
       "estado": "PENDIENTE",
       "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
+    },
+    "847": {
+      "estado": "PENDIENTE",
+      "orden": "38f4bb45-4cd1-42e7-aa06-8f1c5ecbe67c"
     },
     "848": {
       "estado": "PAGADO",
@@ -3578,6 +3590,23 @@
       "registrado": 1795283392,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795283556,
+      "comprobanteHash": null
+    },
+    "38f4bb45-4cd1-42e7-aa06-8f1c5ecbe67c": {
+      "numeros": [
+        306,
+        431,
+        847
+      ],
+      "seudonimo": "Jimy L.",
+      "ciudad": "Santa helena",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDhemrRskXTbxKLP2vnnUQTXp4f8slR3cXCggOP0QuWeAKJ0Ceq9FBgKXOdS7OTfVALe/pf81DnCXBaGmye+p8t6xvWvQ8ATYThPt0oBe10l0ndn86T3b6u6z3pJ/4LvuC0u697znnI4qmwszEqygcDp+da1KfuE4m6bttkB6FNgH4PL1/hSBa+GmTRgo8wmk5C75dkZ9o71cGXJTl7lp33pTwu91H66ja4kOg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795283670,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
