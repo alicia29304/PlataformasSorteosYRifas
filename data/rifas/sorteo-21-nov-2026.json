@@ -770,6 +770,10 @@
       "estado": "PAGADO",
       "orden": "c2bc8028-5072-45ab-a032-1ab2c12d2d60"
     },
+    "397": {
+      "estado": "PENDIENTE",
+      "orden": "afaea69e-9b6b-49e8-b7e5-6cb3d6c0b547"
+    },
     "400": {
       "estado": "PENDIENTE",
       "orden": "72db0a31-8302-4092-aaf8-e0937689a3b7"
@@ -781,6 +785,10 @@
     "404": {
       "estado": "PAGADO",
       "orden": "746d6972-e60c-4078-9fcd-530d2a4d041e"
+    },
+    "407": {
+      "estado": "PENDIENTE",
+      "orden": "afaea69e-9b6b-49e8-b7e5-6cb3d6c0b547"
     },
     "408": {
       "estado": "PENDIENTE",
@@ -1241,6 +1249,10 @@
     "671": {
       "estado": "PAGADO",
       "orden": "6ad7cf31-8b49-48df-adf7-ad8cc279f93b"
+    },
+    "673": {
+      "estado": "PENDIENTE",
+      "orden": "afaea69e-9b6b-49e8-b7e5-6cb3d6c0b547"
     },
     "674": {
       "estado": "PENDIENTE",
@@ -3636,6 +3648,23 @@
       "registrado": 1795285115,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795285152,
+      "comprobanteHash": null
+    },
+    "afaea69e-9b6b-49e8-b7e5-6cb3d6c0b547": {
+      "numeros": [
+        397,
+        407,
+        673
+      ],
+      "seudonimo": "Derly R.",
+      "ciudad": "Tauramena",
+      "metodo": "Transferencia",
+      "privado": "enc1:BGZOK4kBB9kmnQ477GEMSuS3v2IMocYyRMnoM7t6moe6KURAnZXNR1hueNrGBFKGvW8V+wx3rKfLHjOOEjp6qgLw0KVN68rJSWOci8l2o9rmQki01MaijtMSFSDthS1kcQsJrBO+31LHi60WPhKnR8gNqiXswlkbk2sUCtJ5m5owOmGb+LHKF6dmjw1XlDSYzHlhGyus8PGu6j6H1B7K9HPji53b8kSBEjs=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795285479,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
