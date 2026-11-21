@@ -450,6 +450,10 @@
       "estado": "PAGADO",
       "orden": "763a35f0-bd77-4b16-98d5-bafb9dc23234"
     },
+    "292": {
+      "estado": "PENDIENTE",
+      "orden": "338e2376-8d26-40d6-9fb3-87028c431106"
+    },
     "293": {
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
@@ -749,6 +753,10 @@
     "516": {
       "estado": "PENDIENTE",
       "orden": "08a99c9c-59ee-4458-9d7e-211917db08d9"
+    },
+    "520": {
+      "estado": "PENDIENTE",
+      "orden": "338e2376-8d26-40d6-9fb3-87028c431106"
     },
     "521": {
       "estado": "PAGADO",
@@ -1241,6 +1249,10 @@
     "873": {
       "estado": "PAGADO",
       "orden": "1dff7a23-ba1c-42f7-8e46-e5123be44c45"
+    },
+    "878": {
+      "estado": "PENDIENTE",
+      "orden": "338e2376-8d26-40d6-9fb3-87028c431106"
     },
     "882": {
       "estado": "PAGADO",
@@ -2765,6 +2777,23 @@
       "registrado": 1795217887,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795217934,
+      "comprobanteHash": null
+    },
+    "338e2376-8d26-40d6-9fb3-87028c431106": {
+      "numeros": [
+        292,
+        520,
+        878
+      ],
+      "seudonimo": "Guillermo T.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BF2qDEqiPCwN26/9JMLyPLNQ15QsZiPB9eXhLeMpO72IS/XiikmHQoJ1bl5RHHFvHQMCKukdOtLSn/8p/tnOf7CPCDKn/Vax4SqxnlHnSVjb729hVdpLN/Gi4lpEDt+oHRSavcjHYuXsvb+dh1P8CI+ergs+vNkcpiui2kMUKSvigxVdBrky5aYpElxix4xvJnx2N/XclCbXiMlhmXOVGRCH8P/agZy3ViairMRI",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795219314,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
