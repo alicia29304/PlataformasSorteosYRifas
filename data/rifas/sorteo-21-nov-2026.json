@@ -1222,6 +1222,10 @@
       "estado": "PAGADO",
       "orden": "101ac39c-f019-4369-b6a9-1828d30ccaa0"
     },
+    "574": {
+      "estado": "PENDIENTE",
+      "orden": "5a4b30aa-2d30-472f-8ee9-faa4614c2381"
+    },
     "575": {
       "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
@@ -1778,6 +1782,10 @@
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
     },
+    "819": {
+      "estado": "PENDIENTE",
+      "orden": "5a4b30aa-2d30-472f-8ee9-faa4614c2381"
+    },
     "820": {
       "estado": "PAGADO",
       "orden": "97b68abd-a5cf-498d-ad95-90b31fa81299"
@@ -1893,6 +1901,10 @@
     "878": {
       "estado": "PAGADO",
       "orden": "338e2376-8d26-40d6-9fb3-87028c431106"
+    },
+    "880": {
+      "estado": "PENDIENTE",
+      "orden": "5a4b30aa-2d30-472f-8ee9-faa4614c2381"
     },
     "881": {
       "estado": "PAGADO",
@@ -4376,6 +4388,23 @@
       "registrado": 1795296733,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795296787,
+      "comprobanteHash": null
+    },
+    "5a4b30aa-2d30-472f-8ee9-faa4614c2381": {
+      "numeros": [
+        574,
+        819,
+        880
+      ],
+      "seudonimo": "Ester L.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BIV4p8Varyrsjhw86nb9xcWykVy1nnPmWFDZSA6wDhFVKCvEsdcIc+DNOZt38CnrUTnDKHkUPqkdQ4ffy4IUgoOpPxjOVRnTRXMfMKIFtsfaig2ZDr6ZD24HbJbRvN9EL6uhRqwLbClF/X3kFz36vuZevl1Vp/pcI6Vcku/N/xP+/Foa0NOYZuuD5PMHUKI7TJbMc8NfSnwBOJWK8RKG13DfGjsyPRq0DSBb",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795298334,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
