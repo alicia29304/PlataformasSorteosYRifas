@@ -198,6 +198,10 @@
       "estado": "PENDIENTE",
       "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
     },
+    "104": {
+      "estado": "PENDIENTE",
+      "orden": "4984a079-18a4-4541-bbbb-c124e934118e"
+    },
     "109": {
       "estado": "PAGADO",
       "orden": "8b74f3f2-9f7c-4098-8d23-9cd3a80ea531"
@@ -870,6 +874,10 @@
       "estado": "PAGADO",
       "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
     },
+    "513": {
+      "estado": "PENDIENTE",
+      "orden": "4984a079-18a4-4541-bbbb-c124e934118e"
+    },
     "515": {
       "estado": "PAGADO",
       "orden": "343ca6e3-4c9f-48fe-84cd-255293575c9f"
@@ -1529,6 +1537,10 @@
     "919": {
       "estado": "PAGADO",
       "orden": "a37bf713-3f8c-4dd8-b673-e36954307219"
+    },
+    "920": {
+      "estado": "PENDIENTE",
+      "orden": "4984a079-18a4-4541-bbbb-c124e934118e"
     },
     "921": {
       "estado": "PENDIENTE",
@@ -3224,6 +3236,23 @@
       "registrado": 1795228442,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795228467,
+      "comprobanteHash": null
+    },
+    "4984a079-18a4-4541-bbbb-c124e934118e": {
+      "numeros": [
+        104,
+        513,
+        920
+      ],
+      "seudonimo": "Yeli T.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BEOz0Pr/CU3eap3cUzxRrFOa2wyn1eSjdgsK2ux7F2lPO1BiSqjrgF/jtTBFdqDCXfbvJ8ieypeDPGUKP0w5IgK3qGZr5iZw8hq4WT0sCQbP6ogb4+KT+4FoYsDYsmZakG/vIAWRoZgqEleq7QHXWhwsybh0YyNP1BjfH38FFEeUwoNlzmUPpBsVi3AMsC/gtxCRugEHg2IJjZC+APRaxLarkiQWJH5osA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795231392,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
