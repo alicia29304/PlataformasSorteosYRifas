@@ -194,6 +194,10 @@
       "estado": "PENDIENTE",
       "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
     },
+    "92": {
+      "estado": "PENDIENTE",
+      "orden": "f146850d-1c14-47c3-a494-22fb02fb639b"
+    },
     "94": {
       "estado": "PAGADO",
       "orden": "5a50a5dd-7469-4bce-9482-d8ca3f25c3de"
@@ -1002,6 +1006,10 @@
       "estado": "PAGADO",
       "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
     },
+    "529": {
+      "estado": "PENDIENTE",
+      "orden": "f146850d-1c14-47c3-a494-22fb02fb639b"
+    },
     "531": {
       "estado": "PAGADO",
       "orden": "8a643e75-acad-4e85-9361-af35417c22b6"
@@ -1469,6 +1477,10 @@
     "779": {
       "estado": "PENDIENTE",
       "orden": "f929cfae-7e8b-4e84-a36a-951abfa6eeac"
+    },
+    "780": {
+      "estado": "PENDIENTE",
+      "orden": "f146850d-1c14-47c3-a494-22fb02fb639b"
     },
     "781": {
       "estado": "PAGADO",
@@ -3694,6 +3706,23 @@
       "registrado": 1795286693,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795286736,
+      "comprobanteHash": null
+    },
+    "f146850d-1c14-47c3-a494-22fb02fb639b": {
+      "numeros": [
+        92,
+        529,
+        780
+      ],
+      "seudonimo": "Cristian Ú.",
+      "ciudad": "Paz de ariporo",
+      "metodo": "Transferencia",
+      "privado": "enc1:BLdm8S0cuG/MyuETQt2weuuuGUjrkysxnVNDeCGXrz2fCRUMAiXNBhn0JBHbozUkvo95MRtDxp4Tj3QNjxo7P3RMHCnNoHrTqqp5IbxbiCXZeaJQl9+Rkv2nxmZvmUlICDHwMFmYz0+I6Jl3Vz5zJSmkBsyQjijaFFFnmUPZMI2JJXPe3EkTeeR7XaScrhIC9HSH8U87YODZaNtkfzwoKjmVXo4x5E/KgvUk5qDWFA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795286961,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
