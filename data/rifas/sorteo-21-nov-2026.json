@@ -262,6 +262,10 @@
       "estado": "PAGADO",
       "orden": "8a643e75-acad-4e85-9361-af35417c22b6"
     },
+    "131": {
+      "estado": "PENDIENTE",
+      "orden": "101ac39c-f019-4369-b6a9-1828d30ccaa0"
+    },
     "133": {
       "estado": "PENDIENTE",
       "orden": "72db0a31-8302-4092-aaf8-e0937689a3b7"
@@ -445,6 +449,10 @@
     "217": {
       "estado": "PENDIENTE",
       "orden": "7c6e3383-ab6e-46fa-98f8-b788a5e51f0a"
+    },
+    "219": {
+      "estado": "PENDIENTE",
+      "orden": "101ac39c-f019-4369-b6a9-1828d30ccaa0"
     },
     "220": {
       "estado": "PAGADO",
@@ -1129,6 +1137,10 @@
     "568": {
       "estado": "PAGADO",
       "orden": "0013c477-ed1d-4f50-b25f-741dc53a9aca"
+    },
+    "572": {
+      "estado": "PENDIENTE",
+      "orden": "101ac39c-f019-4369-b6a9-1828d30ccaa0"
     },
     "575": {
       "estado": "PAGADO",
@@ -4008,6 +4020,23 @@
       "registrado": 1795293595,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795293637,
+      "comprobanteHash": null
+    },
+    "101ac39c-f019-4369-b6a9-1828d30ccaa0": {
+      "numeros": [
+        131,
+        219,
+        572
+      ],
+      "seudonimo": "Shirley D.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Transferencia",
+      "privado": "enc1:BB4LLhMT+2S882zJJGcUnpogNY7R8U9gwvL+aesDcr7eNMFpspFDAjZkY5OJETM7N3nE/vdgtaQZhKN5E51MoeMwxM7o6TDqlAbWH2+RwIRiuTnCTXkX/3XqWqZivWmHLIx4/ZIOF3RJ3voJcJQ/Z/7rqX9ZEqUX5PxCr3AFqS7fMMfkQdyR4c7dQP+nOuKIRfMHS0ZV1nYU5jxM+4aNeynVWtP5pGvOTGjR6/E=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795293735,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
