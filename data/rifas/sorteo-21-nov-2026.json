@@ -162,6 +162,10 @@
       "estado": "PENDIENTE",
       "orden": "821efbf8-2e4a-42c5-aeb3-f7ab70e38c14"
     },
+    "91": {
+      "estado": "PENDIENTE",
+      "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
+    },
     "94": {
       "estado": "PAGADO",
       "orden": "5a50a5dd-7469-4bce-9482-d8ca3f25c3de"
@@ -313,6 +317,10 @@
     "181": {
       "estado": "PAGADO",
       "orden": "1dc4719e-c053-4592-b82b-7a6d91e8cea0"
+    },
+    "185": {
+      "estado": "PENDIENTE",
+      "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
     },
     "186": {
       "estado": "PAGADO",
@@ -686,6 +694,10 @@
       "estado": "PENDIENTE",
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
     },
+    "420": {
+      "estado": "PENDIENTE",
+      "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
+    },
     "422": {
       "estado": "PENDIENTE",
       "orden": "21ee2aca-92a0-4fcb-aae2-3befd60f45f9"
@@ -785,6 +797,10 @@
     "484": {
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
+    },
+    "487": {
+      "estado": "PENDIENTE",
+      "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
     },
     "488": {
       "estado": "PAGADO",
@@ -981,6 +997,10 @@
     "620": {
       "estado": "PAGADO",
       "orden": "1dff7a23-ba1c-42f7-8e46-e5123be44c45"
+    },
+    "621": {
+      "estado": "PENDIENTE",
+      "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
     },
     "623": {
       "estado": "PAGADO",
@@ -1185,6 +1205,10 @@
     "763": {
       "estado": "PAGADO",
       "orden": "3bdf5568-5032-4c91-b109-003c685c0728"
+    },
+    "764": {
+      "estado": "PENDIENTE",
+      "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
     },
     "766": {
       "estado": "PAGADO",
@@ -1413,6 +1437,10 @@
     "915": {
       "estado": "PAGADO",
       "orden": "cc599e8b-d8bd-4385-92c9-8f624a4a7926"
+    },
+    "916": {
+      "estado": "PENDIENTE",
+      "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
     },
     "921": {
       "estado": "PENDIENTE",
@@ -3004,6 +3032,27 @@
       "registrado": 1795222294,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795222604,
+      "comprobanteHash": null
+    },
+    "1005e4b9-407b-4e5d-b4ee-5a620dbc404a": {
+      "numeros": [
+        91,
+        185,
+        420,
+        487,
+        621,
+        764,
+        916
+      ],
+      "seudonimo": "REY G.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BHAGs44zp7vRfe2qUhMjaCARUQIUwVxEj4R9jG9OKg4VM9VBTnheMmh9R7925loSvFmtOyeLFGitoCUHkTru48ZUr4xO3Nt7ydzgunwM1hsmrz85w4GuE+jkX/OFiF5Foe28Z+Zp+gqr/qPMHAoJdcR26GlXoogzMtbj0XxdGuIXc+f/FgnnY+zQIG+CIJub2y202WI9nzEk0quNZiRl1D84fTEhJ2g=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795222847,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
