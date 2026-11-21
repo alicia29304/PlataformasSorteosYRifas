@@ -114,6 +114,10 @@
       "estado": "PAGADO",
       "orden": "70fd4b50-919d-40d8-aa1d-ca28a8d1d9ff"
     },
+    "38": {
+      "estado": "PENDIENTE",
+      "orden": "c7154e92-f130-4349-a315-660f5e5d8c8d"
+    },
     "41": {
       "estado": "PENDIENTE",
       "orden": "ce54d3fb-00ab-441b-9ed3-69e2e87d0338"
@@ -1546,6 +1550,10 @@
       "estado": "PENDIENTE",
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
     },
+    "656": {
+      "estado": "PENDIENTE",
+      "orden": "c7154e92-f130-4349-a315-660f5e5d8c8d"
+    },
     "658": {
       "estado": "PAGADO",
       "orden": "6ad7cf31-8b49-48df-adf7-ad8cc279f93b"
@@ -2049,6 +2057,10 @@
     "875": {
       "estado": "PAGADO",
       "orden": "0013c477-ed1d-4f50-b25f-741dc53a9aca"
+    },
+    "877": {
+      "estado": "PENDIENTE",
+      "orden": "c7154e92-f130-4349-a315-660f5e5d8c8d"
     },
     "878": {
       "estado": "PAGADO",
@@ -4759,6 +4771,23 @@
       "registrado": 1795305090,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795305129,
+      "comprobanteHash": null
+    },
+    "c7154e92-f130-4349-a315-660f5e5d8c8d": {
+      "numeros": [
+        38,
+        656,
+        877
+      ],
+      "seudonimo": "Jhon L.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BEITpS9WsCDolEyVKetC/AhQioj4VvQ78MBe/9O+qBjyUjUT2iwp8w9a1/FEQ6xKeOR8LZwQZF/h7P+roOtw1D5/gZIvRKljo91E6LQJNwQ5UlApErKZfcc0JVFmXG+wusvvJIBFpBVOIu+xXR/soW5g8ZQFoMNcXa+LqnO1xySIuqWYxS/iDEu36g7wYJL4lPyiOoLzubawK6z3UuvmyN7qEZ7l5fRORg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795305448,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
