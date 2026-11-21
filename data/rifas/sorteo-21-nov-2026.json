@@ -710,6 +710,10 @@
       "estado": "PAGADO",
       "orden": "0fcfac04-3f82-4ec9-873f-8361c78a996a"
     },
+    "345": {
+      "estado": "PENDIENTE",
+      "orden": "cd199ee0-f537-4c7a-bfb5-78a893476190"
+    },
     "347": {
       "estado": "PAGADO",
       "orden": "f135e8f7-a268-4959-b478-01b2e96f1f67"
@@ -1798,6 +1802,10 @@
       "estado": "PENDIENTE",
       "orden": "1005e4b9-407b-4e5d-b4ee-5a620dbc404a"
     },
+    "917": {
+      "estado": "PENDIENTE",
+      "orden": "cd199ee0-f537-4c7a-bfb5-78a893476190"
+    },
     "919": {
       "estado": "PAGADO",
       "orden": "a37bf713-3f8c-4dd8-b673-e36954307219"
@@ -1917,6 +1925,10 @@
     "978": {
       "estado": "PENDIENTE",
       "orden": "0162a765-d690-48ed-a799-e51835232fac"
+    },
+    "981": {
+      "estado": "PENDIENTE",
+      "orden": "cd199ee0-f537-4c7a-bfb5-78a893476190"
     },
     "982": {
       "estado": "PAGADO",
@@ -3892,6 +3904,23 @@
       "registrado": 1795289273,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795289330,
+      "comprobanteHash": null
+    },
+    "cd199ee0-f537-4c7a-bfb5-78a893476190": {
+      "numeros": [
+        345,
+        917,
+        981
+      ],
+      "seudonimo": "Stella S.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BCo4vql7KXjHjEpBRHbS2upLrblkbX1g5AxSwZ1F7ClqRy+TmAyU6DZAvu2WDpCug948YkraaMrnnHaGqsK/YUf3xcibGEHTINh2rCrCOzZXtWEqkdmfOS4pozwyI60zqA5zlpe5QZcwiumcN0FI4DaqfOMWqFQQRRCZjTY65Z7pL+lSXMhUAGsJFY/uwIUTXfwJYlpBZbZkX2JYRibmF0Gnofgh1Vh4JlxX",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795290847,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
