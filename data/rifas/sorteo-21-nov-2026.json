@@ -690,6 +690,10 @@
       "estado": "PAGADO",
       "orden": "1921708b-623f-4872-b8e6-486e44be529a"
     },
+    "286": {
+      "estado": "PENDIENTE",
+      "orden": "82718e9b-60e4-45e3-9fee-bdfa15ba4cc6"
+    },
     "290": {
       "estado": "PAGADO",
       "orden": "763a35f0-bd77-4b16-98d5-bafb9dc23234"
@@ -1006,6 +1010,10 @@
       "estado": "PAGADO",
       "orden": "defef782-f096-4cfc-8d2a-536545f81a89"
     },
+    "417": {
+      "estado": "PENDIENTE",
+      "orden": "82718e9b-60e4-45e3-9fee-bdfa15ba4cc6"
+    },
     "419": {
       "estado": "PENDIENTE",
       "orden": "81eace85-f47e-4693-bbc0-f1a2f7fc6126"
@@ -1069,6 +1077,10 @@
     "443": {
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
+    },
+    "445": {
+      "estado": "PENDIENTE",
+      "orden": "82718e9b-60e4-45e3-9fee-bdfa15ba4cc6"
     },
     "446": {
       "estado": "PENDIENTE",
@@ -4788,6 +4800,23 @@
       "registrado": 1795305448,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795305473,
+      "comprobanteHash": null
+    },
+    "82718e9b-60e4-45e3-9fee-bdfa15ba4cc6": {
+      "numeros": [
+        286,
+        417,
+        445
+      ],
+      "seudonimo": "Sandra V.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BKOpNpFlp2jZh8HwhmU5PigwxiYUs/pCWcLD+r8nspHHHisVWEv6GBxlCPdxuLcdeFVAGFKYDTzcmwgSVXw9yKYIRTHZptVjXT539ZBmyEmxsf59M/vfOfI41OFQFAu+2rXxjy+NXuyR5vMuN4uVauMgXyj2TzhEqOdPoE/GN9WoRiJvoFG4d72842yR4QbQjKPeKcIpN26kG3GbMcyLDISA8XTQ7OWxeDvqKg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795305550,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
