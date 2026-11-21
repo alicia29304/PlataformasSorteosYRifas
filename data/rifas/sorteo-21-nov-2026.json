@@ -590,6 +590,10 @@
       "estado": "PAGADO",
       "orden": "0013c477-ed1d-4f50-b25f-741dc53a9aca"
     },
+    "268": {
+      "estado": "PENDIENTE",
+      "orden": "227d66da-b698-4cdf-b537-e11b6b46d191"
+    },
     "269": {
       "estado": "PAGADO",
       "orden": "66ee42c0-4e4a-45c4-b92d-b20f04501bb4"
@@ -1526,6 +1530,10 @@
       "estado": "PAGADO",
       "orden": "6ad7cf31-8b49-48df-adf7-ad8cc279f93b"
     },
+    "702": {
+      "estado": "PENDIENTE",
+      "orden": "227d66da-b698-4cdf-b537-e11b6b46d191"
+    },
     "705": {
       "estado": "PENDIENTE",
       "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
@@ -1757,6 +1765,10 @@
     "791": {
       "estado": "PAGADO",
       "orden": "4baff0fa-cc11-4fd5-86f7-80dcee75a32b"
+    },
+    "793": {
+      "estado": "PENDIENTE",
+      "orden": "227d66da-b698-4cdf-b537-e11b6b46d191"
     },
     "795": {
       "estado": "PENDIENTE",
@@ -4449,6 +4461,23 @@
       "registrado": 1795298481,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795298511,
+      "comprobanteHash": null
+    },
+    "227d66da-b698-4cdf-b537-e11b6b46d191": {
+      "numeros": [
+        268,
+        702,
+        793
+      ],
+      "seudonimo": "Maria D.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BLkK4GHe174GKyRjWvAhZ/lK7hZ7Jdq9/0jGrwyIIzq+XWKwVp+45s+XieSPm8nNL+yxUGWYNuvZe7+zM7hon+whpVXlOdieqnuKaaG/6/3ZRpIGyvVkTJnQ9XMnrYCkhmljva1r7Vm9C6k3NLoEYCVgg8s+2yQSImd115azM7xVCnUBF+MQA4n9n+tngcnsjER+Y2HoKb1N59jbLJ1ykD8u/rtrcOoQcrYFJA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795298701,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
