@@ -842,6 +842,10 @@
       "estado": "PAGADO",
       "orden": "01643ed8-5210-4a15-94a0-c7a732a95f2a"
     },
+    "394": {
+      "estado": "PENDIENTE",
+      "orden": "148d0f45-9544-4c40-ba36-7f8ccc639608"
+    },
     "396": {
       "estado": "PAGADO",
       "orden": "c2bc8028-5072-45ab-a032-1ab2c12d2d60"
@@ -1258,6 +1262,10 @@
       "estado": "PAGADO",
       "orden": "01643ed8-5210-4a15-94a0-c7a732a95f2a"
     },
+    "612": {
+      "estado": "PENDIENTE",
+      "orden": "148d0f45-9544-4c40-ba36-7f8ccc639608"
+    },
     "613": {
       "estado": "PAGADO",
       "orden": "8b74f3f2-9f7c-4098-8d23-9cd3a80ea531"
@@ -1421,6 +1429,10 @@
     "695": {
       "estado": "PAGADO",
       "orden": "71f5fc99-2b90-4eee-a4d9-c76c441e16c9"
+    },
+    "698": {
+      "estado": "PENDIENTE",
+      "orden": "148d0f45-9544-4c40-ba36-7f8ccc639608"
     },
     "699": {
       "estado": "PAGADO",
@@ -4153,6 +4165,23 @@
       "registrado": 1795294522,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795294553,
+      "comprobanteHash": null
+    },
+    "148d0f45-9544-4c40-ba36-7f8ccc639608": {
+      "numeros": [
+        394,
+        612,
+        698
+      ],
+      "seudonimo": "Eustacia M.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BINrR+zdCAFBly3v/DBMt+vjXSEvMg6ZWRWsaB+GkXlAL4q5qyRAu6Rna0E8TASOBdl+mEAmnaDcDOji+RX1e/MxO1msjFnt2vFEtbkSNLIhLiAwLlRSjD0wINJ+GhOjVhnsM8dW1tgmwkhlw9EalydNfiIL5028DWo6vK4b7PyzAGlD+iRe4T4TTXyQo2ht/s5q1BcBRne+zZUFox6SJxPvst6DVVHhzEd2Iwu/iQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795294671,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
