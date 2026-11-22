@@ -914,6 +914,10 @@
       "estado": "PAGADO",
       "orden": "8cbeb415-3e3c-4eb0-9328-47b44423a219"
     },
+    "341": {
+      "estado": "PENDIENTE",
+      "orden": "fa8e3f24-ab11-46a8-8fb9-a3234bec3067"
+    },
     "342": {
       "estado": "PAGADO",
       "orden": "b7b31e86-cc11-486d-98b3-61abe4246a41"
@@ -1133,6 +1137,10 @@
     "415": {
       "estado": "PAGADO",
       "orden": "defef782-f096-4cfc-8d2a-536545f81a89"
+    },
+    "416": {
+      "estado": "PENDIENTE",
+      "orden": "fa8e3f24-ab11-46a8-8fb9-a3234bec3067"
     },
     "417": {
       "estado": "PAGADO",
@@ -1369,6 +1377,10 @@
     "502": {
       "estado": "PAGADO",
       "orden": "8309f14a-0347-44ab-95f5-ac08776cca53"
+    },
+    "505": {
+      "estado": "PENDIENTE",
+      "orden": "fa8e3f24-ab11-46a8-8fb9-a3234bec3067"
     },
     "507": {
       "estado": "PAGADO",
@@ -5621,6 +5633,23 @@
       "registrado": 1795314522,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795314555,
+      "comprobanteHash": null
+    },
+    "fa8e3f24-ab11-46a8-8fb9-a3234bec3067": {
+      "numeros": [
+        341,
+        416,
+        505
+      ],
+      "seudonimo": "Elimar A.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BF9rpdS0egmP4oJSmK/LjI49Pd1KkxkECCU2PyANtTFZOWH+Etg1lCc+21v9SV3Wzkqb+2uz8nQbf94eg+l6Hkh1ldcpohMk7bzLML9F+Y1V7lW9rtmqDENR7wBo4fveqC0mHlGTLVY/ywBToeYCpvjeRO9tfMdZ8clYHaXLtAgiBnSDpzT8UBq607xH+rZdxn4D2B5/LwWLtdXfxx2wYtURgaLj+134j6bL4xc=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795317459,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
