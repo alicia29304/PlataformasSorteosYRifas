@@ -978,6 +978,10 @@
       "estado": "PAGADO",
       "orden": "fb1c49ca-97dd-498b-8fda-49a316fd69f1"
     },
+    "402": {
+      "estado": "PENDIENTE",
+      "orden": "5a5a8b12-5ac4-4483-94ab-d71e856e0d9b"
+    },
     "403": {
       "estado": "PENDIENTE",
       "orden": "7c6e3383-ab6e-46fa-98f8-b788a5e51f0a"
@@ -1177,6 +1181,10 @@
     "484": {
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
+    },
+    "485": {
+      "estado": "PENDIENTE",
+      "orden": "5a5a8b12-5ac4-4483-94ab-d71e856e0d9b"
     },
     "487": {
       "estado": "PENDIENTE",
@@ -1865,6 +1873,10 @@
     "782": {
       "estado": "PAGADO",
       "orden": "33ee0bf5-2bd5-4633-8ebd-cbb1da25f0c5"
+    },
+    "784": {
+      "estado": "PENDIENTE",
+      "orden": "5a5a8b12-5ac4-4483-94ab-d71e856e0d9b"
     },
     "785": {
       "estado": "PAGADO",
@@ -4817,6 +4829,23 @@
       "registrado": 1795305550,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795305573,
+      "comprobanteHash": null
+    },
+    "5a5a8b12-5ac4-4483-94ab-d71e856e0d9b": {
+      "numeros": [
+        402,
+        485,
+        784
+      ],
+      "seudonimo": "Williton E.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BDtuBbixIO3QmAdCh5ZgywlO/dpkOFK7pjlaAhgTBh9mE1JxVWIrYR21YXNeTyjODVIwjaFo/QNnw19/0yRdOAVrC/HfcBD623U49LxZjsyldJIujHykObWaKMza4fwnsxrrDFhwI8oXlG6cU6Vy+PcFZ/+3ZQA/PcsovE5dRIrVK3IQM0yDMint97ctFpbBhA1ufKfSJwSqIFW6NMYeFvb0YgU9Q1OsVSzrC9+60ZY=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795305732,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
