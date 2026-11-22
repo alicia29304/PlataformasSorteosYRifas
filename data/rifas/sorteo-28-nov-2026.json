@@ -22,9 +22,21 @@
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
     },
+    "151": {
+      "estado": "PENDIENTE",
+      "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
+    },
+    "158": {
+      "estado": "PENDIENTE",
+      "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
+    },
     "265": {
       "estado": "PENDIENTE",
       "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
+    },
+    "325": {
+      "estado": "PENDIENTE",
+      "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
     },
     "333": {
       "estado": "PENDIENTE",
@@ -37,6 +49,10 @@
     "417": {
       "estado": "PENDIENTE",
       "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
+    },
+    "450": {
+      "estado": "PENDIENTE",
+      "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
     },
     "609": {
       "estado": "PENDIENTE",
@@ -144,6 +160,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795388920,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "787f9dac-8345-475f-ab04-32d12d05b01e": {
+      "numeros": [
+        151,
+        158,
+        325,
+        450
+      ],
+      "seudonimo": "MILER P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BMhB8KEYhvloNvgFt+lpA9FfeyXedAZSASnIH4sKYMpIDpEqJ0GCIdb/JUiGySxPZR/PUmzTid5wv4U3dCdFCkQKJwwoArT/nl6Z16zIyhdUJJ618cUTCZJ5f6kLTboJs0BridnzrVLeWIo6m5iIhBbBvrhZ6J6VMun6JyO+3D1lnZyQ5M9/qf//dn6ECBtoOhITVuA6Iu9WwypjM+8NVGZhkvUOsiP6UmT6",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795389185,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
