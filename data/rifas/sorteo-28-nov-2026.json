@@ -10,13 +10,29 @@
   "estado": "ACTIVA",
   "creada": 1795372412,
   "numeros": {
+    "12": {
+      "estado": "PENDIENTE",
+      "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
+    },
     "120": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
     },
+    "265": {
+      "estado": "PENDIENTE",
+      "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
+    },
+    "333": {
+      "estado": "PENDIENTE",
+      "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
+    },
     "344": {
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
+    },
+    "417": {
+      "estado": "PENDIENTE",
+      "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
     },
     "670": {
       "estado": "PAGADO",
@@ -68,6 +84,24 @@
       "registrado": 1795388518,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795388553,
+      "comprobanteHash": null
+    },
+    "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5": {
+      "numeros": [
+        12,
+        265,
+        333,
+        417
+      ],
+      "seudonimo": "Especialista G.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BPZf09fs5GaGc3NiPEevo0wUXo5IN6P7++p2BzyleWrYTg10+OiV+/jtLS/JZEauVJ+JeJ6plKTEBWrLB0Hdnm6UzaNdvEBDYRNlSktCmKpyParCD4sbz6Upv46Z47+qStCiIY1S7wdfOcfo1mFREPDR9ZHEv7/P/Xar+6ym5Kgfsh8To3j1X+8kVjHnYZh7F9ArAwO1Q0NnDYP35SJpcA45Omd+oc//NXq33A1hDaPI3vQ=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795388819,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
