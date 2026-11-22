@@ -170,6 +170,10 @@
       "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
     },
+    "66": {
+      "estado": "PENDIENTE",
+      "orden": "b9dd4df2-ee12-4c93-b322-46ee361964a7"
+    },
     "68": {
       "estado": "PAGADO",
       "orden": "1dc4719e-c053-4592-b82b-7a6d91e8cea0"
@@ -1326,6 +1330,10 @@
       "estado": "PAGADO",
       "orden": "cc599e8b-d8bd-4385-92c9-8f624a4a7926"
     },
+    "542": {
+      "estado": "PENDIENTE",
+      "orden": "b9dd4df2-ee12-4c93-b322-46ee361964a7"
+    },
     "545": {
       "estado": "PAGADO",
       "orden": "8cbeb415-3e3c-4eb0-9328-47b44423a219"
@@ -1977,6 +1985,10 @@
     "812": {
       "estado": "PAGADO",
       "orden": "c7d4732f-dcd3-40ab-a629-f81a419dcb76"
+    },
+    "813": {
+      "estado": "PENDIENTE",
+      "orden": "b9dd4df2-ee12-4c93-b322-46ee361964a7"
     },
     "814": {
       "estado": "PENDIENTE",
@@ -4991,6 +5003,23 @@
       "registrado": 1795306533,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795306561,
+      "comprobanteHash": null
+    },
+    "b9dd4df2-ee12-4c93-b322-46ee361964a7": {
+      "numeros": [
+        66,
+        542,
+        813
+      ],
+      "seudonimo": "Aury D.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BD2lHtpx0w7+JJ6lVz5mcKHMzPRbwrHWbJhPeNK/KoXOPDazmQWmFgPZt/PmMSJ2O0/sSWiQr5qwZkwhgX2cc8KteycVGnbLaqe/eZEpN6NI2RGqFjHpM35UcyIgMmGUvGvDUUvXC+BC5VNxDMEwTk635VSXJXUewcs27k18SQPT1J8zDe5EIJdgJKYM81YZbO/9MsLF84q+Oa9OvPFvkWLi3a0ZKN66Iw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795306641,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
