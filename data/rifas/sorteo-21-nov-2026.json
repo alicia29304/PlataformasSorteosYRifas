@@ -774,6 +774,10 @@
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
     },
+    "314": {
+      "estado": "PENDIENTE",
+      "orden": "d792964b-9855-407e-a8e8-69fb76c3cd3a"
+    },
     "315": {
       "estado": "PAGADO",
       "orden": "b7b33743-23cc-43b9-8a60-dcd3a243e325"
@@ -1666,6 +1670,10 @@
       "estado": "PAGADO",
       "orden": "41c0abfb-c2ee-4ce0-8f3e-e3eeed99c539"
     },
+    "663": {
+      "estado": "PENDIENTE",
+      "orden": "d792964b-9855-407e-a8e8-69fb76c3cd3a"
+    },
     "666": {
       "estado": "PENDIENTE",
       "orden": "664eba95-8611-4dca-9deb-76397f06e7e2"
@@ -1773,6 +1781,10 @@
     "710": {
       "estado": "PAGADO",
       "orden": "c1f7bbb9-3c91-4715-b0f8-293f4ca09037"
+    },
+    "711": {
+      "estado": "PENDIENTE",
+      "orden": "d792964b-9855-407e-a8e8-69fb76c3cd3a"
     },
     "712": {
       "estado": "PAGADO",
@@ -5238,6 +5250,23 @@
       "registrado": 1795309436,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795309465,
+      "comprobanteHash": null
+    },
+    "d792964b-9855-407e-a8e8-69fb76c3cd3a": {
+      "numeros": [
+        314,
+        663,
+        711
+      ],
+      "seudonimo": "Mauricio C.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BHY4hMTD6xnBBKAEVAXI5LPY8pQzgoh8gYk69FWQ/EouUA4UalZi90ayILLvEqO/OlseBB9e0e0BCL9r8VLH9fX0ruYv46VhcnCH+ChT1VhN459O3/On7IcaUCbzdK6l11vSh1WvIP9sw4sJ/Hz00qAa1QPok6JiLYO7J/0CPcRpA89iQPCMR1z6e8Tj56tKK8foKSgwPgenUSFMz2jjkvsJTqIQi3ayfXEngUuKtdMpAQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795309912,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
