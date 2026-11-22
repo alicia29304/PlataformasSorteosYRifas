@@ -1106,6 +1106,10 @@
       "estado": "PAGADO",
       "orden": "2310c750-2ae4-4d32-8400-3da93ec5aeed"
     },
+    "455": {
+      "estado": "PENDIENTE",
+      "orden": "04621901-07ab-4f7c-8999-d0b12d52a80d"
+    },
     "457": {
       "estado": "PAGADO",
       "orden": "16e0c563-e6ac-4f06-b0f1-b5c620cc302a"
@@ -2162,6 +2166,10 @@
       "estado": "PENDIENTE",
       "orden": "1c468494-a490-46a4-9457-c7a43d32656c"
     },
+    "905": {
+      "estado": "PENDIENTE",
+      "orden": "04621901-07ab-4f7c-8999-d0b12d52a80d"
+    },
     "907": {
       "estado": "PAGADO",
       "orden": "1661e013-5660-47b7-b925-ec9c72395af7"
@@ -2253,6 +2261,10 @@
     "941": {
       "estado": "PENDIENTE",
       "orden": "1cd95e21-c670-4e18-ac0c-19a0a8e2620a"
+    },
+    "942": {
+      "estado": "PENDIENTE",
+      "orden": "04621901-07ab-4f7c-8999-d0b12d52a80d"
     },
     "946": {
       "estado": "PAGADO",
@@ -4846,6 +4858,23 @@
       "registrado": 1795305732,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795305760,
+      "comprobanteHash": null
+    },
+    "04621901-07ab-4f7c-8999-d0b12d52a80d": {
+      "numeros": [
+        455,
+        905,
+        942
+      ],
+      "seudonimo": "Catalina P.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BKxaS0FGR824ZyApuy58jbzhd6mO97Ifez9cyW347sthIoC34NifKzL+gzTb1xXE/m8E8ST0UGSTk2lDDryqfmA+SM3CnSN26UpCn3OXEGFBBipfiy5ssWBDgkk2r0GhDWbL+CExG+NSyoVBUK77AiRB6ElGKOUg6qYSnjfH+1+2XikXDLoX+5WI9baRE7MOQsFEXafOfX1H+2WNjSJvzRLDfab0qZ51KbhzlJzZ",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795305833,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
