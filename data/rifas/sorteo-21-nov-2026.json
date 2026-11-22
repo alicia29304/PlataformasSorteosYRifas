@@ -930,6 +930,10 @@
       "estado": "PENDIENTE",
       "orden": "9c5f4586-beef-4427-a4bb-676b84ddce96"
     },
+    "374": {
+      "estado": "PENDIENTE",
+      "orden": "d7fc8f50-d622-4e91-90a1-794b9aeb33e4"
+    },
     "375": {
       "estado": "PAGADO",
       "orden": "2be36458-9145-41b1-8a84-f47cae3bb567"
@@ -1318,6 +1322,10 @@
       "estado": "PAGADO",
       "orden": "6ad7cf31-8b49-48df-adf7-ad8cc279f93b"
     },
+    "535": {
+      "estado": "PENDIENTE",
+      "orden": "d7fc8f50-d622-4e91-90a1-794b9aeb33e4"
+    },
     "536": {
       "estado": "PAGADO",
       "orden": "391a2dca-cb56-483d-abca-8b5c924e16b1"
@@ -1385,6 +1393,10 @@
     "561": {
       "estado": "PAGADO",
       "orden": "b4edb1ae-ab33-4740-95de-ae6be6ebddcd"
+    },
+    "562": {
+      "estado": "PENDIENTE",
+      "orden": "d7fc8f50-d622-4e91-90a1-794b9aeb33e4"
     },
     "563": {
       "estado": "PAGADO",
@@ -5064,6 +5076,23 @@
       "registrado": 1795306749,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795306804,
+      "comprobanteHash": null
+    },
+    "d7fc8f50-d622-4e91-90a1-794b9aeb33e4": {
+      "numeros": [
+        374,
+        535,
+        562
+      ],
+      "seudonimo": "José G.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BJt3Ye3lSd5arctrPamb85LJA7okPEpemLnrhYo7heqTBBn7INkqIE0NlzIX5GAmILInzYi+T/JmCGAkffyE7q7IQtqjRHWtBVMPNRrD5lXLYZIgQ43yJea9Bg60MSsWnFoxSFL8r9snHcl0XXGUzPilqXTupWz856pt0X+y2OGFkvoWsL7NRE7WqO0tOWJH/bNQSgx6gEv+B90tcLOWDotcO/PRtYSxM/DfO9E=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795306888,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
