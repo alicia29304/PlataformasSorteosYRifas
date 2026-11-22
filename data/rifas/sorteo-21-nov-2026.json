@@ -18,6 +18,10 @@
       "estado": "PAGADO",
       "orden": "9d131d99-731e-4670-9037-614634cd743f"
     },
+    "4": {
+      "estado": "PENDIENTE",
+      "orden": "4073113e-945d-4dec-904a-c7810040c91a"
+    },
     "5": {
       "estado": "PAGADO",
       "orden": "d0aec3e4-1341-4591-9e49-94ebf1410a68"
@@ -25,6 +29,10 @@
     "6": {
       "estado": "PAGADO",
       "orden": "08800c27-4e42-4055-bd30-4cb719f37168"
+    },
+    "7": {
+      "estado": "PENDIENTE",
+      "orden": "4073113e-945d-4dec-904a-c7810040c91a"
     },
     "8": {
       "estado": "PENDIENTE",
@@ -1729,6 +1737,10 @@
     "640": {
       "estado": "PAGADO",
       "orden": "4ff316dc-2437-499c-befd-11edc9945e08"
+    },
+    "644": {
+      "estado": "PENDIENTE",
+      "orden": "4073113e-945d-4dec-904a-c7810040c91a"
     },
     "645": {
       "estado": "PAGADO",
@@ -5563,6 +5575,23 @@
       "registrado": 1795313612,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795313637,
+      "comprobanteHash": null
+    },
+    "4073113e-945d-4dec-904a-c7810040c91a": {
+      "numeros": [
+        4,
+        7,
+        644
+      ],
+      "seudonimo": "Diana C.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BHzzQ3eH76Mp1dRGSaaw7lMpX4vXC2VckPMOk9YNRlaJHKAdc5I0k/l9iR0ILeu4BjDYcpuco/+Hx/czaN3GtOcqEGNKYYr9mDKx5AiiIweyYJabuIKy/QdQqKuYFEHZolEMgI/LzOpflxiaTL6aBIgBEEOimonsE9ES+Pfei9jkFyPE2p2+3byF+nXyz1G9Fa7uNBV1rMYCC/ZwpZwdaWJ6No1h0nRV3A==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795313737,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
