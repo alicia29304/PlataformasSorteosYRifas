@@ -214,6 +214,10 @@
       "estado": "PAGADO",
       "orden": "9a727830-5584-49ce-a460-e276433eba27"
     },
+    "85": {
+      "estado": "PENDIENTE",
+      "orden": "d655023d-2d6c-45e5-a2de-03f7561f729b"
+    },
     "86": {
       "estado": "PAGADO",
       "orden": "2be36458-9145-41b1-8a84-f47cae3bb567"
@@ -1126,6 +1130,10 @@
       "estado": "PAGADO",
       "orden": "3c11b0ee-d324-486a-8f85-0b1fac1051cf"
     },
+    "462": {
+      "estado": "PENDIENTE",
+      "orden": "d655023d-2d6c-45e5-a2de-03f7561f729b"
+    },
     "463": {
       "estado": "PAGADO",
       "orden": "01643ed8-5210-4a15-94a0-c7a732a95f2a"
@@ -1329,6 +1337,10 @@
     "555": {
       "estado": "PAGADO",
       "orden": "3c11b0ee-d324-486a-8f85-0b1fac1051cf"
+    },
+    "557": {
+      "estado": "PENDIENTE",
+      "orden": "d655023d-2d6c-45e5-a2de-03f7561f729b"
     },
     "558": {
       "estado": "PAGADO",
@@ -4875,6 +4887,23 @@
       "registrado": 1795305833,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795305878,
+      "comprobanteHash": null
+    },
+    "d655023d-2d6c-45e5-a2de-03f7561f729b": {
+      "numeros": [
+        85,
+        462,
+        557
+      ],
+      "seudonimo": "Arnulfo V.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BO8iQ8n93uYNZGizOxV/znKNs4lblh0pTn6f/DSg7sJrAOoWg5qWwuNF+uBMbmBOwrd6tSMd4pTy6aR+CLOcfZIQ3etFFt+ebFXdugt6IzqbhVCkYqf6HRbxVmkQqJU0dEvzyENdcMxsvfT6KdKUsfnXD5ri7Lzw3T35T9GsXXAs+8nNdGWGmVEbi1SjQ8ufqxq4SgofAg2N+LfCmCCDrHNAKxd34ZW230rwZn5R0w==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795306095,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
