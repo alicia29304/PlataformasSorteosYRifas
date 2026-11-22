@@ -14,6 +14,10 @@
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
     },
+    "344": {
+      "estado": "PENDIENTE",
+      "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
+    },
     "670": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
@@ -21,6 +25,14 @@
     "693": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
+    },
+    "769": {
+      "estado": "PENDIENTE",
+      "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
+    },
+    "875": {
+      "estado": "PENDIENTE",
+      "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
     }
   },
   "ordenes": {
@@ -39,6 +51,23 @@
       "registrado": 1795388422,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795388446,
+      "comprobanteHash": null
+    },
+    "4c2bc843-c6df-40e5-926e-12af012caa3e": {
+      "numeros": [
+        344,
+        769,
+        875
+      ],
+      "seudonimo": "Diana M.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDUaUQdJOlIPs5F6MfUO9JUroidwUbPrd47FcV1T+k1uVwDzl/NS8XXrjKdczVifNrNBK5Qvd322nYLC1b/WitLXCRol0wlTdw4dYYoqlzI2dQ6vHDj6jzxiBGDsUjZmP/vNAfGxPfdO8b0H24De8yvE0MrbfvNNuf25jDv1hErWU0eN+kNsaTmtYsrZKsVzSBW9kj74SATkd8jczKPq66vgxaGYOJMhHw5yqg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795388518,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
