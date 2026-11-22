@@ -530,6 +530,10 @@
       "estado": "PAGADO",
       "orden": "b2c8a91b-feba-4bd8-a2c6-c78cb6b24958"
     },
+    "214": {
+      "estado": "PENDIENTE",
+      "orden": "6e3e17ca-cb15-42e4-96b2-691c3e8c5022"
+    },
     "215": {
       "estado": "PAGADO",
       "orden": "46e57e1b-3f35-48d0-b857-74d845a25c7e"
@@ -1334,6 +1338,10 @@
       "estado": "PAGADO",
       "orden": "6ad7cf31-8b49-48df-adf7-ad8cc279f93b"
     },
+    "534": {
+      "estado": "PENDIENTE",
+      "orden": "6e3e17ca-cb15-42e4-96b2-691c3e8c5022"
+    },
     "535": {
       "estado": "PAGADO",
       "orden": "d7fc8f50-d622-4e91-90a1-794b9aeb33e4"
@@ -1929,6 +1937,10 @@
     "773": {
       "estado": "PENDIENTE",
       "orden": "53e02b1a-51e1-467f-9678-b003b8e4cd0a"
+    },
+    "774": {
+      "estado": "PENDIENTE",
+      "orden": "6e3e17ca-cb15-42e4-96b2-691c3e8c5022"
     },
     "775": {
       "estado": "PAGADO",
@@ -5180,6 +5192,23 @@
       "registrado": 1795307368,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795307397,
+      "comprobanteHash": null
+    },
+    "6e3e17ca-cb15-42e4-96b2-691c3e8c5022": {
+      "numeros": [
+        214,
+        534,
+        774
+      ],
+      "seudonimo": "Daniela R.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BGeNHTeWYHig0hSvDQ/bcLdvdYVwurzgjLUuYuK2OFpDJfd15ONMr+9/UgKN7M9d2M2eFdm6wXqfBIdCRfg6T5YWtOWCTEM3BzBYAdB0OHR0M6AcpQwowticiRU+AtTU/4gXHuUaOchR7O17ApemEAeaC1Siomw96O+lpODW+dbD7oY/bJdMuULgeLyCW8IxtIQac+EzA+QP53Qvo1Nj4FU6KNg1TtnrD7s0ateh",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795308246,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
