@@ -1,0 +1,14 @@
+{
+  "slug": "sorteo-28-nov-2026",
+  "titulo": "Sorteo 28 Nov 2026",
+  "descripcion": "2M",
+  "precioCop": 3000,
+  "min": 1,
+  "max": 999,
+  "finVentas": "2026-11-29T04:10:00.000Z",
+  "fechaSorteo": "2026-11-29T04:30:00.000Z",
+  "estado": "ACTIVA",
+  "creada": 1795372412,
+  "numeros": {},
+  "ordenes": {}
+}
