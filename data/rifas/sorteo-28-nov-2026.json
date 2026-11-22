@@ -14,6 +14,10 @@
       "estado": "PENDIENTE",
       "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
     },
+    "74": {
+      "estado": "PENDIENTE",
+      "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
+    },
     "120": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
@@ -34,17 +38,37 @@
       "estado": "PENDIENTE",
       "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
     },
+    "609": {
+      "estado": "PENDIENTE",
+      "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
+    },
     "670": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
+    },
+    "689": {
+      "estado": "PENDIENTE",
+      "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
     },
     "693": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
     },
+    "695": {
+      "estado": "PENDIENTE",
+      "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
+    },
     "769": {
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
+    },
+    "782": {
+      "estado": "PENDIENTE",
+      "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
+    },
+    "873": {
+      "estado": "PENDIENTE",
+      "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
     },
     "875": {
       "estado": "PAGADO",
@@ -100,6 +124,26 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795388819,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "54735da5-9c24-433a-850c-c5fac203fb79": {
+      "numeros": [
+        74,
+        609,
+        689,
+        695,
+        782,
+        873
+      ],
+      "seudonimo": "Elismary S.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BNfU8DyT5/4o/XIvzcC8d185DXcIy/93Tf21tFsWhPnSaPD76Y28L1LN3E73M8wS3s8SXGj9jcYc/2dwZLQfLLW9U/tPJhJ5Elb3leQHnjG4ul9t2Qo/SkC3kLU5XKhyFqDp1/hRVZHAclSf0Iovu5l0vrlatTZov/exv+QZ+Sdsx0FgDJbNWaEoFpcE5zSG4OxjiRYU1Wigq00k99cSXXTynAtfbQ0x5Qjy11BO",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795388920,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
