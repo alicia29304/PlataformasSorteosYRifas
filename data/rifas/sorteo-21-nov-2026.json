@@ -1414,6 +1414,10 @@
       "estado": "PAGADO",
       "orden": "cfb1ea5a-1242-42b1-bc9e-71e95e45a30b"
     },
+    "564": {
+      "estado": "PENDIENTE",
+      "orden": "2bff6705-a18c-4e23-850f-3807d1595530"
+    },
     "565": {
       "estado": "PAGADO",
       "orden": "87c48e7a-a223-4831-aef7-b7c4265ce0aa"
@@ -1773,6 +1777,10 @@
     "716": {
       "estado": "PAGADO",
       "orden": "74f1de54-59f8-4eec-a4a9-1e2959b53026"
+    },
+    "717": {
+      "estado": "PENDIENTE",
+      "orden": "2bff6705-a18c-4e23-850f-3807d1595530"
     },
     "721": {
       "estado": "PAGADO",
@@ -2453,6 +2461,10 @@
     "978": {
       "estado": "PAGADO",
       "orden": "0162a765-d690-48ed-a799-e51835232fac"
+    },
+    "979": {
+      "estado": "PENDIENTE",
+      "orden": "2bff6705-a18c-4e23-850f-3807d1595530"
     },
     "980": {
       "estado": "PAGADO",
@@ -5151,6 +5163,23 @@
       "registrado": 1795307223,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795307249,
+      "comprobanteHash": null
+    },
+    "2bff6705-a18c-4e23-850f-3807d1595530": {
+      "numeros": [
+        564,
+        717,
+        979
+      ],
+      "seudonimo": "Fabián C.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BCL61Bh8dhQ6ECT6UVQihP8I5Rdh+uMDqtdb1aKTU8UIehBsmF+OKBpVp9dGZHFQdAFxTMhFjM10hjcNfX87moTnGkvRj/geSVkRfTO2nBAvxS+Bewmr0haRe7HxjjVOsQexmE+seCICiRLouq4q62iby7LOrxOJ1MfNMe508WmAUuIfVH2GoRymHBvRyyKq/yA92gQEm9OaggWNZh6/fLjC7raFInIaKCIIahr0ZINn",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795307368,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
