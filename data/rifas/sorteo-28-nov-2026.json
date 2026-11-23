@@ -118,6 +118,10 @@
       "estado": "PAGADO",
       "orden": "01abfe07-84f9-4f3d-ac4e-0dbafab8234f"
     },
+    "552": {
+      "estado": "PENDIENTE",
+      "orden": "ea3cceb2-9a5b-4358-b5ac-9771b4444537"
+    },
     "554": {
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
@@ -158,6 +162,10 @@
       "estado": "PENDIENTE",
       "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
     },
+    "754": {
+      "estado": "PENDIENTE",
+      "orden": "ea3cceb2-9a5b-4358-b5ac-9771b4444537"
+    },
     "769": {
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
@@ -193,6 +201,10 @@
     "964": {
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
+    "996": {
+      "estado": "PENDIENTE",
+      "orden": "ea3cceb2-9a5b-4358-b5ac-9771b4444537"
     }
   },
   "ordenes": {
@@ -364,6 +376,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795396511,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "ea3cceb2-9a5b-4358-b5ac-9771b4444537": {
+      "numeros": [
+        552,
+        754,
+        996
+      ],
+      "seudonimo": "Andres H.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BK2JDY32BKBP1vgIHfg9x/c+2LRuM/CdvC9VDuChED9GIWhtrgC/eVsi8y4NGlHCPYz2N2LBhIMNH2/ep2JQ5iPfMCkVZeufJ75kKP+YplQ/cyl0pkx7yCXMUhoSHw5NsiJjJpY6RTrSCWF/54JmliZ+LWeUN8pmznK2sxYwW29pqVRJzhJPr0Zhv22jwPlPU5tFaFylJQpLx6bYnWtEmZkzeABq9AkeU31nBg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795396716,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
