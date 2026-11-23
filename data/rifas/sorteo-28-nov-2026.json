@@ -50,6 +50,10 @@
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
     },
+    "115": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
+    },
     "120": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
@@ -90,6 +94,10 @@
       "estado": "PENDIENTE",
       "orden": "c0fa6c3d-c048-43a9-aa9a-732f979b882e"
     },
+    "292": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
+    },
     "317": {
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
@@ -101,6 +109,10 @@
     "325": {
       "estado": "PENDIENTE",
       "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
+    },
+    "327": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
     },
     "333": {
       "estado": "PENDIENTE",
@@ -146,6 +158,10 @@
       "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
     },
+    "492": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
+    },
     "519": {
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
@@ -165,6 +181,10 @@
     "554": {
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
+    "567": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
     },
     "569": {
       "estado": "PENDIENTE",
@@ -193,6 +213,10 @@
     "637": {
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
+    },
+    "666": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
     },
     "670": {
       "estado": "PAGADO",
@@ -238,9 +262,17 @@
       "estado": "PENDIENTE",
       "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
     },
+    "787": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
+    },
     "818": {
       "estado": "PAGADO",
       "orden": "abb9b53f-9c59-46d0-a163-1be506794255"
+    },
+    "821": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
     },
     "825": {
       "estado": "PENDIENTE",
@@ -270,6 +302,10 @@
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
     },
+    "881": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
+    },
     "904": {
       "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
@@ -277,6 +313,10 @@
     "909": {
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
+    },
+    "936": {
+      "estado": "PENDIENTE",
+      "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
     },
     "964": {
       "estado": "PENDIENTE",
@@ -565,6 +605,30 @@
       "registrado": 1795454595,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795454623,
+      "comprobanteHash": null
+    },
+    "c8f9e55c-00b8-4cd3-bae4-b324f889b37e": {
+      "numeros": [
+        115,
+        292,
+        327,
+        492,
+        567,
+        666,
+        787,
+        821,
+        881,
+        936
+      ],
+      "seudonimo": "Eucaris M.",
+      "ciudad": "Vilo",
+      "metodo": "Efectivo",
+      "privado": "enc1:BKA5etx6Pf/yG934UpRYU62SN1ziseaxlNNerpW663DETusp+fK+ans4NJ7m1x3N1A8QFzo6A5W6oUNM4riaS4KpGv7swrUcfz2WewaPcI/LeoeEeje/0EtsIGUb/pK3gGVugavQpAy9G+uuuA4766hW/7RJLwdD4wGupL3tSa3WLL8pU7dP2TrU/XkFEVX1uuIuww4BVVhx5n3vo/Qf3J71sm8oLWs9ZFI8MUdGtg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795455595,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
