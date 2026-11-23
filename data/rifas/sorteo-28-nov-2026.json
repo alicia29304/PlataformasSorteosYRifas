@@ -78,6 +78,10 @@
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     },
+    "238": {
+      "estado": "PENDIENTE",
+      "orden": "abb9b53f-9c59-46d0-a163-1be506794255"
+    },
     "265": {
       "estado": "PENDIENTE",
       "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
@@ -206,6 +210,10 @@
       "estado": "PENDIENTE",
       "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
     },
+    "692": {
+      "estado": "PENDIENTE",
+      "orden": "abb9b53f-9c59-46d0-a163-1be506794255"
+    },
     "693": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
@@ -229,6 +237,10 @@
     "782": {
       "estado": "PENDIENTE",
       "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
+    },
+    "818": {
+      "estado": "PENDIENTE",
+      "orden": "abb9b53f-9c59-46d0-a163-1be506794255"
     },
     "825": {
       "estado": "PENDIENTE",
@@ -534,6 +546,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795447619,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "abb9b53f-9c59-46d0-a163-1be506794255": {
+      "numeros": [
+        238,
+        692,
+        818
+      ],
+      "seudonimo": "Maryuri B.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BI+90OM7x6LEnPYJz03nqWJC5ovMqwREV1Fw2/Dmwvn9UkNVSC07bUabKD5L1mnil7TU6ES9eNiiS42na/4K+Dk7mPdsjZR38rpd7kX7e3HbbgJffkqAePex9DSFlrhYpKIEe3862ajcCA8UwNF9QjOcF8hD2kXYyYf3Ig7DUl3ywbDfjccrfX3vYhOvgVRMuOWgLYO42gY2wddFYCTrKc4PYNc5mRTgOQksJA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795454595,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
