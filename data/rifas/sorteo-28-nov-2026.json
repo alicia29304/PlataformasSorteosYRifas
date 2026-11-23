@@ -27,7 +27,7 @@
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
     },
     "143": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
     },
     "151": {
@@ -63,7 +63,7 @@
       "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
     },
     "473": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
     },
     "521": {
@@ -111,7 +111,7 @@
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
     },
     "904": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
     }
   },
@@ -233,11 +233,11 @@
       "ciudad": "Nobsa Boyacá",
       "metodo": "Transferencia",
       "privado": "enc1:BJRT88xn969BzlHsPu7z45HqgcgnMH1x4SJskSolR5OWX1BqIB1HQCsGXh0q98qh81lCgMG/aDMkY0qzMyzsh+LaieMEvnzcjfpvx39mVALB4zjl9s7j7er0uTTNnw9P0fzLhCqiao94053yVZjJuzClYarkHx+C28f2D6Kd7CkXF9FW+vZbWNJC0Zuhn64GkSZ6CONL6NE5XTWc0Jc8TP653r9u3MbXCl4iBe9AZrU=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795394603,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795394628,
       "comprobanteHash": null
     }
   }
