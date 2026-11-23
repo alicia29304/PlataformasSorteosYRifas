@@ -18,6 +18,10 @@
       "estado": "PAGADO",
       "orden": "01abfe07-84f9-4f3d-ac4e-0dbafab8234f"
     },
+    "33": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
     "74": {
       "estado": "PENDIENTE",
       "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
@@ -38,9 +42,17 @@
       "estado": "PENDIENTE",
       "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
     },
+    "233": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
     "265": {
       "estado": "PENDIENTE",
       "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
+    },
+    "324": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     },
     "325": {
       "estado": "PENDIENTE",
@@ -54,9 +66,21 @@
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
     },
+    "377": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
+    "393": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
     "417": {
       "estado": "PENDIENTE",
       "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
+    },
+    "422": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     },
     "450": {
       "estado": "PENDIENTE",
@@ -66,9 +90,21 @@
       "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
     },
+    "519": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
     "521": {
       "estado": "PAGADO",
       "orden": "01abfe07-84f9-4f3d-ac4e-0dbafab8234f"
+    },
+    "554": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
+    "584": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     },
     "609": {
       "estado": "PENDIENTE",
@@ -113,6 +149,10 @@
     "904": {
       "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
+    },
+    "964": {
+      "estado": "PENDIENTE",
+      "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     }
   },
   "ordenes": {
@@ -238,6 +278,30 @@
       "registrado": 1795394603,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795394628,
+      "comprobanteHash": null
+    },
+    "d94a817c-5222-41f7-b3e3-01293a28dd88": {
+      "numeros": [
+        33,
+        233,
+        324,
+        377,
+        393,
+        422,
+        519,
+        554,
+        584,
+        964
+      ],
+      "seudonimo": "Rincón Y.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BAfuK6R5r2ma60dFAxYDbU5b892T/qnv5Kmkx2GuyX3TbEs+OATZ7cb+/ofE8aeco8gof38xsfHKgodg7zbZD43rXw8Un9WfOR6wSFbQ0kXz2XpAMi5i0eLeqx8camBP5pE43j7/btp9WJmT0RO/rrkStF/ZOdxmH4XTKpRZmIKtt5OHZb+ct29QgETRHVoyYPvCVOzHNzLkxo0X7NxWlQ72zbVgg3ByduY=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795396154,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
