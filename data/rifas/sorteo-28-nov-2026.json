@@ -90,6 +90,10 @@
       "estado": "PENDIENTE",
       "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
     },
+    "175": {
+      "estado": "PENDIENTE",
+      "orden": "03ff9c6c-2fd3-434d-810a-f110ca292385"
+    },
     "176": {
       "estado": "PENDIENTE",
       "orden": "c0fa6c3d-c048-43a9-aa9a-732f979b882e"
@@ -382,6 +386,10 @@
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
     },
+    "864": {
+      "estado": "PENDIENTE",
+      "orden": "03ff9c6c-2fd3-434d-810a-f110ca292385"
+    },
     "866": {
       "estado": "PENDIENTE",
       "orden": "a6cda9a2-8391-41ef-8f27-780f077dc3b8"
@@ -401,6 +409,10 @@
     "881": {
       "estado": "PENDIENTE",
       "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
+    },
+    "895": {
+      "estado": "PENDIENTE",
+      "orden": "03ff9c6c-2fd3-434d-810a-f110ca292385"
     },
     "904": {
       "estado": "PAGADO",
@@ -813,6 +825,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795481317,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "03ff9c6c-2fd3-434d-810a-f110ca292385": {
+      "numeros": [
+        175,
+        864,
+        895
+      ],
+      "seudonimo": "Hernando B.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BIa3As+Ra9eEHHA1xgBjiegslM+3stf/50NpN7T3AyaNB+Qwu6I+ocmg5HJjHEi5uqbMIf2IbQ9PDBsFXO0AlJlf0yoTyQfeYCTdXXxEmbgbFlAfG4MvtVtE+oTfNRv5wYNJ4uqN634iyiZ4rkyDXBZ+pjq7t/QIK9Edk/zRdAnLkPhJPBJjQ0RHsKLxhuNq2vCyewhjrKESwsLJc6BnCT5E0QS1o+be8mIG0AWTbMI=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795481382,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
