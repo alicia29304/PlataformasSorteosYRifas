@@ -558,6 +558,10 @@
       "estado": "PENDIENTE",
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
     },
+    "808": {
+      "estado": "PENDIENTE",
+      "orden": "e60091a7-973c-457a-8b34-684bbbbc8842"
+    },
     "810": {
       "estado": "PENDIENTE",
       "orden": "fef961fb-1aa7-400b-8337-f1df50e1e43a"
@@ -666,6 +670,10 @@
       "estado": "PAGADO",
       "orden": "86a6a3a0-f734-4470-bf83-ebf0a956ea03"
     },
+    "935": {
+      "estado": "PENDIENTE",
+      "orden": "e60091a7-973c-457a-8b34-684bbbbc8842"
+    },
     "936": {
       "estado": "PENDIENTE",
       "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
@@ -693,6 +701,10 @@
     "979": {
       "estado": "PAGADO",
       "orden": "a7e05f59-dbee-4978-82ce-7507f9a2eb25"
+    },
+    "982": {
+      "estado": "PENDIENTE",
+      "orden": "e60091a7-973c-457a-8b34-684bbbbc8842"
     },
     "996": {
       "estado": "PENDIENTE",
@@ -1316,6 +1328,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795532228,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "e60091a7-973c-457a-8b34-684bbbbc8842": {
+      "numeros": [
+        808,
+        935,
+        982
+      ],
+      "seudonimo": "Maria O.",
+      "ciudad": "Puerto López meta",
+      "metodo": "Transferencia",
+      "privado": "enc1:BFDvtdNSWb7d2VziTbXj/BFMbV4z/LokK0Yq7UaLrsMwVt1tMCie7cf7ypmTWpU+xiJuiT/ed4vzXuds+cf4Nh7OT4lrxAGykQdTCjyYSgkdAEqdqtF7L8ShBhq5m13F5j4F+okXg5U2XUZXDT3WuceTJZeb1vBAZCQLxmr3lLl1oyIJ8EpzJiw51kb6uUPXcI3OqX7lcy/NoP/DflWjenHNwWXVcbZ5Ldb8",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795535300,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
