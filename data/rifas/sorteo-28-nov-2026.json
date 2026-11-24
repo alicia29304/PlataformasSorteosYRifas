@@ -106,6 +106,10 @@
       "estado": "PENDIENTE",
       "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
     },
+    "208": {
+      "estado": "PENDIENTE",
+      "orden": "67ef7591-a97a-4590-8b23-6424182f3e4d"
+    },
     "213": {
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
@@ -378,6 +382,10 @@
       "estado": "PAGADO",
       "orden": "f346d57d-ca32-4491-a322-8d2a768eb1d8"
     },
+    "726": {
+      "estado": "PENDIENTE",
+      "orden": "67ef7591-a97a-4590-8b23-6424182f3e4d"
+    },
     "735": {
       "estado": "PAGADO",
       "orden": "53e225cd-96d2-4ac6-98cc-194bcb675b2f"
@@ -501,6 +509,10 @@
     "966": {
       "estado": "PAGADO",
       "orden": "f346d57d-ca32-4491-a322-8d2a768eb1d8"
+    },
+    "972": {
+      "estado": "PENDIENTE",
+      "orden": "67ef7591-a97a-4590-8b23-6424182f3e4d"
     },
     "976": {
       "estado": "PAGADO",
@@ -999,6 +1011,23 @@
       "registrado": 1795497392,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795497423,
+      "comprobanteHash": null
+    },
+    "67ef7591-a97a-4590-8b23-6424182f3e4d": {
+      "numeros": [
+        208,
+        726,
+        972
+      ],
+      "seudonimo": "Alexandra B.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BEHEx9CIWzoGcSzWQShWC+OQCvZ2Tf1zZ2iFQYofs1EzP7kJoWB/La1ZWrAoZu/kN/aA6/azEZqg2PM9ZOo9IfmQtictWQqUN5Xj8IGsq0Q7laGhWRpq4bL8hjvq54JoF7oC6lxeoc8ReaDd5RzmCFZuXr8NRVNr2b5sAOhCPt+UQwgU5wYmWkhqiwGQRIuMtGH+etbgGgmKLizTBiDAw/V1X1znHijgzGQpDjbAqqIa",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795526770,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
