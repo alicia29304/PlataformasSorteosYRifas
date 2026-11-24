@@ -42,6 +42,10 @@
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     },
+    "64": {
+      "estado": "PENDIENTE",
+      "orden": "d4584401-233b-41f1-81c1-81ec13b1d4b0"
+    },
     "74": {
       "estado": "PENDIENTE",
       "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
@@ -186,6 +190,10 @@
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     },
+    "423": {
+      "estado": "PENDIENTE",
+      "orden": "d4584401-233b-41f1-81c1-81ec13b1d4b0"
+    },
     "450": {
       "estado": "PENDIENTE",
       "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
@@ -281,6 +289,10 @@
     "689": {
       "estado": "PENDIENTE",
       "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
+    },
+    "691": {
+      "estado": "PENDIENTE",
+      "orden": "d4584401-233b-41f1-81c1-81ec13b1d4b0"
     },
     "692": {
       "estado": "PAGADO",
@@ -757,6 +769,23 @@
       "registrado": 1795456770,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795456802,
+      "comprobanteHash": null
+    },
+    "d4584401-233b-41f1-81c1-81ec13b1d4b0": {
+      "numeros": [
+        64,
+        423,
+        691
+      ],
+      "seudonimo": "Angela P.",
+      "ciudad": "Cubuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BIEEZ0t1CP2e4844raeciPMHjuQtcZwuYe26YxToClNCXGv8NxsonF8cRBrwCnpBE2lQ+ggKSoPyQN7VAScQv5tJDBUdZaj2IYwRgDuRaIrthz+7/XX5kE31nXmhDVKpJ5EW/Hdp5agQoa9EWRS9osNgL/0xjqXk445ojpxcBT//1CbkRjbPIVk+29E/pNNeTT/Q2c479Sj7PKQB5T3FS6xfJXIOMMangF21bg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795481275,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
