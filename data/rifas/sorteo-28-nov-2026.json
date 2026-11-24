@@ -258,6 +258,10 @@
       "estado": "PAGADO",
       "orden": "53e225cd-96d2-4ac6-98cc-194bcb675b2f"
     },
+    "549": {
+      "estado": "PENDIENTE",
+      "orden": "799b4ca8-5879-4b81-9176-a4d6d65f6e28"
+    },
     "552": {
       "estado": "PENDIENTE",
       "orden": "ea3cceb2-9a5b-4358-b5ac-9771b4444537"
@@ -434,6 +438,10 @@
       "estado": "PAGADO",
       "orden": "86a6a3a0-f734-4470-bf83-ebf0a956ea03"
     },
+    "841": {
+      "estado": "PENDIENTE",
+      "orden": "799b4ca8-5879-4b81-9176-a4d6d65f6e28"
+    },
     "855": {
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
@@ -461,6 +469,10 @@
     "881": {
       "estado": "PENDIENTE",
       "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
+    },
+    "894": {
+      "estado": "PENDIENTE",
+      "orden": "799b4ca8-5879-4b81-9176-a4d6d65f6e28"
     },
     "895": {
       "estado": "PAGADO",
@@ -968,6 +980,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795494641,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "799b4ca8-5879-4b81-9176-a4d6d65f6e28": {
+      "numeros": [
+        549,
+        841,
+        894
+      ],
+      "seudonimo": "Yeison T.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BGPePhPBV+7OL5Mcy2P4rThovAKzZOEF7a43/zn6zam8bjgBhxFo97DL2ERm+r/FG1wwBUn1zY6x8JssiL8tZYYkjULSiqWj3Xfuzeenzm5qkbJXIWBhy/0AcpSwtLc7I0IUYNz25qDU3A1vI+ohBlV0mFDhw+QoNgFwv8ZGIrit8rXj5o7jml8IUk1GN0AvXyzRNlKz7zphR9ENX/SH8CuSyleM2MaxOpnfZA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795497392,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
