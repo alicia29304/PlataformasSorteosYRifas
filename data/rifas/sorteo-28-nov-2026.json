@@ -131,11 +131,11 @@
       "orden": "a9f5a63b-0a77-4429-8000-16342cb40747"
     },
     "278": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "14e87810-bdb9-4841-8485-fd21981695e6"
     },
     "286": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "14e87810-bdb9-4841-8485-fd21981695e6"
     },
     "289": {
@@ -435,7 +435,7 @@
       "orden": "f346d57d-ca32-4491-a322-8d2a768eb1d8"
     },
     "976": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "14e87810-bdb9-4841-8485-fd21981695e6"
     },
     "996": {
@@ -822,11 +822,11 @@
       "ciudad": "Cabuyaro",
       "metodo": "Efectivo",
       "privado": "enc1:BEXm+j5uqZ2knIxHT6I32kTuSGDBmtmUc4bsT11nhelldjAhViZuk9o00AuEQDWHewqfNRQJT4/1dqpAyvQXs6Q28IXGWsWHsMlsuf0TSFkKL0vge8FHHLxzOVHH0THv5vth08waaBpv4DM6FWnS8k2PpdsCWizrB44jYkCHsLN7szihSrdwkO9B4ResCfmCp96E7su52SNtFx/ab64Lw3TgYZNgGV1jvtM=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795481317,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795481446,
       "comprobanteHash": null
     },
     "03ff9c6c-2fd3-434d-810a-f110ca292385": {
