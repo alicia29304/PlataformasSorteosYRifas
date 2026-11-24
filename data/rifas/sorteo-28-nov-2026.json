@@ -102,6 +102,10 @@
       "estado": "PENDIENTE",
       "orden": "a9f5a63b-0a77-4429-8000-16342cb40747"
     },
+    "196": {
+      "estado": "PENDIENTE",
+      "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
+    },
     "213": {
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
@@ -238,6 +242,10 @@
       "estado": "PAGADO",
       "orden": "01abfe07-84f9-4f3d-ac4e-0dbafab8234f"
     },
+    "526": {
+      "estado": "PENDIENTE",
+      "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
+    },
     "528": {
       "estado": "PENDIENTE",
       "orden": "c0fa6c3d-c048-43a9-aa9a-732f979b882e"
@@ -294,6 +302,10 @@
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
     },
+    "630": {
+      "estado": "PENDIENTE",
+      "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
+    },
     "636": {
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
@@ -301,6 +313,10 @@
     "637": {
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
+    },
+    "657": {
+      "estado": "PENDIENTE",
+      "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
     },
     "666": {
       "estado": "PENDIENTE",
@@ -936,6 +952,24 @@
       "registrado": 1795494442,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795494506,
+      "comprobanteHash": null
+    },
+    "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd": {
+      "numeros": [
+        196,
+        526,
+        630,
+        657
+      ],
+      "seudonimo": "Luis M.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BHzz5Aot0KCl93zyHRAvACrwgf6qNfSSX0DoXL6Nrt2OLJwy046m4/xwyYuShiNukl/qi024wedR8fK9Ipe5mxFPo7V7mIdPAkNQBSwn/6z0OL7QqmyfzSomRpdLZS+tt6JBfk2yEgVmgVFm/lk3aLqwfYLyfwdZtkgC+8CWUFQATQ9yktExhA+3oyEwc8iAhCL/LeipuZXmWKERoFKg+sm1dS5X7yRlT8sH",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795494641,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
