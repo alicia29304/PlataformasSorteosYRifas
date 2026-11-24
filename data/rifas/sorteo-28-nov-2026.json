@@ -110,6 +110,10 @@
       "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
     },
+    "145": {
+      "estado": "PENDIENTE",
+      "orden": "62891590-fc95-43fb-81ff-d1dcc30ad528"
+    },
     "151": {
       "estado": "PENDIENTE",
       "orden": "787f9dac-8345-475f-ab04-32d12d05b01e"
@@ -310,6 +314,10 @@
       "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
     },
+    "476": {
+      "estado": "PENDIENTE",
+      "orden": "62891590-fc95-43fb-81ff-d1dcc30ad528"
+    },
     "490": {
       "estado": "PAGADO",
       "orden": "f346d57d-ca32-4491-a322-8d2a768eb1d8"
@@ -401,6 +409,10 @@
     "590": {
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
+    },
+    "608": {
+      "estado": "PENDIENTE",
+      "orden": "62891590-fc95-43fb-81ff-d1dcc30ad528"
     },
     "609": {
       "estado": "PENDIENTE",
@@ -1347,6 +1359,23 @@
       "registrado": 1795535300,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795535333,
+      "comprobanteHash": null
+    },
+    "62891590-fc95-43fb-81ff-d1dcc30ad528": {
+      "numeros": [
+        145,
+        476,
+        608
+      ],
+      "seudonimo": "Nelson C.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BGOvnTEtFz5apFHrm+yw5wKQmf+7botxu4RyRhJT2MiyTPTGl6lIZcQiWxi78Go2Bq/B09K1GLt1aEAu+AExbyubKtQzXzYqdiKlh1jE5cnkqTXYWLihbfgbYxg9ng7QTww6eTZ3JMvMC/LT8p3JPOPzIT3YE+H4N/2iR3TEoZrGNp96FjQbGLa6DK1WvXkfAmVIYOvYtsz7+ERBTNnTB4Zoo3/5nEg+4ZjV8Xo=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795535821,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
