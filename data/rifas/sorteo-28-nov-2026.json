@@ -86,6 +86,10 @@
       "estado": "PENDIENTE",
       "orden": "a6cda9a2-8391-41ef-8f27-780f077dc3b8"
     },
+    "94": {
+      "estado": "PENDIENTE",
+      "orden": "ca43a3de-2948-4c68-aa40-1d0d3ce57624"
+    },
     "97": {
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
@@ -502,6 +506,10 @@
       "estado": "PENDIENTE",
       "orden": "5dbdf28b-0043-4d9e-8130-a16b7ed6cc9a"
     },
+    "650": {
+      "estado": "PENDIENTE",
+      "orden": "ca43a3de-2948-4c68-aa40-1d0d3ce57624"
+    },
     "651": {
       "estado": "PAGADO",
       "orden": "a7e05f59-dbee-4978-82ce-7507f9a2eb25"
@@ -605,6 +613,10 @@
     "769": {
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
+    },
+    "772": {
+      "estado": "PENDIENTE",
+      "orden": "ca43a3de-2948-4c68-aa40-1d0d3ce57624"
     },
     "776": {
       "estado": "PENDIENTE",
@@ -1531,6 +1543,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795546493,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "ca43a3de-2948-4c68-aa40-1d0d3ce57624": {
+      "numeros": [
+        94,
+        650,
+        772
+      ],
+      "seudonimo": "Lis R.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BFQ70cruu5p0p8guwgabshp1AIhjRHQupqFHaT3MVwDPUNpI2PUqXXoYqmFVg/l37T5JCp1JhacnyjE0zTNNtcTvk2HJkH81jiyTWLsjXFYImT2BI3DHq99JDqxsI6VC4ZDWAyv082GqFCWx0JDTVyOqa9ogtiN/kvQ4/skEe3wdZEMUUG4rriCNK2Lzf7msrHpSbmpzwGF5dZ2S6LMGOn768TMesGHbR2RUMI4J",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795553686,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
