@@ -194,6 +194,10 @@
       "estado": "PENDIENTE",
       "orden": "aa92f709-4814-4724-b36a-cbcb8c738f0d"
     },
+    "174": {
+      "estado": "PENDIENTE",
+      "orden": "664c6711-065d-47b1-9262-242454e7d8ad"
+    },
     "175": {
       "estado": "PAGADO",
       "orden": "03ff9c6c-2fd3-434d-810a-f110ca292385"
@@ -221,6 +225,10 @@
     "198": {
       "estado": "PENDIENTE",
       "orden": "fef961fb-1aa7-400b-8337-f1df50e1e43a"
+    },
+    "200": {
+      "estado": "PENDIENTE",
+      "orden": "664c6711-065d-47b1-9262-242454e7d8ad"
     },
     "206": {
       "estado": "PAGADO",
@@ -253,6 +261,10 @@
     "233": {
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
+    "235": {
+      "estado": "PENDIENTE",
+      "orden": "664c6711-065d-47b1-9262-242454e7d8ad"
     },
     "238": {
       "estado": "PAGADO",
@@ -849,6 +861,10 @@
     "831": {
       "estado": "PAGADO",
       "orden": "a7e05f59-dbee-4978-82ce-7507f9a2eb25"
+    },
+    "835": {
+      "estado": "PENDIENTE",
+      "orden": "664c6711-065d-47b1-9262-242454e7d8ad"
     },
     "838": {
       "estado": "PAGADO",
@@ -2057,6 +2073,24 @@
       "registrado": 1795621623,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795621646,
+      "comprobanteHash": null
+    },
+    "664c6711-065d-47b1-9262-242454e7d8ad": {
+      "numeros": [
+        174,
+        200,
+        235,
+        835
+      ],
+      "seudonimo": "Ivonne C.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BPjkWr+VjvL4LnAsEQYEjW8jIScUyoIRrxX6EQczKN+6Kflpn+O8fmhg674CquLKlIYyTGtAB0aHmv7PyGRyFwv+OumNj6Cc3R27gBZE52xnIyKgdHadq9jxqrnOn+pJZSh0uAkKud5KwrkkkVT64/lNcGLbNtV0xDRx81qjdAR6Eb4FP53egphAD6t6t1rwNdCYmFiOfw7tAu2YLlwWHZtgkp8Tibt6KchyeCetAjk=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4c919726f3dce5378a237412ddbf694ebb794564",
+      "registrado": 1795640360,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
