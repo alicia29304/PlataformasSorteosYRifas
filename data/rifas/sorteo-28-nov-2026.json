@@ -338,6 +338,10 @@
       "estado": "PAGADO",
       "orden": "14e87810-bdb9-4841-8485-fd21981695e6"
     },
+    "287": {
+      "estado": "PENDIENTE",
+      "orden": "6da058cf-2746-49d5-a20b-7b19adbc6882"
+    },
     "289": {
       "estado": "PAGADO",
       "orden": "f346d57d-ca32-4491-a322-8d2a768eb1d8"
@@ -533,6 +537,10 @@
     "503": {
       "estado": "PAGADO",
       "orden": "e32b44ba-0056-46d8-a16e-c6969a66f4e4"
+    },
+    "509": {
+      "estado": "PENDIENTE",
+      "orden": "6da058cf-2746-49d5-a20b-7b19adbc6882"
     },
     "510": {
       "estado": "PAGADO",
@@ -817,6 +825,10 @@
     "723": {
       "estado": "PAGADO",
       "orden": "bc93df91-50b3-4123-825c-9eabf60dd6b1"
+    },
+    "724": {
+      "estado": "PENDIENTE",
+      "orden": "6da058cf-2746-49d5-a20b-7b19adbc6882"
     },
     "725": {
       "estado": "PAGADO",
@@ -2299,6 +2311,23 @@
       "registrado": 1795642269,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795642302,
+      "comprobanteHash": null
+    },
+    "6da058cf-2746-49d5-a20b-7b19adbc6882": {
+      "numeros": [
+        287,
+        509,
+        724
+      ],
+      "seudonimo": "Alexandra P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BJwydETdDsJNdpFxNML8iwshxoEG0PqN8QVp13ZEX7AgZQDayVWbIpywsyeoHivrb5V39Nh8fRRiJxJMDMWBiIHF7DdiGPHiwD/QgJ9o7TKKThs+yXRGO2T6FwITkQJg5AALftYu2bGD8pGbJ7Qu2Tf8CuOe7xz92f84S9BgIQw3I6GDhDMEmoGQTmwInTj0qYksrUEy5lvhwtE+VqdN4LpqY386mbjdv1+h5fyp",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795651088,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
