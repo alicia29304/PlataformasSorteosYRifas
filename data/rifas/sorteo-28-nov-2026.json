@@ -510,6 +510,10 @@
       "estado": "PAGADO",
       "orden": "53e225cd-96d2-4ac6-98cc-194bcb675b2f"
     },
+    "533": {
+      "estado": "PENDIENTE",
+      "orden": "ea2ad414-6b62-4945-a2af-d02f18f41b28"
+    },
     "545": {
       "estado": "PENDIENTE",
       "orden": "ba6a9b68-d566-4909-a348-fdea375c8c95"
@@ -562,6 +566,10 @@
       "estado": "PAGADO",
       "orden": "bf31ee86-8c0e-44e7-91c1-44818cabb364"
     },
+    "577": {
+      "estado": "PENDIENTE",
+      "orden": "ea2ad414-6b62-4945-a2af-d02f18f41b28"
+    },
     "581": {
       "estado": "PENDIENTE",
       "orden": "f1f69016-8e03-4e8d-b028-d49f5e582c85"
@@ -573,6 +581,10 @@
     "590": {
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
+    },
+    "592": {
+      "estado": "PENDIENTE",
+      "orden": "ea2ad414-6b62-4945-a2af-d02f18f41b28"
     },
     "608": {
       "estado": "PAGADO",
@@ -1931,6 +1943,23 @@
       "registrado": 1795614971,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795615097,
+      "comprobanteHash": null
+    },
+    "ea2ad414-6b62-4945-a2af-d02f18f41b28": {
+      "numeros": [
+        533,
+        577,
+        592
+      ],
+      "seudonimo": "William F.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BEI2pZHRhiPElkH7I8jvxbSH52+C29x+JG7E900gjynfJFA0dnSMhJDVZzJ6LgaNy/biqyzytoQdwex7zs+WCQ7z7cyU+wk88WL+Gkh328Pow+9b0sKmbLRKpVes910upL+XM254+Oj7Ymu0E5HROgQfNR9KdGO5M4hhbYuYmbVmLvIlvTIjJc9mVQNsdx8YDEAD0P0fRk+Rwb8tTJhDmpJfvxc3dyLYMqaZUJcGvw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795615216,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
