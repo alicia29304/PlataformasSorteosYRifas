@@ -506,6 +506,10 @@
       "estado": "PAGADO",
       "orden": "0354e158-b64a-41fa-8d7f-93b421b1300b"
     },
+    "503": {
+      "estado": "PENDIENTE",
+      "orden": "e32b44ba-0056-46d8-a16e-c6969a66f4e4"
+    },
     "511": {
       "estado": "PENDIENTE",
       "orden": "078c46ca-22fc-47fa-be8d-f0ad378877e8"
@@ -606,6 +610,10 @@
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     },
+    "586": {
+      "estado": "PENDIENTE",
+      "orden": "e32b44ba-0056-46d8-a16e-c6969a66f4e4"
+    },
     "590": {
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
@@ -693,6 +701,10 @@
     "670": {
       "estado": "PAGADO",
       "orden": "8e85ba22-a0ba-4e2a-8850-8313b0afc5d9"
+    },
+    "672": {
+      "estado": "PENDIENTE",
+      "orden": "e32b44ba-0056-46d8-a16e-c6969a66f4e4"
     },
     "675": {
       "estado": "PAGADO",
@@ -1069,6 +1081,10 @@
     "996": {
       "estado": "PENDIENTE",
       "orden": "ea3cceb2-9a5b-4358-b5ac-9771b4444537"
+    },
+    "998": {
+      "estado": "PENDIENTE",
+      "orden": "e32b44ba-0056-46d8-a16e-c6969a66f4e4"
     }
   },
   "ordenes": {
@@ -2089,6 +2105,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0x4c919726f3dce5378a237412ddbf694ebb794564",
       "registrado": 1795640360,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "e32b44ba-0056-46d8-a16e-c6969a66f4e4": {
+      "numeros": [
+        503,
+        586,
+        672,
+        998
+      ],
+      "seudonimo": "Ivonne C.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BBfcf4iyRXN8hDi+N6jxVNW34aAxCMdsar6s+5UykVwhaZYzRWlRISsw8LJ+rumeijTlguyy/zo9cZC0v3LSmlJlTEmT174X+XclzL7Tt3jAbNYEhoeIA1IUxjDvvw6cW9qIFfkyFEOrbVlS2FeSPyv0mAatGgmIjvOXo2b1s5zQStdSbtxckuo/eD1NF4hdk9H6fozKHzs0l6+EF333mlmsFOsrK0DnuuAAGbRaCZo=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795640510,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
