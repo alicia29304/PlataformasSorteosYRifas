@@ -330,6 +330,10 @@
       "estado": "PENDIENTE",
       "orden": "a9f5a63b-0a77-4429-8000-16342cb40747"
     },
+    "340": {
+      "estado": "PENDIENTE",
+      "orden": "ba6a9b68-d566-4909-a348-fdea375c8c95"
+    },
     "344": {
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
@@ -345,6 +349,10 @@
     "351": {
       "estado": "PENDIENTE",
       "orden": "a06785ae-aa01-4cae-a243-078b5ea2b74f"
+    },
+    "364": {
+      "estado": "PENDIENTE",
+      "orden": "ba6a9b68-d566-4909-a348-fdea375c8c95"
     },
     "365": {
       "estado": "PENDIENTE",
@@ -477,6 +485,10 @@
     "531": {
       "estado": "PAGADO",
       "orden": "53e225cd-96d2-4ac6-98cc-194bcb675b2f"
+    },
+    "545": {
+      "estado": "PENDIENTE",
+      "orden": "ba6a9b68-d566-4909-a348-fdea375c8c95"
     },
     "547": {
       "estado": "PAGADO",
@@ -717,6 +729,10 @@
     "787": {
       "estado": "PENDIENTE",
       "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
+    },
+    "790": {
+      "estado": "PENDIENTE",
+      "orden": "ba6a9b68-d566-4909-a348-fdea375c8c95"
     },
     "792": {
       "estado": "PAGADO",
@@ -1819,6 +1835,24 @@
       "registrado": 1795567896,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795567920,
+      "comprobanteHash": null
+    },
+    "ba6a9b68-d566-4909-a348-fdea375c8c95": {
+      "numeros": [
+        340,
+        364,
+        545,
+        790
+      ],
+      "seudonimo": "Ricardo P.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BFySROmXtzaaZOC4WBxqj9dk6JQRutbs1XZlpk5xrjApJybe0ngSVLZyUp52u0jDY6yqgLiJ3bRfZ2Q5SzQebijsTS66mxCk/T3xHlwelij3RUIUXYs2pNFaIIQhm3QY6sDKyujzoe8MZMirWuhOyKx8D/KaWhHZqfLaKYUA+QaVspK0+t4zx429P8zS0BXd3mKjpJX+I0LOMkEZ8puOYi+TGkdDMAB/CdqW9+kAXnvKBg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795569709,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
