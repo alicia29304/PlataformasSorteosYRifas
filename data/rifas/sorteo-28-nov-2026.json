@@ -214,6 +214,10 @@
       "estado": "PENDIENTE",
       "orden": "fef961fb-1aa7-400b-8337-f1df50e1e43a"
     },
+    "206": {
+      "estado": "PENDIENTE",
+      "orden": "27a6ca31-c629-4ab7-9ec6-70480ed5abfc"
+    },
     "208": {
       "estado": "PAGADO",
       "orden": "67ef7591-a97a-4590-8b23-6424182f3e4d"
@@ -610,6 +614,10 @@
       "estado": "PENDIENTE",
       "orden": "7b0cc7f8-37e5-4656-b228-3b338005a885"
     },
+    "619": {
+      "estado": "PENDIENTE",
+      "orden": "27a6ca31-c629-4ab7-9ec6-70480ed5abfc"
+    },
     "621": {
       "estado": "PENDIENTE",
       "orden": "fef961fb-1aa7-400b-8337-f1df50e1e43a"
@@ -733,6 +741,10 @@
     "735": {
       "estado": "PAGADO",
       "orden": "53e225cd-96d2-4ac6-98cc-194bcb675b2f"
+    },
+    "736": {
+      "estado": "PENDIENTE",
+      "orden": "27a6ca31-c629-4ab7-9ec6-70480ed5abfc"
     },
     "744": {
       "estado": "PAGADO",
@@ -929,6 +941,10 @@
     "895": {
       "estado": "PAGADO",
       "orden": "03ff9c6c-2fd3-434d-810a-f110ca292385"
+    },
+    "898": {
+      "estado": "PENDIENTE",
+      "orden": "27a6ca31-c629-4ab7-9ec6-70480ed5abfc"
     },
     "904": {
       "estado": "PAGADO",
@@ -1992,6 +2008,24 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795615380,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "27a6ca31-c629-4ab7-9ec6-70480ed5abfc": {
+      "numeros": [
+        206,
+        619,
+        736,
+        898
+      ],
+      "seudonimo": "Anneys H.",
+      "ciudad": "Vila",
+      "metodo": "Transferencia",
+      "privado": "enc1:BKexPU4dMzxVaE0pqm7+3lvjvkMq3gb/ww2HLjbipo4MDNbKvltCSoy+KnaA3MH0uMHZ+Y3u9U8b21qa6vwGR3ItKqy7rz5kvqNNs86wKD98AxanxFuQrr+j9xoWOeuItWjRDa5rbF0HiHMpr77b5drs20W7vvwcOVzyFJy6tWlkdLjEQBhCN4Pq6AZTwbYtRStvsS/Nk56logTZJblhD7WA84tcg478yeopLrU=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795618155,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
