@@ -711,7 +711,7 @@
       "orden": "c1369824-a994-417e-8dca-b4524842fb65"
     },
     "681": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "bc93df91-50b3-4123-825c-9eabf60dd6b1"
     },
     "685": {
@@ -771,7 +771,7 @@
       "orden": "f346d57d-ca32-4491-a322-8d2a768eb1d8"
     },
     "723": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "bc93df91-50b3-4123-825c-9eabf60dd6b1"
     },
     "726": {
@@ -967,7 +967,7 @@
       "orden": "aa92f709-4814-4724-b36a-cbcb8c738f0d"
     },
     "880": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "bc93df91-50b3-4123-825c-9eabf60dd6b1"
     },
     "881": {
@@ -2149,11 +2149,11 @@
       "ciudad": "Villanueva",
       "metodo": "Transferencia",
       "privado": "enc1:BFuZFx36uqoUyyvwlzqjDo5ge+jZIg+ypFtH/ilTIYHTWSJE/JkdzJk56UTvtkwf8UzFT2rnaJzpBKyVHCbf+NgKOgMlvZcvGGTNz3hSL0Yjg+2Y6ZUuTxriXtlv0EHtkmPhxv7m+xzGw4DkWPlY72XYt0v0O3iKQNP18+56uXy45jt0U2DGvIy0vXpJ3rscmbeIvJkXfjmg/DgAWs6rGCdmOqqf/TBz0UUuWWfT",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795640638,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795640684,
       "comprobanteHash": null
     }
   }
