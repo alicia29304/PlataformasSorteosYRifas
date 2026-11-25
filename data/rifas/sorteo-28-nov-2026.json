@@ -474,6 +474,10 @@
       "estado": "PENDIENTE",
       "orden": "7b0cc7f8-37e5-4656-b228-3b338005a885"
     },
+    "502": {
+      "estado": "PENDIENTE",
+      "orden": "0354e158-b64a-41fa-8d7f-93b421b1300b"
+    },
     "511": {
       "estado": "PENDIENTE",
       "orden": "078c46ca-22fc-47fa-be8d-f0ad378877e8"
@@ -786,6 +790,10 @@
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
     },
+    "827": {
+      "estado": "PENDIENTE",
+      "orden": "0354e158-b64a-41fa-8d7f-93b421b1300b"
+    },
     "828": {
       "estado": "PENDIENTE",
       "orden": "a9f5a63b-0a77-4429-8000-16342cb40747"
@@ -917,6 +925,10 @@
     "921": {
       "estado": "PENDIENTE",
       "orden": "9b299b6c-c7cd-4635-9af0-1ea46a783f06"
+    },
+    "923": {
+      "estado": "PENDIENTE",
+      "orden": "0354e158-b64a-41fa-8d7f-93b421b1300b"
     },
     "926": {
       "estado": "PENDIENTE",
@@ -1900,6 +1912,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795577979,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "0354e158-b64a-41fa-8d7f-93b421b1300b": {
+      "numeros": [
+        502,
+        827,
+        923
+      ],
+      "seudonimo": "William R.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BPh8VAgjtqw4iLVl5Xzio8b+V4Pfu1eZJbYiCQosVaGpHWXzv0jcys562walWza+9fyBxeksjc7Fede17yNVkDbs1lpp7g4uoTpTwuF2sb9jE2k5HC31sbNIRDELfXZjm97ssFbpTOJk1pKlivXAwhz6GzGJuA9Ba3FcwJuRv32HsGPnKqDtrWBXRCMJaXSI0Rg1kAwg2jS9EY4WLhXFu4a7zjziMVGeEihRR3AObZ0nNBLMAw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4c919726f3dce5378a237412ddbf694ebb794564",
+      "registrado": 1795614971,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
