@@ -194,6 +194,10 @@
       "estado": "PENDIENTE",
       "orden": "a9f5a63b-0a77-4429-8000-16342cb40747"
     },
+    "187": {
+      "estado": "PENDIENTE",
+      "orden": "4a2f6ee7-6153-4288-9490-b4b3320429bf"
+    },
     "196": {
       "estado": "PENDIENTE",
       "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
@@ -293,6 +297,10 @@
     "306": {
       "estado": "PENDIENTE",
       "orden": "a06785ae-aa01-4cae-a243-078b5ea2b74f"
+    },
+    "307": {
+      "estado": "PENDIENTE",
+      "orden": "4a2f6ee7-6153-4288-9490-b4b3320429bf"
     },
     "317": {
       "estado": "PENDIENTE",
@@ -869,6 +877,10 @@
     "926": {
       "estado": "PENDIENTE",
       "orden": "5ac2e83d-fd85-4264-8a46-a3e6b9afd420"
+    },
+    "931": {
+      "estado": "PENDIENTE",
+      "orden": "4a2f6ee7-6153-4288-9490-b4b3320429bf"
     },
     "935": {
       "estado": "PAGADO",
@@ -1788,6 +1800,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795566942,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "4a2f6ee7-6153-4288-9490-b4b3320429bf": {
+      "numeros": [
+        187,
+        307,
+        931
+      ],
+      "seudonimo": "Adrián P.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BBN4zeoEzFSOfHAc2Balm//RzVzmgBSBELlkHzDPBFwmO3sJ7QwtKadiFf7rD7DREacTasgRycVMO8YCbpq44saAheS9B/UTf4TpHyEsXMr2ChAcV69GNBbo0sLBmXhSw6JspGMuLngVA6rPY0ue/3S8hlg1GTTLOFWvMRvbaHG+TWp8uRQlDejMVKm/+yku20gT0tjVX6AhVUKHrW5ciMedvcZlECnCSXxsAA==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795567896,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
