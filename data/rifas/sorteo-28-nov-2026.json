@@ -146,6 +146,10 @@
       "estado": "PENDIENTE",
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
     },
+    "113": {
+      "estado": "PENDIENTE",
+      "orden": "f43628d0-46ce-418d-8b0f-19fd8e84a829"
+    },
     "115": {
       "estado": "PENDIENTE",
       "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
@@ -421,6 +425,10 @@
     "377": {
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
+    "389": {
+      "estado": "PENDIENTE",
+      "orden": "f43628d0-46ce-418d-8b0f-19fd8e84a829"
     },
     "393": {
       "estado": "PENDIENTE",
@@ -877,6 +885,10 @@
     "804": {
       "estado": "PENDIENTE",
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
+    },
+    "806": {
+      "estado": "PENDIENTE",
+      "orden": "f43628d0-46ce-418d-8b0f-19fd8e84a829"
     },
     "808": {
       "estado": "PAGADO",
@@ -2241,6 +2253,23 @@
       "registrado": 1795641341,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795641364,
+      "comprobanteHash": null
+    },
+    "f43628d0-46ce-418d-8b0f-19fd8e84a829": {
+      "numeros": [
+        113,
+        389,
+        806
+      ],
+      "seudonimo": "Dilan E.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BBaFuQCeUCsF7p+3Fmr+lS8FjCGJgRrXk8Fl7e28EEU9A8eKG2kglgu0p1k62pN1zt26z3t7wgj37pFykhRh0LkA4nQOfSmt7EP+sCp1C4iqwHNfSiAWGoayrgV3P1kJ20A7QXuDVnSK/txoRw15bqT12U4o+SgbZUCsweFJn9/lWi3BNr5SdZFv/g9huGdjEemTtb9KCRJHkIPpAV814K7inC98+o6ZebRPew==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795641450,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
