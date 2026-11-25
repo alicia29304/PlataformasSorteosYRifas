@@ -710,6 +710,10 @@
       "estado": "PAGADO",
       "orden": "c1369824-a994-417e-8dca-b4524842fb65"
     },
+    "681": {
+      "estado": "PENDIENTE",
+      "orden": "bc93df91-50b3-4123-825c-9eabf60dd6b1"
+    },
     "685": {
       "estado": "PENDIENTE",
       "orden": "a6cda9a2-8391-41ef-8f27-780f077dc3b8"
@@ -765,6 +769,10 @@
     "721": {
       "estado": "PAGADO",
       "orden": "f346d57d-ca32-4491-a322-8d2a768eb1d8"
+    },
+    "723": {
+      "estado": "PENDIENTE",
+      "orden": "bc93df91-50b3-4123-825c-9eabf60dd6b1"
     },
     "726": {
       "estado": "PAGADO",
@@ -957,6 +965,10 @@
     "879": {
       "estado": "PENDIENTE",
       "orden": "aa92f709-4814-4724-b36a-cbcb8c738f0d"
+    },
+    "880": {
+      "estado": "PENDIENTE",
+      "orden": "bc93df91-50b3-4123-825c-9eabf60dd6b1"
     },
     "881": {
       "estado": "PENDIENTE",
@@ -2125,6 +2137,23 @@
       "registrado": 1795640510,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795640546,
+      "comprobanteHash": null
+    },
+    "bc93df91-50b3-4123-825c-9eabf60dd6b1": {
+      "numeros": [
+        681,
+        723,
+        880
+      ],
+      "seudonimo": "Edisson A.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BFuZFx36uqoUyyvwlzqjDo5ge+jZIg+ypFtH/ilTIYHTWSJE/JkdzJk56UTvtkwf8UzFT2rnaJzpBKyVHCbf+NgKOgMlvZcvGGTNz3hSL0Yjg+2Y6ZUuTxriXtlv0EHtkmPhxv7m+xzGw4DkWPlY72XYt0v0O3iKQNP18+56uXy45jt0U2DGvIy0vXpJ3rscmbeIvJkXfjmg/DgAWs6rGCdmOqqf/TBz0UUuWWfT",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795640638,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
