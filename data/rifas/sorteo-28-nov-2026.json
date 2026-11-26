@@ -114,6 +114,10 @@
       "estado": "PAGADO",
       "orden": "d67a77d8-ed9c-413e-ace8-58242739cab1"
     },
+    "68": {
+      "estado": "PENDIENTE",
+      "orden": "5c1654f4-664a-40ce-b6ff-104ac0dda3bd"
+    },
     "74": {
       "estado": "PENDIENTE",
       "orden": "54735da5-9c24-433a-850c-c5fac203fb79"
@@ -141,6 +145,10 @@
     "101": {
       "estado": "PAGADO",
       "orden": "85793d46-5526-477d-bb72-fd2b7f4782fa"
+    },
+    "106": {
+      "estado": "PENDIENTE",
+      "orden": "5c1654f4-664a-40ce-b6ff-104ac0dda3bd"
     },
     "109": {
       "estado": "PENDIENTE",
@@ -437,6 +445,10 @@
     "377": {
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
+    },
+    "385": {
+      "estado": "PENDIENTE",
+      "orden": "5c1654f4-664a-40ce-b6ff-104ac0dda3bd"
     },
     "389": {
       "estado": "PAGADO",
@@ -2357,6 +2369,23 @@
       "registrado": 1795653965,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795653997,
+      "comprobanteHash": null
+    },
+    "5c1654f4-664a-40ce-b6ff-104ac0dda3bd": {
+      "numeros": [
+        68,
+        106,
+        385
+      ],
+      "seudonimo": "Leidy S.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BHuznCoJJG5C4StajkEv/V9pK4dleKnCxUw1RrSTrNwPeE3vgyx2mInk88eACEeaJjljDgYOAxGVeFOCyPuaHVFW1VxDCsyG1djuW0vPBsFb5NgDK8R49BMokitqGMaiDIrBQtc9HEaUKjjp1GxQs25u7xUEpjtzNTHOSc8n/My/NQCz9ww0PQluZWff6NJuphj9Y2j+WeZU37iLAGmuHMi38F3LNaPxjFvDjE0=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795654075,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
