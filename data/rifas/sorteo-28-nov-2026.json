@@ -286,6 +286,10 @@
       "estado": "PENDIENTE",
       "orden": "078c46ca-22fc-47fa-be8d-f0ad378877e8"
     },
+    "190": {
+      "estado": "PENDIENTE",
+      "orden": "c7964c97-6f6d-4781-88c8-5682a5da4a3d"
+    },
     "191": {
       "estado": "PENDIENTE",
       "orden": "82a4e1ab-9fa1-4991-b709-8c1c2c7b25d2"
@@ -845,6 +849,10 @@
     "590": {
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
+    },
+    "591": {
+      "estado": "PENDIENTE",
+      "orden": "c7964c97-6f6d-4781-88c8-5682a5da4a3d"
     },
     "592": {
       "estado": "PAGADO",
@@ -1421,6 +1429,10 @@
     "941": {
       "estado": "PENDIENTE",
       "orden": "aa92f709-4814-4724-b36a-cbcb8c738f0d"
+    },
+    "946": {
+      "estado": "PENDIENTE",
+      "orden": "c7964c97-6f6d-4781-88c8-5682a5da4a3d"
     },
     "949": {
       "estado": "PENDIENTE",
@@ -2957,6 +2969,23 @@
       "registrado": 1795728084,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795728112,
+      "comprobanteHash": null
+    },
+    "c7964c97-6f6d-4781-88c8-5682a5da4a3d": {
+      "numeros": [
+        190,
+        591,
+        946
+      ],
+      "seudonimo": "Yolima D.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BK99evZYLbap9/HsU0hg6VEow4P5nPUeV9PyenGToYo7W7C8j7ds8GXYnNcbIpGj18rR/HFYPEdNvCUR2SIQZdON3FM2l2X8rFVTxZs36l8HPzEmDjRQLRi14lyKzXC7LochOZhkBiNbgSuf3tMD0VBPANMEBBq7Gen9PgGKu158N9IbcFQcJHB4A10v8UjEKAMWf8dELfyhUk15Ld2uOQEl2BQFg5VKbpE=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795730359,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
