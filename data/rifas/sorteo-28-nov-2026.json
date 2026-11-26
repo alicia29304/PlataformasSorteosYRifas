@@ -370,6 +370,10 @@
       "estado": "PENDIENTE",
       "orden": "078c46ca-22fc-47fa-be8d-f0ad378877e8"
     },
+    "251": {
+      "estado": "PENDIENTE",
+      "orden": "22e399b2-a713-4de0-ae42-0488f384024d"
+    },
     "253": {
       "estado": "PENDIENTE",
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
@@ -561,6 +565,14 @@
     "403": {
       "estado": "PAGADO",
       "orden": "7b110c0d-0565-4821-801d-2ece3d3dd84a"
+    },
+    "404": {
+      "estado": "PENDIENTE",
+      "orden": "22e399b2-a713-4de0-ae42-0488f384024d"
+    },
+    "411": {
+      "estado": "PENDIENTE",
+      "orden": "22e399b2-a713-4de0-ae42-0488f384024d"
     },
     "417": {
       "estado": "PENDIENTE",
@@ -942,6 +954,10 @@
       "estado": "PAGADO",
       "orden": "e32b44ba-0056-46d8-a16e-c6969a66f4e4"
     },
+    "674": {
+      "estado": "PENDIENTE",
+      "orden": "22e399b2-a713-4de0-ae42-0488f384024d"
+    },
     "675": {
       "estado": "PAGADO",
       "orden": "c1369824-a994-417e-8dca-b4524842fb65"
@@ -993,6 +1009,10 @@
     "703": {
       "estado": "PAGADO",
       "orden": "f346d57d-ca32-4491-a322-8d2a768eb1d8"
+    },
+    "706": {
+      "estado": "PENDIENTE",
+      "orden": "22e399b2-a713-4de0-ae42-0488f384024d"
     },
     "708": {
       "estado": "PENDIENTE",
@@ -1253,6 +1273,10 @@
     "867": {
       "estado": "PAGADO",
       "orden": "6b89905f-ec8a-4130-8c1d-ee52be307666"
+    },
+    "869": {
+      "estado": "PENDIENTE",
+      "orden": "22e399b2-a713-4de0-ae42-0488f384024d"
     },
     "870": {
       "estado": "PENDIENTE",
@@ -2848,6 +2872,26 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795723837,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "22e399b2-a713-4de0-ae42-0488f384024d": {
+      "numeros": [
+        251,
+        404,
+        411,
+        674,
+        706,
+        869
+      ],
+      "seudonimo": "Catalina R.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BEXv05/patLJjBq+xysFhzJoVJ1x/Kh4Uxtf4L/p5SyLSm5/0d2tHSCxQfvkjsyLKEnO9pH3GsUUBx0z+eFhJcJx4+vdOpLd14vIt9jkUlowwL8It8dwV6VTxmonvEdzi6czGdyL2B2QPm8I0FSMWOwtjPJhm/iS0TmGc9VNy4MVLBYbh4n/ainw8r6WGK5LMf3QopLzRESkwvHg+B3SaaCIBwcYyt0hO83e",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795724568,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
