@@ -794,6 +794,10 @@
       "estado": "PAGADO",
       "orden": "53e225cd-96d2-4ac6-98cc-194bcb675b2f"
     },
+    "548": {
+      "estado": "PENDIENTE",
+      "orden": "a38416a8-9028-462d-b06f-bfd68e818c08"
+    },
     "549": {
       "estado": "PAGADO",
       "orden": "799b4ca8-5879-4b81-9176-a4d6d65f6e28"
@@ -953,6 +957,10 @@
     "638": {
       "estado": "PAGADO",
       "orden": "7e41e289-b86e-4089-b73b-a62854017954"
+    },
+    "642": {
+      "estado": "PENDIENTE",
+      "orden": "a38416a8-9028-462d-b06f-bfd68e818c08"
     },
     "643": {
       "estado": "PENDIENTE",
@@ -1409,6 +1417,10 @@
     "911": {
       "estado": "PENDIENTE",
       "orden": "a06785ae-aa01-4cae-a243-078b5ea2b74f"
+    },
+    "912": {
+      "estado": "PENDIENTE",
+      "orden": "a38416a8-9028-462d-b06f-bfd68e818c08"
     },
     "918": {
       "estado": "PAGADO",
@@ -3044,6 +3056,23 @@
       "registrado": 1795731586,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795731626,
+      "comprobanteHash": null
+    },
+    "a38416a8-9028-462d-b06f-bfd68e818c08": {
+      "numeros": [
+        548,
+        642,
+        912
+      ],
+      "seudonimo": "Josélin T.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BBJL/iptzxfdLO0sdXRmvBpS3jwkc86xqEKB1Q5HQx6bayErBcKUUW1K/7LJi+VVHnaNHSQQ9u2Tc7Zk2reJja7HCdilidl5+hpMF44ahm++Ci+hrmnxb6/2Q8shm2TiKMBqBJkdbetMllBMpASjUcZmiXZMHNaVP/RerHWmWqTUC4fxTbW/V0B5zuEsiGgsAHXiL+PHLS58IwtfqOhXG8Y///HRJj07EnWAVlm1",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795731696,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
