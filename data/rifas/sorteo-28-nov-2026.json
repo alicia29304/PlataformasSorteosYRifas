@@ -438,6 +438,10 @@
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
     },
+    "345": {
+      "estado": "PENDIENTE",
+      "orden": "e1f89d2b-40bf-43e2-b33e-068ae85ad158"
+    },
     "348": {
       "estado": "PENDIENTE",
       "orden": "a06785ae-aa01-4cae-a243-078b5ea2b74f"
@@ -750,6 +754,10 @@
       "estado": "PAGADO",
       "orden": "d67a77d8-ed9c-413e-ace8-58242739cab1"
     },
+    "597": {
+      "estado": "PENDIENTE",
+      "orden": "e1f89d2b-40bf-43e2-b33e-068ae85ad158"
+    },
     "601": {
       "estado": "PENDIENTE",
       "orden": "d38a50f4-a0cc-4e47-b91c-4e9628ae4693"
@@ -1053,6 +1061,10 @@
     "810": {
       "estado": "PENDIENTE",
       "orden": "fef961fb-1aa7-400b-8337-f1df50e1e43a"
+    },
+    "811": {
+      "estado": "PENDIENTE",
+      "orden": "e1f89d2b-40bf-43e2-b33e-068ae85ad158"
     },
     "818": {
       "estado": "PAGADO",
@@ -2635,6 +2647,23 @@
       "registrado": 1795717666,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795717698,
+      "comprobanteHash": null
+    },
+    "e1f89d2b-40bf-43e2-b33e-068ae85ad158": {
+      "numeros": [
+        345,
+        597,
+        811
+      ],
+      "seudonimo": "Jeferson T.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BKMN2YpIg4G0jUN3qvEbDlw5Rs2Y+moGC1Es1s99CsnuE02mITDWXuwuFLyfevcZ2TePq3uychBQOlFoPnWmOAmwOxEGPkD4H4kcRyx6JWhP9jd61Mds5TnicAcMyfOcSkXotwsNGpkScZVawxdO4jWS3i3UMwLXXWBKDx4PU8quhK5lL1f5u0kuH4XV2I/Eno98lVSTXtD6QCsT4jUsPIx8Jay8jZtuSMz0aF/l",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795719924,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
