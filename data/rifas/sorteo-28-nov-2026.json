@@ -522,6 +522,10 @@
       "estado": "PAGADO",
       "orden": "044061f7-8648-43aa-9da5-13804f27e29e"
     },
+    "426": {
+      "estado": "PENDIENTE",
+      "orden": "c237f336-f444-43a6-aed4-97aa59946a17"
+    },
     "431": {
       "estado": "PAGADO",
       "orden": "5bbfbe56-2ef2-4730-b3cb-40f6d418a936"
@@ -577,6 +581,10 @@
     "476": {
       "estado": "PAGADO",
       "orden": "62891590-fc95-43fb-81ff-d1dcc30ad528"
+    },
+    "477": {
+      "estado": "PENDIENTE",
+      "orden": "c237f336-f444-43a6-aed4-97aa59946a17"
     },
     "490": {
       "estado": "PAGADO",
@@ -770,6 +778,10 @@
       "estado": "PAGADO",
       "orden": "07008a14-dd50-43ec-b8d6-b70529341bf5"
     },
+    "618": {
+      "estado": "PENDIENTE",
+      "orden": "c237f336-f444-43a6-aed4-97aa59946a17"
+    },
     "619": {
       "estado": "PAGADO",
       "orden": "27a6ca31-c629-4ab7-9ec6-70480ed5abfc"
@@ -821,6 +833,10 @@
     "657": {
       "estado": "PENDIENTE",
       "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
+    },
+    "658": {
+      "estado": "PENDIENTE",
+      "orden": "c237f336-f444-43a6-aed4-97aa59946a17"
     },
     "662": {
       "estado": "PAGADO",
@@ -881,6 +897,10 @@
     "697": {
       "estado": "PAGADO",
       "orden": "54b62a31-5870-49f9-b0f3-0337dd712232"
+    },
+    "702": {
+      "estado": "PENDIENTE",
+      "orden": "c237f336-f444-43a6-aed4-97aa59946a17"
     },
     "703": {
       "estado": "PAGADO",
@@ -977,6 +997,10 @@
     "772": {
       "estado": "PAGADO",
       "orden": "ca43a3de-2948-4c68-aa40-1d0d3ce57624"
+    },
+    "774": {
+      "estado": "PENDIENTE",
+      "orden": "c237f336-f444-43a6-aed4-97aa59946a17"
     },
     "776": {
       "estado": "PENDIENTE",
@@ -2591,6 +2615,26 @@
       "registrado": 1795704110,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795704142,
+      "comprobanteHash": null
+    },
+    "c237f336-f444-43a6-aed4-97aa59946a17": {
+      "numeros": [
+        426,
+        477,
+        618,
+        658,
+        702,
+        774
+      ],
+      "seudonimo": "Derly V.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BPKnVDX6KST0/QsNNC8nLKbxWDcGKrHhnIubK1T6mNz3e2nQYNnpst9M5/wlt8JS6ozi2DjqRWefg3xA0gvGZpJF0s+0NEywfjN0GeL2y+cwDYgCbhGrbXB0f9l6lIivuMRxa+b9vnSUmsQTLeWdYEeNQRM7rpAfr+tkptaX2MDqZXxAvxGpzqEGbCAz5Fgnmm3O42g7KhbUbOnS6bP6+GpS2UbaFvmnwg==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795717666,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
