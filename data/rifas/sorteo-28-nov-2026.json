@@ -306,6 +306,10 @@
       "estado": "PAGADO",
       "orden": "53e225cd-96d2-4ac6-98cc-194bcb675b2f"
     },
+    "247": {
+      "estado": "PENDIENTE",
+      "orden": "da7be87d-ff02-4b0b-95e8-85347e302a17"
+    },
     "248": {
       "estado": "PENDIENTE",
       "orden": "078c46ca-22fc-47fa-be8d-f0ad378877e8"
@@ -766,6 +770,10 @@
       "estado": "PAGADO",
       "orden": "c1369824-a994-417e-8dca-b4524842fb65"
     },
+    "655": {
+      "estado": "PENDIENTE",
+      "orden": "da7be87d-ff02-4b0b-95e8-85347e302a17"
+    },
     "657": {
       "estado": "PENDIENTE",
       "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
@@ -961,6 +969,10 @@
     "806": {
       "estado": "PAGADO",
       "orden": "f43628d0-46ce-418d-8b0f-19fd8e84a829"
+    },
+    "807": {
+      "estado": "PENDIENTE",
+      "orden": "da7be87d-ff02-4b0b-95e8-85347e302a17"
     },
     "808": {
       "estado": "PAGADO",
@@ -2435,6 +2447,23 @@
       "registrado": 1795661565,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795661596,
+      "comprobanteHash": null
+    },
+    "da7be87d-ff02-4b0b-95e8-85347e302a17": {
+      "numeros": [
+        247,
+        655,
+        807
+      ],
+      "seudonimo": "Lorena V.",
+      "ciudad": "Villanueva",
+      "metodo": "Efectivo",
+      "privado": "enc1:BH/UNOq7aX7wMyczRstA5WAQSE7glPmlXiyVj0W7etd9b/qMQabxJDBerpgK9OcNEDqTI/Y0rKOsQ3Y/wKTUgnOJs+ILB3TnjfQEzAYvnPEAEkQmdT7NySILJnMcsN2HXUjqQTTcrfDJxcajsSYBg0u4RB2Na9OZ9IyBJxVZKKDNlXEMasW8Wpe9ybGUH26ToBCZPe2xCGhG9SSkHXrMdvqXpBTErnhzycpVe22y",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795661750,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
