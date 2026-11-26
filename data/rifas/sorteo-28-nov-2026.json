@@ -331,7 +331,7 @@
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
     },
     "256": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
     },
     "265": {
@@ -495,7 +495,7 @@
       "orden": "a06785ae-aa01-4cae-a243-078b5ea2b74f"
     },
     "401": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
     },
     "403": {
@@ -651,7 +651,7 @@
       "orden": "ea2ad414-6b62-4945-a2af-d02f18f41b28"
     },
     "534": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
     },
     "545": {
@@ -815,7 +815,7 @@
       "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
     },
     "662": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
     },
     "666": {
@@ -1251,7 +1251,7 @@
       "orden": "5ac2e83d-fd85-4264-8a46-a3e6b9afd420"
     },
     "978": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
     },
     "979": {
@@ -1275,7 +1275,7 @@
       "orden": "400afa35-c340-4ebd-984b-40381a665326"
     },
     "989": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
     },
     "996": {
@@ -2552,11 +2552,11 @@
       "ciudad": "Cabuyaro",
       "metodo": "Transferencia",
       "privado": "enc1:BFZa+BHtO8NaIL9pQQJuZLREPLKKSMffWLaK/Q91pZ4qAulsyB7kaiqqB2t3UcrOH8n5nRQSU1TaJB1GYf1gke86Pon3JLKfeVJ+t3R2m0KY4sgnPb/CONHcyHgToGXVJQWUx/qM0drkdoOidDGeTxeNkm4jRpEZIdtKH1HDBcVkOTLujS1zh1IroaHa+BzL5bp6qlYlkc91B4DMhpARktpZQN9ucek8ZP0=",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795662198,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795662227,
       "comprobanteHash": null
     }
   }
