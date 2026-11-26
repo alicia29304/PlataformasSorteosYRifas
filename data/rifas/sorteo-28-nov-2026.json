@@ -203,7 +203,7 @@
       "orden": "0c23cf32-3be8-421c-9f8d-84b1c57adbe0"
     },
     "136": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "32ff02aa-45aa-4bc7-baf8-2506788006e7"
     },
     "137": {
@@ -579,11 +579,11 @@
       "orden": "22e399b2-a713-4de0-ae42-0488f384024d"
     },
     "415": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "32ff02aa-45aa-4bc7-baf8-2506788006e7"
     },
     "416": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "32ff02aa-45aa-4bc7-baf8-2506788006e7"
     },
     "417": {
@@ -631,7 +631,7 @@
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
     },
     "449": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "32ff02aa-45aa-4bc7-baf8-2506788006e7"
     },
     "450": {
@@ -1091,7 +1091,7 @@
       "orden": "0c23cf32-3be8-421c-9f8d-84b1c57adbe0"
     },
     "734": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "32ff02aa-45aa-4bc7-baf8-2506788006e7"
     },
     "735": {
@@ -1199,7 +1199,7 @@
       "orden": "e1f89d2b-40bf-43e2-b33e-068ae85ad158"
     },
     "814": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "32ff02aa-45aa-4bc7-baf8-2506788006e7"
     },
     "818": {
@@ -2952,11 +2952,11 @@
       "ciudad": "Barranca de upia",
       "metodo": "Transferencia",
       "privado": "enc1:BAd7iOiO/93V6PNXZ8e5B1vjJiZ1e64Zn79uakMLBqUhTzh6nP3sVIVdyYTHSYAByZlu/a4ZVjPXAWQrNmjLgb9dpUIAGspdzAZ7VMV3eHLp6tBsPb/69OVus7lBra2OBQtUDIV4W2o9Zj4FmouLZp2l5MdYVRZlde9pY9lq+y8B280yIWmIOVw6+JWAmjoYNcbSmF0/OsJqs0rtpGhdaF0PiNEp7PZmVhqYBSGQ7A==",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795728084,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795728112,
       "comprobanteHash": null
     }
   }
