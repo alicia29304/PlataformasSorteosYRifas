@@ -594,6 +594,10 @@
       "estado": "PENDIENTE",
       "orden": "ba6a9b68-d566-4909-a348-fdea375c8c95"
     },
+    "341": {
+      "estado": "PENDIENTE",
+      "orden": "145665ee-a683-4e9c-854d-0539309b1512"
+    },
     "344": {
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
@@ -1162,6 +1166,10 @@
       "estado": "PENDIENTE",
       "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
     },
+    "667": {
+      "estado": "PENDIENTE",
+      "orden": "145665ee-a683-4e9c-854d-0539309b1512"
+    },
     "668": {
       "estado": "PENDIENTE",
       "orden": "a06785ae-aa01-4cae-a243-078b5ea2b74f"
@@ -1529,6 +1537,10 @@
     "864": {
       "estado": "PAGADO",
       "orden": "03ff9c6c-2fd3-434d-810a-f110ca292385"
+    },
+    "865": {
+      "estado": "PENDIENTE",
+      "orden": "145665ee-a683-4e9c-854d-0539309b1512"
     },
     "866": {
       "estado": "PENDIENTE",
@@ -3616,6 +3628,23 @@
       "registrado": 1795816257,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795816285,
+      "comprobanteHash": null
+    },
+    "145665ee-a683-4e9c-854d-0539309b1512": {
+      "numeros": [
+        341,
+        667,
+        865
+      ],
+      "seudonimo": "Shirley G.",
+      "ciudad": "Cabuyaro",
+      "metodo": "Efectivo",
+      "privado": "enc1:BDkouMzSN0ZBccMpV6XkY0Vf3axCtovQmTMJn7NAOoyUeR5h/O2TpoUhdx5K4d3epwoze7C62E8wD9RvrFyNbfJlnrK7eulN+1F7E/ZvJaJ5hePAgZVbU6NYgK7wPb89cVF19gxaP5IQIqJobvVS0lEgWdpeGM+jvpClt6X4/FkM/V/rYpGfeOnUD4G9gGeMcOwnLPoxz0UgAA8M3pHiGkUz7Tn+kmwLMv6tbQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795816358,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
