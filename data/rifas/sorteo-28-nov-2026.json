@@ -490,6 +490,10 @@
       "estado": "PENDIENTE",
       "orden": "c8f9e55c-00b8-4cd3-bae4-b324f889b37e"
     },
+    "293": {
+      "estado": "PENDIENTE",
+      "orden": "b5a53f3c-ef1a-4ade-8478-e051c27fc31f"
+    },
     "296": {
       "estado": "PAGADO",
       "orden": "4b17798d-ad6e-403e-ac74-7cbaf4cc0b2d"
@@ -661,6 +665,10 @@
     "404": {
       "estado": "PAGADO",
       "orden": "22e399b2-a713-4de0-ae42-0488f384024d"
+    },
+    "410": {
+      "estado": "PENDIENTE",
+      "orden": "b5a53f3c-ef1a-4ade-8478-e051c27fc31f"
     },
     "411": {
       "estado": "PAGADO",
@@ -1641,6 +1649,10 @@
     "972": {
       "estado": "PAGADO",
       "orden": "67ef7591-a97a-4590-8b23-6424182f3e4d"
+    },
+    "973": {
+      "estado": "PENDIENTE",
+      "orden": "b5a53f3c-ef1a-4ade-8478-e051c27fc31f"
     },
     "976": {
       "estado": "PAGADO",
@@ -3384,6 +3396,23 @@
       "registrado": 1795793749,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795793779,
+      "comprobanteHash": null
+    },
+    "b5a53f3c-ef1a-4ade-8478-e051c27fc31f": {
+      "numeros": [
+        293,
+        410,
+        973
+      ],
+      "seudonimo": "Pilar L.",
+      "ciudad": "Monterrey",
+      "metodo": "Transferencia",
+      "privado": "enc1:BJ9WJC6DlijwJ6oSduVOfCejZQd7iuyprwZ2KXDTNBPMWV5A1rUoCTsE8aS+KWNoXZZeXpqP0Fcg8FQ1bKaz88tF1Q4HvZNGXVP9MgqZcNOPdq7znSeLn7uz5JTKAKtohhI0zk/lrFA3HbHmxL6CHTxEs6yt/v10e3YprBqqcrN15js4Ank9NSgXX6zoNGy40ZUTsd0Dypo317vNt+AHhmg58CIkwJxwBnYhFQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795793878,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
