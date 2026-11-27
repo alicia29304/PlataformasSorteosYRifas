@@ -971,7 +971,7 @@
       "orden": "82a4e1ab-9fa1-4991-b709-8c1c2c7b25d2"
     },
     "559": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "a1dcf60a-bd32-45db-9875-62f7c027491a"
     },
     "561": {
@@ -1119,7 +1119,7 @@
       "orden": "ef3a81ad-b163-4ed0-b0da-75eb2de08ecd"
     },
     "635": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "a1dcf60a-bd32-45db-9875-62f7c027491a"
     },
     "636": {
@@ -1643,7 +1643,7 @@
       "orden": "09a2a207-d444-49db-b1ad-927c42bb95e5"
     },
     "902": {
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "orden": "a1dcf60a-bd32-45db-9875-62f7c027491a"
     },
     "903": {
@@ -3669,11 +3669,11 @@
       "ciudad": "Barranca",
       "metodo": "Transferencia",
       "privado": "enc1:BGYjTpTup0Qvgmc6U8y9WVKlhzSnASX32eGQFGKWSiuzcQTnRv1QWDPaaXKzfGncEKtIgTHTFcC8A/lPaCUAzMdnxeTADY4BZD8g3/ZUnbatGQ0BBia7sMjqtrofBXMB2Wn3J290pnI9DowAszneVJJSZKtnlc9e/Wv84udTja11zHw9bz/ZA3AwXUB2qMElW2Fy6NFnbluNZF7yajgqHYpYzNCBCm3fPS0B",
-      "estado": "PENDIENTE",
+      "estado": "PAGADO",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795816492,
-      "aprobadoPor": null,
-      "aprobado": null,
+      "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "aprobado": 1795816520,
       "comprobanteHash": null
     }
   }
