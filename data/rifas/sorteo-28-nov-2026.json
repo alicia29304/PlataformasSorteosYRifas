@@ -422,6 +422,10 @@
       "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
     },
+    "264": {
+      "estado": "PENDIENTE",
+      "orden": "09a2a207-d444-49db-b1ad-927c42bb95e5"
+    },
     "265": {
       "estado": "PENDIENTE",
       "orden": "7e07ea1c-9010-4e71-93f8-a9f2adb6c1f5"
@@ -1246,6 +1250,10 @@
       "estado": "PAGADO",
       "orden": "4b17798d-ad6e-403e-ac74-7cbaf4cc0b2d"
     },
+    "768": {
+      "estado": "PENDIENTE",
+      "orden": "09a2a207-d444-49db-b1ad-927c42bb95e5"
+    },
     "769": {
       "estado": "PAGADO",
       "orden": "4c2bc843-c6df-40e5-926e-12af012caa3e"
@@ -1493,6 +1501,10 @@
     "898": {
       "estado": "PAGADO",
       "orden": "27a6ca31-c629-4ab7-9ec6-70480ed5abfc"
+    },
+    "901": {
+      "estado": "PENDIENTE",
+      "orden": "09a2a207-d444-49db-b1ad-927c42bb95e5"
     },
     "903": {
       "estado": "PAGADO",
@@ -3263,6 +3275,23 @@
       "registrado": 1795786700,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795786731,
+      "comprobanteHash": null
+    },
+    "09a2a207-d444-49db-b1ad-927c42bb95e5": {
+      "numeros": [
+        264,
+        768,
+        901
+      ],
+      "seudonimo": "Maritza F.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BH3QwYA3ifN+F6OgJeIYyBzytEXzducVBC70C9Qpmh6wQQbMaXpJJb8S9UQqi/vMJ1n2Fa+uM4BWbv5nGckHja94+6oySobDrw3ly7VaA4yW2Rf29xjvlocGb5rC8LEIqCwxUeimpaWPt4Oeq+ic65Q6chtrFVdjCIJP/RK4LLrbu5krG1fRPJwGqXd15HRbyyDtHS1ZMYtdjDh0d7ufG7MWak8sNOOCQtA7E+dRCw==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795787756,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
