@@ -422,6 +422,10 @@
       "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
     },
+    "262": {
+      "estado": "PENDIENTE",
+      "orden": "14d77668-7209-4d80-8b80-823844a7c6ed"
+    },
     "264": {
       "estado": "PAGADO",
       "orden": "09a2a207-d444-49db-b1ad-927c42bb95e5"
@@ -622,6 +626,10 @@
       "estado": "PENDIENTE",
       "orden": "d94a817c-5222-41f7-b3e3-01293a28dd88"
     },
+    "395": {
+      "estado": "PENDIENTE",
+      "orden": "14d77668-7209-4d80-8b80-823844a7c6ed"
+    },
     "398": {
       "estado": "PAGADO",
       "orden": "7a5d4110-0798-4efb-bc59-4c49eda8dd8a"
@@ -757,6 +765,10 @@
     "477": {
       "estado": "PAGADO",
       "orden": "c237f336-f444-43a6-aed4-97aa59946a17"
+    },
+    "487": {
+      "estado": "PENDIENTE",
+      "orden": "14d77668-7209-4d80-8b80-823844a7c6ed"
     },
     "490": {
       "estado": "PAGADO",
@@ -1513,6 +1525,10 @@
     "904": {
       "estado": "PAGADO",
       "orden": "89c359cd-ae02-461f-9e4c-c86daf59365d"
+    },
+    "906": {
+      "estado": "PENDIENTE",
+      "orden": "14d77668-7209-4d80-8b80-823844a7c6ed"
     },
     "909": {
       "estado": "PENDIENTE",
@@ -3292,6 +3308,24 @@
       "registrado": 1795787756,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795787812,
+      "comprobanteHash": null
+    },
+    "14d77668-7209-4d80-8b80-823844a7c6ed": {
+      "numeros": [
+        262,
+        395,
+        487,
+        906
+      ],
+      "seudonimo": "Kerly C.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BIAQe4VTEaJJ3VykM4flJTA8tRGtwTyrnxikyE4Ly2gtSmFDhJkp9lRahBWP6fXlD9bobSa2mCPjaGIU997uGbHx6l4DA+SjzYU4ovRXi3nKiGIcs/vGsWoljGoY5fFT8G5RK4vsY482ZDBXgsSIi/3GcdbPBeQujJwwEM5W5crnKC8txt47d9JnVBE67G74tBl16w7J6JbjDDvuCQW183H2ZpSc5Q5OdnRpxEvyAQ==",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795790026,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
