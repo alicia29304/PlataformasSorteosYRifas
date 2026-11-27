@@ -142,6 +142,10 @@
       "estado": "PENDIENTE",
       "orden": "5ac2e83d-fd85-4264-8a46-a3e6b9afd420"
     },
+    "86": {
+      "estado": "PENDIENTE",
+      "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
+    },
     "87": {
       "estado": "PENDIENTE",
       "orden": "0c23cf32-3be8-421c-9f8d-84b1c57adbe0"
@@ -474,6 +478,10 @@
       "estado": "PAGADO",
       "orden": "4a2f6ee7-6153-4288-9490-b4b3320429bf"
     },
+    "308": {
+      "estado": "PENDIENTE",
+      "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
+    },
     "311": {
       "estado": "PAGADO",
       "orden": "0ca535c3-15ab-4b67-9975-0129db965d16"
@@ -481,6 +489,10 @@
     "317": {
       "estado": "PENDIENTE",
       "orden": "8dfbefc6-d339-4313-96a1-7a7a7ac2a424"
+    },
+    "318": {
+      "estado": "PENDIENTE",
+      "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
     },
     "322": {
       "estado": "PENDIENTE",
@@ -1110,6 +1122,10 @@
       "estado": "PENDIENTE",
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
     },
+    "717": {
+      "estado": "PENDIENTE",
+      "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
+    },
     "718": {
       "estado": "PENDIENTE",
       "orden": "9b299b6c-c7cd-4635-9af0-1ea46a783f06"
@@ -1173,6 +1189,10 @@
     "745": {
       "estado": "PAGADO",
       "orden": "a7e05f59-dbee-4978-82ce-7507f9a2eb25"
+    },
+    "751": {
+      "estado": "PENDIENTE",
+      "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
     },
     "754": {
       "estado": "PENDIENTE",
@@ -1361,6 +1381,10 @@
     "867": {
       "estado": "PAGADO",
       "orden": "6b89905f-ec8a-4130-8c1d-ee52be307666"
+    },
+    "868": {
+      "estado": "PENDIENTE",
+      "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
     },
     "869": {
       "estado": "PAGADO",
@@ -1557,6 +1581,10 @@
     "989": {
       "estado": "PAGADO",
       "orden": "82802be6-e11e-4655-9899-1200cc5bc982"
+    },
+    "992": {
+      "estado": "PENDIENTE",
+      "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
     },
     "996": {
       "estado": "PENDIENTE",
@@ -3131,6 +3159,27 @@
       "registrado": 1795742809,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795742839,
+      "comprobanteHash": null
+    },
+    "ed157b70-0714-45bf-a740-6e0c4d73bbcc": {
+      "numeros": [
+        86,
+        308,
+        318,
+        717,
+        751,
+        868,
+        992
+      ],
+      "seudonimo": "NIÑO N.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDCon1L/vjWPjWkFk7wh4VLhLCq+784OfHAjQRvmfaIBarPDwhMJ490jV3YWOhq0CBWWtR8Sux7kp0mqdEFZAUawXkj1AZJNOoRDXJEG/hZX1NiedjhI+JVRvvMD1jGrYyJYMBH8Cr6nDNqVCyJ66+ZaGzWFnLpYUNGdvFqEMMM7+uud/REAtoV3u7yQNwY7weLTjED1mRX2leWuBbNt6DPb1pKIzmDv25I=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795742991,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
