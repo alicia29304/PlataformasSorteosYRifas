@@ -290,6 +290,10 @@
       "estado": "PENDIENTE",
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
     },
+    "164": {
+      "estado": "PENDIENTE",
+      "orden": "4a91b4bf-4c70-4ab9-b817-1415e06b4ad0"
+    },
     "168": {
       "estado": "PAGADO",
       "orden": "ca29e70e-a042-41a8-8656-ad8786a3193f"
@@ -1438,6 +1442,10 @@
       "estado": "PAGADO",
       "orden": "a7e05f59-dbee-4978-82ce-7507f9a2eb25"
     },
+    "834": {
+      "estado": "PENDIENTE",
+      "orden": "4a91b4bf-4c70-4ab9-b817-1415e06b4ad0"
+    },
     "835": {
       "estado": "PENDIENTE",
       "orden": "664c6711-065d-47b1-9262-242454e7d8ad"
@@ -1573,6 +1581,10 @@
     "889": {
       "estado": "PAGADO",
       "orden": "511b011e-4b61-4c27-a4e3-8a3941c8105f"
+    },
+    "893": {
+      "estado": "PENDIENTE",
+      "orden": "4a91b4bf-4c70-4ab9-b817-1415e06b4ad0"
     },
     "894": {
       "estado": "PAGADO",
@@ -3529,6 +3541,23 @@
       "registrado": 1795801708,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795801740,
+      "comprobanteHash": null
+    },
+    "4a91b4bf-4c70-4ab9-b817-1415e06b4ad0": {
+      "numeros": [
+        164,
+        834,
+        893
+      ],
+      "seudonimo": "Johnny M.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BACJ4MWFKN7L+Y9dwQZThh/fyRTXe5dnJVPPkStvWuM9C1rJukN4QAXywMt7Vbz3TFc4kpRFx5SxtQA03s0/05POsoZ9kD9ovERn9Dx1vxHTpYeV46lyZ3NtlYwaGaSmte/VBVYzFzy+996WonH/mMuxu5w8lOhCRDqPTrTywDrqoYRnSYWLdAM8j9Bc0uhuD9PvHs2LTv9PcfeZAVV5Yd80RjMAm+4WUYfVwgY=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795808898,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
