@@ -766,6 +766,10 @@
       "estado": "PAGADO",
       "orden": "c237f336-f444-43a6-aed4-97aa59946a17"
     },
+    "480": {
+      "estado": "PENDIENTE",
+      "orden": "b5a36247-9017-4e2a-a69c-b035ebc345c8"
+    },
     "487": {
       "estado": "PAGADO",
       "orden": "14d77668-7209-4d80-8b80-823844a7c6ed"
@@ -1246,6 +1250,10 @@
       "estado": "PAGADO",
       "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
     },
+    "753": {
+      "estado": "PENDIENTE",
+      "orden": "b5a36247-9017-4e2a-a69c-b035ebc345c8"
+    },
     "754": {
       "estado": "PENDIENTE",
       "orden": "ea3cceb2-9a5b-4358-b5ac-9771b4444537"
@@ -1605,6 +1613,10 @@
     "960": {
       "estado": "PENDIENTE",
       "orden": "95b15ad5-c24a-4489-8cde-4c9d636048f9"
+    },
+    "961": {
+      "estado": "PENDIENTE",
+      "orden": "b5a36247-9017-4e2a-a69c-b035ebc345c8"
     },
     "964": {
       "estado": "PENDIENTE",
@@ -3326,6 +3338,23 @@
       "registrado": 1795790026,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795790072,
+      "comprobanteHash": null
+    },
+    "b5a36247-9017-4e2a-a69c-b035ebc345c8": {
+      "numeros": [
+        480,
+        753,
+        961
+      ],
+      "seudonimo": "Cristian P.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BHVRD4J4+o36TzDfUjghNgb8IEDG5pAKgXp3ye919hv7MqxY+sbRFubKpYxJMn58xnzffoNw5RHnlZjUpwAvmYlFffeHkMbbS7UW2UoBgUTSWO4sqGqEwgM4KtqZpcOPcae41PUy0Dlf96ij0KtD1ErNuanOsYkBNhV3MeSG2Q4fmxXN/AFkIIn7ssuySRiT653MFrHdVOWdB3wDE4EPfFboRijjc5OBtBsXD4U=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795792273,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
