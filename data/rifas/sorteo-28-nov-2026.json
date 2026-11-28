@@ -174,6 +174,10 @@
       "estado": "PAGADO",
       "orden": "551ef405-ff12-43f1-8943-34832549836a"
     },
+    "81": {
+      "estado": "PENDIENTE",
+      "orden": "6ece70ce-4f2a-4717-9f54-5053e48f7c2d"
+    },
     "86": {
       "estado": "PAGADO",
       "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
@@ -817,6 +821,10 @@
     "420": {
       "estado": "PENDIENTE",
       "orden": "b7b5c580-de1b-4336-a2c7-1b8c0eacd6bf"
+    },
+    "421": {
+      "estado": "PENDIENTE",
+      "orden": "6ece70ce-4f2a-4717-9f54-5053e48f7c2d"
     },
     "422": {
       "estado": "PENDIENTE",
@@ -1801,6 +1809,10 @@
     "918": {
       "estado": "PAGADO",
       "orden": "86a6a3a0-f734-4470-bf83-ebf0a956ea03"
+    },
+    "919": {
+      "estado": "PENDIENTE",
+      "orden": "6ece70ce-4f2a-4717-9f54-5053e48f7c2d"
     },
     "921": {
       "estado": "PENDIENTE",
@@ -3956,6 +3968,23 @@
       "registrado": 1795834985,
       "aprobadoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "aprobado": 1795835031,
+      "comprobanteHash": null
+    },
+    "6ece70ce-4f2a-4717-9f54-5053e48f7c2d": {
+      "numeros": [
+        81,
+        421,
+        919
+      ],
+      "seudonimo": "Yeison H.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BLhSOVxw5KKw7ZYmBpLrC0KRdsfB1ymEqeng/AQLK83/IKhCIl43FrhSjlm5bdePWOaG8j5L/SINO8T5+QfbxPsVbHDS7S+LAz4M3uk5SbG6k8u0m0kWSuXBrHuAtSicKQ3poOHH2t4OjNFqPchYEdd/tAjbLq3XOcVj0vQqHiZP+g3fW6aE//J1owKE4Y6RnKsGhgu0AQQZ1HdSOlRX6fiudCoVGSHg2Jd0OZg=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4c919726f3dce5378a237412ddbf694ebb794564",
+      "registrado": 1795838528,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
