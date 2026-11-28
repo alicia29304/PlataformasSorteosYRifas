@@ -146,6 +146,10 @@
       "estado": "PAGADO",
       "orden": "5c1654f4-664a-40ce-b6ff-104ac0dda3bd"
     },
+    "69": {
+      "estado": "PENDIENTE",
+      "orden": "5740fbf5-8c2d-4919-98d8-f62aa626ab99"
+    },
     "70": {
       "estado": "PAGADO",
       "orden": "511b011e-4b61-4c27-a4e3-8a3941c8105f"
@@ -885,6 +889,10 @@
     "459": {
       "estado": "PAGADO",
       "orden": "7b110c0d-0565-4821-801d-2ece3d3dd84a"
+    },
+    "460": {
+      "estado": "PENDIENTE",
+      "orden": "5740fbf5-8c2d-4919-98d8-f62aa626ab99"
     },
     "461": {
       "estado": "PENDIENTE",
@@ -1925,6 +1933,10 @@
     "992": {
       "estado": "PAGADO",
       "orden": "ed157b70-0714-45bf-a740-6e0c4d73bbcc"
+    },
+    "993": {
+      "estado": "PENDIENTE",
+      "orden": "5740fbf5-8c2d-4919-98d8-f62aa626ab99"
     },
     "996": {
       "estado": "PENDIENTE",
@@ -3925,6 +3937,23 @@
       "estado": "PENDIENTE",
       "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
       "registrado": 1795834876,
+      "aprobadoPor": null,
+      "aprobado": null,
+      "comprobanteHash": null
+    },
+    "5740fbf5-8c2d-4919-98d8-f62aa626ab99": {
+      "numeros": [
+        69,
+        460,
+        993
+      ],
+      "seudonimo": "Wilfredo A.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BDjPRi3J7KkiXTkEU/MDqK2rPuqw27SmcM366RyS4xTfMnDsqObNnKKK/rZ9DMMBJxUJJ5VuG4gpgfJOMKho/ZJTnbFZ5r2UPns8n7AfXVCG5ZSfGmjdxbUs8IAp/YZ6RfuTNWhcjGMX1M4NF0GStCaJ4v/IrGMQg+0HMPJxI6YJ0L7HCpEb2i/HRvH0EnGFniRSnV7GzPt9PE/jOQfHUGAhQ2eJZAEWpoYqgha5",
+      "estado": "PENDIENTE",
+      "registradoPor": "0xf4f3b05812721e6b5d2161935de800022f99b80c",
+      "registrado": 1795834985,
       "aprobadoPor": null,
       "aprobado": null,
       "comprobanteHash": null
