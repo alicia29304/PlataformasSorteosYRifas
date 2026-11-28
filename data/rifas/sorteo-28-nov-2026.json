@@ -342,6 +342,10 @@
       "estado": "PAGADO",
       "orden": "ca29e70e-a042-41a8-8656-ad8786a3193f"
     },
+    "171": {
+      "estado": "PENDIENTE",
+      "orden": "755fcab4-119b-4b33-93ea-e5b618b3630e"
+    },
     "172": {
       "estado": "PENDIENTE",
       "orden": "aa92f709-4814-4724-b36a-cbcb8c738f0d"
@@ -425,6 +429,10 @@
     "208": {
       "estado": "PAGADO",
       "orden": "67ef7591-a97a-4590-8b23-6424182f3e4d"
+    },
+    "211": {
+      "estado": "PENDIENTE",
+      "orden": "755fcab4-119b-4b33-93ea-e5b618b3630e"
     },
     "213": {
       "estado": "PENDIENTE",
@@ -1789,6 +1797,10 @@
     "906": {
       "estado": "PAGADO",
       "orden": "14d77668-7209-4d80-8b80-823844a7c6ed"
+    },
+    "907": {
+      "estado": "PENDIENTE",
+      "orden": "755fcab4-119b-4b33-93ea-e5b618b3630e"
     },
     "909": {
       "estado": "PENDIENTE",
@@ -3985,6 +3997,23 @@
       "registrado": 1795838528,
       "aprobadoPor": "0x4c919726f3dce5378a237412ddbf694ebb794564",
       "aprobado": 1795838715,
+      "comprobanteHash": null
+    },
+    "755fcab4-119b-4b33-93ea-e5b618b3630e": {
+      "numeros": [
+        171,
+        211,
+        907
+      ],
+      "seudonimo": "Sonia A.",
+      "ciudad": "Villanueva",
+      "metodo": "Transferencia",
+      "privado": "enc1:BE+i7VhF4bSEFvcQYBOsk+5yM+VvdqVUdspKsBzKEqzDJfUqa6Ck0V1ljakf6znb1xdGWogQ9PXaGkMvxWNpuXBxS4SwBl/NonyTvZZrX3yUvjnvfzSMes+IJUtbvx8D/5gJ9eroOOCrH/5HmKb1Erfpo75yxDupylqxry43hohJbV9AfBXUFDsFVHml0LNsbWh0vU3TFMmnL6Uz95YkKhRCYmTpVSBkehXq+5k=",
+      "estado": "PENDIENTE",
+      "registradoPor": "0x4c919726f3dce5378a237412ddbf694ebb794564",
+      "registrado": 1795839002,
+      "aprobadoPor": null,
+      "aprobado": null,
       "comprobanteHash": null
     }
   }
